@@ -9,61 +9,56 @@
 <style>
 :root{
   --navy:#0b1f3a;
+  --navy2:#102d50;
   --blue:#2563eb;
-  --blue2:#173b68;
+  --blue2:#3b82f6;
   --gold:#f59e0b;
   --bg:#f4f7fb;
-  --line:#e2e8f0;
-  --text:#172033;
+  --white:#fff;
+  --text:#182230;
   --muted:#718096;
-  --danger:#dc2626;
-  --success:#16a34a;
+  --line:#e3e9f2;
+  --green:#16a34a;
+  --red:#dc2626;
+  --shadow:0 10px 30px rgba(11,31,58,.08);
 }
 
 *{box-sizing:border-box}
 
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Inter,Arial,Helvetica,sans-serif;
   background:var(--bg);
   color:var(--text);
 }
 
-button,input,select,textarea{
-  font:inherit;
-}
-
+button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-
 .hide{display:none!important}
-
-/* =========================
-   LOGIN
-========================= */
 
 .login{
   min-height:100vh;
   display:grid;
   place-items:center;
-  background:
-    radial-gradient(circle at top right,#2563eb55,transparent 35%),
-    linear-gradient(135deg,#08182d,#173b68);
   padding:20px;
+  background:
+    radial-gradient(circle at top right,rgba(59,130,246,.35),transparent 35%),
+    linear-gradient(135deg,#07182e,#174b82);
 }
 
 .loginbox{
-  width:min(460px,100%);
-  background:white;
+  width:min(450px,100%);
+  background:#fff;
+  padding:38px;
   border-radius:24px;
-  padding:35px;
-  box-shadow:0 25px 70px #0005;
+  box-shadow:0 30px 70px rgba(0,0,0,.22);
 }
 
 .login-brand{
   display:flex;
   align-items:center;
   gap:14px;
-  margin-bottom:25px;
+  margin-bottom:24px;
 }
 
 .login-brand-mark{
@@ -74,19 +69,14 @@ button{cursor:pointer}
   border-radius:17px;
   background:linear-gradient(145deg,#edf4ff,#fff);
   border:1px solid #e2e8f0;
-  box-shadow:0 10px 25px #0b1f3a18;
 }
 
-.login-brand-mark svg{
-  width:46px;
-  height:46px;
-}
+.login-brand-mark svg{width:46px;height:46px}
 
 .login-brand-name{
   font-size:32px;
   line-height:1;
   font-weight:900;
-  letter-spacing:-1px;
   color:var(--navy);
 }
 
@@ -100,11 +90,17 @@ button{cursor:pointer}
   letter-spacing:1.5px;
 }
 
-.loginbox h2{margin:0 0 8px}
+.login-title{
+  font-size:25px;
+  font-weight:800;
+  margin:20px 0 7px;
+}
 
-/* =========================
-   APP
-========================= */
+.login-description{
+  margin:0 0 22px;
+  color:var(--muted);
+  font-size:14px;
+}
 
 .app{
   display:flex;
@@ -118,7 +114,7 @@ button{cursor:pointer}
   padding:22px 14px;
   position:fixed;
   inset:0 auto 0 0;
-  overflow:auto;
+  z-index:20;
 }
 
 .brand{
@@ -132,27 +128,19 @@ button{cursor:pointer}
 .brand-mark{
   width:48px;
   height:48px;
-  flex:none;
   display:grid;
   place-items:center;
   border-radius:14px;
   background:linear-gradient(145deg,#173b68,#0b1f3a);
-  border:1px solid #ffffff24;
-  box-shadow:0 8px 22px #0004;
+  border:1px solid rgba(255,255,255,.14);
 }
 
-.brand-mark svg{
-  width:38px;
-  height:38px;
-}
-
-.brand-text{min-width:0}
+.brand-mark svg{width:38px;height:38px}
 
 .brand-name{
   font-size:25px;
-  line-height:1;
   font-weight:900;
-  letter-spacing:-.8px;
+  color:#fff;
 }
 
 .brand-name span{color:var(--gold)}
@@ -164,31 +152,48 @@ button{cursor:pointer}
   font-size:8px;
   font-weight:700;
   letter-spacing:1.4px;
-  white-space:nowrap;
+}
+
+.nav-title{
+  color:#7892b5;
+  font-size:10px;
+  font-weight:800;
+  padding:0 12px;
+  margin-bottom:8px;
+  text-transform:uppercase;
 }
 
 .nav button{
-  display:block;
+  display:flex;
+  align-items:center;
+  gap:10px;
   width:100%;
+  padding:13px;
+  margin:5px 0;
   border:0;
+  border-radius:11px;
   background:transparent;
   color:#dce6f5;
-  padding:12px 14px;
-  margin:4px 0;
-  border-radius:10px;
   text-align:left;
-  transition:.2s;
 }
 
-.nav button:hover,
+.nav button:hover{
+  background:rgba(255,255,255,.08);
+}
+
 .nav button.active{
-  background:#ffffff14;
-  color:white;
+  background:linear-gradient(90deg,rgba(37,99,235,.9),rgba(37,99,235,.55));
+  color:#fff;
+}
+
+.nav-icon{
+  width:22px;
+  text-align:center;
 }
 
 .main{
   margin-left:255px;
-  padding:25px;
+  padding:28px;
   flex:1;
   min-width:0;
 }
@@ -197,62 +202,13 @@ button{cursor:pointer}
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:15px;
-  margin-bottom:20px;
+  gap:20px;
+  margin-bottom:24px;
 }
 
 .top h1{
   margin:0;
-  font-size:26px;
-}
-
-/* =========================
-   GENERAL
-========================= */
-
-.country{
-  width:230px;
-  padding:10px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:white;
-}
-
-.card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 5px 22px #0b1f3a08;
-}
-
-.hero{
-  background:
-    radial-gradient(circle at right top,#ffffff18,transparent 35%),
-    linear-gradient(120deg,#0b1f3a,#2563a9);
-  color:white;
-  border-radius:20px;
-  padding:30px;
-}
-
-.hero h2{
-  font-size:30px;
-  margin:8px 0;
-}
-
-.hero p{color:#d9e5f5}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-top:18px;
-}
-
-.stat{
-  font-size:26px;
-  font-weight:900;
-  margin-top:7px;
+  font-size:27px;
 }
 
 .muted{
@@ -260,32 +216,115 @@ button{cursor:pointer}
   font-size:13px;
 }
 
-.actions{
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:20px;
+  box-shadow:var(--shadow);
+}
+
+.hero{
+  background:
+    radial-gradient(circle at 85% 10%,rgba(59,130,246,.35),transparent 30%),
+    linear-gradient(120deg,#0b1f3a,#205a97);
+  color:#fff;
+  border-radius:22px;
+  padding:34px;
+}
+
+.hero-label{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:rgba(245,158,11,.15);
+  color:#ffd36a;
+  font-size:11px;
+  font-weight:800;
+}
+
+.hero h2{
+  font-size:32px;
+  margin:14px 0 8px;
+}
+
+.hero p{
+  max-width:650px;
+  color:#dbeafe;
+  line-height:1.6;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.stat{
+  font-size:27px;
+  font-weight:900;
+  margin-top:8px;
+  color:var(--navy);
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.feature{
   display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin-top:15px;
+  gap:13px;
+}
+
+.feature-icon{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:#edf4ff;
+  flex:none;
+}
+
+.feature h3{
+  margin:2px 0 5px;
+  font-size:15px;
+}
+
+.feature p{
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
 }
 
 .btn{
   border:0;
-  border-radius:9px;
-  padding:10px 15px;
+  border-radius:10px;
+  padding:11px 17px;
   background:var(--blue);
-  color:white;
-  font-weight:700;
+  color:#fff;
+  font-weight:800;
 }
 
-.btn:hover{filter:brightness(.95)}
-
-.btn.alt{
-  background:#edf4ff;
-  color:#1d4ed8;
-}
+.btn:hover{background:#1d4ed8}
 
 .btn.gold{
   background:var(--gold);
-  color:#111827;
+  color:#172033;
+}
+
+.btn.alt{
+  background:#eaf0fa;
+  color:var(--navy);
 }
 
 .btn.danger{
@@ -293,9 +332,16 @@ button{cursor:pointer}
   color:#991b1b;
 }
 
-.btn.success{
-  background:#dcfce7;
-  color:#166534;
+.btn.small{
+  padding:7px 10px;
+  font-size:12px;
+}
+
+.actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:17px;
 }
 
 .row{
@@ -304,23 +350,27 @@ button{cursor:pointer}
   gap:14px;
 }
 
-.field{margin:12px 0}
+.field{
+  margin:12px 0;
+}
 
 .field label{
   display:block;
   font-size:13px;
-  font-weight:700;
-  margin-bottom:6px;
+  font-weight:800;
+  margin-bottom:7px;
 }
 
 .field input,
 .field select,
-.field textarea{
+.field textarea,
+.country{
   width:100%;
-  padding:11px 12px;
+  padding:12px 13px;
   border:1px solid #d8dee8;
-  border-radius:9px;
-  background:white;
+  border-radius:10px;
+  background:#fff;
+  color:var(--text);
   outline:none;
 }
 
@@ -332,258 +382,275 @@ button{cursor:pointer}
 .field input:focus,
 .field select:focus,
 .field textarea:focus{
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px #2563eb15;
+  border-color:var(--blue2);
+  box-shadow:0 0 0 3px rgba(59,130,246,.1);
+}
+
+/* PROJECTS */
+
+.project-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.project-header h2{margin:0}
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.project-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:20px;
+  box-shadow:var(--shadow);
+}
+
+.project-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+
+.project-icon{
+  width:45px;
+  height:45px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#edf4ff;
+}
+
+.project-card h3{
+  margin:14px 0 5px;
+}
+
+.project-info{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.status{
+  display:inline-flex;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:800;
+}
+
+.status.todo{
+  background:#fff7ed;
+  color:#c2410c;
+}
+
+.status.progress{
+  background:#eff6ff;
+  color:#1d4ed8;
+}
+
+.status.done{
+  background:#f0fdf4;
+  color:#15803d;
+}
+
+.project-actions{
+  display:flex;
+  gap:7px;
+  margin-top:16px;
+}
+
+/* DQE */
+
+.dqe-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:18px;
+}
+
+.dqe-summary-card{
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:15px;
+}
+
+.dqe-summary-card strong{
+  display:block;
+  font-size:20px;
+  color:var(--navy);
+  margin-top:5px;
 }
 
 .tablewrap{
   overflow:auto;
   margin-top:18px;
   border:1px solid var(--line);
-  border-radius:12px;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--shadow);
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  background:white;
+  background:#fff;
 }
 
 th,td{
-  padding:11px;
+  padding:12px;
   border-bottom:1px solid var(--line);
   text-align:left;
   font-size:13px;
+  white-space:nowrap;
 }
 
 th{
   background:#f8fafc;
-  font-weight:800;
+  color:#46566d;
+  font-size:12px;
 }
 
 .right{text-align:right}
 
-.badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:999px;
-  font-size:11px;
-  font-weight:700;
-}
-
-.badge.blue{
-  background:#dbeafe;
-  color:#1d4ed8;
-}
-
-.badge.green{
-  background:#dcfce7;
-  color:#166534;
-}
-
-.badge.orange{
-  background:#fef3c7;
-  color:#92400e;
-}
-
-.badge.gray{
-  background:#e5e7eb;
-  color:#374151;
-}
-
-/* =========================
-   CLIENTS
-========================= */
-
-.client-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+.total-box{
   margin-top:18px;
+  display:flex;
+  justify-content:flex-end;
 }
 
-.client-card{
-  background:white;
-  border:1px solid var(--line);
+.total-box-inner{
+  min-width:280px;
+  background:var(--navy);
+  color:#fff;
   border-radius:15px;
   padding:18px;
 }
 
-.client-avatar{
-  width:45px;
-  height:45px;
-  border-radius:13px;
-  background:#edf4ff;
-  color:#1d4ed8;
-  display:grid;
-  place-items:center;
-  font-size:20px;
+.total-box-inner .total-number{
+  font-size:25px;
   font-weight:900;
-  margin-bottom:12px;
+  margin-top:5px;
 }
 
-.client-card h3{
-  margin:0 0 6px;
+.editing{
+  background:#fff7ed!important;
 }
 
-.client-meta{
-  color:var(--muted);
-  font-size:12px;
-  margin:7px 0;
-}
-
-.client-search{
-  max-width:450px;
-}
-
-/* =========================
-   PROJECTS
-========================= */
-
-.project-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-top:18px;
-}
-
-.project-card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:18px;
-}
-
-.project-card h3{
-  margin:0 0 8px;
-}
-
-.project-meta{
-  color:var(--muted);
-  font-size:12px;
-  margin:6px 0;
-}
-
-.project-budget{
-  font-size:20px;
-  font-weight:900;
-  margin:12px 0;
-}
-
-/* =========================
-   DEVIS
-========================= */
+/* QUOTE */
 
 .quote-preview{
-  max-width:900px;
-  margin:20px auto;
-  background:white;
-  border:1px solid #dfe5ed;
-  padding:45px;
-  box-shadow:0 10px 35px #0000000b;
+  margin-top:18px;
 }
 
-.quote-head{
+.quote-header{
   display:flex;
   justify-content:space-between;
-  gap:30px;
-  border-bottom:3px solid var(--navy);
-  padding-bottom:20px;
-  margin-bottom:25px;
-}
-
-.quote-logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.quote-logo-mark{
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  background:var(--navy);
-  display:grid;
-  place-items:center;
-}
-
-.quote-logo-mark svg{
-  width:38px;
-  height:38px;
-}
-
-.quote-brand{
-  font-size:24px;
-  font-weight:900;
-  color:var(--navy);
-}
-
-.quote-brand span{color:var(--gold)}
-
-.quote-number{text-align:right}
-
-.quote-number strong{font-size:22px}
-
-.quote-info{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:25px;
-  margin-bottom:25px;
-}
-
-.quote-info-box{
-  border:1px solid var(--line);
-  padding:15px;
-  border-radius:10px;
+  gap:20px;
+  align-items:flex-start;
+  border-bottom:1px solid var(--line);
+  padding-bottom:18px;
 }
 
 .quote-total{
-  width:330px;
-  margin-left:auto;
-  margin-top:20px;
+  background:#f8fafc;
+  border-radius:12px;
+  padding:15px;
 }
 
-.quote-total div{
-  display:flex;
-  justify-content:space-between;
-  padding:7px 0;
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+  .project-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
 }
 
-.quote-total .grand{
-  border-top:2px solid var(--navy);
-  margin-top:6px;
-  padding-top:12px;
-  font-size:18px;
-  font-weight:900;
+@media(max-width:800px){
+
+  .side{width:205px}
+
+  .main{
+    margin-left:205px;
+    padding:20px;
+  }
+
+  .project-grid{
+    grid-template-columns:1fr;
+  }
 }
 
-.quote-footer{
-  margin-top:45px;
-  padding-top:20px;
-  border-top:1px solid var(--line);
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-}
+@media(max-width:600px){
 
-.signature{
-  height:90px;
-  border-bottom:1px solid #94a3b8;
-  margin-top:20px;
-}
+  .app{display:block}
 
-/* =========================
-   PRINT
-========================= */
+  .side{
+    position:static;
+    width:100%;
+    padding:15px;
+  }
+
+  .nav{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:4px;
+  }
+
+  .nav-title{display:none}
+
+  .main{
+    margin:0;
+    padding:15px;
+  }
+
+  .top{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .grid,
+  .row,
+  .dqe-summary{
+    grid-template-columns:1fr;
+  }
+
+  .hero{padding:24px}
+
+  .hero h2{font-size:25px}
+
+  .project-header{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .loginbox{
+    padding:28px 22px;
+  }
+}
 
 @media print{
 
-  body{background:white}
-
   .side,
   .top,
-  .no-print,
-  .page:not(#quote){
+  .actions,
+  .project-actions,
+  .btn{
     display:none!important;
   }
 
@@ -592,295 +659,201 @@ th{
     padding:0;
   }
 
-  #quote{
-    display:block!important;
-  }
-
-  .quote-preview{
+  .card{
     box-shadow:none;
     border:0;
-    margin:0;
-    padding:20px;
-    max-width:none;
   }
-
-  @page{
-    size:A4;
-    margin:12mm;
-  }
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:1050px){
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .project-grid,
-  .client-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-}
-
-@media(max-width:800px){
-
-  .side{width:210px}
-
-  .main{margin-left:210px}
-
-  .quote-head{
-    flex-direction:column;
-  }
-
-  .quote-number{text-align:left}
-
-}
-
-@media(max-width:650px){
-
-  .app{display:block}
-
-  .side{
-    position:static;
-    width:100%;
-  }
-
-  .main{
-    margin:0;
-    padding:15px;
-  }
-
-  .grid,
-  .row,
-  .project-grid,
-  .client-grid,
-  .quote-info{
-    grid-template-columns:1fr;
-  }
-
-  .top{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .country{
-    width:100%;
-  }
-
-  .quote-preview{
-    padding:20px;
-  }
-
-  .quote-total{
-    width:100%;
-  }
-
-  .quote-footer{
-    grid-template-columns:1fr;
-  }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
+<!-- LOGIN -->
 
 <div id="login" class="login">
 
 <form class="loginbox" onsubmit="login(event)">
 
-<div class="login-brand">
+  <div class="login-brand">
 
-<div class="login-brand-mark">
+    <div class="login-brand-mark">
 
-<svg viewBox="0 0 64 64">
+      <svg viewBox="0 0 64 64">
 
-<path
-d="M12 52V24L32 10L52 24V52"
-fill="none"
-stroke="#0b1f3a"
-stroke-width="5"
-stroke-linejoin="round"/>
+        <path
+          d="M12 52V24L32 10L52 24V52"
+          fill="none"
+          stroke="#0b1f3a"
+          stroke-width="5"
+          stroke-linejoin="round"/>
 
-<path
-d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
-fill="#f59e0b"/>
+        <path
+          d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
+          fill="#f59e0b"/>
 
-<path
-d="M28 31V47"
-stroke="white"
-stroke-width="4"
-stroke-linecap="round"/>
+        <path
+          d="M28 31V47"
+          stroke="white"
+          stroke-width="4"
+          stroke-linecap="round"/>
 
-<path
-d="M12 55H52"
-stroke="#0b1f3a"
-stroke-width="4"
-stroke-linecap="round"/>
+        <path
+          d="M12 55H52"
+          stroke="#0b1f3a"
+          stroke-width="4"
+          stroke-linecap="round"/>
 
-</svg>
+      </svg>
 
-</div>
+    </div>
 
-<div>
+    <div>
 
-<div class="login-brand-name">
-BATI<span>FLOW</span>
-</div>
+      <div class="login-brand-name">
+        BATI<span>FLOW</span>
+      </div>
 
-<div class="login-brand-sub">
-BUILD • CALCULATE • MANAGE
-</div>
+      <div class="login-brand-sub">
+        BUILD • CALCULATE • MANAGE
+      </div>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
-<h2>Bienvenue sur BATIFLOW</h2>
+  <div class="login-title">
+    Bienvenue sur BATIFLOW
+  </div>
 
-<p class="muted">
-La plateforme de gestion BTP pensée pour les professionnels africains.
-</p>
+  <p class="login-description">
+    La plateforme intelligente de gestion BTP pensée pour l'Afrique.
+  </p>
 
-<div class="field">
+  <div class="field">
+    <label>Email</label>
+    <input type="email" required placeholder="vous@entreprise.com">
+  </div>
 
-<label>Email</label>
+  <div class="field">
+    <label>Mot de passe</label>
+    <input type="password" required placeholder="••••••••">
+  </div>
 
-<input
-id="loginEmail"
-type="email"
-required
-placeholder="vous@entreprise.com">
+  <button class="btn" style="width:100%;margin-top:8px">
+    Se connecter
+  </button>
 
-</div>
-
-<div class="field">
-
-<label>Mot de passe</label>
-
-<input
-type="password"
-required
-placeholder="••••••••">
-
-</div>
-
-<button class="btn" style="width:100%">
-Se connecter
-</button>
-
-<p class="muted" style="margin-top:18px">
-Version démo : les données sont enregistrées localement dans votre navigateur.
-</p>
+  <p class="muted" style="margin-top:16px;text-align:center">
+    Prototype V4 — données enregistrées dans ce navigateur.
+  </p>
 
 </form>
 
 </div>
 
 
-<!-- =========================
-     APP
-========================= -->
+<!-- APPLICATION -->
 
 <div id="app" class="app hide">
 
 <aside class="side">
 
-<div class="brand">
+  <div class="brand">
 
-<div class="brand-mark">
+    <div class="brand-mark">
 
-<svg viewBox="0 0 64 64">
+      <svg viewBox="0 0 64 64">
 
-<path
-d="M12 52V24L32 10L52 24V52"
-fill="none"
-stroke="white"
-stroke-width="5"
-stroke-linejoin="round"/>
+        <defs>
 
-<path
-d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
-fill="#f59e0b"/>
+          <linearGradient id="logoGold" x1="0" y1="0" x2="1" y2="1">
 
-<path
-d="M28 31V47"
-stroke="#0b1f3a"
-stroke-width="4"
-stroke-linecap="round"/>
+            <stop offset="0%" stop-color="#fbbf24"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
 
-<path
-d="M12 55H52"
-stroke="white"
-stroke-width="4"
-stroke-linecap="round"/>
+          </linearGradient>
 
-</svg>
+        </defs>
 
-</div>
+        <path
+          d="M12 52V24L32 10L52 24V52"
+          fill="none"
+          stroke="white"
+          stroke-width="5"
+          stroke-linejoin="round"/>
 
-<div class="brand-text">
+        <path
+          d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
+          fill="url(#logoGold)"/>
 
-<div class="brand-name">
-BATI<span>FLOW</span>
-</div>
+        <path
+          d="M28 31V47"
+          stroke="#0b1f3a"
+          stroke-width="4"
+          stroke-linecap="round"/>
 
-<small>
-BUILD • CALCULATE • MANAGE
-</small>
+        <path
+          d="M12 55H52"
+          stroke="white"
+          stroke-width="4"
+          stroke-linecap="round"/>
 
-</div>
+      </svg>
 
-</div>
+    </div>
 
+    <div class="brand-text">
 
-<div class="nav">
+      <div class="brand-name">
+        BATI<span>FLOW</span>
+      </div>
 
-<button class="active"
-onclick="show('dashboard',this)">
-🏠 Tableau de bord
-</button>
+      <small>
+        BUILD • CALCULATE • MANAGE
+      </small>
 
-<button
-onclick="show('clients',this)">
-👥 Clients
-</button>
+    </div>
 
-<button
-onclick="show('projects',this)">
-🏗️ Projets / Chantiers
-</button>
+  </div>
 
-<button
-onclick="show('calc',this)">
-📐 Calculateur BTP
-</button>
+  <div class="nav-title">
+    Navigation
+  </div>
 
-<button
-onclick="show('dqe',this)">
-📋 DQE
-</button>
+  <div class="nav">
 
-<button
-onclick="show('quote',this)">
-🧾 Devis
-</button>
+    <button class="active" onclick="show('dashboard',this)">
+      <span class="nav-icon">⌂</span>
+      Tableau de bord
+    </button>
 
-<button
-onclick="show('country',this)">
-🌍 Pays & paramètres
-</button>
+    <button onclick="show('projects',this)">
+      <span class="nav-icon">🏗️</span>
+      Projets / Chantiers
+    </button>
 
-</div>
+    <button onclick="show('calc',this)">
+      <span class="nav-icon">📐</span>
+      Calculateur BTP
+    </button>
+
+    <button onclick="show('dqe',this)">
+      <span class="nav-icon">📋</span>
+      DQE
+    </button>
+
+    <button onclick="show('quote',this)">
+      <span class="nav-icon">🧾</span>
+      Devis
+    </button>
+
+    <button onclick="show('country',this)">
+      <span class="nav-icon">🌍</span>
+      Pays & paramètres
+    </button>
+
+  </div>
 
 </aside>
 
@@ -889,1096 +862,813 @@ onclick="show('country',this)">
 
 <div class="top">
 
-<div>
+  <div>
 
-<h1 id="title">
-Tableau de bord
-</h1>
+    <h1 id="title">
+      Tableau de bord
+    </h1>
 
-<div class="muted">
-Gestion BTP intelligente
+    <div class="muted">
+      Gestion BTP intelligente
+    </div>
+
+  </div>
+
+  <select
+    id="topCountry"
+    class="country"
+    onchange="setCountry(this.value)">
+  </select>
+
 </div>
 
-</div>
 
-<select
-id="topCountry"
-class="country"
-onchange="setCountry(this.value)">
-</select>
-
-</div>
-
-
-<!-- =========================
-     DASHBOARD
-========================= -->
+<!-- DASHBOARD -->
 
 <section id="dashboard" class="page">
 
-<div class="hero">
+  <div class="hero">
 
-<div style="font-size:12px;font-weight:800;letter-spacing:1px">
-BATIFLOW PRO
-</div>
+    <div class="hero-label">
+      BATIFLOW V4
+    </div>
 
-<h2>
-Construisez mieux. Gérez vos chantiers plus facilement.
-</h2>
+    <h2>
+      Construisez mieux. Gérez vos chantiers plus facilement.
+    </h2>
 
-<p>
-Calculez, chiffrez, gérez vos clients, préparez vos devis et suivez vos projets depuis une seule plateforme.
-</p>
+    <p>
+      Centralisez vos projets, calculs BTP, DQE et devis
+      depuis une seule plateforme.
+    </p>
 
-<div class="actions">
+    <div class="actions">
 
-<button
-class="btn gold"
-onclick="goto('clients')">
-+ Nouveau client
-</button>
+      <button class="btn gold" onclick="goto('projects')">
+        + Nouveau chantier
+      </button>
 
-<button
-class="btn"
-onclick="goto('projects')">
-+ Nouveau chantier
-</button>
+      <button class="btn alt" onclick="goto('dqe')">
+        Nouveau DQE
+      </button>
 
-<button
-class="btn alt"
-onclick="goto('quote')">
-Nouveau devis
-</button>
+    </div>
 
-</div>
-
-</div>
+  </div>
 
 
-<div class="grid">
+  <div class="grid">
 
-<div class="card">
+    <div class="card">
 
-<div class="muted">
-Clients
-</div>
+      <div class="stat-label">
+        Projets
+      </div>
 
-<div
-class="stat"
-id="dashClients">
-0
-</div>
+      <div class="stat" id="dashProjects">
+        0
+      </div>
 
-</div>
+      <div class="muted">
+        chantiers enregistrés
+      </div>
 
-<div class="card">
-
-<div class="muted">
-Projets
-</div>
-
-<div
-class="stat"
-id="dashProjects">
-0
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="muted">
-Postes DQE
-</div>
-
-<div
-class="stat"
-id="dashItems">
-0
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="muted">
-Total DQE
-</div>
-
-<div
-class="stat"
-id="dashTotal">
-0
-</div>
-
-<div
-class="muted"
-id="dashCur">
-FCFA
-</div>
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="card" style="margin-top:18px">
+    <div class="card">
 
-<h2>
-Votre espace BATIFLOW
-</h2>
+      <div class="stat-label">
+        Projets en cours
+      </div>
 
-<p class="muted">
-Une base centralisée pour gérer progressivement votre activité BTP.
-</p>
+      <div class="stat" id="dashProgress">
+        0
+      </div>
 
-<div class="grid">
+      <div class="muted">
+        actuellement actifs
+      </div>
 
-<div>
-<strong>👥 Clients</strong>
-<p class="muted">
-Centralisez vos contacts.
-</p>
-</div>
+    </div>
 
-<div>
-<strong>🏗️ Chantiers</strong>
-<p class="muted">
-Suivez vos projets.
-</p>
-</div>
 
-<div>
-<strong>📋 DQE</strong>
-<p class="muted">
-Chiffrez vos travaux.
-</p>
-</div>
+    <div class="card">
 
-<div>
-<strong>🧾 Devis</strong>
-<p class="muted">
-Créez vos documents commerciaux.
-</p>
-</div>
+      <div class="stat-label">
+        Total DQE
+      </div>
 
-</div>
+      <div class="stat" id="dashTotal">
+        0
+      </div>
 
-</div>
+      <div class="muted" id="dashCur">
+        FCFA
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="stat-label">
+        Pays actif
+      </div>
+
+      <div class="stat" id="dashCountry">
+        Togo
+      </div>
+
+      <div class="muted">
+        configuration locale
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="feature-grid">
+
+    <div class="card feature">
+
+      <div class="feature-icon">🏗️</div>
+
+      <div>
+
+        <h3>
+          Gestion des chantiers
+        </h3>
+
+        <p>
+          Suivez vos projets et leurs budgets.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="card feature">
+
+      <div class="feature-icon">📋</div>
+
+      <div>
+
+        <h3>
+          DQE professionnel
+        </h3>
+
+        <p>
+          Gérez facilement les postes et quantités.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="card feature">
+
+      <div class="feature-icon">🧾</div>
+
+      <div>
+
+        <h3>
+          Devis
+        </h3>
+
+        <p>
+          Transformez votre DQE en devis.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- =========================
-     CLIENTS
-========================= -->
-
-<section id="clients" class="page hide">
-
-<div class="card">
-
-<h2>
-Gestion des clients
-</h2>
-
-<p class="muted">
-Créez votre base clients et réutilisez leurs informations dans vos projets et devis.
-</p>
-
-
-<div class="row">
-
-<div class="field">
-
-<label>
-Nom / Entreprise
-</label>
-
-<input
-id="clientName"
-placeholder="Ex. Jean Dupont / ETS ABC">
-
-</div>
-
-
-<div class="field">
-
-<label>
-Type de client
-</label>
-
-<select id="clientType">
-
-<option>Particulier</option>
-<option>Entreprise</option>
-<option>Administration</option>
-<option>Promoteur immobilier</option>
-<option>Autre</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>
-Téléphone
-</label>
-
-<input
-id="clientPhone"
-placeholder="+228 XX XX XX XX">
-
-</div>
-
-
-<div class="field">
-
-<label>
-Email
-</label>
-
-<input
-id="clientEmail"
-type="email"
-placeholder="client@email.com">
-
-</div>
-
-
-<div class="field">
-
-<label>
-Adresse
-</label>
-
-<input
-id="clientAddress"
-placeholder="Lomé, Togo">
-
-</div>
-
-
-<div class="field">
-
-<label>
-Ville
-</label>
-
-<input
-id="clientCity"
-placeholder="Lomé">
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-Notes
-</label>
-
-<textarea
-id="clientNotes"
-placeholder="Informations complémentaires sur le client..."></textarea>
-
-</div>
-
-
-<div class="actions">
-
-<button
-id="clientAddBtn"
-class="btn"
-onclick="addClient()">
-+ Enregistrer le client
-</button>
-
-<button
-class="btn danger"
-onclick="clearClientForm()">
-Annuler
-</button>
-
-</div>
-
-</div>
-
-
-<div class="card" style="margin-top:18px">
-
-<div style="display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap">
-
-<div>
-
-<h2 style="margin:0">
-Mes clients
-</h2>
-
-<div class="muted">
-Retrouvez rapidement vos contacts.
-</div>
-
-</div>
-
-<input
-id="clientSearch"
-class="client-search"
-placeholder="🔎 Rechercher un client..."
-oninput="renderClients()">
-
-</div>
-
-</div>
-
-
-<div
-id="clientList"
-class="client-grid">
-</div>
-
-</section>
-
-
-<!-- =========================
-     PROJECTS
-========================= -->
+<!-- PROJETS -->
 
 <section id="projects" class="page hide">
 
-<div class="card">
+  <div class="project-header">
 
-<h2>
-Nouveau projet / chantier
-</h2>
+    <div>
 
-<p class="muted">
-Enregistrez les informations principales de votre chantier.
-</p>
+      <h2>
+        Projets / Chantiers
+      </h2>
 
+      <p class="muted">
+        Créez et suivez vos différents chantiers.
+      </p>
 
-<div class="row">
+    </div>
 
-<div class="field">
+    <button class="btn gold" onclick="toggleProjectForm()">
+      + Nouveau chantier
+    </button>
 
-<label>
-Nom du projet
-</label>
-
-<input
-id="projectName"
-placeholder="Ex. Construction maison RDC">
-
-</div>
+  </div>
 
 
-<div class="field">
+  <div id="projectForm" class="card hide">
 
-<label>
-Client
-</label>
+    <h3>
+      Nouveau chantier
+    </h3>
 
-<select id="projectClientSelect">
-<option value="">
--- Sélectionner un client --
-</option>
-</select>
+    <div class="row">
 
-</div>
+      <div class="field">
+        <label>Nom du projet *</label>
+        <input id="projectName" placeholder="Ex. Construction maison familiale">
+      </div>
 
+      <div class="field">
+        <label>Client *</label>
+        <input id="projectClient" placeholder="Nom du client">
+      </div>
 
-<div class="field">
+      <div class="field">
+        <label>Localisation</label>
+        <input id="projectLocation" placeholder="Ex. Lomé, Togo">
+      </div>
 
-<label>
-Localisation
-</label>
+      <div class="field">
+        <label>Budget</label>
+        <input id="projectBudget" type="number" placeholder="Ex. 15000000">
+      </div>
 
-<input
-id="projectLocation"
-placeholder="Ex. Lomé">
+      <div class="field">
+        <label>Date de début</label>
+        <input id="projectStart" type="date">
+      </div>
 
-</div>
+      <div class="field">
+        <label>Date prévue de fin</label>
+        <input id="projectEnd" type="date">
+      </div>
 
+      <div class="field">
+        <label>Statut</label>
 
-<div class="field">
+        <select id="projectStatus">
 
-<label>
-Budget
-</label>
+          <option value="todo">
+            À venir
+          </option>
 
-<input
-id="projectBudget"
-type="number"
-step="1"
-placeholder="15000000">
+          <option value="progress">
+            En cours
+          </option>
 
-</div>
+          <option value="done">
+            Terminé
+          </option>
 
+        </select>
 
-<div class="field">
+      </div>
 
-<label>
-Date de début
-</label>
+      <div class="field">
+        <label>Responsable</label>
+        <input id="projectManager" placeholder="Chef de chantier">
+      </div>
 
-<input
-id="projectStart"
-type="date">
-
-</div>
-
-
-<div class="field">
-
-<label>
-Date de fin prévue
-</label>
-
-<input
-id="projectEnd"
-type="date">
-
-</div>
+    </div>
 
 
-<div class="field">
+    <div class="field">
 
-<label>
-Statut
-</label>
+      <label>
+        Description / Notes
+      </label>
 
-<select id="projectStatus">
+      <textarea
+        id="projectDescription"
+        placeholder="Informations complémentaires...">
+      </textarea>
 
-<option>À venir</option>
-<option>En cours</option>
-<option>Terminé</option>
-
-</select>
-
-</div>
+    </div>
 
 
-<div class="field">
+    <div class="actions">
 
-<label>
-Responsable
-</label>
+      <button class="btn" onclick="saveProject()">
+        Enregistrer le chantier
+      </button>
 
-<input
-id="projectManager"
-placeholder="Chef de projet">
+      <button class="btn alt" onclick="toggleProjectForm()">
+        Annuler
+      </button>
 
-</div>
+    </div>
 
-</div>
-
-
-<div class="field">
-
-<label>
-Description
-</label>
-
-<textarea
-id="projectDescription"
-placeholder="Description du chantier..."></textarea>
-
-</div>
+  </div>
 
 
-<button
-class="btn"
-onclick="addProject()">
-+ Enregistrer le chantier
-</button>
-
-</div>
-
-
-<div
-id="projectList"
-class="project-grid">
-</div>
+  <div id="projectList" class="project-grid"></div>
 
 </section>
 
 
-<!-- =========================
-     CALCULATEUR
-========================= -->
+<!-- CALCULATEUR -->
 
 <section id="calc" class="page hide">
 
-<div class="card">
+  <div class="card">
 
-<h2>
-Calculateur BTP
-</h2>
+    <h2>
+      Calculateur BTP
+    </h2>
 
-<p class="muted">
-Calcul indicatif du volume de béton et des composants.
-</p>
+    <p class="muted">
+      Calcul indicatif du volume de béton et des composants.
+    </p>
 
-<div class="row">
+    <div class="row">
 
-<div class="field">
+      <div class="field">
 
-<label>
-Élément
-</label>
+        <label>
+          Élément
+        </label>
 
-<select id="element">
-<option>Dalle</option>
-<option>Poutre</option>
-<option>Poteau</option>
-<option>Semelle</option>
-</select>
+        <select id="element">
 
-</div>
+          <option>Dalle</option>
+          <option>Poutre</option>
+          <option>Poteau</option>
+          <option>Semelle</option>
 
+        </select>
 
-<div class="field">
-
-<label>
-Longueur (m)
-</label>
-
-<input
-id="L"
-type="number"
-step=".01"
-value="5">
-
-</div>
+      </div>
 
 
-<div class="field">
+      <div class="field">
 
-<label>
-Largeur (m)
-</label>
+        <label>
+          Longueur (m)
+        </label>
 
-<input
-id="W"
-type="number"
-step=".01"
-value="4">
+        <input id="L" type="number" step=".01" value="5">
 
-</div>
+      </div>
 
 
-<div class="field">
+      <div class="field">
 
-<label>
-Épaisseur / hauteur (m)
-</label>
+        <label>
+          Largeur (m)
+        </label>
 
-<input
-id="H"
-type="number"
-step=".01"
-value=".15">
+        <input id="W" type="number" step=".01" value="4">
 
-</div>
-
-</div>
+      </div>
 
 
-<button
-class="btn"
-onclick="calc()">
-Calculer
-</button>
+      <div class="field">
 
+        <label>
+          Épaisseur / hauteur (m)
+        </label>
 
-<div
-id="result"
-class="card hide"
-style="margin-top:15px">
-</div>
+        <input id="H" type="number" step=".01" value=".15">
 
-</div>
+      </div>
+
+    </div>
+
+    <button class="btn" onclick="calc()">
+      Calculer
+    </button>
+
+    <div id="result" class="card hide" style="margin-top:18px"></div>
+
+  </div>
 
 </section>
 
 
-<!-- =========================
-     DQE
-========================= -->
+<!-- DQE -->
 
 <section id="dqe" class="page hide">
 
-<div class="card">
+  <div class="card">
 
-<h2>
-DQE — Devis Quantitatif Estimatif
-</h2>
+    <h2>
+      DQE professionnel
+    </h2>
 
-<p class="muted">
-Ajoutez les différents postes de votre chantier.
-</p>
-
-
-<div class="row">
-
-<div class="field">
-
-<label>
-Désignation
-</label>
-
-<input
-id="item"
-placeholder="Ex. Béton dosé">
-
-</div>
+    <p class="muted">
+      Ajoutez et gérez les différents postes de votre projet.
+    </p>
 
 
-<div class="field">
+    <div class="row">
 
-<label>
-Unité
-</label>
+      <div class="field">
 
-<select id="unit">
+        <label>
+          Désignation
+        </label>
 
-<option>m³</option>
-<option>m²</option>
-<option>ml</option>
-<option>u</option>
-<option>kg</option>
-<option>forfait</option>
+        <input
+          id="item"
+          placeholder="Ex. Béton dosé">
 
-</select>
-
-</div>
+      </div>
 
 
-<div class="field">
+      <div class="field">
 
-<label>
-Quantité
-</label>
+        <label>
+          Unité
+        </label>
 
-<input
-id="qty"
-type="number"
-step=".01"
-value="1">
+        <select id="unit">
 
-</div>
+          <option>m³</option>
+          <option>m²</option>
+          <option>ml</option>
+          <option>u</option>
+          <option>kg</option>
+          <option>forfait</option>
 
+        </select>
 
-<div class="field">
-
-<label>
-Prix unitaire
-</label>
-
-<input
-id="pu"
-type="number"
-step="1"
-value="75000">
-
-</div>
-
-</div>
+      </div>
 
 
-<div class="actions">
+      <div class="field">
 
-<button
-id="dqeAddBtn"
-class="btn"
-onclick="add()">
-+ Ajouter au DQE
-</button>
+        <label>
+          Quantité
+        </label>
 
-<button
-class="btn danger"
-onclick="clearDQE()">
-🗑️ Vider le DQE
-</button>
+        <input
+          id="qty"
+          type="number"
+          step=".01"
+          value="1">
 
-</div>
-
-</div>
+      </div>
 
 
-<div class="tablewrap">
+      <div class="field">
 
-<table>
+        <label>
+          Prix unitaire
+        </label>
 
-<thead>
+        <input
+          id="pu"
+          type="number"
+          step="1"
+          value="75000">
 
-<tr>
-<th>#</th>
-<th>Désignation</th>
-<th>Unité</th>
-<th>Qté</th>
-<th>PU</th>
-<th>Montant</th>
-<th>Action</th>
-</tr>
+      </div>
 
-</thead>
+    </div>
 
-<tbody id="body">
-</tbody>
 
-<tfoot>
+    <div class="actions">
 
-<tr>
+      <button
+        class="btn"
+        id="addDqeBtn"
+        onclick="add()">
 
-<th colspan="5" class="right">
-TOTAL
-</th>
+        + Ajouter au DQE
 
-<th
-id="total"
-class="right">
-0
-</th>
+      </button>
 
-<th></th>
+      <button
+        class="btn alt hide"
+        id="cancelEditBtn"
+        onclick="cancelEdit()">
 
-</tr>
+        Annuler modification
 
-</tfoot>
+      </button>
 
-</table>
+    </div>
 
-</div>
+  </div>
+
+
+  <div class="dqe-summary">
+
+    <div class="dqe-summary-card">
+
+      <div class="muted">
+        Nombre de postes
+      </div>
+
+      <strong id="dqeCount">
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="dqe-summary-card">
+
+      <div class="muted">
+        Quantité totale
+      </div>
+
+      <strong id="dqeQty">
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="dqe-summary-card">
+
+      <div class="muted">
+        Total HT
+      </div>
+
+      <strong id="dqeTotal">
+        0 FCFA
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <div class="tablewrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>#</th>
+          <th>Désignation</th>
+          <th>Unité</th>
+          <th>Qté</th>
+          <th>PU</th>
+          <th>Montant</th>
+          <th>Actions</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody id="body"></tbody>
+
+    </table>
+
+  </div>
+
+
+  <div class="total-box">
+
+    <div class="total-box-inner">
+
+      <div>
+        TOTAL DQE
+      </div>
+
+      <div
+        class="total-number"
+        id="total">
+
+        0 FCFA
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- =========================
-     DEVIS
-========================= -->
+<!-- DEVIS -->
 
 <section id="quote" class="page hide">
 
-<div class="card no-print quote-tools">
+  <div class="card">
 
-<h2>
-Générateur de devis professionnel
-</h2>
+    <h2>
+      Générateur de devis
+    </h2>
 
-<p class="muted">
-Les informations du client peuvent maintenant être récupérées depuis votre base clients.
-</p>
+    <p class="muted">
+      Préparez un devis professionnel à partir de votre DQE.
+    </p>
 
+    <div class="row">
 
-<div class="field">
+      <div class="field">
 
-<label>
-Sélectionner un client enregistré
-</label>
+        <label>
+          Entreprise
+        </label>
 
-<select
-id="quoteClientSelect"
-onchange="fillQuoteClient(this.value)">
+        <input
+          id="company"
+          value="BATIFLOW DEMO">
 
-<option value="">
--- Saisir manuellement --
-</option>
+      </div>
 
-</select>
 
-</div>
+      <div class="field">
 
+        <label>
+          Client
+        </label>
 
-<div class="row">
+        <input
+          id="client"
+          placeholder="Nom du client">
 
-<div class="field">
+      </div>
 
-<label>
-Entreprise
-</label>
 
-<input
-id="company"
-value="BATIFLOW BTP">
+      <div class="field">
 
-</div>
+        <label>
+          Projet
+        </label>
 
+        <input
+          id="project"
+          placeholder="Maison RDC">
 
-<div class="field">
+      </div>
 
-<label>
-Téléphone entreprise
-</label>
 
-<input
-id="companyPhone"
-placeholder="+228 XX XX XX XX">
+      <div class="field">
 
-</div>
+        <label>
+          TVA (%)
+        </label>
 
+        <input
+          id="tax"
+          type="number"
+          value="0">
 
-<div class="field">
+      </div>
 
-<label>
-Email entreprise
-</label>
+    </div>
 
-<input
-id="companyEmail"
-placeholder="contact@entreprise.com">
 
-</div>
+    <div class="actions">
 
+      <button
+        class="btn"
+        onclick="quote()">
 
-<div class="field">
+        Générer le devis
 
-<label>
-Adresse entreprise
-</label>
+      </button>
 
-<input
-id="companyAddress"
-placeholder="Lomé, Togo">
+      <button
+        class="btn alt"
+        onclick="window.print()">
 
-</div>
+        Imprimer / PDF
 
+      </button>
 
-<div class="field">
+    </div>
 
-<label>
-Client
-</label>
+  </div>
 
-<input
-id="client"
-placeholder="Nom du client">
 
-</div>
-
-
-<div class="field">
-
-<label>
-Téléphone client
-</label>
-
-<input
-id="clientPhone"
-placeholder="+228 XX XX XX XX">
-
-</div>
-
-
-<div class="field">
-
-<label>
-Projet
-</label>
-
-<input
-id="project"
-placeholder="Maison RDC">
-
-</div>
-
-
-<div class="field">
-
-<label>
-TVA (%)
-</label>
-
-<input
-id="tax"
-type="number"
-value="0"
-min="0"
-step=".01">
-
-</div>
-
-
-<div class="field">
-
-<label>
-Validité du devis
-</label>
-
-<input
-id="validity"
-value="30 jours">
-
-</div>
-
-
-<div class="field">
-
-<label>
-Conditions de paiement
-</label>
-
-<input
-id="payment"
-value="Selon accord avec le client">
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-Conditions / observations
-</label>
-
-<textarea
-id="conditions">Les travaux seront réalisés selon les règles de l'art et les spécifications convenues avec le client.</textarea>
-
-</div>
-
-
-<div class="actions">
-
-<button
-class="btn"
-onclick="quote()">
-🧾 Générer le devis
-</button>
-
-<button
-class="btn gold"
-onclick="window.print()">
-🖨️ Imprimer / PDF
-</button>
-
-</div>
-
-</div>
-
-
-<div
-id="preview"
-class="quote-preview hide">
-</div>
+  <div
+    id="preview"
+    class="card quote-preview hide">
+  </div>
 
 </section>
 
 
-<!-- =========================
-     COUNTRY
-========================= -->
+<!-- PAYS -->
 
 <section id="country" class="page hide">
 
-<div class="card">
+  <div class="card">
 
-<h2>
-Pays & paramètres
-</h2>
+    <h2>
+      Pays & paramètres
+    </h2>
 
-<p class="muted">
-Sélectionnez le pays utilisé pour vos calculs et vos devis.
-</p>
+    <p class="muted">
+      Base BATIFLOW : pays africains et devises principales.
+    </p>
+
+    <div class="row">
+
+      <div class="field">
+
+        <label>
+          Pays
+        </label>
+
+        <select
+          id="country"
+          onchange="setCountry(this.value)">
+        </select>
+
+      </div>
 
 
-<div class="row">
+      <div class="field">
 
-<div class="field">
+        <label>
+          Devise
+        </label>
 
-<label>Pays</label>
+        <input
+          id="currency"
+          readonly>
 
-<select
-id="country"
-onchange="setCountry(this.value)">
-</select>
+      </div>
 
-</div>
+    </div>
 
-
-<div class="field">
-
-<label>Devise</label>
-
-<input
-id="currency"
-readonly>
-
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 </main>
-
 </div>
 
 
 <script>
 
 /* =========================
-   PAYS / DEVISES
+   PAYS
 ========================= */
 
 const countries={
 
-"Togo":"FCFA",
-"Bénin":"FCFA",
-"Côte d’Ivoire":"FCFA",
-"Sénégal":"FCFA",
-"Burkina Faso":"FCFA",
-"Mali":"FCFA",
-"Niger":"FCFA",
-"Guinée-Bissau":"FCFA",
-"Cameroun":"FCFA",
-"Gabon":"FCFA",
-"Congo":"FCFA",
-"Guinée équatoriale":"FCFA",
-"RCA":"FCFA",
-"Tchad":"FCFA",
-"Ghana":"GHS",
-"Nigeria":"NGN",
-"Guinée":"GNF",
-"Sierra Leone":"SLE",
-"Liberia":"LRD",
-"Gambie":"GMD",
-"Mauritanie":"MRU",
-"Cap-Vert":"CVE",
-"Maroc":"MAD",
-"Algérie":"DZD",
-"Tunisie":"TND",
-"Égypte":"EGP",
-"Libye":"LYD",
-"Soudan":"SDG",
-"Kenya":"KES",
-"Ouganda":"UGX",
-"Tanzanie":"TZS",
-"Rwanda":"RWF",
-"Burundi":"BIF",
-"Éthiopie":"ETB",
-"Somalie":"SOS",
-"Djibouti":"DJF",
-"Seychelles":"SCR",
-"Maurice":"MUR",
-"Afrique du Sud":"ZAR",
-"Namibie":"NAD",
-"Botswana":"BWP",
-"Zambie":"ZMW",
-"Zimbabwe":"ZWG",
-"Mozambique":"MZN",
-"Angola":"AOA",
-"Malawi":"MWK",
-"Lesotho":"LSL",
-"Eswatini":"SZL",
-"Madagascar":"MGA",
-"Comores":"KMF"
+  "Togo":"FCFA",
+  "Bénin":"FCFA",
+  "Côte d’Ivoire":"FCFA",
+  "Sénégal":"FCFA",
+  "Burkina Faso":"FCFA",
+  "Mali":"FCFA",
+  "Niger":"FCFA",
+  "Guinée-Bissau":"FCFA",
+  "Cameroun":"FCFA",
+  "Gabon":"FCFA",
+  "Congo":"FCFA",
+  "Guinée équatoriale":"FCFA",
+  "RCA":"FCFA",
+  "Tchad":"FCFA",
+  "Ghana":"GHS",
+  "Nigeria":"NGN",
+  "Guinée":"GNF",
+  "Sierra Leone":"SLE",
+  "Liberia":"LRD",
+  "Gambie":"GMD",
+  "Mauritanie":"MRU",
+  "Cap-Vert":"CVE",
+  "Maroc":"MAD",
+  "Algérie":"DZD",
+  "Tunisie":"TND",
+  "Égypte":"EGP",
+  "Libye":"LYD",
+  "Soudan":"SDG",
+  "Kenya":"KES",
+  "Ouganda":"UGX",
+  "Tanzanie":"TZS",
+  "Rwanda":"RWF",
+  "Burundi":"BIF",
+  "Éthiopie":"ETB",
+  "Somalie":"SOS",
+  "Djibouti":"DJF",
+  "Seychelles":"SCR",
+  "Maurice":"MUR",
+  "Afrique du Sud":"ZAR",
+  "Namibie":"NAD",
+  "Botswana":"BWP",
+  "Zambie":"ZMW",
+  "Zimbabwe":"ZWG",
+  "Mozambique":"MZN",
+  "Angola":"AOA",
+  "Malawi":"MWK",
+  "Lesotho":"LSL",
+  "Eswatini":"SZL",
+  "Madagascar":"MGA",
+  "Comores":"KMF"
 
 };
 
@@ -1989,58 +1679,17 @@ const countries={
 
 let countryName="Togo";
 
-let items=[];
-
-let projects=[];
-
-let clients=[];
+let items=JSON.parse(
+  localStorage.getItem("batiflow_dqe") || "[]"
+);
 
 let sum=0;
 
-let editIndex=-1;
+let projects=JSON.parse(
+  localStorage.getItem("batiflow_projects") || "[]"
+);
 
-let editClientIndex=-1;
-
-
-/* =========================
-   OUTILS
-========================= */
-
-function escapeHTML(value){
-
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-function money(value){
-
-return Number(value||0)
-.toLocaleString("fr-FR");
-
-}
-
-
-function initials(name){
-
-const clean=String(name||"Client")
-.trim()
-.split(/\s+/)
-.filter(Boolean);
-
-if(!clean.length) return "C";
-
-return (
-(clean[0][0]||"")+
-(clean[1]?.[0]||"")
-).toUpperCase();
-
-}
+let editingIndex=-1;
 
 
 /* =========================
@@ -2049,93 +1698,43 @@ return (
 
 function init(){
 
-const options=
-Object.keys(countries)
-.map(c=>`
-<option value="${escapeHTML(c)}">
-${escapeHTML(c)}
-</option>
-`)
-.join("");
+  const options=
+    Object.keys(countries)
+      .map(
+        x=>`<option value="${x}">${x}</option>`
+      )
+      .join("");
 
-topCountry.innerHTML=options;
+  topCountry.innerHTML=options;
 
-country.innerHTML=options;
+  country.innerHTML=options;
 
-topCountry.value=
-country.value=
-countryName;
+  topCountry.value=
+    country.value=
+    countryName;
 
-loadData();
+  sync();
 
-sync();
-
-render();
-
-renderClients();
-
-renderProjects();
-
-populateClientSelects();
+  renderProjects();
 
 }
 
 
 /* =========================
-   STORAGE
+   SYNCHRO
 ========================= */
 
-function loadData(){
+function sync(){
 
-try{
+  const c=countries[countryName];
 
-const savedItems=
-localStorage.getItem("batiflow_dqe");
+  currency.value=c;
 
-const savedProjects=
-localStorage.getItem("batiflow_projects");
+  dashCountry.textContent=countryName;
 
-const savedClients=
-localStorage.getItem("batiflow_clients");
+  dashCur.textContent=c;
 
-if(savedItems)
-items=JSON.parse(savedItems);
-
-if(savedProjects)
-projects=JSON.parse(savedProjects);
-
-if(savedClients)
-clients=JSON.parse(savedClients);
-
-}catch(e){
-
-items=[];
-
-projects=[];
-
-clients=[];
-
-}
-
-}
-
-
-function saveData(){
-
-localStorage.setItem(
-"batiflow_dqe",
-JSON.stringify(items)
-);
-
-localStorage.setItem(
-"batiflow_projects",
-JSON.stringify(projects)
-);
-
-localStorage.setItem(
-"batiflow_clients",
-JSON.stringify(clients)
-);
+  render();
 
 }
 
@@ -2144,32 +1743,15 @@ JSON.stringify(clients)
    PAYS
 ========================= */
 
-function sync(){
-
-const cur=countries[countryName];
-
-currency.value=cur;
-
-dashCountry.textContent=countryName;
-
-dashCur.textContent=cur;
-
-}
-
-
 function setCountry(c){
 
-countryName=c;
+  countryName=c;
 
-topCountry.value=
-country.value=
-countryName;
+  topCountry.value=c;
 
-sync();
+  country.value=c;
 
-render();
-
-renderProjects();
+  sync();
 
 }
 
@@ -2180,15 +1762,15 @@ renderProjects();
 
 function login(e){
 
-e.preventDefault();
+  e.preventDefault();
 
-document
-.getElementById("login")
-.classList.add("hide");
+  document
+    .getElementById("login")
+    .classList.add("hide");
 
-document
-.getElementById("app")
-.classList.remove("hide");
+  document
+    .getElementById("app")
+    .classList.remove("hide");
 
 }
 
@@ -2197,419 +1779,375 @@ document
    NAVIGATION
 ========================= */
 
-function show(id,button){
+function show(id,b){
 
-document
-.querySelectorAll(".page")
-.forEach(x=>x.classList.add("hide"));
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      x=>x.classList.add("hide")
+    );
 
-document
-.getElementById(id)
-.classList.remove("hide");
+  document
+    .getElementById(id)
+    .classList.remove("hide");
 
-document
-.querySelectorAll(".nav button")
-.forEach(x=>x.classList.remove("active"));
+  document
+    .querySelectorAll(".nav button")
+    .forEach(
+      x=>x.classList.remove("active")
+    );
 
-if(button)
-button.classList.add("active");
+  if(b){
+    b.classList.add("active");
+  }
 
-const titles={
+  const titles={
 
-dashboard:"Tableau de bord",
+    dashboard:"Tableau de bord",
+    projects:"Projets / Chantiers",
+    calc:"Calculateur BTP",
+    dqe:"DQE professionnel",
+    quote:"Générateur de devis",
+    country:"Pays & paramètres"
 
-clients:"Clients",
+  };
 
-projects:"Projets / Chantiers",
+  title.textContent=titles[id];
 
-calc:"Calculateur BTP",
-
-dqe:"DQE",
-
-quote:"Générateur de devis",
-
-country:"Pays & paramètres"
-
-};
-
-title.textContent=
-titles[id]||"BATIFLOW";
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
 function goto(id){
 
-const button=
-[...document.querySelectorAll(".nav button")]
-.find(x=>{
+  const buttons=
+    [...document.querySelectorAll(".nav button")];
 
-const t=x.textContent.toLowerCase();
+  const search={
 
-if(id==="clients")
-return t.includes("clients");
+    dashboard:"tableau",
+    projects:"projets",
+    calc:"calculateur",
+    dqe:"dqe",
+    quote:"devis",
+    country:"pays"
 
-if(id==="projects")
-return t.includes("projets");
+  }[id];
 
-if(id==="calc")
-return t.includes("calculateur");
+  const b=
+    buttons.find(
+      x=>
+        x.textContent
+          .toLowerCase()
+          .includes(search)
+    );
 
-if(id==="dqe")
-return t.includes("dqe");
-
-if(id==="quote")
-return t.includes("devis");
-
-return t.includes("tableau");
-
-});
-
-show(id,button);
+  show(id,b);
 
 }
 
 
 /* =========================
-   CLIENTS
+   PROJETS
 ========================= */
 
-function addClient(){
+function toggleProjectForm(){
 
-const name=
-clientName.value.trim();
-
-if(!name){
-
-alert(
-"Veuillez saisir le nom du client."
-);
-
-return;
+  projectForm
+    .classList
+    .toggle("hide");
 
 }
 
 
-const obj={
+function saveProject(){
 
-id:
-editClientIndex>=0
-?clients[editClientIndex].id
-:Date.now(),
+  const name=
+    projectName.value.trim();
 
-name:name,
+  const clientName=
+    projectClient.value.trim();
 
-type:clientType.value,
+  if(!name || !clientName){
 
-phone:clientPhone.value.trim(),
+    alert(
+      "Veuillez renseigner le nom du projet et le client."
+    );
 
-email:clientEmail.value.trim(),
+    return;
 
-address:clientAddress.value.trim(),
+  }
 
-city:clientCity.value.trim(),
+  const project={
 
-notes:clientNotes.value.trim(),
+    id:Date.now(),
+    name:name,
+    client:clientName,
+    location:projectLocation.value.trim(),
+    budget:Number(projectBudget.value)||0,
+    start:projectStart.value,
+    end:projectEnd.value,
+    status:projectStatus.value,
+    manager:projectManager.value.trim(),
+    description:projectDescription.value.trim()
 
-createdAt:
-new Date().toISOString()
+  };
 
-};
+  projects.unshift(project);
 
+  localStorage.setItem(
+    "batiflow_projects",
+    JSON.stringify(projects)
+  );
 
-if(editClientIndex>=0){
+  clearProjectForm();
 
-clients[editClientIndex]=obj;
+  projectForm.classList.add("hide");
 
-editClientIndex=-1;
-
-clientAddBtn.textContent=
-"+ Enregistrer le client";
-
-}else{
-
-clients.push(obj);
-
-}
-
-
-saveData();
-
-clearClientForm();
-
-renderClients();
-
-populateClientSelects();
+  renderProjects();
 
 }
 
 
-function clearClientForm(){
+function clearProjectForm(){
 
-clientName.value="";
-
-clientType.value="Particulier";
-
-clientPhone.value="";
-
-clientEmail.value="";
-
-clientAddress.value="";
-
-clientCity.value="";
-
-clientNotes.value="";
-
-editClientIndex=-1;
-
-clientAddBtn.textContent=
-"+ Enregistrer le client";
+  projectName.value="";
+  projectClient.value="";
+  projectLocation.value="";
+  projectBudget.value="";
+  projectStart.value="";
+  projectEnd.value="";
+  projectStatus.value="todo";
+  projectManager.value="";
+  projectDescription.value="";
 
 }
 
 
-function editClient(index){
+function renderProjects(){
 
-const c=clients[index];
+  const list=
+    document.getElementById("projectList");
 
-clientName.value=c.name||"";
+  if(!list)return;
 
-clientType.value=c.type||"Particulier";
+  if(projects.length===0){
 
-clientPhone.value=c.phone||"";
+    list.innerHTML=`
 
-clientEmail.value=c.email||"";
+      <div
+        class="card"
+        style="grid-column:1/-1;text-align:center;padding:50px">
 
-clientAddress.value=c.address||"";
+        <div style="font-size:45px">
+          🏗️
+        </div>
 
-clientCity.value=c.city||"";
+        <h3>
+          Aucun chantier
+        </h3>
 
-clientNotes.value=c.notes||"";
+        <p class="muted">
+          Commencez par créer votre premier projet.
+        </p>
 
-editClientIndex=index;
+        <button
+          class="btn gold"
+          onclick="toggleProjectForm()">
 
-clientAddBtn.textContent=
-"✓ Enregistrer la modification";
+          + Créer un chantier
 
-goto("clients");
+        </button>
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+      </div>
 
-}
+    `;
 
+  }else{
 
-function deleteClient(index){
+    list.innerHTML=
+      projects
+        .map(projectHTML)
+        .join("");
 
-const c=clients[index];
+  }
 
-if(!confirm(
-`Supprimer le client "${c.name}" ?`
-)) return;
-
-clients.splice(index,1);
-
-saveData();
-
-renderClients();
-
-populateClientSelects();
-
-}
-
-
-function renderClients(){
-
-dashClients.textContent=
-clients.length;
-
-const search=
-(clientSearch.value||"")
-.toLowerCase()
-.trim();
-
-const filtered=
-clients.filter(c=>{
-
-const text=[
-c.name,
-c.type,
-c.phone,
-c.email,
-c.address,
-c.city
-]
-.join(" ")
-.toLowerCase();
-
-return text.includes(search);
-
-});
-
-
-if(!filtered.length){
-
-clientList.innerHTML=`
-
-<div class="card">
-
-<h3>
-Aucun client trouvé
-</h3>
-
-<p class="muted">
-Ajoutez votre premier client ou modifiez votre recherche.
-</p>
-
-</div>
-
-`;
-
-return;
+  updateProjectStats();
 
 }
 
 
-clientList.innerHTML=
-filtered
-.map(c=>{
+function projectHTML(p){
 
-const realIndex=
-clients.findIndex(
-x=>x.id===c.id
-);
+  const statusData={
 
-return `
+    todo:{
+      label:"À venir",
+      cls:"todo"
+    },
 
-<div class="client-card">
+    progress:{
+      label:"En cours",
+      cls:"progress"
+    },
 
-<div class="client-avatar">
-${escapeHTML(initials(c.name))}
-</div>
+    done:{
+      label:"Terminé",
+      cls:"done"
+    }
 
-<h3>
-${escapeHTML(c.name)}
-</h3>
+  };
 
-<span class="badge blue">
-${escapeHTML(c.type)}
-</span>
+  const s=
+    statusData[p.status]||statusData.todo;
 
-<div class="client-meta">
-📞 ${escapeHTML(c.phone||"Non renseigné")}
-</div>
+  const budget=
+    p.budget
+    ?
+    p.budget.toLocaleString("fr-FR")
+    +" "
+    +countries[countryName]
+    :
+    "Non défini";
 
-<div class="client-meta">
-✉️ ${escapeHTML(c.email||"Non renseigné")}
-</div>
+  return `
 
-<div class="client-meta">
-📍 ${escapeHTML(
-[c.address,c.city]
-.filter(Boolean)
-.join(", ")||"Non renseignée"
-)}
-</div>
+    <div class="project-card">
 
-${c.notes?`
+      <div class="project-top">
 
-<div class="client-meta">
-📝 ${escapeHTML(c.notes)}
-</div>
+        <div class="project-icon">
+          🏗️
+        </div>
 
-`:""}
+        <span class="status ${s.cls}">
+          ${s.label}
+        </span>
 
-<div class="actions">
+      </div>
 
-<button
-class="btn alt"
-onclick="editClient(${realIndex})">
-Modifier
-</button>
+      <h3>
+        ${escapeHTML(p.name)}
+      </h3>
 
-<button
-class="btn danger"
-onclick="deleteClient(${realIndex})">
-Supprimer
-</button>
+      <div class="project-info">
 
-</div>
+        👤 <strong>Client :</strong>
+        ${escapeHTML(p.client)}
 
-</div>
+        <br>
 
-`;
+        📍 <strong>Lieu :</strong>
+        ${escapeHTML(p.location||"Non renseigné")}
 
-})
-.join("");
+        <br>
 
-}
+        💰 <strong>Budget :</strong>
+        ${budget}
 
+        <br>
 
-/* =========================
-   CLIENTS → SELECTS
-========================= */
+        📅 <strong>Début :</strong>
+        ${p.start?formatDate(p.start):"Non définie"}
 
-function populateClientSelects(){
+        <br>
 
-const options=
-clients
-.map(c=>`
+        🏁 <strong>Fin :</strong>
+        ${p.end?formatDate(p.end):"Non définie"}
 
-<option value="${escapeHTML(c.id)}">
-${escapeHTML(c.name)}
-${c.phone?" — "+escapeHTML(c.phone):""}
-</option>
+      </div>
 
-`)
-.join("");
+      <div class="project-actions">
 
+        <button
+          class="btn small"
+          onclick="useProject('${p.id}')">
 
-projectClientSelect.innerHTML=
-`
-<option value="">
--- Sélectionner un client --
-</option>
-`
-+
-options;
+          Ouvrir
 
+        </button>
 
-quoteClientSelect.innerHTML=
-`
-<option value="">
--- Saisir manuellement --
-</option>
-`
-+
-options;
+        <button
+          class="btn danger small"
+          onclick="deleteProject(${p.id})">
+
+          Supprimer
+
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
 
 }
 
 
-/* =========================
-   REMPLIR DEVIS
-========================= */
+function deleteProject(id){
 
-function fillQuoteClient(id){
+  if(!confirm("Voulez-vous supprimer ce chantier ?")){
+    return;
+  }
 
-if(!id){
+  projects=
+    projects.filter(
+      p=>p.id!==id
+    );
 
-return;
+  localStorage.setItem(
+    "batiflow_projects",
+    JSON.stringify(projects)
+  );
+
+  renderProjects();
 
 }
 
-const c=
-clients.find(
-x=>String(x.id)===String(id)
-);
 
-if(!c) return;
+function useProject(id){
 
-client.value=c.name||"";
+  const p=
+    projects.find(
+      x=>String(x.id)===String(id)
+    );
 
-clientPhone.value=c.phone||"";
+  if(!p)return;
+
+  project.value=p.name;
+
+  client.value=p.client;
+
+  goto("quote");
+
+}
+
+
+function updateProjectStats(){
+
+  dashProjects.textContent=
+    projects.length;
+
+  dashProgress.textContent=
+    projects.filter(
+      p=>p.status==="progress"
+    ).length;
+
+}
+
+
+function formatDate(date){
+
+  const d=
+    new Date(date+"T00:00:00");
+
+  if(isNaN(d))return date;
+
+  return d.toLocaleDateString("fr-FR");
 
 }
 
@@ -2620,518 +2158,416 @@ clientPhone.value=c.phone||"";
 
 function calc(){
 
-const volume=
-(+L.value||0)*
-(+W.value||0)*
-(+H.value||0);
+  const length=
+    Number(L.value)||0;
 
-result.classList.remove("hide");
+  const width=
+    Number(W.value)||0;
 
-result.innerHTML=`
+  const height=
+    Number(H.value)||0;
 
-<b>
-${escapeHTML(element.value)}
-</b>
+  const volume=
+    length*width*height;
 
-<p>
-Volume :
-<strong>
-${volume.toFixed(2)} m³
-</strong>
-</p>
+  result.classList.remove("hide");
 
-<p>
-Estimation indicative :
-ciment ${(volume*7.5).toFixed(1)} sacs ·
-sable ${(volume*.5).toFixed(2)} m³ ·
-gravier ${(volume*.8).toFixed(2)} m³.
-</p>
+  result.innerHTML=`
 
-<small class="muted">
-Valeurs de démonstration.
-À valider selon le dosage,
-les normes et les spécifications du projet.
-</small>
+    <h3>
+      Résultat
+    </h3>
 
-`;
+    <p>
+      Élément :
+      <strong>${element.value}</strong>
+    </p>
+
+    <p>
+      Volume :
+      <strong>${volume.toFixed(2)} m³</strong>
+    </p>
+
+    <hr>
+
+    <p>
+      Ciment :
+      <strong>${(volume*7.5).toFixed(1)}</strong>
+      sacs
+    </p>
+
+    <p>
+      Sable :
+      <strong>${(volume*.5).toFixed(2)}</strong>
+      m³
+    </p>
+
+    <p>
+      Gravier :
+      <strong>${(volume*.8).toFixed(2)}</strong>
+      m³
+    </p>
+
+    <small class="muted">
+      Valeurs indicatives à valider selon le dosage et les normes applicables.
+    </small>
+
+  `;
 
 }
 
 
 /* =========================
-   DQE
+   DQE : AJOUT
 ========================= */
 
 function add(){
 
-const name=
-item.value.trim()||"Poste BTP";
+  const name=
+    item.value.trim();
 
-const q=
-Number(qty.value)||0;
+  const q=
+    Number(qty.value)||0;
 
-const p=
-Number(pu.value)||0;
+  const p=
+    Number(pu.value)||0;
 
-if(q<=0){
+  if(!name){
 
-alert(
-"La quantité doit être supérieure à 0."
-);
+    alert(
+      "Veuillez renseigner la désignation."
+    );
 
-return;
+    return;
 
-}
+  }
 
-if(p<0){
+  if(q<=0){
 
-alert(
-"Le prix unitaire ne peut pas être négatif."
-);
+    alert(
+      "La quantité doit être supérieure à zéro."
+    );
 
-return;
+    return;
 
-}
-
-const obj={
-n:name,
-u:unit.value,
-q:q,
-p:p,
-m:q*p
-};
+  }
 
 
-if(editIndex>=0){
+  if(editingIndex>=0){
 
-items[editIndex]=obj;
+    items[editingIndex]={
 
-editIndex=-1;
+      n:name,
+      u:unit.value,
+      q:q,
+      p:p,
+      m:q*p
 
-dqeAddBtn.textContent=
-"+ Ajouter au DQE";
+    };
 
-}else{
+    editingIndex=-1;
 
-items.push(obj);
+    addDqeBtn.textContent=
+      "+ Ajouter au DQE";
 
-}
+    cancelEditBtn.classList.add("hide");
+
+  }else{
+
+    items.push({
+
+      n:name,
+      u:unit.value,
+      q:q,
+      p:p,
+      m:q*p
+
+    });
+
+  }
 
 
-item.value="";
+  saveDQE();
 
-qty.value=1;
+  render();
 
-pu.value=75000;
-
-saveData();
-
-render();
-
-}
-
-
-function editDQE(index){
-
-const x=items[index];
-
-item.value=x.n;
-
-unit.value=x.u;
-
-qty.value=x.q;
-
-pu.value=x.p;
-
-editIndex=index;
-
-dqeAddBtn.textContent=
-"✓ Enregistrer la modification";
-
-goto("dqe");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+  clearDQEForm();
 
 }
 
 
-function deleteDQE(index){
+/* =========================
+   MODIFIER LIGNE
+========================= */
 
-if(!confirm(
-"Supprimer ce poste du DQE ?"
-)) return;
+function editItem(index){
 
-items.splice(index,1);
+  const x=
+    items[index];
 
-saveData();
+  if(!x)return;
 
-render();
+  item.value=x.n;
+
+  unit.value=x.u;
+
+  qty.value=x.q;
+
+  pu.value=x.p;
+
+  editingIndex=index;
+
+  addDqeBtn.textContent=
+    "✓ Enregistrer la modification";
+
+  cancelEditBtn.classList.remove("hide");
+
+  document
+    .getElementById("dqe")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
 }
 
+
+/* =========================
+   ANNULER MODIFICATION
+========================= */
+
+function cancelEdit(){
+
+  editingIndex=-1;
+
+  addDqeBtn.textContent=
+    "+ Ajouter au DQE";
+
+  cancelEditBtn.classList.add("hide");
+
+  clearDQEForm();
+
+}
+
+
+/* =========================
+   SUPPRIMER LIGNE
+========================= */
+
+function deleteItem(index){
+
+  if(!confirm("Supprimer ce poste du DQE ?")){
+    return;
+  }
+
+  items.splice(index,1);
+
+  saveDQE();
+
+  render();
+
+}
+
+
+/* =========================
+   VIDER DQE
+========================= */
 
 function clearDQE(){
 
-if(!items.length){
+  if(items.length===0){
 
-alert(
-"Le DQE est déjà vide."
-);
+    alert("Le DQE est déjà vide.");
 
-return;
+    return;
 
-}
+  }
 
-if(!confirm(
-"Voulez-vous vraiment vider tout le DQE ?"
-)) return;
+  if(!confirm("Voulez-vous supprimer tous les postes du DQE ?")){
+    return;
+  }
 
-items=[];
+  items=[];
 
-editIndex=-1;
+  editingIndex=-1;
 
-dqeAddBtn.textContent=
-"+ Ajouter au DQE";
+  saveDQE();
 
-saveData();
+  render();
 
-render();
+  cancelEdit();
 
 }
 
+
+/* =========================
+   FORMULAIRE DQE
+========================= */
+
+function clearDQEForm(){
+
+  item.value="";
+
+  qty.value="1";
+
+  pu.value="75000";
+
+  unit.value="m³";
+
+}
+
+
+/* =========================
+   SAUVEGARDE DQE
+========================= */
+
+function saveDQE(){
+
+  localStorage.setItem(
+    "batiflow_dqe",
+    JSON.stringify(items)
+  );
+
+}
+
+
+/* =========================
+   RENDU DQE
+========================= */
 
 function render(){
 
-body.innerHTML=
-items
-.map((x,i)=>`
+  const bodyEl=
+    document.getElementById("body");
 
-<tr>
+  if(items.length===0){
 
-<td>${i+1}</td>
+    bodyEl.innerHTML=`
 
-<td>
-${escapeHTML(x.n)}
-</td>
+      <tr>
 
-<td>
-${escapeHTML(x.u)}
-</td>
+        <td
+          colspan="7"
+          style="text-align:center;padding:35px">
 
-<td>
-${x.q}
-</td>
+          <div style="font-size:30px">
+            📋
+          </div>
 
-<td>
-${money(x.p)}
-</td>
+          <strong>
+            Aucun poste dans le DQE
+          </strong>
 
-<td>
-${money(x.m)}
-${escapeHTML(countries[countryName])}
-</td>
+          <div class="muted">
+            Ajoutez votre premier poste ci-dessus.
+          </div>
 
-<td>
+        </td>
 
-<button
-class="btn alt"
-onclick="editDQE(${i})">
-Modifier
-</button>
+      </tr>
 
-<button
-class="btn danger"
-onclick="deleteDQE(${i})">
-Supprimer
-</button>
+    `;
 
-</td>
+  }else{
 
-</tr>
+    bodyEl.innerHTML=
+      items
+        .map(
+          (x,i)=>`
 
-`)
-.join("");
+            <tr
+              class="${editingIndex===i?"editing":""}">
 
-sum=
-items.reduce(
-(a,x)=>a+Number(x.m||0),
-0
-);
+              <td>
+                ${i+1}
+              </td>
 
-total.textContent=
-money(sum)+" "+countries[countryName];
+              <td>
+                <strong>
+                  ${escapeHTML(x.n)}
+                </strong>
+              </td>
 
-dashTotal.textContent=
-money(sum);
+              <td>
+                ${x.u}
+              </td>
 
-dashItems.textContent=
-items.length;
+              <td>
+                ${x.q}
+              </td>
 
-}
+              <td>
+                ${x.p.toLocaleString("fr-FR")}
+              </td>
 
+              <td>
+                <strong>
+                  ${x.m.toLocaleString("fr-FR")}
+                  ${countries[countryName]}
+                </strong>
+              </td>
 
-/* =========================
-   PROJETS
-========================= */
+              <td>
 
-function addProject(){
+                <button
+                  class="btn small"
+                  onclick="editItem(${i})">
 
-const name=
-projectName.value.trim();
+                  ✏️
 
-if(!name){
+                </button>
 
-alert(
-"Veuillez saisir le nom du projet."
-);
+                <button
+                  class="btn danger small"
+                  onclick="deleteItem(${i})">
 
-return;
+                  🗑️
 
-}
+                </button>
 
+              </td>
 
-const selectedClient=
-clients.find(
-c=>String(c.id)===
-String(projectClientSelect.value)
-);
+            </tr>
 
+          `
+        )
+        .join("");
 
-projects.push({
+  }
 
-id:Date.now(),
 
-name:name,
+  sum=
+    items.reduce(
+      (a,x)=>a+x.m,
+      0
+    );
 
-clientId:
-selectedClient
-?selectedClient.id
-:null,
 
-client:
-selectedClient
-?selectedClient.name
-:"",
+  const totalText=
+    sum.toLocaleString("fr-FR")
+    +" "
+    +countries[countryName];
 
-location:
-projectLocation.value.trim(),
 
-budget:
-Number(projectBudget.value)||0,
+  total.textContent=
+    totalText;
 
-start:
-projectStart.value,
+  dashTotal.textContent=
+    sum.toLocaleString("fr-FR");
 
-end:
-projectEnd.value,
 
-status:
-projectStatus.value,
+  dqeCount.textContent=
+    items.length;
 
-manager:
-projectManager.value.trim(),
 
-description:
-projectDescription.value.trim()
+  dqeQty.textContent=
+    items.reduce(
+      (a,x)=>a+x.q,
+      0
+    );
 
-});
 
-
-saveData();
-
-renderProjects();
-
-projectName.value="";
-
-projectClientSelect.value="";
-
-projectLocation.value="";
-
-projectBudget.value="";
-
-projectStart.value="";
-
-projectEnd.value="";
-
-projectManager.value="";
-
-projectDescription.value="";
-
-}
-
-
-function deleteProject(id){
-
-if(!confirm(
-"Supprimer ce chantier ?"
-)) return;
-
-projects=
-projects.filter(
-x=>x.id!==id
-);
-
-saveData();
-
-renderProjects();
-
-}
-
-
-function statusBadge(status){
-
-if(status==="En cours")
-return `
-<span class="badge blue">
-En cours
-</span>
-`;
-
-if(status==="Terminé")
-return `
-<span class="badge green">
-Terminé
-</span>
-`;
-
-return `
-<span class="badge orange">
-À venir
-</span>
-`;
-
-}
-
-
-function renderProjects(){
-
-dashProjects.textContent=
-projects.length;
-
-
-if(!projects.length){
-
-projectList.innerHTML=`
-
-<div class="card">
-
-<h3>
-Aucun chantier
-</h3>
-
-<p class="muted">
-Commencez par créer votre premier projet.
-</p>
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-projectList.innerHTML=
-projects
-.map(p=>`
-
-<div class="project-card">
-
-<h3>
-${escapeHTML(p.name)}
-</h3>
-
-${statusBadge(p.status)}
-
-<div class="project-budget">
-${money(p.budget)}
-${escapeHTML(countries[countryName])}
-</div>
-
-<div class="project-meta">
-👤 Client :
-${escapeHTML(p.client||"—")}
-</div>
-
-<div class="project-meta">
-📍 Localisation :
-${escapeHTML(p.location||"—")}
-</div>
-
-<div class="project-meta">
-👷 Responsable :
-${escapeHTML(p.manager||"—")}
-</div>
-
-<div class="project-meta">
-📅 Début :
-${escapeHTML(p.start||"—")}
-</div>
-
-<div class="project-meta">
-🏁 Fin :
-${escapeHTML(p.end||"—")}
-</div>
-
-${p.description?`
-
-<div class="project-meta">
-📝 ${escapeHTML(p.description)}
-</div>
-
-`:""}
-
-<div class="actions">
-
-<button
-class="btn danger"
-onclick="deleteProject(${p.id})">
-Supprimer
-</button>
-
-</div>
-
-</div>
-
-`)
-.join("");
-
-}
-
-
-/* =========================
-   NUMÉRO DEVIS
-========================= */
-
-function getQuoteNumber(){
-
-const today=new Date();
-
-const year=today.getFullYear();
-
-const key=
-"batiflow_quote_counter_"+year;
-
-let counter=
-Number(
-localStorage.getItem(key)||0
-)+1;
-
-localStorage.setItem(
-key,
-counter
-);
-
-return(
-"BF-"+
-year+
-"-"+
-String(counter).padStart(4,"0")
-);
+  dqeTotal.textContent=
+    totalText;
 
 }
 
@@ -3142,385 +2578,201 @@ String(counter).padStart(4,"0")
 
 function quote(){
 
-if(!items.length){
+  const t=
+    Number(tax.value)||0;
 
-alert(
-"Ajoutez d'abord des postes dans le DQE."
-);
+  const vat=
+    sum*t/100;
 
-return;
+  const ttc=
+    sum+vat;
 
-}
+  preview.classList.remove("hide");
 
+  preview.innerHTML=`
 
-const quoteNumber=
-getQuoteNumber();
+    <div class="quote-header">
 
-const date=
-new Date()
-.toLocaleDateString("fr-FR");
+      <div>
 
-const taxRate=
-Number(tax.value)||0;
+        <h2>
+          ${escapeHTML(company.value)}
+        </h2>
 
-const vat=
-sum*taxRate/100;
+        <div class="muted">
+          Devis professionnel BATIFLOW
+        </div>
 
-const ttc=
-sum+vat;
+      </div>
 
-const companyName=
-company.value.trim()||
-"BATIFLOW BTP";
+      <div class="right">
 
-const companyPhoneValue=
-companyPhone.value.trim();
+        <strong>
+          DEVIS
+        </strong>
 
-const companyEmailValue=
-companyEmail.value.trim();
+        <div class="muted">
+          ${new Date().toLocaleDateString("fr-FR")}
+        </div>
 
-const companyAddressValue=
-companyAddress.value.trim();
+      </div>
 
-const clientValue=
-client.value.trim()||"—";
+    </div>
 
-const clientPhoneValue=
-clientPhone.value.trim();
+    <div class="row">
 
-const projectValue=
-project.value.trim()||"—";
+      <div>
+        <p>
+          <strong>Client</strong><br>
+          ${escapeHTML(client.value||"—")}
+        </p>
+      </div>
 
-const validityValue=
-validity.value.trim()||"30 jours";
+      <div>
+        <p>
+          <strong>Projet</strong><br>
+          ${escapeHTML(project.value||"—")}
+        </p>
+      </div>
 
-const paymentValue=
-payment.value.trim()||
-"Selon accord";
+      <div>
+        <p>
+          <strong>Pays</strong><br>
+          ${countryName}
+        </p>
+      </div>
 
-const conditionsValue=
-conditions.value.trim()||"—";
+      <div>
+        <p>
+          <strong>Devise</strong><br>
+          ${countries[countryName]}
+        </p>
+      </div>
 
+    </div>
 
-preview.classList.remove("hide");
 
-preview.innerHTML=`
+    <div class="tablewrap">
 
-<div class="quote-head">
+      <table>
 
-<div>
+        <thead>
 
-<div class="quote-logo">
+          <tr>
 
-<div class="quote-logo-mark">
+            <th>Désignation</th>
+            <th>Qté</th>
+            <th>PU</th>
+            <th>Montant</th>
 
-<svg viewBox="0 0 64 64">
+          </tr>
 
-<path
-d="M12 52V24L32 10L52 24V52"
-fill="none"
-stroke="white"
-stroke-width="5"
-stroke-linejoin="round"/>
+        </thead>
 
-<path
-d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
-fill="#f59e0b"/>
+        <tbody>
 
-<path
-d="M28 31V47"
-stroke="#0b1f3a"
-stroke-width="4"
-stroke-linecap="round"/>
+          ${
+            items.length
+            ?
+            items.map(
+              x=>`
 
-</svg>
+                <tr>
 
-</div>
+                  <td>
+                    ${escapeHTML(x.n)}
+                  </td>
 
-<div>
+                  <td>
+                    ${x.q} ${x.u}
+                  </td>
 
-<div class="quote-brand">
-BATI<span>FLOW</span>
-</div>
+                  <td>
+                    ${x.p.toLocaleString("fr-FR")}
+                  </td>
 
-<div class="muted">
-BUILD • CALCULATE • MANAGE
-</div>
+                  <td>
+                    ${x.m.toLocaleString("fr-FR")}
+                  </td>
 
-</div>
+                </tr>
 
-</div>
+              `
+            ).join("")
+            :
+            `
+              <tr>
 
-<p>
-<strong>
-${escapeHTML(companyName)}
-</strong>
-</p>
+                <td colspan="4">
+                  Aucun poste ajouté au DQE.
+                </td>
 
-<div class="muted">
+              </tr>
+            `
+          }
 
-${escapeHTML(companyAddressValue)}
+        </tbody>
 
-<br>
+      </table>
 
-${escapeHTML(companyPhoneValue)}
+    </div>
 
-<br>
 
-${escapeHTML(companyEmailValue)}
+    <div class="quote-total">
 
-</div>
+      <p class="right">
 
-</div>
+        <strong>
+          Total HT :
+          ${sum.toLocaleString("fr-FR")}
+          ${countries[countryName]}
+        </strong>
 
+        <br>
 
-<div class="quote-number">
+        TVA :
+        ${vat.toLocaleString("fr-FR")}
+        ${countries[countryName]}
 
-<div class="muted">
-DEVIS
-</div>
+        <br>
 
-<strong>
-${escapeHTML(quoteNumber)}
-</strong>
+        <strong style="font-size:18px">
+          Total TTC :
+          ${ttc.toLocaleString("fr-FR")}
+          ${countries[countryName]}
+        </strong>
 
-<p>
-Date : ${date}
-</p>
+      </p>
 
-<p>
-Validité : ${escapeHTML(validityValue)}
-</p>
+    </div>
 
-</div>
+    <p class="muted">
+      Document généré avec BATIFLOW.
+    </p>
 
-</div>
-
-
-<div class="quote-info">
-
-<div class="quote-info-box">
-
-<strong>
-FACTURÉ À
-</strong>
-
-<p>
-${escapeHTML(clientValue)}
-</p>
-
-<div class="muted">
-${escapeHTML(clientPhoneValue)}
-</div>
-
-</div>
-
-
-<div class="quote-info-box">
-
-<strong>
-PROJET
-</strong>
-
-<p>
-${escapeHTML(projectValue)}
-</p>
-
-<div class="muted">
-Pays :
-${escapeHTML(countryName)}
-</div>
-
-</div>
-
-</div>
-
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>#</th>
-
-<th>Désignation</th>
-
-<th>Qté</th>
-
-<th>PU</th>
-
-<th class="right">
-Montant
-</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-${items.map((x,i)=>`
-
-<tr>
-
-<td>
-${i+1}
-</td>
-
-<td>
-${escapeHTML(x.n)}
-</td>
-
-<td>
-${x.q}
-${escapeHTML(x.u)}
-</td>
-
-<td>
-${money(x.p)}
-</td>
-
-<td class="right">
-${money(x.m)}
-</td>
-
-</tr>
-
-`).join("")}
-
-</tbody>
-
-</table>
-
-
-<div class="quote-total">
-
-<div>
-
-<span>
-Total HT
-</span>
-
-<strong>
-${money(sum)}
-${escapeHTML(countries[countryName])}
-</strong>
-
-</div>
-
-
-<div>
-
-<span>
-TVA (${taxRate}%)
-</span>
-
-<strong>
-${money(vat)}
-${escapeHTML(countries[countryName])}
-</strong>
-
-</div>
-
-
-<div class="grand">
-
-<span>
-TOTAL TTC
-</span>
-
-<strong>
-${money(ttc)}
-${escapeHTML(countries[countryName])}
-</strong>
-
-</div>
-
-</div>
-
-
-<div style="margin-top:35px">
-
-<strong>
-Conditions de paiement
-</strong>
-
-<p>
-${escapeHTML(paymentValue)}
-</p>
-
-</div>
-
-
-<div style="margin-top:25px">
-
-<strong>
-Conditions / observations
-</strong>
-
-<p>
-${escapeHTML(conditionsValue)}
-</p>
-
-</div>
-
-
-<div class="quote-footer">
-
-<div>
-
-<strong>
-Le client
-</strong>
-
-<div class="signature"></div>
-
-<small>
-Signature et cachet
-</small>
-
-</div>
-
-
-<div>
-
-<strong>
-L'entreprise
-</strong>
-
-<div class="signature"></div>
-
-<small>
-Signature et cachet
-</small>
-
-</div>
-
-</div>
-
-
-<div
-class="muted"
-style="margin-top:35px;text-align:center">
-
-Document généré avec BATIFLOW —
-Gestion BTP intelligente
-
-</div>
-
-`;
-
-
-preview.scrollIntoView({
-behavior:"smooth"
-});
+  `;
 
 }
 
 
 /* =========================
-   DÉMARRAGE
+   SÉCURITÉ HTML
+========================= */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================
+   LANCEMENT
 ========================= */
 
 init();
