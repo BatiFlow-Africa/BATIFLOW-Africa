@@ -4,7 +4,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>BATIFLOW — Gestion BTP</title>
 
 <style>
@@ -14,25 +13,17 @@
   --blue:#2563eb;
   --blue2:#3b82f6;
   --gold:#f59e0b;
-  --gold2:#fbbf24;
   --bg:#f4f7fb;
-  --white:#ffffff;
+  --white:#fff;
   --text:#182230;
   --muted:#718096;
   --line:#e3e9f2;
   --green:#16a34a;
-  --orange:#f97316;
   --red:#dc2626;
   --shadow:0 10px 30px rgba(11,31,58,.08);
 }
 
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
@@ -41,21 +32,9 @@ body{
   color:var(--text);
 }
 
-button,input,select,textarea{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hide{
-  display:none!important;
-}
-
-/* =========================
-   LOGIN
-========================= */
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hide{display:none!important}
 
 .login{
   min-height:100vh;
@@ -69,7 +48,7 @@ button{
 
 .loginbox{
   width:min(450px,100%);
-  background:white;
+  background:#fff;
   padding:38px;
   border-radius:24px;
   box-shadow:0 30px 70px rgba(0,0,0,.22);
@@ -88,27 +67,20 @@ button{
   display:grid;
   place-items:center;
   border-radius:17px;
-  background:linear-gradient(145deg,#edf4ff,#ffffff);
+  background:linear-gradient(145deg,#edf4ff,#fff);
   border:1px solid #e2e8f0;
-  box-shadow:0 10px 25px rgba(11,31,58,.10);
 }
 
-.login-brand-mark svg{
-  width:46px;
-  height:46px;
-}
+.login-brand-mark svg{width:46px;height:46px}
 
 .login-brand-name{
   font-size:32px;
   line-height:1;
   font-weight:900;
-  letter-spacing:-1px;
   color:var(--navy);
 }
 
-.login-brand-name span{
-  color:var(--gold);
-}
+.login-brand-name span{color:var(--gold)}
 
 .login-brand-sub{
   margin-top:6px;
@@ -130,27 +102,18 @@ button{
   font-size:14px;
 }
 
-/* =========================
-   APP
-========================= */
-
 .app{
   display:flex;
   min-height:100vh;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
-
 .side{
   width:255px;
-  background:linear-gradient(180deg,#0b1f3a 0%,#102d50 100%);
+  background:linear-gradient(180deg,#0b1f3a,#102d50);
   color:white;
   padding:22px 14px;
   position:fixed;
   inset:0 auto 0 0;
-  box-shadow:8px 0 30px rgba(11,31,58,.10);
   z-index:20;
 }
 
@@ -165,37 +128,22 @@ button{
 .brand-mark{
   width:48px;
   height:48px;
-  flex:none;
   display:grid;
   place-items:center;
   border-radius:14px;
   background:linear-gradient(145deg,#173b68,#0b1f3a);
   border:1px solid rgba(255,255,255,.14);
-  box-shadow:
-    0 8px 22px rgba(0,0,0,.25),
-    inset 0 1px 0 rgba(255,255,255,.08);
 }
 
-.brand-mark svg{
-  width:38px;
-  height:38px;
-}
-
-.brand-text{
-  min-width:0;
-}
+.brand-mark svg{width:38px;height:38px}
 
 .brand-name{
   font-size:25px;
-  line-height:1;
   font-weight:900;
-  letter-spacing:-.8px;
-  color:white;
+  color:#fff;
 }
 
-.brand-name span{
-  color:var(--gold);
-}
+.brand-name span{color:var(--gold)}
 
 .brand-text small{
   display:block;
@@ -204,16 +152,14 @@ button{
   font-size:8px;
   font-weight:700;
   letter-spacing:1.4px;
-  white-space:nowrap;
 }
 
 .nav-title{
   color:#7892b5;
   font-size:10px;
   font-weight:800;
-  letter-spacing:1.3px;
   padding:0 12px;
-  margin:0 0 8px;
+  margin-bottom:8px;
   text-transform:uppercase;
 }
 
@@ -229,30 +175,21 @@ button{
   background:transparent;
   color:#dce6f5;
   text-align:left;
-  transition:.2s;
 }
 
 .nav button:hover{
   background:rgba(255,255,255,.08);
-  color:white;
-  transform:translateX(2px);
 }
 
 .nav button.active{
   background:linear-gradient(90deg,rgba(37,99,235,.9),rgba(37,99,235,.55));
-  color:white;
-  box-shadow:0 7px 20px rgba(37,99,235,.20);
+  color:#fff;
 }
 
 .nav-icon{
   width:22px;
   text-align:center;
-  font-size:16px;
 }
-
-/* =========================
-   MAIN
-========================= */
 
 .main{
   margin-left:255px;
@@ -264,27 +201,23 @@ button{
 .top{
   display:flex;
   justify-content:space-between;
-  gap:20px;
   align-items:center;
+  gap:20px;
   margin-bottom:24px;
 }
 
 .top h1{
   margin:0;
   font-size:27px;
-  letter-spacing:-.5px;
 }
 
-.top .muted{
-  margin-top:5px;
+.muted{
+  color:var(--muted);
+  font-size:13px;
 }
-
-/* =========================
-   GENERAL
-========================= */
 
 .card{
-  background:white;
+  background:#fff;
   border:1px solid var(--line);
   border-radius:17px;
   padding:20px;
@@ -292,15 +225,12 @@ button{
 }
 
 .hero{
-  position:relative;
-  overflow:hidden;
   background:
     radial-gradient(circle at 85% 10%,rgba(59,130,246,.35),transparent 30%),
     linear-gradient(120deg,#0b1f3a,#205a97);
-  color:white;
+  color:#fff;
   border-radius:22px;
   padding:34px;
-  box-shadow:0 15px 40px rgba(11,31,58,.18);
 }
 
 .hero-label{
@@ -308,11 +238,9 @@ button{
   padding:6px 10px;
   border-radius:20px;
   background:rgba(245,158,11,.15);
-  border:1px solid rgba(245,158,11,.30);
   color:#ffd36a;
   font-size:11px;
   font-weight:800;
-  letter-spacing:1px;
 }
 
 .hero h2{
@@ -324,11 +252,6 @@ button{
   max-width:650px;
   color:#dbeafe;
   line-height:1.6;
-}
-
-.muted{
-  color:var(--muted);
-  font-size:13px;
 }
 
 .grid{
@@ -360,7 +283,6 @@ button{
 .feature{
   display:flex;
   gap:13px;
-  align-items:flex-start;
 }
 
 .feature-icon{
@@ -370,7 +292,6 @@ button{
   place-items:center;
   border-radius:12px;
   background:#edf4ff;
-  font-size:19px;
   flex:none;
 }
 
@@ -383,35 +304,22 @@ button{
   margin:0;
   color:var(--muted);
   font-size:12px;
-  line-height:1.5;
 }
-
-/* =========================
-   BUTTONS
-========================= */
 
 .btn{
   border:0;
   border-radius:10px;
   padding:11px 17px;
   background:var(--blue);
-  color:white;
+  color:#fff;
   font-weight:800;
-  transition:.2s;
 }
 
-.btn:hover{
-  background:#1d4ed8;
-  transform:translateY(-1px);
-}
+.btn:hover{background:#1d4ed8}
 
 .btn.gold{
   background:var(--gold);
   color:#172033;
-}
-
-.btn.gold:hover{
-  background:#d97706;
 }
 
 .btn.alt{
@@ -425,7 +333,7 @@ button{
 }
 
 .btn.small{
-  padding:8px 12px;
+  padding:7px 10px;
   font-size:12px;
 }
 
@@ -435,10 +343,6 @@ button{
   flex-wrap:wrap;
   margin-top:17px;
 }
-
-/* =========================
-   FORMS
-========================= */
 
 .row{
   display:grid;
@@ -465,7 +369,7 @@ button{
   padding:12px 13px;
   border:1px solid #d8dee8;
   border-radius:10px;
-  background:white;
+  background:#fff;
   color:var(--text);
   outline:none;
 }
@@ -479,24 +383,19 @@ button{
 .field select:focus,
 .field textarea:focus{
   border-color:var(--blue2);
-  box-shadow:0 0 0 3px rgba(59,130,246,.10);
+  box-shadow:0 0 0 3px rgba(59,130,246,.1);
 }
 
-/* =========================
-   PROJECTS
-========================= */
+/* PROJECTS */
 
 .project-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:15px;
-  margin-bottom:18px;
 }
 
-.project-header h2{
-  margin:0;
-}
+.project-header h2{margin:0}
 
 .project-grid{
   display:grid;
@@ -506,25 +405,17 @@ button{
 }
 
 .project-card{
-  position:relative;
-  background:white;
+  background:#fff;
   border:1px solid var(--line);
   border-radius:17px;
   padding:20px;
   box-shadow:var(--shadow);
-  transition:.2s;
-}
-
-.project-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 15px 35px rgba(11,31,58,.12);
 }
 
 .project-top{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap:10px;
 }
 
 .project-icon{
@@ -534,12 +425,10 @@ button{
   place-items:center;
   border-radius:13px;
   background:#edf4ff;
-  font-size:20px;
 }
 
 .project-card h3{
   margin:14px 0 5px;
-  font-size:18px;
 }
 
 .project-info{
@@ -550,7 +439,6 @@ button{
 
 .status{
   display:inline-flex;
-  align-items:center;
   padding:5px 9px;
   border-radius:20px;
   font-size:10px;
@@ -578,38 +466,45 @@ button{
   margin-top:16px;
 }
 
-.empty-project{
-  text-align:center;
-  padding:50px 20px;
-  color:var(--muted);
+/* DQE */
+
+.dqe-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:18px;
 }
 
-.empty-project-icon{
-  font-size:45px;
-  margin-bottom:10px;
+.dqe-summary-card{
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:15px;
 }
 
-/* =========================
-   TABLE
-========================= */
+.dqe-summary-card strong{
+  display:block;
+  font-size:20px;
+  color:var(--navy);
+  margin-top:5px;
+}
 
 .tablewrap{
   overflow:auto;
   margin-top:18px;
   border:1px solid var(--line);
   border-radius:14px;
-  background:white;
+  background:#fff;
   box-shadow:var(--shadow);
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  background:white;
+  background:#fff;
 }
 
-th,
-td{
+th,td{
   padding:12px;
   border-bottom:1px solid var(--line);
   text-align:left;
@@ -623,13 +518,33 @@ th{
   font-size:12px;
 }
 
-.right{
-  text-align:right;
+.right{text-align:right}
+
+.total-box{
+  margin-top:18px;
+  display:flex;
+  justify-content:flex-end;
 }
 
-/* =========================
-   QUOTE
-========================= */
+.total-box-inner{
+  min-width:280px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:15px;
+  padding:18px;
+}
+
+.total-box-inner .total-number{
+  font-size:25px;
+  font-weight:900;
+  margin-top:5px;
+}
+
+.editing{
+  background:#fff7ed!important;
+}
+
+/* QUOTE */
 
 .quote-preview{
   margin-top:18px;
@@ -642,7 +557,6 @@ th{
   align-items:flex-start;
   border-bottom:1px solid var(--line);
   padding-bottom:18px;
-  margin-bottom:18px;
 }
 
 .quote-total{
@@ -651,9 +565,7 @@ th{
   padding:15px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 
 @media(max-width:1100px){
 
@@ -672,9 +584,7 @@ th{
 
 @media(max-width:800px){
 
-  .side{
-    width:205px;
-  }
+  .side{width:205px}
 
   .main{
     margin-left:205px;
@@ -688,18 +598,12 @@ th{
 
 @media(max-width:600px){
 
-  .app{
-    display:block;
-  }
+  .app{display:block}
 
   .side{
     position:static;
     width:100%;
     padding:15px;
-  }
-
-  .brand{
-    margin-bottom:20px;
   }
 
   .nav{
@@ -708,13 +612,7 @@ th{
     gap:4px;
   }
 
-  .nav button{
-    margin:2px 0;
-  }
-
-  .nav-title{
-    display:none;
-  }
+  .nav-title{display:none}
 
   .main{
     margin:0;
@@ -727,17 +625,14 @@ th{
   }
 
   .grid,
-  .row{
+  .row,
+  .dqe-summary{
     grid-template-columns:1fr;
   }
 
-  .hero{
-    padding:24px;
-  }
+  .hero{padding:24px}
 
-  .hero h2{
-    font-size:25px;
-  }
+  .hero h2{font-size:25px}
 
   .project-header{
     flex-direction:column;
@@ -748,10 +643,6 @@ th{
     padding:28px 22px;
   }
 }
-
-/* =========================
-   PRINT
-========================= */
 
 @media print{
 
@@ -772,19 +663,13 @@ th{
     box-shadow:none;
     border:0;
   }
-
-  body{
-    background:white;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
+<!-- LOGIN -->
 
 <div id="login" class="login">
 
@@ -847,31 +732,20 @@ th{
 
   <div class="field">
     <label>Email</label>
-    <input
-      id="loginEmail"
-      type="email"
-      required
-      placeholder="vous@entreprise.com">
+    <input type="email" required placeholder="vous@entreprise.com">
   </div>
 
   <div class="field">
     <label>Mot de passe</label>
-    <input
-      type="password"
-      required
-      placeholder="••••••••">
+    <input type="password" required placeholder="••••••••">
   </div>
 
-  <button
-    class="btn"
-    style="width:100%;margin-top:8px">
+  <button class="btn" style="width:100%;margin-top:8px">
     Se connecter
   </button>
 
-  <p
-    class="muted"
-    style="margin-top:16px;text-align:center">
-    Prototype V3 — données enregistrées uniquement dans ce navigateur.
+  <p class="muted" style="margin-top:16px;text-align:center">
+    Prototype V4 — données enregistrées dans ce navigateur.
   </p>
 
 </form>
@@ -879,9 +753,7 @@ th{
 </div>
 
 
-<!-- =========================
-     APPLICATION
-========================= -->
+<!-- APPLICATION -->
 
 <div id="app" class="app hide">
 
@@ -895,20 +767,10 @@ th{
 
         <defs>
 
-          <linearGradient
-            id="logoGold"
-            x1="0"
-            y1="0"
-            x2="1"
-            y2="1">
+          <linearGradient id="logoGold" x1="0" y1="0" x2="1" y2="1">
 
-            <stop
-              offset="0%"
-              stop-color="#fbbf24"/>
-
-            <stop
-              offset="100%"
-              stop-color="#f59e0b"/>
+            <stop offset="0%" stop-color="#fbbf24"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
 
           </linearGradient>
 
@@ -961,53 +823,34 @@ th{
 
   <div class="nav">
 
-    <button
-      class="active"
-      onclick="show('dashboard',this)">
-
+    <button class="active" onclick="show('dashboard',this)">
       <span class="nav-icon">⌂</span>
       Tableau de bord
-
     </button>
 
-    <button
-      onclick="show('projects',this)">
-
+    <button onclick="show('projects',this)">
       <span class="nav-icon">🏗️</span>
       Projets / Chantiers
-
     </button>
 
-    <button
-      onclick="show('calc',this)">
-
+    <button onclick="show('calc',this)">
       <span class="nav-icon">📐</span>
       Calculateur BTP
-
     </button>
 
-    <button
-      onclick="show('dqe',this)">
-
+    <button onclick="show('dqe',this)">
       <span class="nav-icon">📋</span>
       DQE
-
     </button>
 
-    <button
-      onclick="show('quote',this)">
-
+    <button onclick="show('quote',this)">
       <span class="nav-icon">🧾</span>
       Devis
-
     </button>
 
-    <button
-      onclick="show('country',this)">
-
+    <button onclick="show('country',this)">
       <span class="nav-icon">🌍</span>
       Pays & paramètres
-
     </button>
 
   </div>
@@ -1016,8 +859,6 @@ th{
 
 
 <main class="main">
-
-<!-- TOP -->
 
 <div class="top">
 
@@ -1042,18 +883,14 @@ th{
 </div>
 
 
-<!-- =========================
-     DASHBOARD
-========================= -->
+<!-- DASHBOARD -->
 
-<section
-  id="dashboard"
-  class="page">
+<section id="dashboard" class="page">
 
   <div class="hero">
 
     <div class="hero-label">
-      BATIFLOW V3
+      BATIFLOW V4
     </div>
 
     <h2>
@@ -1062,22 +899,17 @@ th{
 
     <p>
       Centralisez vos projets, calculs BTP, DQE et devis
-      depuis une seule plateforme conçue pour les professionnels
-      de la construction en Afrique.
+      depuis une seule plateforme.
     </p>
 
     <div class="actions">
 
-      <button
-        class="btn gold"
-        onclick="goto('projects')">
+      <button class="btn gold" onclick="goto('projects')">
         + Nouveau chantier
       </button>
 
-      <button
-        class="btn alt"
-        onclick="goto('calc')">
-        Nouveau calcul
+      <button class="btn alt" onclick="goto('dqe')">
+        Nouveau DQE
       </button>
 
     </div>
@@ -1093,1958 +925,5 @@ th{
         Projets
       </div>
 
-      <div
-        class="stat"
-        id="dashProjects">
-        0
-      </div>
-
-      <div class="muted">
-        chantiers enregistrés
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="stat-label">
-        Projets en cours
-      </div>
-
-      <div
-        class="stat"
-        id="dashProgress">
-        0
-      </div>
-
-      <div class="muted">
-        actuellement actifs
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="stat-label">
-        Devis ce mois
-      </div>
-
-      <div class="stat">
-        14
-      </div>
-
-      <div class="muted">
-        documents préparés
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="stat-label">
-        Pays actif
-      </div>
-
-      <div
-        class="stat"
-        id="dashCountry">
-        Togo
-      </div>
-
-      <div
-        class="muted"
-        id="dashCur">
-        FCFA
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="feature-grid">
-
-    <div class="card feature">
-
-      <div class="feature-icon">
-        🏗️
-      </div>
-
-      <div>
-
-        <h3>
-          Gestion des chantiers
-        </h3>
-
-        <p>
-          Suivez vos projets, leurs budgets, clients,
-          localisations et états d'avancement.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="card feature">
-
-      <div class="feature-icon">
-        📐
-      </div>
-
-      <div>
-
-        <h3>
-          Calculateur BTP
-        </h3>
-
-        <p>
-          Estimez rapidement les volumes et composants
-          nécessaires à vos travaux.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="card feature">
-
-      <div class="feature-icon">
-        🧾
-      </div>
-
-      <div>
-
-        <h3>
-          Devis professionnel
-        </h3>
-
-        <p>
-          Préparez vos devis à partir des éléments
-          de votre projet.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     PROJETS
-========================= -->
-
-<section
-  id="projects"
-  class="page hide">
-
-  <div class="project-header">
-
-    <div>
-
-      <h2>
-        Projets / Chantiers
-      </h2>
-
-      <p class="muted">
-        Créez et suivez vos différents chantiers.
-      </p>
-
-    </div>
-
-    <button
-      class="btn gold"
-      onclick="toggleProjectForm()">
-
-      + Nouveau chantier
-
-    </button>
-
-  </div>
-
-
-  <!-- FORMULAIRE -->
-
-  <div
-    id="projectForm"
-    class="card hide">
-
-    <h3 style="margin-top:0">
-      Nouveau chantier
-    </h3>
-
-    <div class="row">
-
-      <div class="field">
-
-        <label>
-          Nom du projet *
-        </label>
-
-        <input
-          id="projectName"
-          placeholder="Ex. Construction maison familiale">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Client *
-        </label>
-
-        <input
-          id="projectClient"
-          placeholder="Nom du client">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Localisation
-        </label>
-
-        <input
-          id="projectLocation"
-          placeholder="Ex. Lomé, Togo">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Budget
-        </label>
-
-        <input
-          id="projectBudget"
-          type="number"
-          step="1"
-          placeholder="Ex. 15000000">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Date de début
-        </label>
-
-        <input
-          id="projectStart"
-          type="date">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Date prévue de fin
-        </label>
-
-        <input
-          id="projectEnd"
-          type="date">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Statut
-        </label>
-
-        <select id="projectStatus">
-
-          <option value="todo">
-            À venir
-          </option>
-
-          <option value="progress">
-            En cours
-          </option>
-
-          <option value="done">
-            Terminé
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Responsable
-        </label>
-
-        <input
-          id="projectManager"
-          placeholder="Chef de chantier">
-
-      </div>
-
-    </div>
-
-
-    <div class="field">
-
-      <label>
-        Description / Notes
-      </label>
-
-      <textarea
-        id="projectDescription"
-        placeholder="Informations complémentaires sur le chantier..."></textarea>
-
-    </div>
-
-
-    <div class="actions">
-
-      <button
-        class="btn"
-        onclick="saveProject()">
-
-        Enregistrer le chantier
-
-      </button>
-
-      <button
-        class="btn alt"
-        onclick="toggleProjectForm()">
-
-        Annuler
-
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- LISTE -->
-
-  <div
-    id="projectList"
-    class="project-grid">
-  </div>
-
-</section>
-
-
-<!-- =========================
-     CALCULATEUR
-========================= -->
-
-<section
-  id="calc"
-  class="page hide">
-
-  <div class="card">
-
-    <h2>
-      Calculateur BTP
-    </h2>
-
-    <p class="muted">
-      Calcul indicatif du volume de béton et des composants.
-    </p>
-
-    <div class="row">
-
-      <div class="field">
-
-        <label>
-          Élément
-        </label>
-
-        <select id="element">
-
-          <option>Dalle</option>
-          <option>Poutre</option>
-          <option>Poteau</option>
-          <option>Semelle</option>
-
-        </select>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Longueur (m)
-        </label>
-
-        <input
-          id="L"
-          type="number"
-          step=".01"
-          value="5">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Largeur (m)
-        </label>
-
-        <input
-          id="W"
-          type="number"
-          step=".01"
-          value="4">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Épaisseur / hauteur (m)
-        </label>
-
-        <input
-          id="H"
-          type="number"
-          step=".01"
-          value=".15">
-
-      </div>
-
-    </div>
-
-
-    <button
-      class="btn"
-      onclick="calc()">
-      Calculer
-    </button>
-
-
-    <div
-      id="result"
-      class="card hide"
-      style="margin-top:18px;border-left:4px solid var(--blue)">
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     DQE
-========================= -->
-
-<section
-  id="dqe"
-  class="page hide">
-
-  <div class="card">
-
-    <h2>
-      DQE
-    </h2>
-
-    <p class="muted">
-      Ajoutez les différents postes de votre projet.
-    </p>
-
-    <div class="row">
-
-      <div class="field">
-
-        <label>
-          Désignation
-        </label>
-
-        <input
-          id="item"
-          placeholder="Ex. Béton dosé">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Unité
-        </label>
-
-        <select id="unit">
-
-          <option>m³</option>
-          <option>m²</option>
-          <option>ml</option>
-          <option>u</option>
-          <option>kg</option>
-          <option>forfait</option>
-
-        </select>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Quantité
-        </label>
-
-        <input
-          id="qty"
-          type="number"
-          step=".01"
-          value="1">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Prix unitaire
-        </label>
-
-        <input
-          id="pu"
-          type="number"
-          step="1"
-          value="75000">
-
-      </div>
-
-    </div>
-
-
-    <button
-      class="btn"
-      onclick="add()">
-
-      + Ajouter au DQE
-
-    </button>
-
-  </div>
-
-
-  <div class="tablewrap">
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>#</th>
-          <th>Désignation</th>
-          <th>Unité</th>
-          <th>Qté</th>
-          <th>PU</th>
-          <th>Montant</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody id="body">
-      </tbody>
-
-      <tfoot>
-
-        <tr>
-
-          <th
-            colspan="5"
-            class="right">
-
-            TOTAL
-
-          </th>
-
-          <th
-            id="total"
-            class="right">
-
-            0
-
-          </th>
-
-        </tr>
-
-      </tfoot>
-
-    </table>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     DEVIS
-========================= -->
-
-<section
-  id="quote"
-  class="page hide">
-
-  <div class="card">
-
-    <h2>
-      Générateur de devis
-    </h2>
-
-    <p class="muted">
-      Préparez un devis professionnel à partir de votre DQE.
-    </p>
-
-
-    <div class="row">
-
-      <div class="field">
-
-        <label>
-          Entreprise
-        </label>
-
-        <input
-          id="company"
-          value="BATIFLOW DEMO">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Client
-        </label>
-
-        <input
-          id="client"
-          placeholder="Nom du client">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Projet
-        </label>
-
-        <input
-          id="project"
-          placeholder="Maison RDC">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          TVA (%)
-        </label>
-
-        <input
-          id="tax"
-          type="number"
-          value="0">
-
-      </div>
-
-    </div>
-
-
-    <div class="actions">
-
-      <button
-        class="btn"
-        onclick="quote()">
-
-        Générer le devis
-
-      </button>
-
-      <button
-        class="btn alt"
-        onclick="window.print()">
-
-        Imprimer / PDF
-
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div
-    id="preview"
-    class="card quote-preview hide">
-  </div>
-
-</section>
-
-
-<!-- =========================
-     PAYS
-========================= -->
-
-<section
-  id="country"
-  class="page hide">
-
-  <div class="card">
-
-    <h2>
-      Pays & paramètres
-    </h2>
-
-    <p class="muted">
-      Base BATIFLOW : pays africains et devises principales.
-      Les prix et taxes doivent être alimentés par des données
-      locales validées.
-    </p>
-
-    <div class="row">
-
-      <div class="field">
-
-        <label>
-          Pays
-        </label>
-
-        <select
-          id="country"
-          onchange="setCountry(this.value)">
-        </select>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Devise
-        </label>
-
-        <input
-          id="currency"
-          readonly>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-</div>
-
-
-<script>
-
-/* =========================
-   PAYS
-========================= */
-
-const countries = {
-
-  "Togo":"FCFA",
-  "Bénin":"FCFA",
-  "Côte d’Ivoire":"FCFA",
-  "Sénégal":"FCFA",
-  "Burkina Faso":"FCFA",
-  "Mali":"FCFA",
-  "Niger":"FCFA",
-  "Guinée-Bissau":"FCFA",
-  "Cameroun":"FCFA",
-  "Gabon":"FCFA",
-  "Congo":"FCFA",
-  "Guinée équatoriale":"FCFA",
-  "RCA":"FCFA",
-  "Tchad":"FCFA",
-
-  "Ghana":"GHS",
-  "Nigeria":"NGN",
-  "Guinée":"GNF",
-  "Sierra Leone":"SLE",
-  "Liberia":"LRD",
-  "Gambie":"GMD",
-  "Mauritanie":"MRU",
-  "Cap-Vert":"CVE",
-
-  "Maroc":"MAD",
-  "Algérie":"DZD",
-  "Tunisie":"TND",
-  "Égypte":"EGP",
-  "Libye":"LYD",
-  "Soudan":"SDG",
-
-  "Kenya":"KES",
-  "Ouganda":"UGX",
-  "Tanzanie":"TZS",
-  "Rwanda":"RWF",
-  "Burundi":"BIF",
-  "Éthiopie":"ETB",
-  "Somalie":"SOS",
-  "Djibouti":"DJF",
-
-  "Seychelles":"SCR",
-  "Maurice":"MUR",
-
-  "Afrique du Sud":"ZAR",
-  "Namibie":"NAD",
-  "Botswana":"BWP",
-  "Zambie":"ZMW",
-  "Zimbabwe":"ZWG",
-  "Mozambique":"MZN",
-  "Angola":"AOA",
-  "Malawi":"MWK",
-  "Lesotho":"LSL",
-  "Eswatini":"SZL",
-
-  "Madagascar":"MGA",
-  "Comores":"KMF"
-
-};
-
-
-/* =========================
-   VARIABLES
-========================= */
-
-let countryName = "Togo";
-
-let items = [];
-
-let sum = 0;
-
-let projects = JSON.parse(
-  localStorage.getItem("batiflow_projects") || "[]"
-);
-
-
-/* =========================
-   INITIALISATION
-========================= */
-
-function init(){
-
-  const options =
-    Object.keys(countries)
-      .map(
-        x => `<option value="${x}">${x}</option>`
-      )
-      .join("");
-
-  topCountry.innerHTML = options;
-
-  country.innerHTML = options;
-
-  topCountry.value =
-    country.value =
-    countryName;
-
-  sync();
-
-  renderProjects();
-
-}
-
-
-/* =========================
-   SYNCHRONISATION
-========================= */
-
-function sync(){
-
-  const c =
-    countries[countryName];
-
-  currency.value = c;
-
-  dashCountry.textContent =
-    countryName;
-
-  dashCur.textContent =
-    c;
-
-  render();
-
-}
-
-
-/* =========================
-   PAYS
-========================= */
-
-function setCountry(c){
-
-  countryName = c;
-
-  topCountry.value = c;
-
-  country.value = c;
-
-  sync();
-
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-function login(e){
-
-  e.preventDefault();
-
-  document
-    .getElementById("login")
-    .classList.add("hide");
-
-  document
-    .getElementById("app")
-    .classList.remove("hide");
-
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-function show(id,b){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(
-      x => x.classList.add("hide")
-    );
-
-  document
-    .getElementById(id)
-    .classList.remove("hide");
-
-  document
-    .querySelectorAll(".nav button")
-    .forEach(
-      x => x.classList.remove("active")
-    );
-
-  if(b){
-    b.classList.add("active");
-  }
-
-  const titles = {
-
-    dashboard:"Tableau de bord",
-    projects:"Projets / Chantiers",
-    calc:"Calculateur BTP",
-    dqe:"DQE",
-    quote:"Générateur de devis",
-    country:"Pays & paramètres"
-
-  };
-
-  title.textContent =
-    titles[id];
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-function goto(id){
-
-  const buttons =
-    [...document.querySelectorAll(".nav button")];
-
-  const search = {
-
-    dashboard:"tableau",
-    projects:"projets",
-    calc:"calculateur",
-    dqe:"dqe",
-    quote:"devis",
-    country:"pays"
-
-  }[id];
-
-  const b =
-    buttons.find(
-      x =>
-        x.textContent
-          .toLowerCase()
-          .includes(search)
-    );
-
-  show(id,b);
-
-}
-
-
-/* =========================
-   FORMULAIRE PROJET
-========================= */
-
-function toggleProjectForm(){
-
-  const form =
-    document.getElementById("projectForm");
-
-  form.classList.toggle("hide");
-
-  if(!form.classList.contains("hide")){
-
-    document
-      .getElementById("projectName")
-      .focus();
-
-  }
-
-}
-
-
-/* =========================
-   SAUVEGARDER PROJET
-========================= */
-
-function saveProject(){
-
-  const name =
-    projectName.value.trim();
-
-  const clientName =
-    projectClient.value.trim();
-
-  if(!name || !clientName){
-
-    alert(
-      "Veuillez renseigner au minimum le nom du projet et le client."
-    );
-
-    return;
-
-  }
-
-
-  const project = {
-
-    id:Date.now(),
-
-    name:name,
-
-    client:clientName,
-
-    location:
-      projectLocation.value.trim(),
-
-    budget:
-      Number(projectBudget.value) || 0,
-
-    start:
-      projectStart.value,
-
-    end:
-      projectEnd.value,
-
-    status:
-      projectStatus.value,
-
-    manager:
-      projectManager.value.trim(),
-
-    description:
-      projectDescription.value.trim(),
-
-    createdAt:
-      new Date().toISOString()
-
-  };
-
-
-  projects.unshift(project);
-
-
-  localStorage.setItem(
-    "batiflow_projects",
-    JSON.stringify(projects)
-  );
-
-
-  clearProjectForm();
-
-  projectForm.classList.add("hide");
-
-  renderProjects();
-
-  alert(
-    "Le chantier a été enregistré avec succès."
-  );
-
-}
-
-
-/* =========================
-   NETTOYER FORMULAIRE
-========================= */
-
-function clearProjectForm(){
-
-  projectName.value = "";
-
-  projectClient.value = "";
-
-  projectLocation.value = "";
-
-  projectBudget.value = "";
-
-  projectStart.value = "";
-
-  projectEnd.value = "";
-
-  projectStatus.value = "todo";
-
-  projectManager.value = "";
-
-  projectDescription.value = "";
-
-}
-
-
-/* =========================
-   SUPPRIMER PROJET
-========================= */
-
-function deleteProject(id){
-
-  const ok =
-    confirm(
-      "Voulez-vous vraiment supprimer ce chantier ?"
-    );
-
-  if(!ok){
-    return;
-  }
-
-
-  projects =
-    projects.filter(
-      p => p.id !== id
-    );
-
-
-  localStorage.setItem(
-    "batiflow_projects",
-    JSON.stringify(projects)
-  );
-
-
-  renderProjects();
-
-}
-
-
-/* =========================
-   AFFICHER PROJETS
-========================= */
-
-function renderProjects(){
-
-  const list =
-    document.getElementById("projectList");
-
-  if(!list){
-    return;
-  }
-
-
-  if(projects.length === 0){
-
-    list.innerHTML = `
-
-      <div
-        class="card empty-project"
-        style="grid-column:1/-1">
-
-        <div class="empty-project-icon">
-          🏗️
-        </div>
-
-        <h3>
-          Aucun chantier pour le moment
-        </h3>
-
-        <p>
-          Commencez par créer votre premier projet.
-        </p>
-
-        <button
-          class="btn gold"
-          onclick="toggleProjectForm()">
-
-          + Créer mon premier chantier
-
-        </button>
-
-      </div>
-
-    `;
-
-  }
-
-  else{
-
-    list.innerHTML =
-      projects
-        .map(
-          p => projectHTML(p)
-        )
-        .join("");
-
-  }
-
-
-  updateProjectStats();
-
-}
-
-
-/* =========================
-   CARTE PROJET
-========================= */
-
-function projectHTML(p){
-
-  const statusData = {
-
-    todo:{
-      label:"À venir",
-      cls:"todo"
-    },
-
-    progress:{
-      label:"En cours",
-      cls:"progress"
-    },
-
-    done:{
-      label:"Terminé",
-      cls:"done"
-    }
-
-  };
-
-
-  const status =
-    statusData[p.status]
-    || statusData.todo;
-
-
-  const budget =
-    p.budget
-    ? p.budget.toLocaleString("fr-FR")
-      + " "
-      + countries[countryName]
-    : "Non défini";
-
-
-  const start =
-    p.start
-    ? formatDate(p.start)
-    : "Non définie";
-
-
-  const end =
-    p.end
-    ? formatDate(p.end)
-    : "Non définie";
-
-
-  return `
-
-    <div class="project-card">
-
-      <div class="project-top">
-
-        <div class="project-icon">
-          🏗️
-        </div>
-
-        <span class="status ${status.cls}">
-          ${status.label}
-        </span>
-
-      </div>
-
-
-      <h3>
-        ${escapeHTML(p.name)}
-      </h3>
-
-
-      <div class="project-info">
-
-        👤
-        <strong>Client :</strong>
-        ${escapeHTML(p.client)}
-        <br>
-
-        📍
-        <strong>Lieu :</strong>
-        ${escapeHTML(p.location || "Non renseigné")}
-        <br>
-
-        💰
-        <strong>Budget :</strong>
-        ${budget}
-        <br>
-
-        📅
-        <strong>Début :</strong>
-        ${start}
-        <br>
-
-        🏁
-        <strong>Fin :</strong>
-        ${end}
-
-        ${
-          p.manager
-          ?
-          `<br>👷 <strong>Responsable :</strong>
-          ${escapeHTML(p.manager)}`
-          :
-          ""
-        }
-
-      </div>
-
-
-      ${
-        p.description
-        ?
-        `
-          <p
-            class="muted"
-            style="margin-top:12px">
-
-            ${escapeHTML(p.description)}
-
-          </p>
-        `
-        :
-        ""
-      }
-
-
-      <div class="project-actions">
-
-        <button
-          class="btn small"
-          onclick="useProject('${p.id}')">
-
-          Ouvrir
-
-        </button>
-
-        <button
-          class="btn danger small"
-          onclick="deleteProject(${p.id})">
-
-          Supprimer
-
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================
-   OUVRIR PROJET
-========================= */
-
-function useProject(id){
-
-  const p =
-    projects.find(
-      x => String(x.id) === String(id)
-    );
-
-  if(!p){
-    return;
-  }
-
-
-  project.value =
-    p.name;
-
-  client.value =
-    p.client;
-
-  alert(
-    "Le projet « "
-    + p.name
-    + " » a été sélectionné pour le devis."
-  );
-
-
-  goto("quote");
-
-}
-
-
-/* =========================
-   STATS PROJETS
-========================= */
-
-function updateProjectStats(){
-
-  const totalProjects =
-    projects.length;
-
-  const progressProjects =
-    projects.filter(
-      p => p.status === "progress"
-    ).length;
-
-
-  const dashProjectsEl =
-    document.getElementById("dashProjects");
-
-  const dashProgressEl =
-    document.getElementById("dashProgress");
-
-
-  if(dashProjectsEl){
-    dashProjectsEl.textContent =
-      totalProjects;
-  }
-
-  if(dashProgressEl){
-    dashProgressEl.textContent =
-      progressProjects;
-  }
-
-}
-
-
-/* =========================
-   DATE
-========================= */
-
-function formatDate(date){
-
-  const d =
-    new Date(date + "T00:00:00");
-
-  if(isNaN(d)){
-    return date;
-  }
-
-  return d.toLocaleDateString(
-    "fr-FR"
-  );
-
-}
-
-
-/* =========================
-   CALCULATEUR
-========================= */
-
-function calc(){
-
-  const length =
-    Number(L.value) || 0;
-
-  const width =
-    Number(W.value) || 0;
-
-  const height =
-    Number(H.value) || 0;
-
-  const volume =
-    length * width * height;
-
-
-  result.classList.remove("hide");
-
-
-  result.innerHTML = `
-
-    <h3 style="margin-top:0">
-      Résultat du calcul
-    </h3>
-
-    <p>
-      Élément :
-      <strong>
-        ${element.value}
-      </strong>
-    </p>
-
-    <p>
-      Volume :
-      <strong>
-        ${volume.toFixed(2)} m³
-      </strong>
-    </p>
-
-    <hr
-      style="border:0;border-top:1px solid #e3e9f2">
-
-    <p>
-      Estimation indicative :
-    </p>
-
-    <ul>
-
-      <li>
-        Ciment :
-        <strong>
-          ${(volume * 7.5).toFixed(1)}
-        </strong>
-        sacs
-      </li>
-
-      <li>
-        Sable :
-        <strong>
-          ${(volume * .5).toFixed(2)}
-        </strong>
-        m³
-      </li>
-
-      <li>
-        Gravier :
-        <strong>
-          ${(volume * .8).toFixed(2)}
-        </strong>
-        m³
-      </li>
-
-    </ul>
-
-    <small class="muted">
-      Valeurs de démonstration à valider selon le dosage,
-      les caractéristiques des matériaux et les normes applicables
-      au projet.
-    </small>
-
-  `;
-
-}
-
-
-/* =========================
-   DQE
-========================= */
-
-function add(){
-
-  const q =
-    Number(qty.value) || 0;
-
-  const p =
-    Number(pu.value) || 0;
-
-  const m =
-    q * p;
-
-
-  items.push({
-
-    n:item.value || "Poste BTP",
-
-    u:unit.value,
-
-    q:q,
-
-    p:p,
-
-    m:m
-
-  });
-
-
-  render();
-
-  item.value = "";
-
-}
-
-
-/* =========================
-   RENDU DQE
-========================= */
-
-function render(){
-
-  body.innerHTML =
-    items
-      .map(
-        (x,i) => `
-
-          <tr>
-
-            <td>
-              ${i+1}
-            </td>
-
-            <td>
-              ${escapeHTML(x.n)}
-            </td>
-
-            <td>
-              ${x.u}
-            </td>
-
-            <td>
-              ${x.q}
-            </td>
-
-            <td>
-              ${x.p.toLocaleString("fr-FR")}
-            </td>
-
-            <td>
-              ${x.m.toLocaleString("fr-FR")}
-              ${countries[countryName]}
-            </td>
-
-          </tr>
-
-        `
-      )
-      .join("");
-
-
-  sum =
-    items.reduce(
-      (a,x) => a + x.m,
-      0
-    );
-
-
-  total.textContent =
-    sum.toLocaleString("fr-FR")
-    + " "
-    + countries[countryName];
-
-
-  dashTotal.textContent =
-    sum.toLocaleString("fr-FR");
-
-}
-
-
-/* =========================
-   DEVIS
-========================= */
-
-function quote(){
-
-  const t =
-    Number(tax.value) || 0;
-
-  const vat =
-    sum * t / 100;
-
-  const ttc =
-    sum + vat;
-
-
-  preview.classList.remove("hide");
-
-
-  preview.innerHTML = `
-
-    <div class="quote-header">
-
-      <div>
-
-        <h2 style="margin:0 0 6px">
-          ${escapeHTML(company.value)}
-        </h2>
-
-        <div class="muted">
-          Devis professionnel BATIFLOW
-        </div>
-
-      </div>
-
-      <div class="right">
-
-        <strong>
-          DEVIS
-        </strong>
-
-        <div class="muted">
-          ${new Date().toLocaleDateString("fr-FR")}
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="row">
-
-      <div>
-
-        <p>
-
-          <strong>
-            Client
-          </strong>
-
-          <br>
-
-          ${escapeHTML(client.value || "—")}
-
-        </p>
-
-      </div>
-
-
-      <div>
-
-        <p>
-
-          <strong>
-            Projet
-          </strong>
-
-          <br>
-
-          ${escapeHTML(project.value || "—")}
-
-        </p>
-
-      </div>
-
-
-      <div>
-
-        <p>
-
-          <strong>
-            Pays
-          </strong>
-
-          <br>
-
-          ${countryName}
-
-        </p>
-
-      </div>
-
-
-      <div>
-
-        <p>
-
-          <strong>
-            Devise
-          </strong>
-
-          <br>
-
-          ${countries[countryName]}
-
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="tablewrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>
-              Désignation
-            </th>
-
-            <th>
-              Qté
-            </th>
-
-            <th>
-              PU
-            </th>
-
-            <th>
-              Montant
-            </th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody>
-
-          ${
-            items.length
-            ?
-            items
-              .map(
-                x => `
-
-                  <tr>
-
-                    <td>
-                      ${escapeHTML(x.n)}
-                    </td>
-
-                    <td>
-                      ${x.q} ${x.u}
-                    </td>
-
-                    <td>
-                      ${x.p.toLocaleString("fr-FR")}
-                    </td>
-
-                    <td>
-                      ${x.m.toLocaleString("fr-FR")}
-                    </td>
-
-                  </tr>
-
-                `
-              )
-              .join("")
-            :
-            `
-              <tr>
-
-                <td colspan="4">
-                  Aucun poste ajouté au DQE.
-                </td>
-
-              </tr>
-            `
-          }
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <div class="quote-total">
-
-      <p class="right">
-
-        <strong>
-
-          Total HT :
-          ${sum.toLocaleString("fr-FR")}
-          ${countries[countryName]}
-
-        </strong>
-
-        <br>
-
-        TVA :
-        ${vat.toLocaleString("fr-FR")}
-        ${countries[countryName]}
-
-        <br>
-
-        <strong style="font-size:18px">
-
-          Total TTC :
-          ${ttc.toLocaleString("fr-FR")}
-          ${countries[countryName]}
-
-        </strong>
-
-      </p>
-
-    </div>
-
-
-    <p class="muted">
-      Document généré avec BATIFLOW.
-    </p>
-
-  `;
-
-}
-
-
-/* =========================
-   PROTECTION HTML
-========================= */
-
-function escapeHTML(value){
-
-  return String(value)
-
-    .replaceAll("&","&amp;")
-
-    .replaceAll("<","&lt;")
-
-    .replaceAll(">","&gt;")
-
-    .replaceAll('"',"&quot;")
-
-    .replaceAll("'","&#039;");
-
-}
-
-
-/* =========================
-   INITIALISATION
-========================= */
-
-init();
-
-</script>
-
-</body>
-</html>
+      <div class="stat" id="
 ```
