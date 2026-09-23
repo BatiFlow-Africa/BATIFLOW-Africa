@@ -732,6 +732,9 @@ tr:last-child td{border-bottom:0}
     box-shadow:none;
   }
 }
+
+/* ================= ETAPE 11 - EQUIPES & MAIN D'OEUVRE ================= */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}.team-kpi{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px}.team-kpi small{display:block;color:#718096;font-size:11px;font-weight:700;text-transform:uppercase}.team-kpi strong{display:block;font-size:24px;margin-top:6px}.team-role{display:inline-block;padding:5px 9px;border-radius:999px;background:#eef4ff;color:#1d4ed8;font-size:11px;font-weight:700}.team-status{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:700}.team-status.active{background:#dcfce7;color:#166534}.team-status.pause{background:#fef3c7;color:#92400e}.team-status.inactive{background:#f3f4f6;color:#4b5563}.attendance-present{color:#166534;font-weight:700}.attendance-absent{color:#b91c1c;font-weight:700}.attendance-pending{color:#92400e;font-weight:700}.team-summary{display:flex;gap:18px;flex-wrap:wrap}.team-summary div{min-width:140px}.team-summary strong{display:block;font-size:18px;margin-top:4px}.team-table td{vertical-align:middle}.worker-actions{display:flex;gap:5px;flex-wrap:wrap}.assignment-card{border:1px solid #e5e7eb;border-radius:12px;padding:14px;margin-bottom:10px;background:#fff}.assignment-card h3{margin:0 0 7px}.assignment-meta{color:#718096;font-size:12px}.empty-team{padding:24px;text-align:center;color:#718096;background:#f8fafc;border-radius:12px}.cost-positive{color:#166534}.cost-negative{color:#b91c1c}.@media (max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 
@@ -830,6 +833,10 @@ tr:last-child td{border-bottom:0}
 
     <button class="nav-btn" onclick="showPage('tracking',this)">
       <span>📅</span><span class="nav-label">Suivi des chantiers</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('teams',this)">
+      <span>👷</span><span class="nav-label">Équipes & main-d'œuvre</span>
     </button>
 
     <button class="nav-btn" onclick="showPage('calculator',this)">
@@ -1797,6 +1804,12 @@ tr:last-child td{border-bottom:0}
 </div>
 
 
+<!-- ================= MODAL ETAPE 11 - WORKER ================= -->
+<div id="workerModal" class="modal"><div class="modal-box"><div class="modal-head"><h2 id="workerModalTitle">Nouveau membre</h2><button class="close" onclick="closeModal('workerModal')">×</button></div><input type="hidden" id="workerEditId"><div class="form-grid"><div class="form-group"><label>Nom complet</label><input id="workerName"></div><div class="form-group"><label>Téléphone</label><input id="workerPhone"></div><div class="form-group"><label>Métier</label><select id="workerRole"><option>Maçon</option><option>Ferrailleur</option><option>Coffreur</option><option>Électricien</option><option>Plombier</option><option>Peintre</option><option>Manœuvre</option><option>Technicien</option><option>Conducteur de travaux</option><option>Autre</option></select></div><div class="form-group"><label>Tarif journalier</label><input id="workerRate" type="number" min="0"></div><div class="form-group"><label>Statut</label><select id="workerStatus"><option value="active">Actif</option><option value="pause">En pause</option><option value="inactive">Inactif</option></select></div><div class="form-group"><label>Chantier principal</label><select id="workerProject"></select></div><div class="form-group full"><label>Note</label><textarea id="workerNote" placeholder="Compétences, spécialité, observations..."></textarea></div></div><div class="modal-actions"><button class="btn btn-light" onclick="closeModal('workerModal')">Annuler</button><button class="btn btn-primary" onclick="saveWorker()">Enregistrer</button></div></div></div>
+
+<!-- ================= MODAL AFFECTATION ETAPE 11 ================= -->
+<div id="assignmentModal" class="modal"><div class="modal-box"><div class="modal-head"><h2>Affecter à un chantier</h2><button class="close" onclick="closeModal('assignmentModal')">×</button></div><div class="form-grid"><div class="form-group"><label>Personnel</label><select id="assignmentWorker"></select></div><div class="form-group"><label>Chantier</label><select id="assignmentProject"></select></div><div class="form-group"><label>Date début</label><input id="assignmentStart" type="date"></div><div class="form-group"><label>Date fin</label><input id="assignmentEnd" type="date"></div><div class="form-group full"><label>Fonction sur le chantier</label><input id="assignmentRole" placeholder="Ex. Chef d'équipe ferraillage"></div></div><div class="modal-actions"><button class="btn btn-light" onclick="closeModal('assignmentModal')">Annuler</button><button class="btn btn-primary" onclick="saveAssignment()">Affecter</button></div></div></div>
+
 <!-- ================= MODAL PROJECT ================= -->
 <div id="projectModal" class="modal">
 
@@ -2240,6 +2253,9 @@ let stocks=load("batiflow_stock",[]);
 let movements=load("batiflow_movements",[]);
 let transactions=load("batiflow_transactions",[]);
 let trackingProjectId=localStorage.getItem("batiflow_tracking_project")||"";
+let workers=load("batiflow_workers",[]);
+let assignments=load("batiflow_assignments",[]);
+let attendance=load("batiflow_attendance",[]);
 
 let settings=load("batiflow_settings",{
   country:"Togo",
@@ -2382,6 +2398,7 @@ function showPage(page,button){
   }
   if(page==="finance") renderFinance();
   if(page==="profitability") renderProfitability();
+  if(page==="teams") initTeams();
 }
 
 function capitalize(s){
@@ -2764,6 +2781,52 @@ function addPhoto(){const p=getTrackingProject(),file=document.getElementById("p
 function deletePhoto(id){const p=getTrackingProject();p.photos=(p.photos||[]).filter(x=>x.id!==id);saveProjectTracking(p);}
 function renderPhotos(){const p=getTrackingProject(),box=document.getElementById("photoGrid");if(!box||!p)return;const list=p.photos||[];box.innerHTML=list.length?list.map(x=>`<div class="photo-card"><img src="${x.src}" alt="Photo chantier"><div class="photo-meta"><b>${escapeHTML(x.caption||"Photo chantier")}</b><br>${escapeHTML(x.date||"")}<br><button class="btn btn-danger btn-small" style="margin-top:6px" onclick="deletePhoto('${x.id}')">Supprimer</button></div></div>`).join(""): '<div class="empty" style="grid-column:1/-1">Aucune photo.</div>';}
 function renderTrackingFinance(){const p=getTrackingProject(),f=getProjectFinance(p.id);setText("trackingRevenue",money(f.revenue));setText("trackingExpenses",money(f.expenses));setText("trackingProfit2",money(f.profit));document.getElementById("trackingFinanceDetails").innerHTML=`<div class="project-profit"><div class="profit-box"><small>Budget prévu</small><strong>${money(p.budget)}</strong></div><div class="profit-box"><small>Recettes</small><strong>${money(f.revenue)}</strong></div><div class="profit-box"><small>Dépenses</small><strong>${money(f.expenses)}</strong></div><div class="profit-box"><small>Bénéfice</small><strong class="${f.profit>=0?'margin-positive':'margin-negative'}">${money(f.profit)}</strong></div><div class="profit-box"><small>Marge</small><strong>${f.margin.toFixed(1)}%</strong></div></div>`;}
+
+/* ================= ETAPE 11 - EQUIPES & MAIN-D'OEUVRE ================= */
+function initTeams(){
+  const d=document.getElementById("attendanceDate"); if(d && !d.value)d.value=today();
+  populateTeamProjectFilters();
+  renderTeams(); renderAssignments(); renderAttendance(); renderProjectLaborCosts();
+}
+function populateTeamProjectFilters(){
+  const opts='<option value="">Tous les chantiers</option>'+projects.map(p=>`<option value="${p.id}">${escapeHTML(p.name)}</option>`).join("");
+  const f=document.getElementById("workerProjectFilter"); if(f){const old=f.value;f.innerHTML=opts;f.value=projects.some(p=>p.id===old)?old:"";}
+  const projectSelects=[document.getElementById("workerProject"),document.getElementById("assignmentProject")];
+  projectSelects.forEach(sel=>{if(sel){const old=sel.value;sel.innerHTML='<option value="">Aucun chantier</option>'+projects.map(p=>`<option value="${p.id}">${escapeHTML(p.name)}</option>`).join("");if(projects.some(p=>p.id===old))sel.value=old;}});
+}
+function workerName(id){return workers.find(w=>w.id===id)?.name||"Personnel";}
+function projectName(id){return projects.find(p=>p.id===id)?.name||"Sans chantier";}
+function openWorkerModal(id=""){
+  populateTeamProjectFilters(); document.getElementById("workerEditId").value=id;
+  if(!id){document.getElementById("workerModalTitle").textContent="Nouveau membre";["workerName","workerPhone","workerRate","workerNote"].forEach(x=>document.getElementById(x).value="");document.getElementById("workerRole").value="Maçon";document.getElementById("workerStatus").value="active";document.getElementById("workerProject").value="";}
+  else{const w=workers.find(x=>x.id===id);if(!w)return;document.getElementById("workerModalTitle").textContent="Modifier le membre";document.getElementById("workerName").value=w.name||"";document.getElementById("workerPhone").value=w.phone||"";document.getElementById("workerRole").value=w.role||"Maçon";document.getElementById("workerRate").value=w.rate||0;document.getElementById("workerStatus").value=w.status||"active";document.getElementById("workerProject").value=w.projectId||"";document.getElementById("workerNote").value=w.note||"";}
+  openModal("workerModal");
+}
+function saveWorker(){
+  const id=document.getElementById("workerEditId").value; const old=id?workers.find(w=>w.id===id):null;
+  const data={id:id||uid(),name:document.getElementById("workerName").value.trim(),phone:document.getElementById("workerPhone").value.trim(),role:document.getElementById("workerRole").value,rate:Number(document.getElementById("workerRate").value||0),status:document.getElementById("workerStatus").value,projectId:document.getElementById("workerProject").value,note:document.getElementById("workerNote").value.trim(),createdAt:old?.createdAt||today()};
+  if(!data.name){alert("Saisissez le nom du membre.");return;} if(id){const i=workers.findIndex(w=>w.id===id);if(i>=0)workers[i]=data;}else workers.push(data);save("batiflow_workers",workers);closeModal("workerModal");renderTeams();renderAssignments();renderAttendance();renderProjectLaborCosts();
+}
+function deleteWorker(id){if(!confirm("Supprimer ce membre ?"))return;workers=workers.filter(w=>w.id!==id);assignments=assignments.filter(a=>a.workerId!==id);attendance=attendance.filter(a=>a.workerId!==id);save("batiflow_workers",workers);save("batiflow_assignments",assignments);save("batiflow_attendance",attendance);renderTeams();renderAssignments();renderAttendance();renderProjectLaborCosts();}
+function renderTeams(){
+  const q=(document.getElementById("workerSearch")?.value||"").toLowerCase(); const pf=document.getElementById("workerProjectFilter")?.value||""; const rf=document.getElementById("workerRoleFilter")?.value||"";
+  const list=workers.filter(w=>(!q||[w.name,w.role,w.phone].join(" ").toLowerCase().includes(q))&&(!pf||w.projectId===pf)&&(!rf||w.role===rf));
+  setText("teamTotalWorkers",workers.length);setText("teamActiveWorkers",workers.filter(w=>w.status==="active").length);setText("teamAssignedWorkers",workers.filter(w=>w.projectId||assignments.some(a=>a.workerId===w.id)).length);setText("teamMonthlyCost",money(monthLaborCost()));
+  const tbody=document.getElementById("workersTable");if(!tbody)return;tbody.innerHTML=list.length?list.map(w=>{const st=w.status==="active"?"Actif":w.status==="pause"?"En pause":"Inactif";return `<tr><td><b>${escapeHTML(w.name)}</b><br><small>${escapeHTML(w.phone||"")}</small></td><td><span class="team-role">${escapeHTML(w.role)}</span></td><td>${escapeHTML(projectName(w.projectId))}</td><td>${money(w.rate)}</td><td><span class="team-status ${w.status}">${st}</span></td><td><div class="worker-actions"><button class="btn btn-light btn-small" onclick="openWorkerModal('${w.id}')">Modifier</button><button class="btn btn-danger btn-small" onclick="deleteWorker('${w.id}')">Supprimer</button></div></td></tr>`}).join(""):'<tr><td colspan="6" class="empty-team">Aucun membre trouvé.</td></tr>';
+}
+function openAssignmentModal(){
+  if(!workers.length||!projects.length){alert("Ajoutez au moins un membre et un chantier avant de créer une affectation.");return;}
+  const ws=document.getElementById("assignmentWorker"),ps=document.getElementById("assignmentProject");ws.innerHTML=workers.map(w=>`<option value="${w.id}">${escapeHTML(w.name)} — ${escapeHTML(w.role)}</option>`).join("");ps.innerHTML=projects.map(p=>`<option value="${p.id}">${escapeHTML(p.name)}</option>`).join("");document.getElementById("assignmentStart").value=today();document.getElementById("assignmentEnd").value="";document.getElementById("assignmentRole").value="";openModal("assignmentModal");
+}
+function saveAssignment(){const workerId=document.getElementById("assignmentWorker").value,projectId=document.getElementById("assignmentProject").value;if(!workerId||!projectId)return;assignments.push({id:uid(),workerId,projectId,start:document.getElementById("assignmentStart").value||today(),end:document.getElementById("assignmentEnd").value||"",role:document.getElementById("assignmentRole").value.trim()});save("batiflow_assignments",assignments);const w=workers.find(x=>x.id===workerId);if(w){w.projectId=projectId;save("batiflow_workers",workers);}closeModal("assignmentModal");renderTeams();renderAssignments();renderAttendance();renderProjectLaborCosts();}
+function deleteAssignment(id){assignments=assignments.filter(a=>a.id!==id);save("batiflow_assignments",assignments);renderAssignments();renderTeams();renderProjectLaborCosts();}
+function renderAssignments(){const box=document.getElementById("assignmentsList");if(!box)return;const list=[...assignments].reverse();box.innerHTML=list.length?list.map(a=>`<div class="assignment-card"><h3>${escapeHTML(workerName(a.workerId))} → ${escapeHTML(projectName(a.projectId))}</h3><div class="assignment-meta">${escapeHTML(a.role||"Équipe chantier")} • ${escapeHTML(a.start||"—")} → ${escapeHTML(a.end||"En cours")}</div><button class="btn btn-danger btn-small" style="margin-top:8px" onclick="deleteAssignment('${a.id}')">Retirer</button></div>`).join(""):'<div class="empty-team">Aucune affectation.</div>';}
+function attendanceFor(workerId,date){return attendance.find(a=>a.workerId===workerId&&a.date===date);}
+function renderAttendance(){const box=document.getElementById("attendanceTable");if(!box)return;const date=document.getElementById("attendanceDate")?.value||today();box.innerHTML=workers.length?workers.map(w=>{const a=attendanceFor(w.id,date);const present=a?.present??false;const hours=a?.hours??8;const cost=present?(w.rate||0):0;return `<tr><td><b>${escapeHTML(w.name)}</b><br><small>${escapeHTML(w.role)}</small></td><td>${escapeHTML(projectName(w.projectId||assignments.find(x=>x.workerId===w.id)?.projectId))}</td><td><select data-att="present" data-worker="${w.id}"><option value="1" ${present?'selected':''}>Présent</option><option value="0" ${!present?'selected':''}>Absent</option></select></td><td><input data-att="hours" data-worker="${w.id}" type="number" min="0" max="24" step="0.5" value="${hours}" style="width:80px"></td><td>${money(w.rate)}</td><td class="${present?'cost-positive':''}">${money(cost)}</td></tr>`}).join(""):'<tr><td colspan="6" class="empty-team">Aucun personnel.</td></tr>';}
+function saveAttendance(){const date=document.getElementById("attendanceDate")?.value||today();document.querySelectorAll('[data-att="present"]').forEach(sel=>{const id=sel.dataset.worker;const hoursEl=document.querySelector(`[data-att="hours"][data-worker="${id}"]`);const present=sel.value==="1";const hours=Number(hoursEl?.value||0);const i=attendance.findIndex(a=>a.workerId===id&&a.date===date);const item={id:i>=0?attendance[i].id:uid(),workerId:id,date,present,hours};if(i>=0)attendance[i]=item;else attendance.push(item);});save("batiflow_attendance",attendance);renderAttendance();renderTeams();renderProjectLaborCosts();alert("Présences enregistrées.");}
+function laborCostForProject(projectId){return attendance.reduce((sum,a)=>{const w=workers.find(x=>x.id===a.workerId);const pid=w?.projectId||assignments.find(x=>x.workerId===a.workerId&&(!x.end||a.date<=x.end)&&(!x.start||a.date>=x.start))?.projectId;return sum+(pid===projectId&&a.present?(w?.rate||0):0)},0);}
+function monthLaborCost(){const d=new Date(),ym=d.toISOString().slice(0,7);return attendance.reduce((sum,a)=>{const w=workers.find(x=>x.id===a.workerId);return sum+(a.present&&a.date?.startsWith(ym)?(w?.rate||0):0)},0);}
+function renderProjectLaborCosts(){const box=document.getElementById("teamProjectCosts");if(!box)return;const rows=projects.map(p=>{const ws=workers.filter(w=>w.projectId===p.id||assignments.some(a=>a.workerId===w.id&&a.projectId===p.id));const rec=attendance.filter(a=>{const w=workers.find(x=>x.id===a.workerId);const pid=w?.projectId||assignments.find(x=>x.workerId===a.workerId&&(!x.end||a.date<=x.end)&&(!x.start||a.date>=x.start))?.projectId;return pid===p.id&&a.present});const cost=rec.reduce((s,a)=>s+(workers.find(w=>w.id===a.workerId)?.rate||0),0);return `<tr><td><b>${escapeHTML(p.name)}</b></td><td>${ws.length}</td><td>${rec.length}</td><td class="cost-positive">${money(cost)}</td><td>${money(p.budget)}</td></tr>`});box.innerHTML=rows.length?rows.join(""):'<tr><td colspan="5" class="empty-team">Aucun chantier.</td></tr>';}
 
 /* ================= CALCULATEUR ================= */
 
@@ -3936,6 +3999,7 @@ function initApp(){
   renderMovements();
   renderFinance();
   renderProfitability();
+  initTeams();
 
   populateClientSelects();
   populateProjectSelects();
