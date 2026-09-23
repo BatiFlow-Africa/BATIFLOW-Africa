@@ -649,6 +649,19 @@ tr:last-child td{border-bottom:0}
   margin-top:20px;
 }
 
+
+/* ================= ETAPE 10 ================= */
+.tracking-hero{background:linear-gradient(135deg,#0b1f3a,#1769aa);color:#fff;border-radius:17px;padding:25px;margin-bottom:20px}
+.tracking-hero h2{margin:0 0 6px}.tracking-hero p{margin:0;color:#d6e4f3;font-size:13px}
+.progress-big{height:18px;background:#dce7f2;border-radius:30px;overflow:hidden;margin:14px 0 8px}.progress-big .progress-bar{background:var(--gold)}
+.tracking-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}.tracking-tab{border:0;background:#eef3f8;color:var(--navy);padding:10px 14px;border-radius:9px;font-weight:700}.tracking-tab.active{background:var(--navy);color:#fff}
+.tracking-pane{display:none}.tracking-pane.active{display:block}
+.kpi-mini{background:#f7f9fc;border:1px solid var(--border);border-radius:12px;padding:15px}.kpi-mini small{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}.kpi-mini strong{font-size:20px}
+.timeline-item{border-left:3px solid var(--blue2);padding:0 0 16px 15px;margin-left:5px}.timeline-item:last-child{padding-bottom:0}.timeline-date{font-size:11px;color:var(--muted);font-weight:700}.task-done{text-decoration:line-through;color:var(--muted)}
+.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.photo-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}.photo-card img{width:100%;height:140px;object-fit:cover;display:block}.photo-card .photo-meta{padding:9px;font-size:11px}
+.status-good{color:var(--green);font-weight:900}.status-late{color:var(--red);font-weight:900}.status-early{color:var(--blue);font-weight:900}
+@media(max-width:800px){.photo-grid{grid-template-columns:1fr 1fr}}
+
 /* RESPONSIVE */
 @media(max-width:1100px){
   .stats{grid-template-columns:repeat(2,1fr)}
@@ -813,6 +826,10 @@ tr:last-child td{border-bottom:0}
 
     <button class="nav-btn" onclick="showPage('projects',this)">
       <span>🏗️</span><span class="nav-label">Projets / Chantiers</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('tracking',this)">
+      <span>📅</span><span class="nav-label">Suivi des chantiers</span>
     </button>
 
     <button class="nav-btn" onclick="showPage('calculator',this)">
@@ -1072,6 +1089,93 @@ tr:last-child td{border-bottom:0}
 
       </section>
 
+
+      <!-- ================= SUIVI DES CHANTIERS ETAPE 10 ================= -->
+      <section id="pageTracking" class="page">
+        <div class="page-head">
+          <div><h1>📅 Suivi des chantiers</h1><p>Pilotage de l'avancement, journal, tâches, photos et finances.</p></div>
+          <div class="actions"><button class="btn btn-primary" onclick="openProjectModal()">+ Nouveau chantier</button></div>
+        </div>
+
+        <div class="card no-print">
+          <div class="form-group" style="margin:0">
+            <label>Sélectionner un chantier</label>
+            <select id="trackingProjectSelect" onchange="selectTrackingProject(this.value)"></select>
+          </div>
+        </div>
+
+        <div id="trackingEmpty" class="card empty">Créez ou sélectionnez un chantier pour afficher sa fiche de pilotage.</div>
+        <div id="trackingContent" class="hidden">
+          <div class="tracking-hero">
+            <h2 id="trackingProjectName">—</h2>
+            <p id="trackingProjectMeta">—</p>
+            <div class="progress-big"><div id="trackingProgressBar" class="progress-bar" style="width:0%"></div></div>
+            <strong id="trackingProgressText">0 %</strong>
+          </div>
+
+          <div class="stats">
+            <div class="kpi-mini"><small>ÉTAPE ACTUELLE</small><strong id="trackingStage">—</strong></div>
+            <div class="kpi-mini"><small>ÉCART PLANNING</small><strong id="trackingSchedule">—</strong></div>
+            <div class="kpi-mini"><small>BÉNÉFICE ACTUEL</small><strong id="trackingProfit">0</strong></div>
+            <div class="kpi-mini"><small>MARGE</small><strong id="trackingMargin">0 %</strong></div>
+          </div>
+
+          <div class="tracking-tabs no-print">
+            <button class="tracking-tab active" onclick="openTrackingTab('overview',this)">Vue générale</button>
+            <button class="tracking-tab" onclick="openTrackingTab('progress',this)">Avancement</button>
+            <button class="tracking-tab" onclick="openTrackingTab('journal',this)">Journal</button>
+            <button class="tracking-tab" onclick="openTrackingTab('tasks',this)">Tâches</button>
+            <button class="tracking-tab" onclick="openTrackingTab('photos',this)">Photos</button>
+            <button class="tracking-tab" onclick="openTrackingTab('finances',this)">Finances</button>
+          </div>
+
+          <div id="trackingPaneOverview" class="tracking-pane active">
+            <div class="grid-2">
+              <div class="card"><div class="card-title"><h2>📌 Informations chantier</h2></div><div id="trackingOverviewInfo"></div></div>
+              <div class="card"><div class="card-title"><h2>💰 Situation financière</h2></div><div id="trackingOverviewFinance"></div></div>
+            </div>
+            <div class="card"><div class="card-title"><h2>⚠️ Problèmes / observations</h2><button class="btn btn-light btn-small" onclick="editTrackingProject()">Modifier</button></div><div id="trackingObservations">Aucune observation.</div></div>
+          </div>
+
+          <div id="trackingPaneProgress" class="tracking-pane">
+            <div class="card">
+              <div class="card-title"><h2>📊 Mise à jour de l'avancement</h2></div>
+              <div class="form-grid">
+                <div class="form-group"><label>Pourcentage d'avancement (%)</label><input id="trackingProgressInput" type="number" min="0" max="100" step="1"></div>
+                <div class="form-group"><label>Étape actuelle</label><select id="trackingStageInput"><option>Préparation</option><option>Terrassement</option><option>Fondations</option><option>Élévation</option><option>Gros œuvre</option><option>Toiture</option><option>Second œuvre</option><option>Finitions</option><option>Réception</option></select></div>
+              </div>
+              <button class="btn btn-primary" onclick="saveTrackingProgress()">Enregistrer l'avancement</button>
+            </div>
+          </div>
+
+          <div id="trackingPaneJournal" class="tracking-pane">
+            <div class="card">
+              <div class="card-title"><h2>📝 Journal des travaux</h2></div>
+              <div class="form-grid"><div class="form-group"><label>Date</label><input id="journalDate" type="date"></div><div class="form-group"><label>Responsable / auteur</label><input id="journalAuthor"></div><div class="form-group full"><label>Compte rendu</label><textarea id="journalText" placeholder="Travaux réalisés, météo, effectif, difficultés..."></textarea></div></div>
+              <button class="btn btn-primary" onclick="addJournalEntry()">+ Ajouter au journal</button>
+            </div>
+            <div class="card"><div class="card-title"><h2>Historique</h2></div><div id="journalList"></div></div>
+          </div>
+
+          <div id="trackingPaneTasks" class="tracking-pane">
+            <div class="card">
+              <div class="card-title"><h2>✅ Tâches du chantier</h2></div>
+              <div class="form-grid"><div class="form-group"><label>Tâche</label><input id="taskText" placeholder="Ex. Ferraillage dalle RDC"></div><div class="form-group"><label>Échéance</label><input id="taskDue" type="date"></div></div>
+              <button class="btn btn-primary" onclick="addTask()">+ Ajouter une tâche</button>
+            </div>
+            <div class="card"><div class="table-wrap"><table><thead><tr><th>Tâche</th><th>Échéance</th><th>État</th><th>Action</th></tr></thead><tbody id="taskList"></tbody></table></div></div>
+          </div>
+
+          <div id="trackingPanePhotos" class="tracking-pane">
+            <div class="card"><div class="card-title"><h2>📸 Photos du chantier</h2></div><div class="form-grid"><div class="form-group"><label>Photo</label><input id="photoFile" type="file" accept="image/*"></div><div class="form-group"><label>Légende</label><input id="photoCaption" placeholder="Ex. Ferraillage avant coulage"></div></div><button class="btn btn-primary" onclick="addPhoto()">+ Ajouter la photo</button><p style="font-size:11px;color:#718096;margin-top:10px">Les photos sont stockées localement dans ce prototype.</p></div><div class="card"><div id="photoGrid" class="photo-grid"></div></div>
+          </div>
+
+          <div id="trackingPaneFinances" class="tracking-pane">
+            <div class="grid-3"><div class="card"><div class="stat-label">RECETTES</div><div id="trackingRevenue" class="stat-value"></div></div><div class="card"><div class="stat-label">DÉPENSES</div><div id="trackingExpenses" class="stat-value"></div></div><div class="card"><div class="stat-label">BÉNÉFICE</div><div id="trackingProfit2" class="stat-value"></div></div></div>
+            <div class="card"><div class="card-title"><h2>📊 Rentabilité liée à l'Étape 9</h2></div><div id="trackingFinanceDetails"></div></div>
+          </div>
+        </div>
+      </section>
 
       <!-- ================= CALCULATOR ================= -->
       <section id="pageCalculator" class="page">
@@ -1768,6 +1872,9 @@ tr:last-child td{border-bottom:0}
 </div>
 
 
+<!-- ================= MODAL SUIVI / EXTENSION PROJET ETAPE 10 ================= -->
+<div id="trackingProjectModal" class="modal"><div class="modal-box"><div class="modal-head"><h2>Informations de pilotage</h2><button class="close" onclick="closeModal('trackingProjectModal')">×</button></div><div class="form-grid"><div class="form-group"><label>Avancement (%)</label><input id="quickProgress" type="number" min="0" max="100"></div><div class="form-group"><label>Étape actuelle</label><select id="quickStage"><option>Préparation</option><option>Terrassement</option><option>Fondations</option><option>Élévation</option><option>Gros œuvre</option><option>Toiture</option><option>Second œuvre</option><option>Finitions</option><option>Réception</option></select></div><div class="form-group full"><label>Problèmes / observations</label><textarea id="quickObservations"></textarea></div></div><div class="modal-actions"><button class="btn btn-light" onclick="closeModal('trackingProjectModal')">Annuler</button><button class="btn btn-primary" onclick="saveQuickTracking()">Enregistrer</button></div></div></div>
+
 <!-- ================= MODAL DQE ================= -->
 <div id="dqeModal" class="modal">
 
@@ -2132,6 +2239,7 @@ let dqe=load("batiflow_dqe",[]);
 let stocks=load("batiflow_stock",[]);
 let movements=load("batiflow_movements",[]);
 let transactions=load("batiflow_transactions",[]);
+let trackingProjectId=localStorage.getItem("batiflow_tracking_project")||"";
 
 let settings=load("batiflow_settings",{
   country:"Togo",
@@ -2232,6 +2340,7 @@ const pageTitles={
   dashboard:"Tableau de bord",
   clients:"Clients",
   projects:"Projets / Chantiers",
+  tracking:"Suivi des chantiers",
   calculator:"Calculateur BTP",
   dqe:"DQE",
   quotes:"Devis",
@@ -2263,6 +2372,7 @@ function showPage(page,button){
   if(page==="dashboard") updateDashboard();
   if(page==="clients") renderClients();
   if(page==="projects") renderProjects();
+  if(page==="tracking") initTrackingPage();
   if(page==="dqe") renderDqe();
   if(page==="quotes") populateQuoteClients();
   if(page==="materials") renderMaterials();
@@ -2528,7 +2638,13 @@ function saveProject(){
     end:document.getElementById("projectEnd").value,
     status:document.getElementById("projectStatus").value,
     manager:document.getElementById("projectManager").value.trim(),
-    description:document.getElementById("projectDescription").value.trim()
+    description:document.getElementById("projectDescription").value.trim(),
+    progress:id ? (projects.find(x=>x.id===id)?.progress||0) : 0,
+    stage:id ? (projects.find(x=>x.id===id)?.stage||document.getElementById("projectStatus").value) : "Préparation",
+    observations:id ? (projects.find(x=>x.id===id)?.observations||"") : "",
+    journal:id ? (projects.find(x=>x.id===id)?.journal||[]) : [],
+    tasks:id ? (projects.find(x=>x.id===id)?.tasks||[]) : [],
+    photos:id ? (projects.find(x=>x.id===id)?.photos||[]) : []
   };
 
   if(!data.name){
@@ -2578,6 +2694,7 @@ function renderProjects(){
       <td>${money(p.budget)}</td>
       <td><span class="badge badge-blue">${escapeHTML(p.status)}</span></td>
       <td>
+        <button class="btn btn-blue btn-small" onclick="openTracking('${p.id}')">Suivi</button>
         <button class="btn btn-light btn-small" onclick="openProjectModal('${p.id}')">Modifier</button>
         <button class="btn btn-danger btn-small" onclick="deleteProject('${p.id}')">Supprimer</button>
       </td>
@@ -2591,6 +2708,7 @@ function deleteProject(id){
   if(!confirm("Supprimer ce chantier ?"))return;
 
   projects=projects.filter(x=>x.id!==id);
+  if(trackingProjectId===id){trackingProjectId="";localStorage.removeItem("batiflow_tracking_project");}
 
   save("batiflow_projects",projects);
 
@@ -2599,6 +2717,53 @@ function deleteProject(id){
   updateDashboard();
 }
 
+
+/* ================= ETAPE 10 - PILOTAGE ================= */
+function getTrackingProject(){ return projects.find(p=>p.id===trackingProjectId)||null; }
+function initTrackingPage(){
+  const sel=document.getElementById("trackingProjectSelect"); if(!sel)return;
+  sel.innerHTML='<option value="">— Choisir un chantier —</option>'+projects.map(p=>`<option value="${p.id}">${escapeHTML(p.name)}</option>`).join("");
+  if(!trackingProjectId || !projects.some(p=>p.id===trackingProjectId)) trackingProjectId=projects[0]?.id||"";
+  sel.value=trackingProjectId; renderTracking();
+}
+function openTracking(id){ trackingProjectId=id; localStorage.setItem("batiflow_tracking_project",id); const btn=[...document.querySelectorAll('.nav-btn')].find(b=>b.textContent.includes('Suivi des chantiers')); showPage('tracking',btn); }
+function selectTrackingProject(id){ trackingProjectId=id; localStorage.setItem("batiflow_tracking_project",id); renderTracking(); }
+function dateObj(v){const d=new Date(v+"T00:00:00");return isNaN(d)?null:d;}
+function scheduleInfo(p){
+  const start=dateObj(p.start), end=dateObj(p.end), now=new Date(); if(!start||!end||end<=start)return {text:"Dates non définies",cls:""};
+  const total=end-start, elapsed=Math.max(0,Math.min(1,(now-start)/total))*100; const diff=Number(p.progress||0)-elapsed;
+  if(Math.abs(diff)<5)return {text:"Dans les temps",cls:"status-good"};
+  return diff>0?{text:`En avance de ${Math.round(diff)} %`,cls:"status-early"}:{text:`En retard de ${Math.round(Math.abs(diff))} %`,cls:"status-late"};
+}
+function renderTracking(){
+  const p=getTrackingProject(); const empty=document.getElementById("trackingEmpty"), content=document.getElementById("trackingContent");
+  if(!p){empty.classList.remove("hidden");content.classList.add("hidden");return;} empty.classList.add("hidden");content.classList.remove("hidden");
+  const f=getProjectFinance(p.id), prog=Math.max(0,Math.min(100,Number(p.progress||0))), sch=scheduleInfo(p);
+  setText("trackingProjectName",p.name); setText("trackingProjectMeta",`${p.location||"Localisation —"} • Responsable : ${p.manager||"—"} • ${p.start||"—"} → ${p.end||"—"}`);
+  document.getElementById("trackingProgressBar").style.width=prog+"%"; setText("trackingProgressText",prog+" %"); setText("trackingStage",p.stage||p.status||"—");
+  const el=document.getElementById("trackingSchedule"); el.textContent=sch.text; el.className=sch.cls; setText("trackingProfit",money(f.profit)); setText("trackingMargin",f.margin.toFixed(1)+" %");
+  document.getElementById("trackingOverviewInfo").innerHTML=`<p><b>Client :</b> ${escapeHTML(clientName(p.clientId))}</p><p><b>Budget :</b> ${money(p.budget)}</p><p><b>Début :</b> ${escapeHTML(p.start||"—")}</p><p><b>Fin prévue :</b> ${escapeHTML(p.end||"—")}</p><p><b>Avancement :</b> ${prog}%</p><p><b>Étape :</b> ${escapeHTML(p.stage||p.status||"—")}</p>`;
+  document.getElementById("trackingOverviewFinance").innerHTML=`<p><b>Recettes :</b> ${money(f.revenue)}</p><p><b>Dépenses :</b> ${money(f.expenses)}</p><p><b>Bénéfice :</b> <span class="${f.profit>=0?'margin-positive':'margin-negative'}">${money(f.profit)}</span></p><p><b>Marge :</b> ${f.margin.toFixed(1)}%</p>`;
+  document.getElementById("trackingObservations").textContent=p.observations||"Aucune observation.";
+  document.getElementById("trackingProgressInput").value=prog; document.getElementById("trackingStageInput").value=p.stage||"Préparation";
+  renderJournal(); renderTasks(); renderPhotos(); renderTrackingFinance();
+}
+function saveProjectTracking(p){save("batiflow_projects",projects);renderTracking();renderProjects();updateDashboard();}
+function saveTrackingProgress(){const p=getTrackingProject();if(!p)return;p.progress=Math.max(0,Math.min(100,Number(document.getElementById("trackingProgressInput").value||0)));p.stage=document.getElementById("trackingStageInput").value;saveProjectTracking(p);alert("Avancement enregistré.");}
+function editTrackingProject(){const p=getTrackingProject();if(!p)return;document.getElementById("quickProgress").value=p.progress||0;document.getElementById("quickStage").value=p.stage||"Préparation";document.getElementById("quickObservations").value=p.observations||"";openModal("trackingProjectModal");}
+function saveQuickTracking(){const p=getTrackingProject();if(!p)return;p.progress=Math.max(0,Math.min(100,Number(document.getElementById("quickProgress").value||0)));p.stage=document.getElementById("quickStage").value;p.observations=document.getElementById("quickObservations").value.trim();saveProjectTracking(p);closeModal("trackingProjectModal");}
+function openTrackingTab(name,btn){document.querySelectorAll(".tracking-tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".tracking-pane").forEach(x=>x.classList.remove("active"));btn.classList.add("active");document.getElementById("trackingPane"+capitalize(name)).classList.add("active");}
+function addJournalEntry(){const p=getTrackingProject();if(!p)return;const text=document.getElementById("journalText").value.trim();if(!text){alert("Saisissez un compte rendu.");return;}p.journal=p.journal||[];p.journal.unshift({id:uid(),date:document.getElementById("journalDate").value||today(),author:document.getElementById("journalAuthor").value.trim(),text});document.getElementById("journalText").value="";saveProjectTracking(p);}
+function renderJournal(){const p=getTrackingProject(),box=document.getElementById("journalList");if(!box||!p)return;const list=p.journal||[];box.innerHTML=list.length?list.map(x=>`<div class="timeline-item"><div class="timeline-date">${escapeHTML(x.date)} • ${escapeHTML(x.author||"Équipe")}</div><div style="margin-top:5px">${escapeHTML(x.text)}</div><button class="btn btn-danger btn-small" style="margin-top:7px" onclick="deleteJournal('${x.id}')">Supprimer</button></div>`).join(""): '<div class="empty">Aucune entrée dans le journal.</div>';}
+function deleteJournal(id){const p=getTrackingProject();p.journal=(p.journal||[]).filter(x=>x.id!==id);saveProjectTracking(p);}
+function addTask(){const p=getTrackingProject(),text=document.getElementById("taskText").value.trim();if(!text)return; p.tasks=p.tasks||[];p.tasks.push({id:uid(),text,due:document.getElementById("taskDue").value||"",done:false});document.getElementById("taskText").value="";document.getElementById("taskDue").value="";saveProjectTracking(p);}
+function toggleTask(id){const p=getTrackingProject();const t=(p.tasks||[]).find(x=>x.id===id);if(t)t.done=!t.done;saveProjectTracking(p);}
+function deleteTask(id){const p=getTrackingProject();p.tasks=(p.tasks||[]).filter(x=>x.id!==id);saveProjectTracking(p);}
+function renderTasks(){const p=getTrackingProject(),tbody=document.getElementById("taskList");if(!tbody||!p)return;const list=p.tasks||[];tbody.innerHTML=list.length?list.map(x=>`<tr><td class="${x.done?'task-done':''}">${escapeHTML(x.text)}</td><td>${escapeHTML(x.due||"—")}</td><td>${x.done?'<span class="badge badge-green">Terminée</span>':'<span class="badge badge-orange">À faire</span>'}</td><td><button class="btn btn-success btn-small" onclick="toggleTask('${x.id}')">${x.done?'Rouvrir':'Terminer'}</button> <button class="btn btn-danger btn-small" onclick="deleteTask('${x.id}')">Supprimer</button></td></tr>`).join(""):'<tr><td colspan="4" class="empty">Aucune tâche.</td></tr>';}
+function addPhoto(){const p=getTrackingProject(),file=document.getElementById("photoFile").files[0];if(!file){alert("Choisissez une photo.");return;}const reader=new FileReader();reader.onload=()=>{p.photos=p.photos||[];p.photos.unshift({id:uid(),src:reader.result,caption:document.getElementById("photoCaption").value.trim(),date:today()});document.getElementById("photoFile").value="";document.getElementById("photoCaption").value="";saveProjectTracking(p);};reader.readAsDataURL(file);}
+function deletePhoto(id){const p=getTrackingProject();p.photos=(p.photos||[]).filter(x=>x.id!==id);saveProjectTracking(p);}
+function renderPhotos(){const p=getTrackingProject(),box=document.getElementById("photoGrid");if(!box||!p)return;const list=p.photos||[];box.innerHTML=list.length?list.map(x=>`<div class="photo-card"><img src="${x.src}" alt="Photo chantier"><div class="photo-meta"><b>${escapeHTML(x.caption||"Photo chantier")}</b><br>${escapeHTML(x.date||"")}<br><button class="btn btn-danger btn-small" style="margin-top:6px" onclick="deletePhoto('${x.id}')">Supprimer</button></div></div>`).join(""): '<div class="empty" style="grid-column:1/-1">Aucune photo.</div>';}
+function renderTrackingFinance(){const p=getTrackingProject(),f=getProjectFinance(p.id);setText("trackingRevenue",money(f.revenue));setText("trackingExpenses",money(f.expenses));setText("trackingProfit2",money(f.profit));document.getElementById("trackingFinanceDetails").innerHTML=`<div class="project-profit"><div class="profit-box"><small>Budget prévu</small><strong>${money(p.budget)}</strong></div><div class="profit-box"><small>Recettes</small><strong>${money(f.revenue)}</strong></div><div class="profit-box"><small>Dépenses</small><strong>${money(f.expenses)}</strong></div><div class="profit-box"><small>Bénéfice</small><strong class="${f.profit>=0?'margin-positive':'margin-negative'}">${money(f.profit)}</strong></div><div class="profit-box"><small>Marge</small><strong>${f.margin.toFixed(1)}%</strong></div></div>`;}
 
 /* ================= CALCULATEUR ================= */
 
@@ -3760,6 +3925,8 @@ function saveSettings(){
 function initApp(){
 
   initSettings();
+
+  const jd=document.getElementById("journalDate"); if(jd) jd.value=today();
 
   renderClients();
   renderProjects();
