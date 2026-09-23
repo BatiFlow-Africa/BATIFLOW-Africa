@@ -6,127 +6,279 @@
 <title>BATIFLOW — Gestion BTP</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
+*{box-sizing:border-box}
 :root{
   --navy:#0b1f3a;
-  --navy2:#102d50;
-  --blue:#2563eb;
-  --blue2:#3b82f6;
+  --navy2:#102b4e;
+  --blue:#1769aa;
+  --blue2:#2f80ed;
   --gold:#f59e0b;
   --green:#16a34a;
   --red:#dc2626;
   --orange:#ea580c;
   --bg:#f4f7fb;
-  --card:#fff;
+  --white:#fff;
   --text:#172033;
   --muted:#718096;
-  --border:#e5eaf1;
-  --shadow:0 10px 30px rgba(11,31,58,.08);
+  --border:#e3eaf2;
+  --shadow:0 12px 35px rgba(11,31,58,.08);
 }
 
 body{
+  margin:0;
   font-family:Arial,Helvetica,sans-serif;
   background:var(--bg);
   color:var(--text);
 }
 
-button,input,select,textarea{
-  font:inherit;
-}
-
+button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 
+.hidden{display:none!important}
+
+/* LOGIN */
+.login-screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(47,128,237,.18),transparent 35%),
+    radial-gradient(circle at 80% 80%,rgba(245,158,11,.14),transparent 30%),
+    #eef3f9;
+  padding:20px;
+}
+
+.login-box{
+  width:430px;
+  max-width:100%;
+  background:white;
+  border-radius:24px;
+  padding:38px;
+  box-shadow:0 25px 70px rgba(11,31,58,.15);
+}
+
+.login-brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:30px;
+}
+
+.login-logo{
+  width:60px;
+  height:60px;
+  border-radius:17px;
+  display:grid;
+  place-items:center;
+  background:#edf4ff;
+  border:1px solid #dce7f5;
+}
+
+.login-logo svg{width:47px;height:47px}
+
+.logo-title{
+  font-size:30px;
+  font-weight:900;
+  color:var(--navy);
+}
+
+.logo-title span{color:var(--gold)}
+
+.logo-sub{
+  color:var(--muted);
+  font-size:9px;
+  font-weight:bold;
+  letter-spacing:1.5px;
+  margin-top:5px;
+}
+
+.login-box h1{
+  margin:0 0 8px;
+  font-size:25px;
+}
+
+.login-box p{
+  color:var(--muted);
+  margin-bottom:25px;
+}
+
+.form-group{margin-bottom:15px}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:white;
+  color:var(--text);
+  outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:var(--blue2);
+  box-shadow:0 0 0 3px rgba(47,128,237,.1);
+}
+
+textarea{min-height:90px;resize:vertical}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  font-weight:700;
+}
+
+.btn-primary{
+  background:var(--navy);
+  color:white;
+}
+
+.btn-primary:hover{background:#15375f}
+
+.btn-blue{
+  background:var(--blue2);
+  color:white;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:#172033;
+}
+
+.btn-success{
+  background:var(--green);
+  color:white;
+}
+
+.btn-danger{
+  background:var(--red);
+  color:white;
+}
+
+.btn-light{
+  background:#eef3f8;
+  color:var(--navy);
+}
+
+.btn-small{
+  padding:7px 10px;
+  font-size:12px;
+}
+
+.login-btn{
+  width:100%;
+  margin-top:8px;
+  padding:14px;
+  font-size:15px;
+}
+
+.login-info{
+  margin-top:18px;
+  padding:12px;
+  background:#f6f9fc;
+  border-radius:10px;
+  color:var(--muted);
+  font-size:12px;
+  text-align:center;
+}
+
+/* APP */
 .app{
   min-height:100vh;
   display:flex;
 }
 
-/* SIDEBAR */
 .sidebar{
   width:255px;
-  background:linear-gradient(180deg,#0b1f3a,#08182d);
+  background:linear-gradient(180deg,var(--navy),#07172b);
   color:white;
-  padding:22px 16px;
   position:fixed;
   top:0;
-  bottom:0;
   left:0;
+  bottom:0;
   overflow-y:auto;
+  padding:22px 15px;
   z-index:20;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:4px 8px 28px;
+  gap:11px;
+  padding:3px 8px;
+  margin-bottom:30px;
 }
 
 .brand-mark{
   width:48px;
   height:48px;
-  flex:none;
-  display:grid;
-  place-items:center;
   border-radius:14px;
   background:linear-gradient(145deg,#173b68,#0b1f3a);
   border:1px solid rgba(255,255,255,.15);
+  display:grid;
+  place-items:center;
 }
 
-.brand-mark svg{
-  width:38px;
-  height:38px;
-}
+.brand-mark svg{width:38px;height:38px}
 
 .brand-name{
-  font-size:25px;
+  font-size:24px;
   font-weight:900;
-  letter-spacing:-1px;
+  color:white;
 }
 
-.brand-name span{
-  color:var(--gold);
-}
+.brand-name span{color:var(--gold)}
 
-.brand small{
-  display:block;
-  margin-top:5px;
+.brand-sub{
   color:#8ea5c4;
   font-size:8px;
   letter-spacing:1.2px;
+  margin-top:4px;
 }
 
-.nav-title{
-  color:#6f87a7;
+.nav-section{
+  color:#7087a7;
   font-size:10px;
   font-weight:bold;
-  margin:18px 10px 8px;
-  text-transform:uppercase;
   letter-spacing:1px;
+  padding:10px 10px 6px;
 }
 
 .nav-btn{
   width:100%;
+  display:flex;
+  align-items:center;
+  gap:11px;
   border:0;
   background:transparent;
-  color:#c8d5e7;
-  padding:12px 13px;
-  margin-bottom:4px;
-  border-radius:10px;
+  color:#c5d2e3;
+  padding:11px 12px;
+  border-radius:9px;
+  margin-bottom:3px;
   text-align:left;
-  font-size:14px;
-  transition:.2s;
 }
 
-.nav-btn:hover,
-.nav-btn.active{
-  background:#173b68;
-  color:#fff;
+.nav-btn:hover,.nav-btn.active{
+  background:rgba(255,255,255,.1);
+  color:white;
 }
 
 .nav-btn.active{
-  border-left:3px solid var(--gold);
+  box-shadow:inset 3px 0 var(--gold);
+}
+
+.logout{
+  margin-top:20px;
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:15px;
 }
 
 /* MAIN */
@@ -143,108 +295,65 @@ button{cursor:pointer}
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 30px;
+  padding:0 28px;
   position:sticky;
   top:0;
   z-index:10;
 }
 
-.top-title{
-  font-size:21px;
+.topbar-title{
+  font-size:20px;
   font-weight:800;
-  color:var(--navy);
 }
 
-.top-right{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.user-badge{
-  width:38px;
-  height:38px;
-  background:#eaf1ff;
-  color:var(--blue);
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  font-weight:bold;
+.user-pill{
+  background:#f2f6fa;
+  padding:8px 13px;
+  border-radius:30px;
+  font-size:13px;
+  font-weight:700;
 }
 
 .content{
   padding:28px;
+  max-width:1500px;
+  margin:auto;
 }
 
-.page{
-  display:none;
-}
+.page{display:none}
+.page.active{display:block}
 
-.page.active{
-  display:block;
-}
-
-/* GENERAL */
 .page-head{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:15px;
   margin-bottom:22px;
 }
 
 .page-head h1{
-  font-size:25px;
-  color:var(--navy);
+  margin:0;
+  font-size:27px;
 }
 
 .page-head p{
+  margin:5px 0 0;
   color:var(--muted);
-  margin-top:5px;
-  font-size:14px;
-}
-
-.btn{
-  border:0;
-  border-radius:9px;
-  padding:11px 16px;
-  font-weight:bold;
   font-size:13px;
 }
 
-.btn-primary{
-  background:var(--blue);
-  color:white;
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
-.btn-primary:hover{background:#1d4ed8}
-
-.btn-gold{
-  background:var(--gold);
-  color:#111827;
-}
-
-.btn-danger{
-  background:#fee2e2;
-  color:#b91c1c;
-}
-
-.btn-success{
-  background:#dcfce7;
-  color:#15803d;
-}
-
-.btn-light{
-  background:#edf2f7;
-  color:#334155;
-}
-
-/* DASHBOARD */
+/* CARDS */
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:18px;
-  margin-bottom:25px;
+  gap:16px;
+  margin-bottom:22px;
 }
 
 .stat{
@@ -255,115 +364,70 @@ button{cursor:pointer}
   box-shadow:var(--shadow);
 }
 
-.stat-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.stat-icon{
-  width:42px;
-  height:42px;
-  border-radius:12px;
-  display:grid;
-  place-items:center;
-  background:#edf4ff;
-  font-size:20px;
-}
-
-.stat h3{
-  margin-top:15px;
-  font-size:28px;
-  color:var(--navy);
-}
-
-.stat p{
+.stat-label{
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
+  font-weight:700;
 }
 
-.grid2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+.stat-value{
+  font-size:26px;
+  font-weight:900;
+  margin-top:8px;
 }
+
+.stat-note{
+  font-size:11px;
+  margin-top:7px;
+  color:var(--muted);
+}
+
+.stat.green .stat-value{color:var(--green)}
+.stat.red .stat-value{color:var(--red)}
+.stat.gold .stat-value{color:var(--orange)}
+.stat.blue .stat-value{color:var(--blue)}
 
 .card{
   background:white;
   border:1px solid var(--border);
   border-radius:15px;
-  box-shadow:var(--shadow);
   padding:20px;
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
 }
 
-.card h2{
-  font-size:17px;
+.card-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   margin-bottom:17px;
-  color:var(--navy);
 }
 
-.empty{
-  text-align:center;
-  padding:35px 15px;
-  color:var(--muted);
+.card-title h2{
+  margin:0;
+  font-size:17px;
 }
 
-/* FORMS */
+/* GRID */
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
 .form-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  gap:14px;
 }
 
-.form-grid.three{
-  grid-template-columns:repeat(3,1fr);
-}
-
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.field.full{
-  grid-column:1/-1;
-}
-
-.field label{
-  font-size:12px;
-  font-weight:bold;
-  color:#475569;
-}
-
-.field input,
-.field select,
-.field textarea{
-  width:100%;
-  padding:11px 12px;
-  border:1px solid #d8e0ea;
-  border-radius:8px;
-  outline:none;
-  background:#fff;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(37,99,235,.08);
-}
-
-textarea{
-  min-height:90px;
-  resize:vertical;
-}
-
-.form-actions{
-  display:flex;
-  justify-content:flex-end;
-  gap:10px;
-  margin-top:18px;
-}
+.form-grid .full{grid-column:1/-1}
 
 /* TABLE */
 .table-wrap{
@@ -373,77 +437,133 @@ textarea{
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:750px;
-}
-
-th{
-  background:#f7f9fc;
-  color:#64748b;
-  font-size:11px;
-  text-align:left;
-  padding:12px;
-  border-bottom:1px solid var(--border);
-}
-
-td{
-  padding:13px 12px;
-  border-bottom:1px solid #edf1f5;
   font-size:13px;
 }
 
-.actions{
-  display:flex;
-  gap:6px;
+th{
+  background:#f5f8fb;
+  color:#61738b;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  text-align:left;
+  padding:12px;
 }
 
-.action{
-  border:0;
-  padding:7px 9px;
-  border-radius:7px;
-  font-size:12px;
+td{
+  padding:12px;
+  border-bottom:1px solid #edf1f5;
+  vertical-align:middle;
 }
 
-.search{
-  width:100%;
-  padding:11px 13px;
-  border:1px solid var(--border);
-  border-radius:9px;
-  margin-bottom:15px;
+tr:last-child td{border-bottom:0}
+
+.empty{
+  padding:35px 20px;
+  text-align:center;
+  color:var(--muted);
 }
 
 .badge{
   display:inline-block;
   padding:5px 9px;
   border-radius:20px;
-  font-size:11px;
-  font-weight:bold;
+  font-size:10px;
+  font-weight:800;
 }
 
-.badge-green{
-  background:#dcfce7;
-  color:#15803d;
+.badge-green{background:#dcfce7;color:#15803d}
+.badge-red{background:#fee2e2;color:#b91c1c}
+.badge-orange{background:#ffedd5;color:#c2410c}
+.badge-blue{background:#dbeafe;color:#1d4ed8}
+.badge-gray{background:#eef2f7;color:#64748b}
+
+/* FINANCE */
+.finance-hero{
+  background:linear-gradient(135deg,var(--navy),#164d83);
+  color:white;
+  border-radius:17px;
+  padding:25px;
+  margin-bottom:20px;
 }
 
-.badge-red{
-  background:#fee2e2;
-  color:#b91c1c;
+.finance-hero h2{
+  margin:0 0 7px;
 }
 
-.badge-orange{
-  background:#ffedd5;
-  color:#c2410c;
+.finance-hero p{
+  margin:0;
+  color:#c8d8eb;
+  font-size:13px;
 }
 
-.badge-blue{
-  background:#dbeafe;
-  color:#1d4ed8;
+.finance-kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.finance-kpi{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.1);
+  padding:15px;
+  border-radius:12px;
+}
+
+.finance-kpi small{
+  color:#b8cae0;
+  display:block;
+  margin-bottom:5px;
+}
+
+.finance-kpi strong{
+  font-size:20px;
+}
+
+.progress{
+  height:9px;
+  background:#e8edf3;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  border-radius:20px;
+}
+
+.margin-positive{color:var(--green);font-weight:900}
+.margin-negative{color:var(--red);font-weight:900}
+
+.project-profit{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+
+.profit-box{
+  background:#f7f9fc;
+  padding:13px;
+  border-radius:10px;
+}
+
+.profit-box small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-bottom:5px;
+}
+
+.profit-box strong{
+  font-size:15px;
 }
 
 /* MODAL */
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(4,13,27,.55);
+  background:rgba(5,18,35,.55);
   display:none;
   align-items:center;
   justify-content:center;
@@ -451,249 +571,152 @@ td{
   z-index:100;
 }
 
-.modal.show{
-  display:flex;
-}
+.modal.open{display:flex}
 
 .modal-box{
-  background:white;
-  width:min(850px,100%);
+  width:720px;
+  max-width:100%;
   max-height:90vh;
   overflow:auto;
-  border-radius:16px;
+  background:white;
+  border-radius:18px;
   padding:25px;
 }
 
 .modal-head{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-bottom:22px;
+  justify-content:space-between;
+  margin-bottom:20px;
 }
 
-.modal-head h2{
-  color:var(--navy);
-}
+.modal-head h2{margin:0}
 
 .close{
   border:0;
-  background:#f1f5f9;
-  width:34px;
-  height:34px;
+  background:#eef2f7;
+  width:35px;
+  height:35px;
   border-radius:50%;
+  font-size:18px;
 }
 
-/* STOCK */
-.stock-alert{
-  padding:13px 15px;
-  border-radius:10px;
-  background:#fff7ed;
-  color:#c2410c;
-  margin-bottom:18px;
-  font-size:13px;
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:20px;
 }
 
 /* CALCULATOR */
 .calc-result{
-  margin-top:20px;
-  padding:20px;
-  background:#f4f8ff;
+  background:#f3f8ff;
   border:1px solid #dbeafe;
   border-radius:12px;
+  padding:18px;
+  margin-top:18px;
 }
 
 .calc-result strong{
-  font-size:25px;
   color:var(--blue);
+  font-size:22px;
 }
 
-/* LOGIN */
-#loginScreen{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(135deg,#0b1f3a,#173b68);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:1000;
-}
-
-.login-card{
-  width:min(430px,92%);
+/* QUOTE */
+.quote-preview{
   background:white;
-  padding:38px;
-  border-radius:20px;
-  box-shadow:0 30px 80px rgba(0,0,0,.25);
+  border:1px solid #dfe5ec;
+  padding:40px;
+  max-width:900px;
+  margin:auto;
 }
 
-.login-brand{
+.quote-head{
   display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:30px;
+  justify-content:space-between;
+  border-bottom:3px solid var(--navy);
+  padding-bottom:20px;
 }
 
-.login-mark{
-  width:58px;
-  height:58px;
-  border-radius:16px;
-  background:#f2f6fb;
-  display:grid;
-  place-items:center;
+.quote-number{
+  text-align:right;
 }
 
-.login-mark svg{
-  width:45px;
-}
-
-.login-brand-name{
-  font-size:30px;
+.quote-total{
+  font-size:24px;
   font-weight:900;
-  color:var(--navy);
+  text-align:right;
+  margin-top:20px;
 }
 
-.login-brand-name span{
-  color:var(--gold);
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .finance-kpis{grid-template-columns:repeat(2,1fr)}
+  .project-profit{grid-template-columns:repeat(3,1fr)}
+  .grid-3{grid-template-columns:1fr 1fr}
 }
 
-.login-brand-sub{
-  font-size:9px;
-  color:#718096;
-  letter-spacing:1.3px;
-  margin-top:4px;
-}
-
-.login-card h1{
-  font-size:23px;
-  margin-bottom:8px;
-  color:var(--navy);
-}
-
-.login-card p{
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:22px;
-}
-
-.login-card .field{
-  margin-bottom:15px;
-}
-
-.login-btn{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:9px;
-  background:var(--blue);
-  color:white;
-  font-weight:bold;
-}
-
-/* TOAST */
-.toast{
-  position:fixed;
-  right:25px;
-  bottom:25px;
-  background:#0b1f3a;
-  color:white;
-  padding:13px 18px;
-  border-radius:9px;
-  display:none;
-  z-index:2000;
-  box-shadow:var(--shadow);
-}
-
-.toast.show{
-  display:block;
-}
-
-/* MOBILE */
-.mobile-menu{
-  display:none;
-}
-
-@media(max-width:1000px){
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .grid2{
-    grid-template-columns:1fr;
-  }
-
-  .form-grid.three{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-@media(max-width:750px){
+@media(max-width:800px){
   .sidebar{
-    transform:translateX(-100%);
-    transition:.25s;
+    width:70px;
+    padding:15px 8px;
   }
 
-  .sidebar.open{
-    transform:translateX(0);
+  .brand-text,
+  .nav-label,
+  .nav-section{
+    display:none;
+  }
+
+  .brand{
+    justify-content:center;
+  }
+
+  .nav-btn{
+    justify-content:center;
+    padding:12px;
   }
 
   .main{
-    margin-left:0;
-    width:100%;
+    margin-left:70px;
+    width:calc(100% - 70px);
   }
 
-  .mobile-menu{
-    display:block;
-    border:0;
-    background:#edf2f7;
-    width:38px;
-    height:38px;
-    border-radius:8px;
-    margin-right:10px;
-  }
+  .content{padding:18px}
 
-  .topbar{
-    padding:0 15px;
-  }
-
-  .content{
-    padding:18px;
-  }
-
-  .page-head{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
-  .stat{
-    padding:15px;
-  }
-
-  .stat h3{
-    font-size:22px;
-  }
-
-  .form-grid,
-  .form-grid.three{
+  .grid-2,
+  .grid-3,
+  .form-grid{
     grid-template-columns:1fr;
   }
+
+  .form-grid .full{grid-column:auto}
+
+  .project-profit{grid-template-columns:1fr 1fr}
 }
 
-@media(max-width:450px){
-  .stats{
-    grid-template-columns:1fr;
-  }
+@media(max-width:550px){
+  .stats{grid-template-columns:1fr}
+  .finance-kpis{grid-template-columns:1fr}
+  .project-profit{grid-template-columns:1fr}
+  .topbar{padding:0 15px}
+  .content{padding:12px}
+}
 
-  .top-title{
-    font-size:17px;
+/* PRINT */
+@media print{
+  .sidebar,.topbar,.no-print{display:none!important}
+  .main{
+    margin:0;
+    width:100%;
   }
-
-  .user-badge{
-    display:none;
+  .content{padding:0}
+  .page{display:none!important}
+  #pageQuote{display:block!important}
+  .quote-preview{
+    border:0;
+    box-shadow:none;
   }
 }
 </style>
@@ -701,150 +724,140 @@ td{
 
 <body>
 
-<!-- LOGIN -->
-<div id="loginScreen">
-
-  <div class="login-card">
+<!-- ================= LOGIN ================= -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-box">
 
     <div class="login-brand">
-
-      <div class="login-mark">
+      <div class="login-logo">
         <svg viewBox="0 0 64 64">
           <path d="M12 52V24L32 10L52 24V52"
-                fill="none"
-                stroke="#0b1f3a"
-                stroke-width="5"
+                fill="none" stroke="#0b1f3a" stroke-width="5"
                 stroke-linejoin="round"/>
           <path d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
                 fill="#f59e0b"/>
-          <path d="M28 31V47"
-                stroke="white"
-                stroke-width="4"
+          <path d="M28 31V47" stroke="white" stroke-width="4"
                 stroke-linecap="round"/>
-          <path d="M12 55H52"
-                stroke="#0b1f3a"
-                stroke-width="4"
+          <path d="M12 55H52" stroke="#0b1f3a" stroke-width="4"
                 stroke-linecap="round"/>
         </svg>
       </div>
 
       <div>
-        <div class="login-brand-name">
-          BATI<span>FLOW</span>
-        </div>
-        <div class="login-brand-sub">
-          BUILD • CALCULATE • MANAGE
-        </div>
+        <div class="logo-title">BATI<span>FLOW</span></div>
+        <div class="logo-sub">BUILD • CALCULATE • MANAGE</div>
       </div>
-
     </div>
 
     <h1>Bienvenue sur BATIFLOW</h1>
-    <p>Votre plateforme de gestion BTP.</p>
+    <p>Votre espace de gestion professionnelle pour les chantiers BTP.</p>
 
-    <div class="field">
-      <label>Nom utilisateur</label>
-      <input id="loginName" value="Administrateur">
+    <div class="form-group">
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="exemple@email.com">
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <label>Mot de passe</label>
-      <input id="loginPassword" type="password" value="1234">
+      <input id="loginPassword" type="password" placeholder="••••••••">
     </div>
 
-    <button class="login-btn" onclick="login()">
+    <button class="btn btn-primary login-btn" onclick="login()">
       Se connecter
     </button>
 
-  </div>
+    <div class="login-info">
+      Prototype BATIFLOW — vos données sont conservées dans ce navigateur.
+    </div>
 
+  </div>
 </div>
 
 
-<!-- APPLICATION -->
-<div class="app">
+<!-- ================= APPLICATION ================= -->
+<div id="app" class="app hidden">
 
   <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
+  <aside class="sidebar">
 
     <div class="brand">
-
       <div class="brand-mark">
         <svg viewBox="0 0 64 64">
           <path d="M12 52V24L32 10L52 24V52"
-                fill="none"
-                stroke="white"
-                stroke-width="5"
+                fill="none" stroke="white" stroke-width="5"
                 stroke-linejoin="round"/>
           <path d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
                 fill="#f59e0b"/>
-          <path d="M28 31V47"
-                stroke="#0b1f3a"
-                stroke-width="4"
+          <path d="M28 31V47" stroke="#0b1f3a" stroke-width="4"
                 stroke-linecap="round"/>
-          <path d="M12 55H52"
-                stroke="white"
-                stroke-width="4"
+          <path d="M12 55H52" stroke="white" stroke-width="4"
                 stroke-linecap="round"/>
         </svg>
       </div>
 
-      <div>
-        <div class="brand-name">
-          BATI<span>FLOW</span>
-        </div>
-        <small>BUILD • CALCULATE • MANAGE</small>
+      <div class="brand-text">
+        <div class="brand-name">BATI<span>FLOW</span></div>
+        <div class="brand-sub">BUILD • CALCULATE • MANAGE</div>
       </div>
-
     </div>
 
-    <div class="nav-title">Général</div>
+    <div class="nav-section">GESTION</div>
 
     <button class="nav-btn active" onclick="showPage('dashboard',this)">
-      🏠 Tableau de bord
+      <span>🏠</span><span class="nav-label">Tableau de bord</span>
     </button>
 
     <button class="nav-btn" onclick="showPage('clients',this)">
-      👥 Clients
+      <span>👥</span><span class="nav-label">Clients</span>
     </button>
 
     <button class="nav-btn" onclick="showPage('projects',this)">
-      🏗️ Projets / Chantiers
+      <span>🏗️</span><span class="nav-label">Projets / Chantiers</span>
     </button>
 
-    <div class="nav-title">BTP</div>
-
     <button class="nav-btn" onclick="showPage('calculator',this)">
-      🧮 Calculateur BTP
+      <span>🧮</span><span class="nav-label">Calculateur BTP</span>
     </button>
 
     <button class="nav-btn" onclick="showPage('dqe',this)">
-      📋 DQE
+      <span>📋</span><span class="nav-label">DQE</span>
     </button>
 
     <button class="nav-btn" onclick="showPage('quotes',this)">
-      📄 Devis
+      <span>📄</span><span class="nav-label">Devis</span>
     </button>
 
+    <div class="nav-section">RESSOURCES</div>
+
     <button class="nav-btn" onclick="showPage('materials',this)">
-      🧱 Matériaux & prix
+      <span>🧱</span><span class="nav-label">Matériaux & prix</span>
     </button>
 
     <button class="nav-btn" onclick="showPage('stock',this)">
-      📦 Stock & mouvements
+      <span>📦</span><span class="nav-label">Stock & mouvements</span>
     </button>
 
-    <div class="nav-title">Finance</div>
+    <div class="nav-section">FINANCES</div>
 
-    <button class="nav-btn" onclick="showPage('expenses',this)">
-      💰 Dépenses & trésorerie
+    <button class="nav-btn" onclick="showPage('finance',this)">
+      <span>💰</span><span class="nav-label">Finance & paiements</span>
     </button>
 
-    <div class="nav-title">Configuration</div>
+    <button class="nav-btn" onclick="showPage('profitability',this)">
+      <span>📊</span><span class="nav-label">Rentabilité chantiers</span>
+    </button>
+
+    <div class="nav-section">PARAMÈTRES</div>
 
     <button class="nav-btn" onclick="showPage('settings',this)">
-      ⚙️ Pays & paramètres
+      <span>⚙️</span><span class="nav-label">Pays & paramètres</span>
     </button>
+
+    <div class="logout">
+      <button class="nav-btn" onclick="logout()">
+        <span>🚪</span><span class="nav-label">Déconnexion</span>
+      </button>
+    </div>
 
   </aside>
 
@@ -853,26 +866,15 @@ td{
   <main class="main">
 
     <header class="topbar">
-
-      <div style="display:flex;align-items:center">
-        <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
-        <div class="top-title" id="topTitle">
-          Tableau de bord
-        </div>
-      </div>
-
-      <div class="top-right">
-        <div id="currentUser">Administrateur</div>
-        <div class="user-badge">A</div>
-      </div>
-
+      <div class="topbar-title" id="topTitle">Tableau de bord</div>
+      <div class="user-pill">👤 Administrateur</div>
     </header>
-
 
     <div class="content">
 
-      <!-- DASHBOARD -->
-      <section class="page active" id="dashboard">
+
+      <!-- ================= DASHBOARD ================= -->
+      <section id="pageDashboard" class="page active">
 
         <div class="page-head">
           <div>
@@ -883,75 +885,98 @@ td{
 
         <div class="stats">
 
-          <div class="stat">
-            <div class="stat-top">
-              <p>Clients</p>
-              <div class="stat-icon">👥</div>
-            </div>
-            <h3 id="statClients">0</h3>
-            <p>Clients enregistrés</p>
+          <div class="stat blue">
+            <div class="stat-label">CLIENTS</div>
+            <div id="dashClients" class="stat-value">0</div>
+            <div class="stat-note">Clients enregistrés</div>
           </div>
 
           <div class="stat">
-            <div class="stat-top">
-              <p>Projets</p>
-              <div class="stat-icon">🏗️</div>
-            </div>
-            <h3 id="statProjects">0</h3>
-            <p>Chantiers enregistrés</p>
+            <div class="stat-label">CHANTIERS</div>
+            <div id="dashProjects" class="stat-value">0</div>
+            <div class="stat-note">Projets suivis</div>
+          </div>
+
+          <div class="stat gold">
+            <div class="stat-label">RECETTES</div>
+            <div id="dashRevenue" class="stat-value">0</div>
+            <div class="stat-note">Total encaissé</div>
+          </div>
+
+          <div class="stat red">
+            <div class="stat-label">DÉPENSES</div>
+            <div id="dashExpenses" class="stat-value">0</div>
+            <div class="stat-note">Total dépenses</div>
+          </div>
+
+          <div class="stat green">
+            <div class="stat-label">BÉNÉFICE</div>
+            <div id="dashProfit" class="stat-value">0</div>
+            <div class="stat-note">Recettes - dépenses</div>
+          </div>
+
+          <div class="stat blue">
+            <div class="stat-label">MARGE MOYENNE</div>
+            <div id="dashMargin" class="stat-value">0 %</div>
+            <div class="stat-note">Sur les recettes</div>
           </div>
 
           <div class="stat">
-            <div class="stat-top">
-              <p>Matériaux</p>
-              <div class="stat-icon">🧱</div>
-            </div>
-            <h3 id="statMaterials">0</h3>
-            <p>Références disponibles</p>
+            <div class="stat-label">MATÉRIAUX</div>
+            <div id="dashMaterials" class="stat-value">0</div>
+            <div class="stat-note">Articles référencés</div>
           </div>
 
-          <div class="stat">
-            <div class="stat-top">
-              <p>Stock</p>
-              <div class="stat-icon">📦</div>
-            </div>
-            <h3 id="statStock">0</h3>
-            <p>Articles suivis</p>
+          <div class="stat gold">
+            <div class="stat-label">ALERTES STOCK</div>
+            <div id="dashStockAlerts" class="stat-value">0</div>
+            <div class="stat-note">Stock sous seuil</div>
           </div>
 
         </div>
 
-
-        <div class="grid2">
+        <div class="grid-2">
 
           <div class="card">
-            <h2>💰 Situation financière</h2>
+            <div class="card-title">
+              <h2>💰 Situation financière</h2>
+            </div>
 
-            <div style="display:grid;gap:15px">
+            <div class="project-profit">
 
-              <div>
-                <small style="color:#718096">Total dépenses</small>
-                <h2 id="dashExpenses" style="margin-top:5px;color:#dc2626">
-                  0 FCFA
-                </h2>
+              <div class="profit-box">
+                <small>Recettes</small>
+                <strong id="dashBoxRevenue">0</strong>
               </div>
 
-              <div>
-                <small style="color:#718096">Total devis</small>
-                <h2 id="dashQuotes" style="margin-top:5px;color:#2563eb">
-                  0 FCFA
-                </h2>
+              <div class="profit-box">
+                <small>Dépenses</small>
+                <strong id="dashBoxExpenses">0</strong>
+              </div>
+
+              <div class="profit-box">
+                <small>Bénéfice</small>
+                <strong id="dashBoxProfit">0</strong>
+              </div>
+
+              <div class="profit-box">
+                <small>Marge</small>
+                <strong id="dashBoxMargin">0 %</strong>
+              </div>
+
+              <div class="profit-box">
+                <small>Projets</small>
+                <strong id="dashBoxProjects">0</strong>
               </div>
 
             </div>
           </div>
 
-
           <div class="card">
-            <h2>⚠️ Alertes stock</h2>
-            <div id="dashboardAlerts">
-              <div class="empty">Aucune alerte.</div>
+            <div class="card-title">
+              <h2>🏗️ Derniers chantiers</h2>
             </div>
+            <div id="dashboardProjects"></div>
           </div>
 
         </div>
@@ -959,13 +984,13 @@ td{
       </section>
 
 
-      <!-- CLIENTS -->
-      <section class="page" id="clients">
+      <!-- ================= CLIENTS ================= -->
+      <section id="pageClients" class="page">
 
         <div class="page-head">
           <div>
             <h1>Clients</h1>
-            <p>Gérez votre portefeuille clients.</p>
+            <p>Gérez vos clients et leurs informations.</p>
           </div>
 
           <button class="btn btn-primary" onclick="openClientModal()">
@@ -975,17 +1000,17 @@ td{
 
         <div class="card">
 
-          <input
-            class="search"
-            id="clientSearch"
-            placeholder="Rechercher un client..."
-            oninput="renderClients()">
+          <div class="form-group">
+            <input id="clientSearch"
+                   placeholder="🔎 Rechercher un client..."
+                   oninput="renderClients()">
+          </div>
 
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th>Nom / entreprise</th>
+                  <th>Client</th>
                   <th>Type</th>
                   <th>Téléphone</th>
                   <th>Email</th>
@@ -1003,44 +1028,44 @@ td{
       </section>
 
 
-      <!-- PROJECTS -->
-      <section class="page" id="projects">
+      <!-- ================= PROJECTS ================= -->
+      <section id="pageProjects" class="page">
 
         <div class="page-head">
           <div>
             <h1>Projets / Chantiers</h1>
-            <p>Suivez vos chantiers et leurs informations.</p>
+            <p>Suivez vos chantiers, budgets et performances.</p>
           </div>
 
           <button class="btn btn-primary" onclick="openProjectModal()">
-            + Nouveau projet
+            + Nouveau chantier
           </button>
         </div>
 
         <div class="card">
 
-          <input
-            class="search"
-            id="projectSearch"
-            placeholder="Rechercher un projet..."
-            oninput="renderProjects()">
+          <input id="projectSearch"
+                 placeholder="🔎 Rechercher un chantier..."
+                 oninput="renderProjects()">
 
-          <div class="table-wrap">
+          <div class="table-wrap" style="margin-top:15px">
+
             <table>
               <thead>
                 <tr>
-                  <th>Projet</th>
+                  <th>Chantier</th>
                   <th>Client</th>
-                  <th>Lieu</th>
+                  <th>Localisation</th>
                   <th>Budget</th>
-                  <th>Début</th>
                   <th>Statut</th>
                   <th>Actions</th>
                 </tr>
               </thead>
 
               <tbody id="projectsTable"></tbody>
+
             </table>
+
           </div>
 
         </div>
@@ -1048,13 +1073,13 @@ td{
       </section>
 
 
-      <!-- CALCULATOR -->
-      <section class="page" id="calculator">
+      <!-- ================= CALCULATOR ================= -->
+      <section id="pageCalculator" class="page">
 
         <div class="page-head">
           <div>
             <h1>Calculateur BTP</h1>
-            <p>Calculs indicatifs pour vos études préliminaires.</p>
+            <p>Estimations indicatives de volumes de béton.</p>
           </div>
         </div>
 
@@ -1062,9 +1087,8 @@ td{
 
           <div class="form-grid">
 
-            <div class="field">
+            <div class="form-group">
               <label>Élément</label>
-
               <select id="calcType">
                 <option value="dalle">Dalle</option>
                 <option value="poutre">Poutre</option>
@@ -1075,38 +1099,38 @@ td{
 
             <div></div>
 
-            <div class="field">
+            <div class="form-group">
               <label>Longueur (m)</label>
-              <input id="calcL" type="number" step="0.01">
+              <input id="calcL" type="number" step="0.01" value="5">
             </div>
 
-            <div class="field">
+            <div class="form-group">
               <label>Largeur (m)</label>
-              <input id="calcW" type="number" step="0.01">
+              <input id="calcW" type="number" step="0.01" value="4">
             </div>
 
-            <div class="field">
+            <div class="form-group">
               <label>Hauteur / épaisseur (m)</label>
-              <input id="calcH" type="number" step="0.01">
+              <input id="calcH" type="number" step="0.01" value="0.15">
             </div>
 
           </div>
 
-          <div class="form-actions">
-            <button class="btn btn-primary" onclick="calculateBTP()">
-              Calculer
-            </button>
-          </div>
+          <button class="btn btn-primary" onclick="calculateConcrete()">
+            Calculer
+          </button>
 
-          <div class="calc-result" id="calcResult" style="display:none"></div>
+          <div id="calcResult" class="calc-result">
+            Entrez les dimensions puis cliquez sur Calculer.
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- DQE -->
-      <section class="page" id="dqe">
+      <!-- ================= DQE ================= -->
+      <section id="pageDqe" class="page">
 
         <div class="page-head">
           <div>
@@ -1114,19 +1138,27 @@ td{
             <p>Détail quantitatif et estimatif.</p>
           </div>
 
-          <button class="btn btn-primary" onclick="openDQEModal()">
-            + Ajouter un poste
-          </button>
+          <div class="actions">
+            <button class="btn btn-light" onclick="clearDqe()">Vider</button>
+            <button class="btn btn-primary" onclick="openDqeModal()">+ Ajouter un poste</button>
+          </div>
+        </div>
+
+        <div class="stats">
+
+          <div class="stat">
+            <div class="stat-label">POSTES</div>
+            <div id="dqeCount" class="stat-value">0</div>
+          </div>
+
+          <div class="stat gold">
+            <div class="stat-label">TOTAL DQE</div>
+            <div id="dqeTotal" class="stat-value">0</div>
+          </div>
+
         </div>
 
         <div class="card">
-
-          <div style="display:flex;justify-content:space-between;margin-bottom:20px">
-            <strong>Total DQE</strong>
-            <strong id="dqeTotal" style="font-size:20px;color:#2563eb">
-              0 FCFA
-            </strong>
-          </div>
 
           <div class="table-wrap">
             <table>
@@ -1142,6 +1174,7 @@ td{
               </thead>
 
               <tbody id="dqeTable"></tbody>
+
             </table>
           </div>
 
@@ -1150,51 +1183,144 @@ td{
       </section>
 
 
-      <!-- QUOTES -->
-      <section class="page" id="quotes">
+      <!-- ================= QUOTES ================= -->
+      <section id="pageQuotes" class="page">
 
-        <div class="page-head">
+        <div class="page-head no-print">
           <div>
             <h1>Devis</h1>
-            <p>Création et suivi de vos devis.</p>
+            <p>Créez et imprimez vos devis professionnels.</p>
           </div>
 
-          <button class="btn btn-primary" onclick="openQuoteModal()">
-            + Nouveau devis
+          <button class="btn btn-primary" onclick="generateQuote()">
+            Générer le devis
           </button>
         </div>
 
-        <div class="card">
+        <div class="card no-print">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Nom de votre entreprise</label>
+              <input id="quoteCompany" value="BATIFLOW BTP">
+            </div>
+
+            <div class="form-group">
+              <label>Téléphone entreprise</label>
+              <input id="quoteCompanyPhone">
+            </div>
+
+            <div class="form-group">
+              <label>Client</label>
+              <select id="quoteClient" onchange="fillQuoteClient()"></select>
+            </div>
+
+            <div class="form-group">
+              <label>Projet / chantier</label>
+              <input id="quoteProject">
+            </div>
+
+            <div class="form-group">
+              <label>TVA (%)</label>
+              <input id="quoteTva" type="number" value="0">
+            </div>
+
+            <div class="form-group">
+              <label>Validité (jours)</label>
+              <input id="quoteValidity" type="number" value="30">
+            </div>
+
+            <div class="form-group full">
+              <label>Conditions / observations</label>
+              <textarea id="quoteConditions">Les travaux seront réalisés conformément aux règles de l'art et aux conditions convenues avec le client.</textarea>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div id="quotePreview" class="quote-preview">
+
+          <div class="quote-head">
+
+            <div>
+              <h1 id="previewCompany">BATIFLOW BTP</h1>
+              <p id="previewCompanyPhone">Téléphone : —</p>
+            </div>
+
+            <div class="quote-number">
+              <strong>DEVIS</strong>
+              <div id="previewQuoteNumber">DEV-0001</div>
+              <div id="previewDate"></div>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="grid-2">
+
+            <div>
+              <strong>CLIENT</strong>
+              <p id="previewClient">—</p>
+              <p id="previewClientPhone">—</p>
+            </div>
+
+            <div>
+              <strong>PROJET</strong>
+              <p id="previewProject">—</p>
+            </div>
+
+          </div>
+
+          <br>
 
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th>N° devis</th>
-                  <th>Client</th>
-                  <th>Projet</th>
-                  <th>Montant</th>
-                  <th>Date</th>
-                  <th>Actions</th>
+                  <th>Désignation</th>
+                  <th>Qté</th>
+                  <th>PU</th>
+                  <th>Total</th>
                 </tr>
               </thead>
-
-              <tbody id="quotesTable"></tbody>
+              <tbody id="quoteItems"></tbody>
             </table>
           </div>
 
+          <div class="quote-total">
+            <div>Sous-total : <span id="quoteSubtotal">0</span></div>
+            <div>TVA : <span id="quoteVat">0</span></div>
+            <div>Total : <span id="quoteGrandTotal">0</span></div>
+          </div>
+
+          <br>
+
+          <div>
+            <strong>Conditions</strong>
+            <p id="previewConditions"></p>
+          </div>
+
+        </div>
+
+        <div class="no-print" style="text-align:center;margin-top:15px">
+          <button class="btn btn-primary" onclick="window.print()">
+            🖨️ Imprimer / PDF
+          </button>
         </div>
 
       </section>
 
 
-      <!-- MATERIALS -->
-      <section class="page" id="materials">
+      <!-- ================= MATERIALS ================= -->
+      <section id="pageMaterials" class="page">
 
         <div class="page-head">
           <div>
             <h1>Matériaux & prix</h1>
-            <p>Votre bibliothèque de matériaux et tarifs.</p>
+            <p>Bibliothèque des matériaux utilisés sur vos chantiers.</p>
           </div>
 
           <button class="btn btn-primary" onclick="openMaterialModal()">
@@ -1204,13 +1330,11 @@ td{
 
         <div class="card">
 
-          <input
-            class="search"
-            id="materialSearch"
-            placeholder="Rechercher un matériau..."
-            oninput="renderMaterials()">
+          <input id="materialSearch"
+                 placeholder="🔎 Rechercher un matériau..."
+                 oninput="renderMaterials()">
 
-          <div class="table-wrap">
+          <div class="table-wrap" style="margin-top:15px">
 
             <table>
               <thead>
@@ -1225,6 +1349,7 @@ td{
               </thead>
 
               <tbody id="materialsTable"></tbody>
+
             </table>
 
           </div>
@@ -1234,33 +1359,31 @@ td{
       </section>
 
 
-      <!-- STOCK -->
-      <section class="page" id="stock">
+      <!-- ================= STOCK ================= -->
+      <section id="pageStock" class="page">
 
         <div class="page-head">
-
           <div>
             <h1>Stock & mouvements</h1>
-            <p>Suivez vos matériaux et les mouvements de stock.</p>
+            <p>Suivez vos matériaux, entrées et sorties.</p>
           </div>
 
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <button class="btn btn-primary" onclick="openStockModal()">
+          <div class="actions">
+            <button class="btn btn-light" onclick="openStockModal()">
               + Stock
             </button>
 
-            <button class="btn btn-gold" onclick="openMovementModal()">
+            <button class="btn btn-primary" onclick="openMovementModal()">
               + Mouvement
             </button>
           </div>
-
         </div>
 
-        <div id="stockAlertBox"></div>
+        <div class="card">
 
-        <div class="card" style="margin-bottom:20px">
-
-          <h2>📦 État du stock</h2>
+          <div class="card-title">
+            <h2>📦 État du stock</h2>
+          </div>
 
           <div class="table-wrap">
             <table>
@@ -1268,8 +1391,8 @@ td{
                 <tr>
                   <th>Matériau</th>
                   <th>Unité</th>
-                  <th>Stock actuel</th>
-                  <th>Seuil minimum</th>
+                  <th>Stock</th>
+                  <th>Seuil</th>
                   <th>Lieu</th>
                   <th>État</th>
                   <th>Actions</th>
@@ -1277,15 +1400,17 @@ td{
               </thead>
 
               <tbody id="stockTable"></tbody>
+
             </table>
           </div>
 
         </div>
 
-
         <div class="card">
 
-          <h2>🔄 Historique des mouvements</h2>
+          <div class="card-title">
+            <h2>🔄 Historique des mouvements</h2>
+          </div>
 
           <div class="table-wrap">
 
@@ -1296,13 +1421,14 @@ td{
                   <th>Matériau</th>
                   <th>Type</th>
                   <th>Quantité</th>
-                  <th>Projet</th>
+                  <th>Chantier</th>
                   <th>Référence</th>
                   <th>Actions</th>
                 </tr>
               </thead>
 
               <tbody id="movementsTable"></tbody>
+
             </table>
 
           </div>
@@ -1312,100 +1438,52 @@ td{
       </section>
 
 
-      <!-- EXPENSES : ÉTAPE 8 -->
-      <section class="page" id="expenses">
+      <!-- ================= FINANCE ================= -->
+      <section id="pageFinance" class="page">
 
         <div class="page-head">
-
           <div>
-            <h1>Dépenses & trésorerie</h1>
-            <p>Suivez les dépenses liées à votre activité et à vos chantiers.</p>
+            <h1>Finance & paiements</h1>
+            <p>Enregistrez vos recettes et dépenses.</p>
           </div>
 
-          <button class="btn btn-primary" onclick="openExpenseModal()">
-            + Nouvelle dépense
+          <button class="btn btn-primary" onclick="openTransactionModal()">
+            + Nouvelle transaction
           </button>
-
         </div>
 
+        <div class="finance-hero">
 
-        <div class="stats">
+          <h2>Situation financière globale</h2>
+          <p>Les chiffres sont calculés automatiquement à partir des transactions.</p>
 
-          <div class="stat">
-            <div class="stat-top">
-              <p>Dépenses totales</p>
-              <div class="stat-icon">💸</div>
+          <div class="finance-kpis">
+
+            <div class="finance-kpi">
+              <small>Recettes</small>
+              <strong id="financeRevenue">0</strong>
             </div>
-            <h3 id="expenseTotal">0</h3>
-            <p>Toutes dépenses</p>
-          </div>
 
-          <div class="stat">
-            <div class="stat-top">
-              <p>Ce mois</p>
-              <div class="stat-icon">📅</div>
+            <div class="finance-kpi">
+              <small>Dépenses</small>
+              <strong id="financeExpenses">0</strong>
             </div>
-            <h3 id="expenseMonth">0</h3>
-            <p>Dépenses du mois</p>
-          </div>
 
-          <div class="stat">
-            <div class="stat-top">
-              <p>Achats matériaux</p>
-              <div class="stat-icon">🧱</div>
+            <div class="finance-kpi">
+              <small>Bénéfice</small>
+              <strong id="financeProfit">0</strong>
             </div>
-            <h3 id="expenseMaterials">0</h3>
-            <p>Catégorie matériaux</p>
-          </div>
 
-          <div class="stat">
-            <div class="stat-top">
-              <p>Autres dépenses</p>
-              <div class="stat-icon">📊</div>
+            <div class="finance-kpi">
+              <small>Marge</small>
+              <strong id="financeMargin">0 %</strong>
             </div>
-            <h3 id="expenseOther">0</h3>
-            <p>Autres catégories</p>
-          </div>
-
-        </div>
-
-
-        <div class="grid2">
-
-          <div class="card">
-
-            <h2>Répartition des dépenses</h2>
-
-            <div id="expenseSummary"></div>
-
-          </div>
-
-
-          <div class="card">
-
-            <h2>Dernières dépenses</h2>
-
-            <div id="recentExpenses"></div>
 
           </div>
 
         </div>
 
-
-        <div class="card" style="margin-top:20px">
-
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;gap:10px">
-
-            <h2 style="margin:0">Historique des dépenses</h2>
-
-            <input
-              id="expenseSearch"
-              class="search"
-              style="max-width:300px;margin:0"
-              placeholder="Rechercher..."
-              oninput="renderExpenses()">
-
-          </div>
+        <div class="card">
 
           <div class="table-wrap">
 
@@ -1413,16 +1491,18 @@ td{
               <thead>
                 <tr>
                   <th>Date</th>
-                  <th>Désignation</th>
+                  <th>Type</th>
                   <th>Catégorie</th>
-                  <th>Projet</th>
                   <th>Montant</th>
-                  <th>Mode paiement</th>
+                  <th>Chantier</th>
+                  <th>Client</th>
+                  <th>Référence</th>
                   <th>Actions</th>
                 </tr>
               </thead>
 
-              <tbody id="expensesTable"></tbody>
+              <tbody id="transactionsTable"></tbody>
+
             </table>
 
           </div>
@@ -1432,62 +1512,64 @@ td{
       </section>
 
 
-      <!-- SETTINGS -->
-      <section class="page" id="settings">
+      <!-- ================= RENTABILITE ================= -->
+      <section id="pageProfitability" class="page">
 
         <div class="page-head">
-
           <div>
-            <h1>Pays & paramètres</h1>
-            <p>Configurez votre entreprise et votre devise.</p>
+            <h1>Rentabilité des chantiers</h1>
+            <p>Analysez le bénéfice et la marge de chaque projet.</p>
+          </div>
+        </div>
+
+        <div class="stats">
+
+          <div class="stat blue">
+            <div class="stat-label">RECETTES GLOBALES</div>
+            <div id="profitRevenue" class="stat-value">0</div>
+          </div>
+
+          <div class="stat red">
+            <div class="stat-label">DÉPENSES GLOBALES</div>
+            <div id="profitExpenses" class="stat-value">0</div>
+          </div>
+
+          <div class="stat green">
+            <div class="stat-label">BÉNÉFICE GLOBAL</div>
+            <div id="profitGlobal" class="stat-value">0</div>
+          </div>
+
+          <div class="stat gold">
+            <div class="stat-label">MARGE GLOBALE</div>
+            <div id="profitMargin" class="stat-value">0 %</div>
           </div>
 
         </div>
 
         <div class="card">
 
-          <div class="form-grid">
-
-            <div class="field">
-              <label>Nom de l'entreprise</label>
-              <input id="companyName">
-            </div>
-
-            <div class="field">
-              <label>Téléphone</label>
-              <input id="companyPhone">
-            </div>
-
-            <div class="field">
-              <label>Email</label>
-              <input id="companyEmail">
-            </div>
-
-            <div class="field">
-              <label>Pays</label>
-
-              <select id="country" onchange="updateCurrency()">
-              </select>
-
-            </div>
-
-            <div class="field">
-              <label>Devise</label>
-              <input id="currency" readonly>
-            </div>
-
-            <div class="field">
-              <label>Adresse</label>
-              <input id="companyAddress">
-            </div>
-
+          <div class="card-title">
+            <h2>📊 Performance par chantier</h2>
           </div>
 
-          <div class="form-actions">
+          <div class="table-wrap">
 
-            <button class="btn btn-primary" onclick="saveSettings()">
-              Enregistrer
-            </button>
+            <table>
+              <thead>
+                <tr>
+                  <th>Chantier</th>
+                  <th>Budget</th>
+                  <th>Recettes</th>
+                  <th>Dépenses</th>
+                  <th>Bénéfice</th>
+                  <th>Marge</th>
+                  <th>Situation</th>
+                </tr>
+              </thead>
+
+              <tbody id="profitabilityTable"></tbody>
+
+            </table>
 
           </div>
 
@@ -1495,40 +1577,588 @@ td{
 
       </section>
 
+
+      <!-- ================= SETTINGS ================= -->
+      <section id="pageSettings" class="page">
+
+        <div class="page-head">
+          <div>
+            <h1>Pays & paramètres</h1>
+            <p>Configurez votre pays et votre devise.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Pays</label>
+              <select id="countrySelect"></select>
+            </div>
+
+            <div class="form-group">
+              <label>Devise</label>
+              <input id="currencyInput" readonly>
+            </div>
+
+            <div class="form-group">
+              <label>Nom de l'entreprise</label>
+              <input id="companySettings" placeholder="Votre entreprise">
+            </div>
+
+            <div class="form-group">
+              <label>Téléphone</label>
+              <input id="companyPhoneSettings">
+            </div>
+
+          </div>
+
+          <button class="btn btn-primary" onclick="saveSettings()">
+            Enregistrer les paramètres
+          </button>
+
+        </div>
+
+      </section>
+
     </div>
-
   </main>
-
 </div>
 
 
-<!-- MODAL -->
-<div class="modal" id="modal">
+<!-- ================= MODAL CLIENT ================= -->
+<div id="clientModal" class="modal">
 
   <div class="modal-box">
 
     <div class="modal-head">
-      <h2 id="modalTitle">Formulaire</h2>
-      <button class="close" onclick="closeModal()">×</button>
+      <h2 id="clientModalTitle">Nouveau client</h2>
+      <button class="close" onclick="closeModal('clientModal')">×</button>
     </div>
 
-    <div id="modalContent"></div>
+    <input type="hidden" id="clientEditId">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Nom / entreprise</label>
+        <input id="clientName">
+      </div>
+
+      <div class="form-group">
+        <label>Type</label>
+        <select id="clientType">
+          <option>Particulier</option>
+          <option>Entreprise</option>
+          <option>Administration</option>
+          <option>Promoteur immobilier</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input id="clientPhone">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input id="clientEmail">
+      </div>
+
+      <div class="form-group">
+        <label>Ville</label>
+        <input id="clientCity">
+      </div>
+
+      <div class="form-group">
+        <label>Adresse</label>
+        <input id="clientAddress">
+      </div>
+
+      <div class="form-group full">
+        <label>Notes</label>
+        <textarea id="clientNotes"></textarea>
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-light" onclick="closeModal('clientModal')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveClient()">Enregistrer</button>
+    </div>
 
   </div>
-
 </div>
 
 
-<div class="toast" id="toast"></div>
+<!-- ================= MODAL PROJECT ================= -->
+<div id="projectModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2 id="projectModalTitle">Nouveau chantier</h2>
+      <button class="close" onclick="closeModal('projectModal')">×</button>
+    </div>
+
+    <input type="hidden" id="projectEditId">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Nom du chantier</label>
+        <input id="projectName">
+      </div>
+
+      <div class="form-group">
+        <label>Client</label>
+        <select id="projectClient"></select>
+      </div>
+
+      <div class="form-group">
+        <label>Localisation</label>
+        <input id="projectLocation">
+      </div>
+
+      <div class="form-group">
+        <label>Budget prévu</label>
+        <input id="projectBudget" type="number">
+      </div>
+
+      <div class="form-group">
+        <label>Date début</label>
+        <input id="projectStart" type="date">
+      </div>
+
+      <div class="form-group">
+        <label>Date fin</label>
+        <input id="projectEnd" type="date">
+      </div>
+
+      <div class="form-group">
+        <label>Statut</label>
+        <select id="projectStatus">
+          <option>Préparation</option>
+          <option>En cours</option>
+          <option>En pause</option>
+          <option>Terminé</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Responsable</label>
+        <input id="projectManager">
+      </div>
+
+      <div class="form-group full">
+        <label>Description</label>
+        <textarea id="projectDescription"></textarea>
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-light" onclick="closeModal('projectModal')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveProject()">Enregistrer</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= MODAL DQE ================= -->
+<div id="dqeModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>Poste DQE</h2>
+      <button class="close" onclick="closeModal('dqeModal')">×</button>
+    </div>
+
+    <input type="hidden" id="dqeEditId">
+
+    <div class="form-grid">
+
+      <div class="form-group full">
+        <label>Matériau de la bibliothèque</label>
+        <select id="dqeMaterial" onchange="fillDqeMaterial()">
+          <option value="">Saisie manuelle</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label>Désignation</label>
+        <input id="dqeDesignation">
+      </div>
+
+      <div class="form-group">
+        <label>Unité</label>
+        <input id="dqeUnit" placeholder="m³, m², kg, unité...">
+      </div>
+
+      <div class="form-group">
+        <label>Quantité</label>
+        <input id="dqeQty" type="number" step="0.01">
+      </div>
+
+      <div class="form-group">
+        <label>Prix unitaire</label>
+        <input id="dqePrice" type="number" step="0.01">
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-light" onclick="closeModal('dqeModal')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveDqe()">Enregistrer</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= MODAL MATERIAL ================= -->
+<div id="materialModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>Matériau</h2>
+      <button class="close" onclick="closeModal('materialModal')">×</button>
+    </div>
+
+    <input type="hidden" id="materialEditId">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Nom</label>
+        <input id="materialName">
+      </div>
+
+      <div class="form-group">
+        <label>Catégorie</label>
+        <input id="materialCategory" placeholder="Ciment, sable, acier...">
+      </div>
+
+      <div class="form-group">
+        <label>Unité</label>
+        <input id="materialUnit" placeholder="sac, m³, kg...">
+      </div>
+
+      <div class="form-group">
+        <label>Prix unitaire</label>
+        <input id="materialPrice" type="number">
+      </div>
+
+      <div class="form-group">
+        <label>Fournisseur</label>
+        <input id="materialSupplier">
+      </div>
+
+      <div class="form-group full">
+        <label>Notes</label>
+        <textarea id="materialNotes"></textarea>
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-light" onclick="closeModal('materialModal')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveMaterial()">Enregistrer</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= MODAL STOCK ================= -->
+<div id="stockModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>Stock matériau</h2>
+      <button class="close" onclick="closeModal('stockModal')">×</button>
+    </div>
+
+    <input type="hidden" id="stockEditId">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Matériau</label>
+        <select id="stockMaterial" onchange="fillStockUnit()"></select>
+      </div>
+
+      <div class="form-group">
+        <label>Unité</label>
+        <input id="stockUnit" readonly>
+      </div>
+
+      <div class="form-group">
+        <label>Quantité initiale</label>
+        <input id="stockInitial" type="number" step="0.01">
+      </div>
+
+      <div class="form-group">
+        <label>Seuil d'alerte</label>
+        <input id="stockThreshold" type="number" step="0.01">
+      </div>
+
+      <div class="form-group full">
+        <label>Lieu de stockage</label>
+        <input id="stockLocation" placeholder="Dépôt, chantier...">
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-light" onclick="closeModal('stockModal')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveStock()">Enregistrer</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= MODAL MOVEMENT ================= -->
+<div id="movementModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>Nouveau mouvement</h2>
+      <button class="close" onclick="closeModal('movementModal')">×</button>
+    </div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Matériau</label>
+        <select id="movementMaterial" onchange="showCurrentStock()"></select>
+      </div>
+
+      <div class="form-group">
+        <label>Type</label>
+        <select id="movementType">
+          <option value="entry">Entrée</option>
+          <option value="exit">Sortie</option>
+          <option value="adjustment">Ajustement</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Quantité</label>
+        <input id="movementQty" type="number" step="0.01">
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input id="movementDate" type="date">
+      </div>
+
+      <div class="form-group full">
+        <label>Chantier</label>
+        <select id="movementProject">
+          <option value="">Aucun chantier</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label>Référence / note</label>
+        <input id="movementReference">
+      </div>
+
+    </div>
+
+    <div id="currentStockInfo" class="calc-result">
+      Sélectionnez un matériau.
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-light" onclick="closeModal('movementModal')">Annuler</button>
+      <button class="btn btn-primary" onclick="recordMovement()">Enregistrer</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= MODAL TRANSACTION ================= -->
+<div id="transactionModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>Nouvelle transaction</h2>
+      <button class="close" onclick="closeModal('transactionModal')">×</button>
+    </div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Type</label>
+        <select id="transactionType">
+          <option value="income">Recette</option>
+          <option value="expense">Dépense</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Montant</label>
+        <input id="transactionAmount" type="number" step="0.01">
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input id="transactionDate" type="date">
+      </div>
+
+      <div class="form-group">
+        <label>Catégorie</label>
+        <select id="transactionCategory">
+          <option>Paiement client</option>
+          <option>Achat matériaux</option>
+          <option>Main d’œuvre</option>
+          <option>Transport</option>
+          <option>Sous-traitance</option>
+          <option>Location matériel</option>
+          <option>Frais administratifs</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Chantier</label>
+        <select id="transactionProject">
+          <option value="">Aucun chantier</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Client</label>
+        <select id="transactionClient">
+          <option value="">Aucun client</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label>Référence</label>
+        <input id="transactionReference" placeholder="Facture, reçu, bon...">
+      </div>
+
+      <div class="form-group full">
+        <label>Note</label>
+        <textarea id="transactionNote"></textarea>
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-light" onclick="closeModal('transactionModal')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveTransaction()">Enregistrer</button>
+    </div>
+
+  </div>
+</div>
 
 
 <script>
+/* =========================================================
+   BATIFLOW — APPLICATION
+========================================================= */
 
-/* =====================================================
-   OUTILS
-===================================================== */
+const countries={
+  "Togo":"FCFA",
+  "Bénin":"FCFA",
+  "Côte d’Ivoire":"FCFA",
+  "Sénégal":"FCFA",
+  "Burkina Faso":"FCFA",
+  "Mali":"FCFA",
+  "Niger":"FCFA",
+  "Guinée-Bissau":"FCFA",
+  "Cameroun":"FCFA",
+  "Gabon":"FCFA",
+  "Congo":"FCFA",
+  "Guinée équatoriale":"FCFA",
+  "RCA":"FCFA",
+  "Tchad":"FCFA",
+  "Ghana":"GHS",
+  "Nigeria":"NGN",
+  "Guinée":"GNF",
+  "Sierra Leone":"SLE",
+  "Liberia":"LRD",
+  "Gambie":"GMD",
+  "Mauritanie":"MRU",
+  "Cap-Vert":"CVE",
+  "Maroc":"MAD",
+  "Algérie":"DZD",
+  "Tunisie":"TND",
+  "Égypte":"EGP",
+  "Libye":"LYD",
+  "Soudan":"SDG",
+  "Kenya":"KES",
+  "Ouganda":"UGX",
+  "Tanzanie":"TZS",
+  "Rwanda":"RWF",
+  "Burundi":"BIF",
+  "Éthiopie":"ETB",
+  "Somalie":"SOS",
+  "Djibouti":"DJF",
+  "Seychelles":"SCR",
+  "Maurice":"MUR",
+  "Afrique du Sud":"ZAR",
+  "Namibie":"NAD",
+  "Botswana":"BWP",
+  "Zambie":"ZMW",
+  "Zimbabwe":"ZWG",
+  "Mozambique":"MZN",
+  "Angola":"AOA",
+  "Malawi":"MWK",
+  "Lesotho":"LSL",
+  "Eswatini":"SZL",
+  "Madagascar":"MGA",
+  "Comores":"KMF"
+};
 
-const $ = id => document.getElementById(id);
+let clients=load("batiflow_clients",[]);
+let projects=load("batiflow_projects",[]);
+let materials=load("batiflow_materials",[]);
+let dqe=load("batiflow_dqe",[]);
+let stocks=load("batiflow_stock",[]);
+let movements=load("batiflow_movements",[]);
+let transactions=load("batiflow_transactions",[]);
+
+let settings=load("batiflow_settings",{
+  country:"Togo",
+  currency:"FCFA",
+  company:"BATIFLOW BTP",
+  phone:""
+});
+
+
+/* ================= UTILITAIRES ================= */
+
+function load(key, fallback){
+  try{
+    const value=localStorage.getItem(key);
+    return value ? JSON.parse(value) : fallback;
+  }catch(e){
+    return fallback;
+  }
+}
+
+function save(key,value){
+  localStorage.setItem(key,JSON.stringify(value));
+}
+
+function uid(){
+  return Date.now().toString()+Math.random().toString(16).slice(2);
+}
 
 function escapeHTML(value){
   return String(value ?? "")
@@ -1540,949 +2170,992 @@ function escapeHTML(value){
 }
 
 function money(value){
-  const currency = localStorage.getItem("batiflow_currency") || "FCFA";
+  const n=Number(value)||0;
 
-  return Number(value || 0).toLocaleString("fr-FR") + " " + currency;
+  return new Intl.NumberFormat("fr-FR",{
+    maximumFractionDigits:0
+  }).format(n)+" "+(settings.currency||"FCFA");
 }
 
-function save(key,data){
-  localStorage.setItem(key,JSON.stringify(data));
+function today(){
+  return new Date().toISOString().slice(0,10);
 }
 
-function load(key,defaultValue=[]){
-  try{
-    return JSON.parse(localStorage.getItem(key)) ?? defaultValue;
-  }catch(e){
-    return defaultValue;
-  }
+function clientName(id){
+  const c=clients.find(x=>x.id===id);
+  return c ? c.name : "—";
 }
 
-function toast(message){
+function projectName(id){
+  const p=projects.find(x=>x.id===id);
+  return p ? p.name : "—";
+}
 
-  const el=$("toast");
+function materialName(id){
+  const m=materials.find(x=>x.id===id);
+  return m ? m.name : "—";
+}
 
-  el.textContent=message;
-  el.classList.add("show");
+function closeModal(id){
+  document.getElementById(id).classList.remove("open");
+}
 
-  setTimeout(()=>{
-    el.classList.remove("show");
-  },2500);
+function openModal(id){
+  document.getElementById(id).classList.add("open");
 }
 
 
-/* =====================================================
-   DONNÉES
-===================================================== */
-
-let clients = load("batiflow_clients",[]);
-let projects = load("batiflow_projects",[]);
-let materials = load("batiflow_materials",[]);
-let stock = load("batiflow_stock",[]);
-let movements = load("batiflow_movements",[]);
-let dqe = load("batiflow_dqe",[]);
-let quotes = load("batiflow_quotes",[]);
-let expenses = load("batiflow_expenses",[]);
-
-
-/* =====================================================
-   PAYS
-===================================================== */
-
-const countries={
-"Togo":"FCFA",
-"Bénin":"FCFA",
-"Côte d’Ivoire":"FCFA",
-"Sénégal":"FCFA",
-"Burkina Faso":"FCFA",
-"Mali":"FCFA",
-"Niger":"FCFA",
-"Guinée-Bissau":"FCFA",
-"Cameroun":"FCFA",
-"Gabon":"FCFA",
-"Congo":"FCFA",
-"Guinée équatoriale":"FCFA",
-"RCA":"FCFA",
-"Tchad":"FCFA",
-"Ghana":"GHS",
-"Nigeria":"NGN",
-"Guinée":"GNF",
-"Sierra Leone":"SLE",
-"Liberia":"LRD",
-"Gambie":"GMD",
-"Mauritanie":"MRU",
-"Cap-Vert":"CVE",
-"Maroc":"MAD",
-"Algérie":"DZD",
-"Tunisie":"TND",
-"Égypte":"EGP",
-"Libye":"LYD",
-"Soudan":"SDG",
-"Kenya":"KES",
-"Ouganda":"UGX",
-"Tanzanie":"TZS",
-"Rwanda":"RWF",
-"Burundi":"BIF",
-"Éthiopie":"ETB",
-"Somalie":"SOS",
-"Djibouti":"DJF",
-"Seychelles":"SCR",
-"Maurice":"MUR",
-"Afrique du Sud":"ZAR",
-"Namibie":"NAD",
-"Botswana":"BWP",
-"Zambie":"ZMW",
-"Zimbabwe":"ZWG",
-"Mozambique":"MZN",
-"Angola":"AOA",
-"Malawi":"MWK",
-"Lesotho":"LSL",
-"Eswatini":"SZL",
-"Madagascar":"MGA",
-"Comores":"KMF"
-};
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
+/* ================= LOGIN ================= */
 
 function login(){
 
-  const name=$("loginName").value.trim() || "Administrateur";
+  localStorage.setItem("batiflow_session","1");
 
-  $("currentUser").textContent=name;
-  $("loginScreen").style.display="none";
+  document.getElementById("loginScreen").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
 
-  localStorage.setItem("batiflow_logged","1");
-  localStorage.setItem("batiflow_user",name);
-
-  updateDashboard();
+  initApp();
 }
 
 function logout(){
 
-  localStorage.removeItem("batiflow_logged");
-  location.reload();
+  localStorage.removeItem("batiflow_session");
 
+  document.getElementById("app").classList.add("hidden");
+  document.getElementById("loginScreen").classList.remove("hidden");
 }
 
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+/* ================= NAVIGATION ================= */
 
 const pageTitles={
- dashboard:"Tableau de bord",
- clients:"Clients",
- projects:"Projets / Chantiers",
- calculator:"Calculateur BTP",
- dqe:"DQE",
- quotes:"Devis",
- materials:"Matériaux & prix",
- stock:"Stock & mouvements",
- expenses:"Dépenses & trésorerie",
- settings:"Pays & paramètres"
+  dashboard:"Tableau de bord",
+  clients:"Clients",
+  projects:"Projets / Chantiers",
+  calculator:"Calculateur BTP",
+  dqe:"DQE",
+  quotes:"Devis",
+  materials:"Matériaux & prix",
+  stock:"Stock & mouvements",
+  finance:"Finance & paiements",
+  profitability:"Rentabilité des chantiers",
+  settings:"Pays & paramètres"
 };
 
 function showPage(page,button){
 
-  document.querySelectorAll(".page").forEach(p=>{
-    p.classList.remove("active");
-  });
+  document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
 
-  $(page).classList.add("active");
+  const target=document.getElementById("page"+capitalize(page));
 
-  document.querySelectorAll(".nav-btn").forEach(b=>{
-    b.classList.remove("active");
-  });
+  if(target){
+    target.classList.add("active");
+  }
 
-  if(button) button.classList.add("active");
+  document.querySelectorAll(".nav-btn").forEach(x=>x.classList.remove("active"));
 
-  $("topTitle").textContent=pageTitles[page] || "BATIFLOW";
+  if(button){
+    button.classList.add("active");
+  }
+
+  document.getElementById("topTitle").textContent=pageTitles[page]||"BATIFLOW";
 
   if(page==="dashboard") updateDashboard();
   if(page==="clients") renderClients();
   if(page==="projects") renderProjects();
+  if(page==="dqe") renderDqe();
+  if(page==="quotes") populateQuoteClients();
   if(page==="materials") renderMaterials();
   if(page==="stock"){
     renderStock();
     renderMovements();
   }
-  if(page==="dqe") renderDQE();
-  if(page==="quotes") renderQuotes();
-  if(page==="expenses") renderExpenses();
-  if(page==="settings") loadSettings();
-
-  $("sidebar").classList.remove("open");
+  if(page==="finance") renderFinance();
+  if(page==="profitability") renderProfitability();
 }
 
-function toggleSidebar(){
-  $("sidebar").classList.toggle("open");
+function capitalize(s){
+  return s.charAt(0).toUpperCase()+s.slice(1);
 }
 
 
-/* =====================================================
-   MODAL
-===================================================== */
+/* ================= DASHBOARD ================= */
 
-function openModal(title,html){
+function updateDashboard(){
 
-  $("modalTitle").textContent=title;
-  $("modalContent").innerHTML=html;
-  $("modal").classList.add("show");
+  const revenue=transactions
+    .filter(t=>t.type==="income")
+    .reduce((a,t)=>a+Number(t.amount||0),0);
 
-}
+  const expenses=transactions
+    .filter(t=>t.type==="expense")
+    .reduce((a,t)=>a+Number(t.amount||0),0);
 
-function closeModal(){
+  const profit=revenue-expenses;
+  const margin=revenue ? (profit/revenue)*100 : 0;
 
-  $("modal").classList.remove("show");
+  const alerts=stocks.filter(s=>getStockQty(s.materialId)<=Number(s.threshold||0)).length;
 
-}
+  setText("dashClients",clients.length);
+  setText("dashProjects",projects.length);
+  setText("dashRevenue",money(revenue));
+  setText("dashExpenses",money(expenses));
+  setText("dashProfit",money(profit));
+  setText("dashMargin",margin.toFixed(1)+" %");
+  setText("dashMaterials",materials.length);
+  setText("dashStockAlerts",alerts);
 
+  setText("dashBoxRevenue",money(revenue));
+  setText("dashBoxExpenses",money(expenses));
+  setText("dashBoxProfit",money(profit));
+  setText("dashBoxMargin",margin.toFixed(1)+" %");
+  setText("dashBoxProjects",projects.length);
 
-/* =====================================================
-   CLIENTS
-===================================================== */
+  const box=document.getElementById("dashboardProjects");
 
-function openClientModal(index=null){
+  if(!projects.length){
+    box.innerHTML='<div class="empty">Aucun chantier enregistré.</div>';
+    return;
+  }
 
-  const c=index!==null ? clients[index] : {};
+  box.innerHTML=projects.slice(-5).reverse().map(p=>`
 
-  openModal(
-    index===null ? "Nouveau client":"Modifier le client",
-
-    `
-    <div class="form-grid">
-
-      <div class="field">
-        <label>Nom / entreprise</label>
-        <input id="clientName" value="${escapeHTML(c.name)}">
+    <div style="padding:12px 0;border-bottom:1px solid #edf1f5">
+      <strong>${escapeHTML(p.name)}</strong>
+      <div style="font-size:12px;color:#718096;margin-top:5px">
+        ${escapeHTML(clientName(p.clientId))}
       </div>
-
-      <div class="field">
-        <label>Type</label>
-        <select id="clientType">
-          <option ${c.type==="Particulier"?"selected":""}>Particulier</option>
-          <option ${c.type==="Entreprise"?"selected":""}>Entreprise</option>
-          <option ${c.type==="Administration"?"selected":""}>Administration</option>
-          <option ${c.type==="Promoteur immobilier"?"selected":""}>Promoteur immobilier</option>
-          <option ${c.type==="Autre"?"selected":""}>Autre</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Téléphone</label>
-        <input id="clientPhone" value="${escapeHTML(c.phone)}">
-      </div>
-
-      <div class="field">
-        <label>Email</label>
-        <input id="clientEmail" value="${escapeHTML(c.email)}">
-      </div>
-
-      <div class="field">
-        <label>Ville</label>
-        <input id="clientCity" value="${escapeHTML(c.city)}">
-      </div>
-
-      <div class="field">
-        <label>Adresse</label>
-        <input id="clientAddress" value="${escapeHTML(c.address)}">
-      </div>
-
-      <div class="field full">
-        <label>Notes</label>
-        <textarea id="clientNotes">${escapeHTML(c.notes)}</textarea>
-      </div>
-
     </div>
 
-    <div class="form-actions">
-      <button class="btn btn-light" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-primary" onclick="saveClient(${index===null?"null":index})">
-        Enregistrer
-      </button>
-    </div>
-    `
-  );
+  `).join("");
 }
 
-function saveClient(index){
+function setText(id,value){
+  const el=document.getElementById(id);
+  if(el) el.textContent=value;
+}
+
+
+/* ================= CLIENTS ================= */
+
+function openClientModal(){
+
+  document.getElementById("clientEditId").value="";
+  document.getElementById("clientModalTitle").textContent="Nouveau client";
+
+  [
+    "clientName",
+    "clientPhone",
+    "clientEmail",
+    "clientCity",
+    "clientAddress",
+    "clientNotes"
+  ].forEach(id=>document.getElementById(id).value="");
+
+  document.getElementById("clientType").value="Particulier";
+
+  openModal("clientModal");
+}
+
+function saveClient(){
+
+  const id=document.getElementById("clientEditId").value;
 
   const data={
-    id:index===null?Date.now():clients[index].id,
-    name:$("clientName").value,
-    type:$("clientType").value,
-    phone:$("clientPhone").value,
-    email:$("clientEmail").value,
-    city:$("clientCity").value,
-    address:$("clientAddress").value,
-    notes:$("clientNotes").value
+    id:id||uid(),
+    name:document.getElementById("clientName").value.trim(),
+    type:document.getElementById("clientType").value,
+    phone:document.getElementById("clientPhone").value.trim(),
+    email:document.getElementById("clientEmail").value.trim(),
+    city:document.getElementById("clientCity").value.trim(),
+    address:document.getElementById("clientAddress").value.trim(),
+    notes:document.getElementById("clientNotes").value.trim()
   };
 
-  if(!data.name.trim()){
+  if(!data.name){
     alert("Veuillez saisir le nom du client.");
     return;
   }
 
-  if(index===null) clients.push(data);
-  else clients[index]=data;
+  if(id){
+    const index=clients.findIndex(x=>x.id===id);
+    if(index>=0) clients[index]=data;
+  }else{
+    clients.push(data);
+  }
 
   save("batiflow_clients",clients);
 
-  closeModal();
-  renderClients();
-  updateDashboard();
+  closeModal("clientModal");
 
-  toast("Client enregistré.");
+  renderClients();
+  populateClientSelects();
+  updateDashboard();
 }
 
 function renderClients(){
 
-  const search=($("clientSearch")?.value || "").toLowerCase();
+  const tbody=document.getElementById("clientsTable");
+
+  const search=(document.getElementById("clientSearch")?.value||"").toLowerCase();
 
   const list=clients.filter(c=>
-    `${c.name} ${c.phone} ${c.email} ${c.city}`
-    .toLowerCase()
-    .includes(search)
+    `${c.name} ${c.phone} ${c.email} ${c.city}`.toLowerCase().includes(search)
   );
 
-  $("clientsTable").innerHTML=list.length ? list.map(c=>{
-
-    const index=clients.findIndex(x=>x.id===c.id);
-
-    return `
-      <tr>
-        <td><strong>${escapeHTML(c.name)}</strong></td>
-        <td>${escapeHTML(c.type)}</td>
-        <td>${escapeHTML(c.phone)}</td>
-        <td>${escapeHTML(c.email)}</td>
-        <td>${escapeHTML(c.city)}</td>
-        <td>
-          <div class="actions">
-            <button class="action btn-light" onclick="openClientModal(${index})">Modifier</button>
-            <button class="action btn-danger" onclick="deleteClient(${index})">Supprimer</button>
-          </div>
-        </td>
-      </tr>
-    `;
-
-  }).join("") : `
-    <tr>
-      <td colspan="6">
-        <div class="empty">Aucun client enregistré.</div>
-      </td>
-    </tr>
-  `;
-}
-
-function deleteClient(index){
-
-  if(!confirm("Supprimer ce client ?")) return;
-
-  clients.splice(index,1);
-  save("batiflow_clients",clients);
-
-  renderClients();
-  updateDashboard();
-
-  toast("Client supprimé.");
-}
-
-
-/* =====================================================
-   PROJETS
-===================================================== */
-
-function openProjectModal(index=null){
-
-  const p=index!==null ? projects[index] : {};
-
-  openModal(
-    index===null?"Nouveau projet":"Modifier le projet",
-
-    `
-    <div class="form-grid">
-
-      <div class="field">
-        <label>Nom du projet</label>
-        <input id="projectName" value="${escapeHTML(p.name)}">
-      </div>
-
-      <div class="field">
-        <label>Client</label>
-        <select id="projectClient">
-          <option value="">-- Sélectionner --</option>
-          ${clients.map(c=>`
-            <option value="${c.id}" ${String(p.clientId)===String(c.id)?"selected":""}>
-              ${escapeHTML(c.name)}
-            </option>
-          `).join("")}
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Lieu</label>
-        <input id="projectLocation" value="${escapeHTML(p.location)}">
-      </div>
-
-      <div class="field">
-        <label>Budget</label>
-        <input id="projectBudget" type="number" value="${p.budget||""}">
-      </div>
-
-      <div class="field">
-        <label>Date début</label>
-        <input id="projectStart" type="date" value="${p.start||""}">
-      </div>
-
-      <div class="field">
-        <label>Date fin</label>
-        <input id="projectEnd" type="date" value="${p.end||""}">
-      </div>
-
-      <div class="field">
-        <label>Statut</label>
-        <select id="projectStatus">
-          <option ${p.status==="Planifié"?"selected":""}>Planifié</option>
-          <option ${p.status==="En cours"?"selected":""}>En cours</option>
-          <option ${p.status==="Terminé"?"selected":""}>Terminé</option>
-          <option ${p.status==="Suspendu"?"selected":""}>Suspendu</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Responsable</label>
-        <input id="projectManager" value="${escapeHTML(p.manager)}">
-      </div>
-
-      <div class="field full">
-        <label>Description</label>
-        <textarea id="projectDescription">${escapeHTML(p.description)}</textarea>
-      </div>
-
-    </div>
-
-    <div class="form-actions">
-      <button class="btn btn-light" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-primary" onclick="saveProject(${index===null?"null":index})">
-        Enregistrer
-      </button>
-    </div>
-    `
-  );
-}
-
-function saveProject(index){
-
-  const data={
-    id:index===null?Date.now():projects[index].id,
-    name:$("projectName").value,
-    clientId:$("projectClient").value,
-    location:$("projectLocation").value,
-    budget:Number($("projectBudget").value)||0,
-    start:$("projectStart").value,
-    end:$("projectEnd").value,
-    status:$("projectStatus").value,
-    manager:$("projectManager").value,
-    description:$("projectDescription").value
-  };
-
-  if(!data.name.trim()){
-    alert("Veuillez saisir le nom du projet.");
+  if(!list.length){
+    tbody.innerHTML='<tr><td colspan="6" class="empty">Aucun client.</td></tr>';
     return;
   }
 
-  if(index===null) projects.push(data);
-  else projects[index]=data;
+  tbody.innerHTML=list.map(c=>`
+
+    <tr>
+      <td><strong>${escapeHTML(c.name)}</strong></td>
+      <td><span class="badge badge-blue">${escapeHTML(c.type)}</span></td>
+      <td>${escapeHTML(c.phone)}</td>
+      <td>${escapeHTML(c.email)}</td>
+      <td>${escapeHTML(c.city)}</td>
+      <td>
+        <button class="btn btn-light btn-small" onclick="editClient('${c.id}')">Modifier</button>
+        <button class="btn btn-danger btn-small" onclick="deleteClient('${c.id}')">Supprimer</button>
+      </td>
+    </tr>
+
+  `).join("");
+}
+
+function editClient(id){
+
+  const c=clients.find(x=>x.id===id);
+  if(!c)return;
+
+  document.getElementById("clientEditId").value=c.id;
+  document.getElementById("clientModalTitle").textContent="Modifier le client";
+
+  document.getElementById("clientName").value=c.name||"";
+  document.getElementById("clientType").value=c.type||"Particulier";
+  document.getElementById("clientPhone").value=c.phone||"";
+  document.getElementById("clientEmail").value=c.email||"";
+  document.getElementById("clientCity").value=c.city||"";
+  document.getElementById("clientAddress").value=c.address||"";
+  document.getElementById("clientNotes").value=c.notes||"";
+
+  openModal("clientModal");
+}
+
+function deleteClient(id){
+
+  if(!confirm("Supprimer ce client ?"))return;
+
+  clients=clients.filter(x=>x.id!==id);
+
+  save("batiflow_clients",clients);
+
+  renderClients();
+  populateClientSelects();
+  updateDashboard();
+}
+
+
+/* ================= PROJECTS ================= */
+
+function openProjectModal(id=""){
+
+  populateProjectClients();
+
+  document.getElementById("projectEditId").value=id;
+
+  if(!id){
+
+    document.getElementById("projectModalTitle").textContent="Nouveau chantier";
+
+    [
+      "projectName",
+      "projectLocation",
+      "projectBudget",
+      "projectStart",
+      "projectEnd",
+      "projectManager",
+      "projectDescription"
+    ].forEach(x=>document.getElementById(x).value="");
+
+    document.getElementById("projectStatus").value="Préparation";
+    document.getElementById("projectClient").value="";
+
+  }else{
+
+    const p=projects.find(x=>x.id===id);
+    if(!p)return;
+
+    document.getElementById("projectModalTitle").textContent="Modifier le chantier";
+
+    document.getElementById("projectName").value=p.name||"";
+    document.getElementById("projectClient").value=p.clientId||"";
+    document.getElementById("projectLocation").value=p.location||"";
+    document.getElementById("projectBudget").value=p.budget||"";
+    document.getElementById("projectStart").value=p.start||"";
+    document.getElementById("projectEnd").value=p.end||"";
+    document.getElementById("projectStatus").value=p.status||"Préparation";
+    document.getElementById("projectManager").value=p.manager||"";
+    document.getElementById("projectDescription").value=p.description||"";
+  }
+
+  openModal("projectModal");
+}
+
+function populateProjectClients(){
+
+  const select=document.getElementById("projectClient");
+
+  select.innerHTML='<option value="">Sans client</option>'+
+    clients.map(c=>`
+      <option value="${c.id}">${escapeHTML(c.name)}</option>
+    `).join("");
+}
+
+function saveProject(){
+
+  const id=document.getElementById("projectEditId").value;
+
+  const data={
+    id:id||uid(),
+    name:document.getElementById("projectName").value.trim(),
+    clientId:document.getElementById("projectClient").value,
+    location:document.getElementById("projectLocation").value.trim(),
+    budget:Number(document.getElementById("projectBudget").value||0),
+    start:document.getElementById("projectStart").value,
+    end:document.getElementById("projectEnd").value,
+    status:document.getElementById("projectStatus").value,
+    manager:document.getElementById("projectManager").value.trim(),
+    description:document.getElementById("projectDescription").value.trim()
+  };
+
+  if(!data.name){
+    alert("Veuillez saisir le nom du chantier.");
+    return;
+  }
+
+  if(id){
+    const index=projects.findIndex(x=>x.id===id);
+    if(index>=0)projects[index]=data;
+  }else{
+    projects.push(data);
+  }
 
   save("batiflow_projects",projects);
 
-  closeModal();
-  renderProjects();
-  updateDashboard();
+  closeModal("projectModal");
 
-  toast("Projet enregistré.");
+  renderProjects();
+  populateProjectSelects();
+  updateDashboard();
 }
 
 function renderProjects(){
 
-  const search=($("projectSearch")?.value||"").toLowerCase();
+  const tbody=document.getElementById("projectsTable");
+
+  const search=(document.getElementById("projectSearch")?.value||"").toLowerCase();
 
   const list=projects.filter(p=>
-    `${p.name} ${p.location}`
-    .toLowerCase()
-    .includes(search)
+    `${p.name} ${p.location} ${clientName(p.clientId)}`
+      .toLowerCase()
+      .includes(search)
   );
 
-  $("projectsTable").innerHTML=list.length?list.map(p=>{
+  if(!list.length){
+    tbody.innerHTML='<tr><td colspan="6" class="empty">Aucun chantier.</td></tr>';
+    return;
+  }
 
-    const index=projects.findIndex(x=>x.id===p.id);
-    const client=clients.find(c=>String(c.id)===String(p.clientId));
+  tbody.innerHTML=list.map(p=>`
 
-    return `
-      <tr>
-        <td><strong>${escapeHTML(p.name)}</strong></td>
-        <td>${escapeHTML(client?.name||"—")}</td>
-        <td>${escapeHTML(p.location)}</td>
-        <td>${money(p.budget)}</td>
-        <td>${escapeHTML(p.start)}</td>
-        <td>
-          <span class="badge ${
-            p.status==="Terminé"?"badge-green":
-            p.status==="En cours"?"badge-blue":
-            p.status==="Suspendu"?"badge-red":"badge-orange"
-          }">
-            ${escapeHTML(p.status)}
-          </span>
-        </td>
-        <td>
-          <div class="actions">
-            <button class="action btn-light" onclick="openProjectModal(${index})">Modifier</button>
-            <button class="action btn-danger" onclick="deleteProject(${index})">Supprimer</button>
-          </div>
-        </td>
-      </tr>
-    `;
-
-  }).join(""):`
     <tr>
-      <td colspan="7">
-        <div class="empty">Aucun projet enregistré.</div>
+      <td><strong>${escapeHTML(p.name)}</strong></td>
+      <td>${escapeHTML(clientName(p.clientId))}</td>
+      <td>${escapeHTML(p.location)}</td>
+      <td>${money(p.budget)}</td>
+      <td><span class="badge badge-blue">${escapeHTML(p.status)}</span></td>
+      <td>
+        <button class="btn btn-light btn-small" onclick="openProjectModal('${p.id}')">Modifier</button>
+        <button class="btn btn-danger btn-small" onclick="deleteProject('${p.id}')">Supprimer</button>
       </td>
     </tr>
-  `;
+
+  `).join("");
 }
 
-function deleteProject(index){
+function deleteProject(id){
 
-  if(!confirm("Supprimer ce projet ?")) return;
+  if(!confirm("Supprimer ce chantier ?"))return;
 
-  projects.splice(index,1);
+  projects=projects.filter(x=>x.id!==id);
+
   save("batiflow_projects",projects);
 
   renderProjects();
+  populateProjectSelects();
   updateDashboard();
-
-  toast("Projet supprimé.");
 }
 
 
-/* =====================================================
-   MATÉRIAUX
-===================================================== */
+/* ================= CALCULATEUR ================= */
 
-function openMaterialModal(index=null){
+function calculateConcrete(){
 
-  const m=index!==null?materials[index]:{};
+  const type=document.getElementById("calcType").value;
 
-  openModal(
-    index===null?"Nouveau matériau":"Modifier le matériau",
+  const L=Number(document.getElementById("calcL").value)||0;
+  const W=Number(document.getElementById("calcW").value)||0;
+  const H=Number(document.getElementById("calcH").value)||0;
 
-    `
-    <div class="form-grid">
+  const volume=L*W*H;
 
-      <div class="field">
-        <label>Nom du matériau</label>
-        <input id="materialName" value="${escapeHTML(m.name)}">
-      </div>
+  const ciment=volume*7;
+  const sable=volume*0.5;
+  const gravier=volume*0.8;
 
-      <div class="field">
-        <label>Catégorie</label>
-        <input id="materialCategory" value="${escapeHTML(m.category)}"
-          placeholder="Ciment, acier, bois...">
-      </div>
+  document.getElementById("calcResult").innerHTML=`
 
-      <div class="field">
-        <label>Unité</label>
-        <input id="materialUnit" value="${escapeHTML(m.unit||"U")}">
-      </div>
+    <strong>${volume.toFixed(3)} m³</strong>
 
-      <div class="field">
-        <label>Prix unitaire</label>
-        <input id="materialPrice" type="number" value="${m.price||""}">
-      </div>
-
-      <div class="field">
-        <label>Fournisseur</label>
-        <input id="materialSupplier" value="${escapeHTML(m.supplier)}">
-      </div>
-
-      <div class="field full">
-        <label>Notes</label>
-        <textarea id="materialNotes">${escapeHTML(m.notes)}</textarea>
-      </div>
-
+    <div style="margin-top:12px">
+      <b>Élément :</b> ${escapeHTML(type)}
     </div>
 
-    <div class="form-actions">
-      <button class="btn btn-light" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-primary" onclick="saveMaterial(${index===null?"null":index})">
-        Enregistrer
-      </button>
+    <div style="margin-top:8px">
+      Estimation indicative :
+      <br>• Ciment : environ ${ciment.toFixed(1)} sacs
+      <br>• Sable : environ ${sable.toFixed(2)} m³
+      <br>• Gravier : environ ${gravier.toFixed(2)} m³
     </div>
-    `
-  );
+
+    <div style="margin-top:10px;color:#718096;font-size:11px">
+      Ces valeurs sont indicatives et doivent être adaptées à la formulation réelle du béton.
+    </div>
+
+  `;
 }
 
-function saveMaterial(index){
 
-  const data={
-    id:index===null?Date.now():materials[index].id,
-    name:$("materialName").value,
-    category:$("materialCategory").value,
-    unit:$("materialUnit").value || "U",
-    price:Number($("materialPrice").value)||0,
-    supplier:$("materialSupplier").value,
-    notes:$("materialNotes").value
+/* ================= DQE ================= */
+
+function openDqeModal(id=""){
+
+  populateDqeMaterials();
+
+  document.getElementById("dqeEditId").value=id;
+
+  if(id){
+
+    const item=dqe.find(x=>x.id===id);
+    if(!item)return;
+
+    document.getElementById("dqeMaterial").value=item.materialId||"";
+    document.getElementById("dqeDesignation").value=item.designation||"";
+    document.getElementById("dqeUnit").value=item.unit||"";
+    document.getElementById("dqeQty").value=item.qty||"";
+    document.getElementById("dqePrice").value=item.price||"";
+
+  }else{
+
+    document.getElementById("dqeMaterial").value="";
+    document.getElementById("dqeDesignation").value="";
+    document.getElementById("dqeUnit").value="";
+    document.getElementById("dqeQty").value="";
+    document.getElementById("dqePrice").value="";
+  }
+
+  openModal("dqeModal");
+}
+
+function populateDqeMaterials(){
+
+  document.getElementById("dqeMaterial").innerHTML=
+    '<option value="">Saisie manuelle</option>'+
+    materials.map(m=>`
+      <option value="${m.id}">
+        ${escapeHTML(m.name)} — ${money(m.price)}
+      </option>
+    `).join("");
+}
+
+function fillDqeMaterial(){
+
+  const id=document.getElementById("dqeMaterial").value;
+
+  const m=materials.find(x=>x.id===id);
+
+  if(!m)return;
+
+  document.getElementById("dqeDesignation").value=m.name;
+  document.getElementById("dqeUnit").value=m.unit;
+  document.getElementById("dqePrice").value=m.price;
+}
+
+function saveDqe(){
+
+  const id=document.getElementById("dqeEditId").value;
+
+  const item={
+    id:id||uid(),
+    materialId:document.getElementById("dqeMaterial").value,
+    designation:document.getElementById("dqeDesignation").value.trim(),
+    unit:document.getElementById("dqeUnit").value.trim(),
+    qty:Number(document.getElementById("dqeQty").value||0),
+    price:Number(document.getElementById("dqePrice").value||0)
   };
 
-  if(!data.name.trim()){
+  if(!item.designation){
+    alert("Veuillez saisir une désignation.");
+    return;
+  }
+
+  if(id){
+
+    const index=dqe.findIndex(x=>x.id===id);
+
+    if(index>=0)dqe[index]=item;
+
+  }else{
+    dqe.push(item);
+  }
+
+  save("batiflow_dqe",dqe);
+
+  closeModal("dqeModal");
+
+  renderDqe();
+}
+
+function renderDqe(){
+
+  const tbody=document.getElementById("dqeTable");
+
+  const total=dqe.reduce((a,x)=>a+(Number(x.qty)*Number(x.price)),0);
+
+  setText("dqeCount",dqe.length);
+  setText("dqeTotal",money(total));
+
+  if(!dqe.length){
+
+    tbody.innerHTML='<tr><td colspan="6" class="empty">Aucun poste DQE.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML=dqe.map(x=>{
+
+    const totalLine=Number(x.qty)*Number(x.price);
+
+    return `
+
+      <tr>
+        <td><strong>${escapeHTML(x.designation)}</strong></td>
+        <td>${escapeHTML(x.unit)}</td>
+        <td>${x.qty}</td>
+        <td>${money(x.price)}</td>
+        <td><strong>${money(totalLine)}</strong></td>
+        <td>
+          <button class="btn btn-light btn-small" onclick="openDqeModal('${x.id}')">Modifier</button>
+          <button class="btn btn-danger btn-small" onclick="deleteDqe('${x.id}')">Supprimer</button>
+        </td>
+      </tr>
+
+    `;
+  }).join("");
+}
+
+function deleteDqe(id){
+
+  dqe=dqe.filter(x=>x.id!==id);
+
+  save("batiflow_dqe",dqe);
+
+  renderDqe();
+}
+
+function clearDqe(){
+
+  if(!confirm("Supprimer tous les postes du DQE ?"))return;
+
+  dqe=[];
+
+  save("batiflow_dqe",dqe);
+
+  renderDqe();
+}
+
+
+/* ================= MATERIAUX ================= */
+
+function openMaterialModal(id=""){
+
+  document.getElementById("materialEditId").value=id;
+
+  if(id){
+
+    const m=materials.find(x=>x.id===id);
+    if(!m)return;
+
+    document.getElementById("materialName").value=m.name||"";
+    document.getElementById("materialCategory").value=m.category||"";
+    document.getElementById("materialUnit").value=m.unit||"";
+    document.getElementById("materialPrice").value=m.price||"";
+    document.getElementById("materialSupplier").value=m.supplier||"";
+    document.getElementById("materialNotes").value=m.notes||"";
+
+  }else{
+
+    [
+      "materialName",
+      "materialCategory",
+      "materialUnit",
+      "materialPrice",
+      "materialSupplier",
+      "materialNotes"
+    ].forEach(id=>document.getElementById(id).value="");
+  }
+
+  openModal("materialModal");
+}
+
+function saveMaterial(){
+
+  const id=document.getElementById("materialEditId").value;
+
+  const m={
+    id:id||uid(),
+    name:document.getElementById("materialName").value.trim(),
+    category:document.getElementById("materialCategory").value.trim(),
+    unit:document.getElementById("materialUnit").value.trim(),
+    price:Number(document.getElementById("materialPrice").value||0),
+    supplier:document.getElementById("materialSupplier").value.trim(),
+    notes:document.getElementById("materialNotes").value.trim()
+  };
+
+  if(!m.name){
     alert("Veuillez saisir le nom du matériau.");
     return;
   }
 
-  if(index===null) materials.push(data);
-  else materials[index]=data;
+  if(id){
+
+    const index=materials.findIndex(x=>x.id===id);
+
+    if(index>=0)materials[index]=m;
+
+  }else{
+    materials.push(m);
+  }
 
   save("batiflow_materials",materials);
 
-  closeModal();
-  renderMaterials();
-  updateDashboard();
+  closeModal("materialModal");
 
-  toast("Matériau enregistré.");
+  renderMaterials();
+  populateDqeMaterials();
+  populateStockMaterials();
+  updateDashboard();
 }
 
 function renderMaterials(){
 
-  const search=($("materialSearch")?.value||"").toLowerCase();
+  const tbody=document.getElementById("materialsTable");
+
+  const search=(document.getElementById("materialSearch")?.value||"").toLowerCase();
 
   const list=materials.filter(m=>
     `${m.name} ${m.category} ${m.supplier}`
-    .toLowerCase()
-    .includes(search)
+      .toLowerCase()
+      .includes(search)
   );
 
-  $("materialsTable").innerHTML=list.length?list.map(m=>{
+  if(!list.length){
 
-    const index=materials.findIndex(x=>x.id===m.id);
+    tbody.innerHTML='<tr><td colspan="6" class="empty">Aucun matériau.</td></tr>';
 
-    return `
-      <tr>
-        <td><strong>${escapeHTML(m.name)}</strong></td>
-        <td>${escapeHTML(m.category)}</td>
-        <td>${escapeHTML(m.unit)}</td>
-        <td>${money(m.price)}</td>
-        <td>${escapeHTML(m.supplier)}</td>
-        <td>
-          <div class="actions">
-            <button class="action btn-light" onclick="openMaterialModal(${index})">Modifier</button>
-            <button class="action btn-danger" onclick="deleteMaterial(${index})">Supprimer</button>
-          </div>
-        </td>
-      </tr>
-    `;
+    return;
+  }
 
-  }).join(""):`
+  tbody.innerHTML=list.map(m=>`
+
     <tr>
-      <td colspan="6">
-        <div class="empty">Aucun matériau enregistré.</div>
+      <td><strong>${escapeHTML(m.name)}</strong></td>
+      <td>${escapeHTML(m.category)}</td>
+      <td>${escapeHTML(m.unit)}</td>
+      <td>${money(m.price)}</td>
+      <td>${escapeHTML(m.supplier)}</td>
+      <td>
+        <button class="btn btn-light btn-small" onclick="openMaterialModal('${m.id}')">Modifier</button>
+        <button class="btn btn-danger btn-small" onclick="deleteMaterial('${m.id}')">Supprimer</button>
       </td>
     </tr>
-  `;
+
+  `).join("");
 }
 
-function deleteMaterial(index){
+function deleteMaterial(id){
 
-  if(!confirm("Supprimer ce matériau ?")) return;
+  if(!confirm("Supprimer ce matériau ?"))return;
 
-  materials.splice(index,1);
+  materials=materials.filter(x=>x.id!==id);
 
   save("batiflow_materials",materials);
 
   renderMaterials();
   updateDashboard();
-
-  toast("Matériau supprimé.");
 }
 
 
-/* =====================================================
-   STOCK
-===================================================== */
+/* ================= STOCK ================= */
 
-function getStock(materialId){
+function populateStockMaterials(){
 
-  return stock.find(s=>String(s.materialId)===String(materialId));
+  const select=document.getElementById("stockMaterial");
+
+  if(!select)return;
+
+  select.innerHTML=
+    '<option value="">Sélectionner</option>'+
+    materials.map(m=>`
+      <option value="${m.id}">
+        ${escapeHTML(m.name)}
+      </option>
+    `).join("");
 }
 
-function getStockQty(materialId){
+function fillStockUnit(){
 
-  const s=getStock(materialId);
+  const id=document.getElementById("stockMaterial").value;
 
-  return s ? Number(s.quantity)||0 : 0;
+  const m=materials.find(x=>x.id===id);
+
+  document.getElementById("stockUnit").value=m ? m.unit : "";
 }
 
-function openStockModal(index=null){
+function openStockModal(id=""){
 
-  const s=index!==null?stock[index]:{};
+  populateStockMaterials();
 
-  openModal(
-    index===null?"Créer un stock":"Modifier le stock",
+  document.getElementById("stockEditId").value=id;
 
-    `
-    <div class="form-grid">
+  if(id){
 
-      <div class="field">
-        <label>Matériau</label>
+    const s=stocks.find(x=>x.id===id);
 
-        <select id="stockMaterial">
-          <option value="">-- Sélectionner --</option>
+    if(!s)return;
 
-          ${materials.map(m=>`
-            <option value="${m.id}"
-              ${String(s.materialId)===String(m.id)?"selected":""}>
-              ${escapeHTML(m.name)}
-            </option>
-          `).join("")}
+    document.getElementById("stockMaterial").value=s.materialId;
+    document.getElementById("stockUnit").value=s.unit||"";
+    document.getElementById("stockInitial").value=s.initial||0;
+    document.getElementById("stockThreshold").value=s.threshold||0;
+    document.getElementById("stockLocation").value=s.location||"";
 
-        </select>
+  }else{
 
-      </div>
+    document.getElementById("stockMaterial").value="";
+    document.getElementById("stockUnit").value="";
+    document.getElementById("stockInitial").value="";
+    document.getElementById("stockThreshold").value="";
+    document.getElementById("stockLocation").value="";
+  }
 
-      <div class="field">
-        <label>Quantité actuelle</label>
-        <input id="stockQuantity" type="number" step="0.01" value="${s.quantity??0}">
-      </div>
-
-      <div class="field">
-        <label>Seuil minimum</label>
-        <input id="stockThreshold" type="number" step="0.01" value="${s.threshold??0}">
-      </div>
-
-      <div class="field">
-        <label>Lieu / dépôt</label>
-        <input id="stockLocation" value="${escapeHTML(s.location)}">
-      </div>
-
-    </div>
-
-    <div class="form-actions">
-      <button class="btn btn-light" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-primary" onclick="saveStock(${index===null?"null":index})">
-        Enregistrer
-      </button>
-    </div>
-    `
-  );
+  openModal("stockModal");
 }
 
-function saveStock(index){
+function saveStock(){
 
-  const materialId=$("stockMaterial").value;
+  const id=document.getElementById("stockEditId").value;
+
+  const materialId=document.getElementById("stockMaterial").value;
 
   if(!materialId){
     alert("Sélectionnez un matériau.");
     return;
   }
 
+  const m=materials.find(x=>x.id===materialId);
+
   const data={
-    id:index===null?Date.now():stock[index].id,
+    id:id||uid(),
     materialId,
-    quantity:Number($("stockQuantity").value)||0,
-    threshold:Number($("stockThreshold").value)||0,
-    location:$("stockLocation").value
+    unit:m?.unit||document.getElementById("stockUnit").value,
+    initial:Number(document.getElementById("stockInitial").value||0),
+    threshold:Number(document.getElementById("stockThreshold").value||0),
+    location:document.getElementById("stockLocation").value.trim()
   };
 
-  if(index===null) stock.push(data);
-  else stock[index]=data;
+  if(id){
 
-  save("batiflow_stock",stock);
+    const index=stocks.findIndex(x=>x.id===id);
 
-  closeModal();
+    if(index>=0)stocks[index]=data;
+
+  }else{
+
+    stocks.push(data);
+
+  }
+
+  save("batiflow_stock",stocks);
+
+  closeModal("stockModal");
 
   renderStock();
   updateDashboard();
+}
 
-  toast("Stock enregistré.");
+function getStockQty(materialId){
+
+  const stock=stocks.find(x=>x.materialId===materialId);
+
+  if(!stock)return 0;
+
+  let qty=Number(stock.initial||0);
+
+  movements
+    .filter(m=>m.materialId===materialId)
+    .forEach(m=>{
+      qty+=Number(m.delta||0);
+    });
+
+  return qty;
 }
 
 function renderStock(){
 
-  const rows=stock.map((s,index)=>{
+  const tbody=document.getElementById("stockTable");
 
-    const m=materials.find(x=>String(x.id)===String(s.materialId));
+  if(!stocks.length){
 
-    if(!m) return "";
+    tbody.innerHTML='<tr><td colspan="7" class="empty">Aucun stock configuré.</td></tr>';
 
-    const low=Number(s.quantity)<=Number(s.threshold);
-
-    return `
-      <tr>
-        <td><strong>${escapeHTML(m.name)}</strong></td>
-        <td>${escapeHTML(m.unit)}</td>
-        <td>${Number(s.quantity).toLocaleString("fr-FR")}</td>
-        <td>${Number(s.threshold).toLocaleString("fr-FR")}</td>
-        <td>${escapeHTML(s.location)}</td>
-        <td>
-          <span class="badge ${low?"badge-red":"badge-green"}">
-            ${low?"Stock faible":"Stock OK"}
-          </span>
-        </td>
-        <td>
-          <div class="actions">
-            <button class="action btn-light" onclick="openStockModal(${index})">Modifier</button>
-            <button class="action btn-danger" onclick="deleteStock(${index})">Supprimer</button>
-          </div>
-        </td>
-      </tr>
-    `;
-
-  }).join("");
-
-  $("stockTable").innerHTML=rows||`
-    <tr>
-      <td colspan="7">
-        <div class="empty">Aucun stock suivi.</div>
-      </td>
-    </tr>
-  `;
-
-  const alerts=stock.filter(s=>Number(s.quantity)<=Number(s.threshold));
-
-  $("stockAlertBox").innerHTML=alerts.length?`
-    <div class="stock-alert">
-      ⚠️ ${alerts.length} article(s) ont atteint ou sont sous le seuil minimum.
-    </div>
-  `:"";
-}
-
-function deleteStock(index){
-
-  if(!confirm("Supprimer ce suivi de stock ?")) return;
-
-  stock.splice(index,1);
-  save("batiflow_stock",stock);
-
-  renderStock();
-  updateDashboard();
-
-  toast("Stock supprimé.");
-}
-
-
-/* =====================================================
-   MOUVEMENTS
-===================================================== */
-
-function openMovementModal(){
-
-  openModal(
-    "Nouveau mouvement de stock",
-
-    `
-    <div class="form-grid">
-
-      <div class="field">
-        <label>Matériau</label>
-
-        <select id="movementMaterial" onchange="showMovementStock()">
-          <option value="">-- Sélectionner --</option>
-
-          ${materials.map(m=>`
-            <option value="${m.id}">
-              ${escapeHTML(m.name)}
-            </option>
-          `).join("")}
-
-        </select>
-
-      </div>
-
-      <div class="field">
-        <label>Type</label>
-
-        <select id="movementType">
-          <option value="entree">Entrée / achat</option>
-          <option value="sortie">Sortie / consommation</option>
-          <option value="ajustement">Ajustement</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Quantité</label>
-        <input id="movementQuantity" type="number" min="0" step="0.01">
-      </div>
-
-      <div class="field">
-        <label>Date</label>
-        <input id="movementDate" type="date"
-          value="${new Date().toISOString().slice(0,10)}">
-      </div>
-
-      <div class="field">
-        <label>Projet / chantier</label>
-
-        <select id="movementProject">
-          <option value="">-- Aucun --</option>
-
-          ${projects.map(p=>`
-            <option value="${p.id}">
-              ${escapeHTML(p.name)}
-            </option>
-          `).join("")}
-
-        </select>
-
-      </div>
-
-      <div class="field">
-        <label>Référence</label>
-        <input id="movementReference">
-      </div>
-
-      <div class="field full">
-        <label>Note</label>
-        <textarea id="movementNote"></textarea>
-      </div>
-
-    </div>
-
-    <div id="movementCurrentStock"
-      style="margin-top:15px;padding:12px;background:#f4f7fb;border-radius:8px">
-      Sélectionnez un matériau.
-    </div>
-
-    <div class="form-actions">
-      <button class="btn btn-light" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-primary" onclick="recordMovement()">
-        Enregistrer
-      </button>
-    </div>
-    `
-  );
-}
-
-function showMovementStock(){
-
-  const id=$("movementMaterial").value;
-  const m=materials.find(x=>String(x.id)===String(id));
-
-  if(!m){
-    $("movementCurrentStock").textContent="Sélectionnez un matériau.";
     return;
   }
 
-  $("movementCurrentStock").innerHTML=
-    `Stock actuel : <strong>${getStockQty(id).toLocaleString("fr-FR")} ${escapeHTML(m.unit)}</strong>`;
+  tbody.innerHTML=stocks.map(s=>{
+
+    const qty=getStockQty(s.materialId);
+    const low=qty<=Number(s.threshold||0);
+    const m=materials.find(x=>x.id===s.materialId);
+
+    return `
+
+      <tr>
+
+        <td><strong>${escapeHTML(m?.name||"Matériau supprimé")}</strong></td>
+
+        <td>${escapeHTML(m?.unit||s.unit||"")}</td>
+
+        <td><strong>${qty}</strong></td>
+
+        <td>${s.threshold||0}</td>
+
+        <td>${escapeHTML(s.location)}</td>
+
+        <td>
+          ${
+            low
+            ? '<span class="badge badge-red">Stock faible</span>'
+            : '<span class="badge badge-green">Normal</span>'
+          }
+        </td>
+
+        <td>
+
+          <button class="btn btn-light btn-small"
+                  onclick="openStockModal('${s.id}')">
+            Modifier
+          </button>
+
+          <button class="btn btn-danger btn-small"
+                  onclick="deleteStock('${s.id}')">
+            Supprimer
+          </button>
+
+        </td>
+
+      </tr>
+
+    `;
+
+  }).join("");
+}
+
+function deleteStock(id){
+
+  if(!confirm("Supprimer cette configuration de stock ?"))return;
+
+  stocks=stocks.filter(x=>x.id!==id);
+
+  save("batiflow_stock",stocks);
+
+  renderStock();
+  updateDashboard();
+}
+
+
+/* ================= MOUVEMENTS ================= */
+
+function populateMovementMaterials(){
+
+  document.getElementById("movementMaterial").innerHTML=
+    '<option value="">Sélectionner</option>'+
+    materials.map(m=>`
+      <option value="${m.id}">${escapeHTML(m.name)}</option>
+    `).join("");
+}
+
+function populateMovementProjects(){
+
+  document.getElementById("movementProject").innerHTML=
+    '<option value="">Aucun chantier</option>'+
+    projects.map(p=>`
+      <option value="${p.id}">${escapeHTML(p.name)}</option>
+    `).join("");
+}
+
+function openMovementModal(){
+
+  populateMovementMaterials();
+  populateMovementProjects();
+
+  document.getElementById("movementQty").value="";
+  document.getElementById("movementDate").value=today();
+  document.getElementById("movementProject").value="";
+  document.getElementById("movementReference").value="";
+
+  document.getElementById("currentStockInfo").innerHTML=
+    "Sélectionnez un matériau.";
+
+  openModal("movementModal");
+}
+
+function showCurrentStock(){
+
+  const id=document.getElementById("movementMaterial").value;
+
+  if(!id){
+    document.getElementById("currentStockInfo").innerHTML=
+      "Sélectionnez un matériau.";
+    return;
+  }
+
+  const qty=getStockQty(id);
+  const m=materials.find(x=>x.id===id);
+
+  document.getElementById("currentStockInfo").innerHTML=`
+    Stock actuel :
+    <strong>${qty} ${escapeHTML(m?.unit||"")}</strong>
+  `;
 }
 
 function recordMovement(){
 
-  const materialId=$("movementMaterial").value;
-  const type=$("movementType").value;
-  const qty=Number($("movementQuantity").value)||0;
+  const materialId=document.getElementById("movementMaterial").value;
+  const type=document.getElementById("movementType").value;
+  const qty=Number(document.getElementById("movementQty").value||0);
 
   if(!materialId){
     alert("Sélectionnez un matériau.");
@@ -2490,1073 +3163,636 @@ function recordMovement(){
   }
 
   if(qty<=0){
-    alert("La quantité doit être supérieure à 0.");
+    alert("La quantité doit être supérieure à zéro.");
     return;
   }
 
-  let s=getStock(materialId);
+  const current=getStockQty(materialId);
 
-  if(!s){
+  let delta=qty;
 
-    s={
-      id:Date.now(),
-      materialId,
-      quantity:0,
-      threshold:0,
-      location:""
-    };
+  if(type==="exit"){
+    delta=-qty;
 
-    stock.push(s);
-
-  }
-
-  const current=Number(s.quantity)||0;
-
-  let newQuantity=current;
-
-  if(type==="entree"){
-    newQuantity=current+qty;
-  }
-
-  if(type==="sortie"){
-
-    if(qty>current){
-      alert("Stock insuffisant pour cette sortie.");
+    if(current<qty){
+      alert("Stock insuffisant. Sortie impossible.");
       return;
     }
-
-    newQuantity=current-qty;
   }
 
-  if(type==="ajustement"){
-    newQuantity=qty;
+  if(type==="adjustment"){
+    delta=qty-current;
   }
-
-  s.quantity=newQuantity;
 
   const movement={
-    id:Date.now(),
+    id:uid(),
     materialId,
     type,
-    quantity:qty,
-    date:$("movementDate").value,
-    projectId:$("movementProject").value,
-    reference:$("movementReference").value,
-    note:$("movementNote").value
+    qty,
+    delta,
+    date:document.getElementById("movementDate").value||today(),
+    projectId:document.getElementById("movementProject").value,
+    reference:document.getElementById("movementReference").value.trim()
   };
 
-  movements.unshift(movement);
+  movements.push(movement);
 
-  save("batiflow_stock",stock);
   save("batiflow_movements",movements);
 
-  closeModal();
+  closeModal("movementModal");
 
   renderStock();
   renderMovements();
   updateDashboard();
-
-  toast("Mouvement enregistré.");
 }
 
 function renderMovements(){
 
-  $("movementsTable").innerHTML=movements.length?movements.map((m,index)=>{
+  const tbody=document.getElementById("movementsTable");
 
-    const material=materials.find(x=>String(x.id)===String(m.materialId));
-    const project=projects.find(x=>String(x.id)===String(m.projectId));
+  if(!movements.length){
 
-    const label={
-      entree:"Entrée",
-      sortie:"Sortie",
-      ajustement:"Ajustement"
-    }[m.type]||m.type;
+    tbody.innerHTML=
+      '<tr><td colspan="7" class="empty">Aucun mouvement.</td></tr>';
+
+    return;
+  }
+
+  tbody.innerHTML=[...movements].reverse().map(m=>{
+
+    let typeLabel="Entrée";
+    let badge="badge-green";
+
+    if(m.type==="exit"){
+      typeLabel="Sortie";
+      badge="badge-red";
+    }
+
+    if(m.type==="adjustment"){
+      typeLabel="Ajustement";
+      badge="badge-orange";
+    }
 
     return `
+
       <tr>
+
         <td>${escapeHTML(m.date)}</td>
-        <td>${escapeHTML(material?.name||"—")}</td>
+
+        <td><strong>${escapeHTML(materialName(m.materialId))}</strong></td>
+
         <td>
-          <span class="badge ${
-            m.type==="entree"?"badge-green":
-            m.type==="sortie"?"badge-red":"badge-orange"
-          }">
-            ${label}
+          <span class="badge ${badge}">
+            ${typeLabel}
           </span>
         </td>
-        <td>${Number(m.quantity).toLocaleString("fr-FR")} ${escapeHTML(material?.unit||"")}</td>
-        <td>${escapeHTML(project?.name||"—")}</td>
-        <td>${escapeHTML(m.reference||"—")}</td>
+
+        <td>${m.qty}</td>
+
+        <td>${escapeHTML(projectName(m.projectId))}</td>
+
+        <td>${escapeHTML(m.reference)}</td>
+
         <td>
-          <button class="action btn-danger"
-            onclick="deleteMovement(${index})">
+          <button class="btn btn-danger btn-small"
+                  onclick="deleteMovement('${m.id}')">
             Supprimer
           </button>
         </td>
+
       </tr>
+
     `;
 
-  }).join(""):`
-    <tr>
-      <td colspan="7">
-        <div class="empty">Aucun mouvement enregistré.</div>
-      </td>
-    </tr>
-  `;
+  }).join("");
 }
 
-function deleteMovement(index){
+function deleteMovement(id){
 
-  if(!confirm(
-    "Supprimer ce mouvement ? Le stock ne sera pas recalculé automatiquement."
-  )) return;
+  if(!confirm("Supprimer ce mouvement ?"))return;
 
-  movements.splice(index,1);
+  movements=movements.filter(x=>x.id!==id);
+
   save("batiflow_movements",movements);
 
+  renderStock();
   renderMovements();
-
-  toast("Mouvement supprimé.");
-}
-
-
-/* =====================================================
-   DQE
-===================================================== */
-
-function openDQEModal(index=null){
-
-  const item=index!==null?dqe[index]:{};
-
-  openModal(
-    index===null?"Nouveau poste DQE":"Modifier le poste",
-
-    `
-    <div class="form-grid">
-
-      <div class="field">
-        <label>Matériau</label>
-
-        <select id="dqeMaterial" onchange="fillDQEMaterial()">
-          <option value="">-- Saisie manuelle --</option>
-
-          ${materials.map(m=>`
-            <option value="${m.id}"
-              ${String(item.materialId)===String(m.id)?"selected":""}>
-              ${escapeHTML(m.name)}
-            </option>
-          `).join("")}
-
-        </select>
-
-      </div>
-
-      <div class="field">
-        <label>Désignation</label>
-        <input id="dqeDesignation" value="${escapeHTML(item.designation)}">
-      </div>
-
-      <div class="field">
-        <label>Unité</label>
-        <input id="dqeUnit" value="${escapeHTML(item.unit||"U")}">
-      </div>
-
-      <div class="field">
-        <label>Quantité</label>
-        <input id="dqeQuantity" type="number" step="0.01" value="${item.quantity||""}">
-      </div>
-
-      <div class="field">
-        <label>Prix unitaire</label>
-        <input id="dqePrice" type="number" step="0.01" value="${item.price||""}">
-      </div>
-
-    </div>
-
-    <div class="form-actions">
-      <button class="btn btn-light" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-primary" onclick="saveDQE(${index===null?"null":index})">
-        Enregistrer
-      </button>
-    </div>
-    `
-  );
-}
-
-function fillDQEMaterial(){
-
-  const id=$("dqeMaterial").value;
-
-  const m=materials.find(x=>String(x.id)===String(id));
-
-  if(!m) return;
-
-  $("dqeDesignation").value=m.name;
-  $("dqeUnit").value=m.unit;
-  $("dqePrice").value=m.price;
-}
-
-function saveDQE(index){
-
-  const data={
-    id:index===null?Date.now():dqe[index].id,
-    materialId:$("dqeMaterial").value,
-    designation:$("dqeDesignation").value,
-    unit:$("dqeUnit").value,
-    quantity:Number($("dqeQuantity").value)||0,
-    price:Number($("dqePrice").value)||0
-  };
-
-  if(!data.designation.trim()){
-    alert("Veuillez saisir une désignation.");
-    return;
-  }
-
-  if(index===null) dqe.push(data);
-  else dqe[index]=data;
-
-  save("batiflow_dqe",dqe);
-
-  closeModal();
-
-  renderDQE();
   updateDashboard();
-
-  toast("Poste DQE enregistré.");
-}
-
-function renderDQE(){
-
-  let total=0;
-
-  $("dqeTable").innerHTML=dqe.length?dqe.map((item,index)=>{
-
-    const line=Number(item.quantity)*Number(item.price);
-    total+=line;
-
-    return `
-      <tr>
-        <td>${escapeHTML(item.designation)}</td>
-        <td>${escapeHTML(item.unit)}</td>
-        <td>${Number(item.quantity).toLocaleString("fr-FR")}</td>
-        <td>${money(item.price)}</td>
-        <td><strong>${money(line)}</strong></td>
-        <td>
-          <div class="actions">
-            <button class="action btn-light" onclick="openDQEModal(${index})">
-              Modifier
-            </button>
-            <button class="action btn-danger" onclick="deleteDQE(${index})">
-              Supprimer
-            </button>
-          </div>
-        </td>
-      </tr>
-    `;
-
-  }).join(""):`
-    <tr>
-      <td colspan="6">
-        <div class="empty">Aucun poste DQE.</div>
-      </td>
-    </tr>
-  `;
-
-  $("dqeTotal").textContent=money(total);
-}
-
-function deleteDQE(index){
-
-  if(!confirm("Supprimer ce poste DQE ?")) return;
-
-  dqe.splice(index,1);
-  save("batiflow_dqe",dqe);
-
-  renderDQE();
-  updateDashboard();
-
-  toast("Poste supprimé.");
 }
 
 
-/* =====================================================
-   DEVIS
-===================================================== */
+/* ================= FINANCE ================= */
 
-function openQuoteModal(){
+function populateProjectSelects(){
 
-  openModal(
-    "Nouveau devis",
+  const ids=[
+    "transactionProject",
+    "movementProject"
+  ];
 
-    `
-    <div class="form-grid">
+  ids.forEach(id=>{
 
-      <div class="field">
-        <label>Client</label>
+    const select=document.getElementById(id);
 
-        <select id="quoteClient">
-          <option value="">-- Sélectionner --</option>
+    if(!select)return;
 
-          ${clients.map(c=>`
-            <option value="${c.id}">
-              ${escapeHTML(c.name)}
-            </option>
-          `).join("")}
+    const first=id==="transactionProject"
+      ? "Aucun chantier"
+      : "Aucun chantier";
 
-        </select>
-
-      </div>
-
-      <div class="field">
-        <label>Projet</label>
-
-        <select id="quoteProject">
-          <option value="">-- Aucun --</option>
-
-          ${projects.map(p=>`
-            <option value="${p.id}">
-              ${escapeHTML(p.name)}
-            </option>
-          `).join("")}
-
-        </select>
-
-      </div>
-
-      <div class="field">
-        <label>Montant HT</label>
-        <input id="quoteAmount" type="number">
-      </div>
-
-      <div class="field">
-        <label>TVA (%)</label>
-        <input id="quoteTVA" type="number" value="0">
-      </div>
-
-      <div class="field">
-        <label>Validité</label>
-        <input id="quoteValidity" value="30 jours">
-      </div>
-
-      <div class="field">
-        <label>Date</label>
-        <input id="quoteDate" type="date"
-          value="${new Date().toISOString().slice(0,10)}">
-      </div>
-
-    </div>
-
-    <div class="form-actions">
-      <button class="btn btn-light" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-primary" onclick="saveQuote()">
-        Enregistrer
-      </button>
-    </div>
-    `
-  );
-}
-
-function saveQuote(){
-
-  const amount=Number($("quoteAmount").value)||0;
-  const tva=Number($("quoteTVA").value)||0;
-
-  const clientId=$("quoteClient").value;
-  const projectId=$("quoteProject").value;
-
-  const number=
-    "DEV-" +
-    String(Date.now()).slice(-6);
-
-  const data={
-    id:Date.now(),
-    number,
-    clientId,
-    projectId,
-    amount,
-    tva,
-    total:amount+(amount*tva/100),
-    validity:$("quoteValidity").value,
-    date:$("quoteDate").value
-  };
-
-  quotes.push(data);
-
-  save("batiflow_quotes",quotes);
-
-  closeModal();
-
-  renderQuotes();
-  updateDashboard();
-
-  toast("Devis enregistré.");
-}
-
-function renderQuotes(){
-
-  $("quotesTable").innerHTML=quotes.length?quotes.map((q,index)=>{
-
-    const client=clients.find(c=>String(c.id)===String(q.clientId));
-    const project=projects.find(p=>String(p.id)===String(q.projectId));
-
-    return `
-      <tr>
-        <td><strong>${escapeHTML(q.number)}</strong></td>
-        <td>${escapeHTML(client?.name||"—")}</td>
-        <td>${escapeHTML(project?.name||"—")}</td>
-        <td>${money(q.total)}</td>
-        <td>${escapeHTML(q.date)}</td>
-        <td>
-          <button class="action btn-danger"
-            onclick="deleteQuote(${index})">
-            Supprimer
-          </button>
-        </td>
-      </tr>
-    `;
-
-  }).join(""):`
-    <tr>
-      <td colspan="6">
-        <div class="empty">Aucun devis enregistré.</div>
-      </td>
-    </tr>
-  `;
-}
-
-function deleteQuote(index){
-
-  if(!confirm("Supprimer ce devis ?")) return;
-
-  quotes.splice(index,1);
-  save("batiflow_quotes",quotes);
-
-  renderQuotes();
-  updateDashboard();
-
-  toast("Devis supprimé.");
-}
-
-
-/* =====================================================
-   DÉPENSES — ÉTAPE 8
-===================================================== */
-
-function openExpenseModal(index=null){
-
-  const e=index!==null?expenses[index]:{};
-
-  openModal(
-    index===null?"Nouvelle dépense":"Modifier la dépense",
-
-    `
-    <div class="form-grid">
-
-      <div class="field">
-        <label>Date</label>
-        <input id="expenseDate" type="date"
-          value="${e.date || new Date().toISOString().slice(0,10)}">
-      </div>
-
-      <div class="field">
-        <label>Désignation</label>
-        <input id="expenseName"
-          value="${escapeHTML(e.name)}"
-          placeholder="Ex : Achat de ciment">
-      </div>
-
-      <div class="field">
-        <label>Catégorie</label>
-
-        <select id="expenseCategory">
-
-          <option ${e.category==="Matériaux"?"selected":""}>
-            Matériaux
-          </option>
-
-          <option ${e.category==="Main-d'œuvre"?"selected":""}>
-            Main-d'œuvre
-          </option>
-
-          <option ${e.category==="Transport"?"selected":""}>
-            Transport
-          </option>
-
-          <option ${e.category==="Location matériel"?"selected":""}>
-            Location matériel
-          </option>
-
-          <option ${e.category==="Fournitures"?"selected":""}>
-            Fournitures
-          </option>
-
-          <option ${e.category==="Administration"?"selected":""}>
-            Administration
-          </option>
-
-          <option ${e.category==="Autre"?"selected":""}>
-            Autre
-          </option>
-
-        </select>
-
-      </div>
-
-      <div class="field">
-        <label>Montant</label>
-        <input id="expenseAmount" type="number"
-          value="${e.amount||""}">
-      </div>
-
-      <div class="field">
-        <label>Projet / chantier</label>
-
-        <select id="expenseProject">
-
-          <option value="">-- Aucun --</option>
-
-          ${projects.map(p=>`
-            <option value="${p.id}"
-              ${String(e.projectId)===String(p.id)?"selected":""}>
-              ${escapeHTML(p.name)}
-            </option>
-          `).join("")}
-
-        </select>
-
-      </div>
-
-      <div class="field">
-        <label>Mode de paiement</label>
-
-        <select id="expensePayment">
-
-          <option ${e.payment==="Espèces"?"selected":""}>
-            Espèces
-          </option>
-
-          <option ${e.payment==="Mobile Money"?"selected":""}>
-            Mobile Money
-          </option>
-
-          <option ${e.payment==="Virement"?"selected":""}>
-            Virement
-          </option>
-
-          <option ${e.payment==="Chèque"?"selected":""}>
-            Chèque
-          </option>
-
-          <option ${e.payment==="Carte"?"selected":""}>
-            Carte
-          </option>
-
-          <option ${e.payment==="Autre"?"selected":""}>
-            Autre
-          </option>
-
-        </select>
-
-      </div>
-
-      <div class="field full">
-        <label>Fournisseur / bénéficiaire</label>
-        <input id="expenseBeneficiary"
-          value="${escapeHTML(e.beneficiary)}">
-      </div>
-
-      <div class="field full">
-        <label>Note</label>
-        <textarea id="expenseNote">${escapeHTML(e.note)}</textarea>
-      </div>
-
-    </div>
-
-    <div class="form-actions">
-
-      <button class="btn btn-light" onclick="closeModal()">
-        Annuler
-      </button>
-
-      <button class="btn btn-primary"
-        onclick="saveExpense(${index===null?"null":index})">
-        Enregistrer
-      </button>
-
-    </div>
-    `
-  );
-}
-
-function saveExpense(index){
-
-  const data={
-    id:index===null?Date.now():expenses[index].id,
-    date:$("expenseDate").value,
-    name:$("expenseName").value,
-    category:$("expenseCategory").value,
-    amount:Number($("expenseAmount").value)||0,
-    projectId:$("expenseProject").value,
-    payment:$("expensePayment").value,
-    beneficiary:$("expenseBeneficiary").value,
-    note:$("expenseNote").value
-  };
-
-  if(!data.name.trim()){
-    alert("Veuillez saisir la désignation.");
-    return;
-  }
-
-  if(data.amount<=0){
-    alert("Veuillez saisir un montant supérieur à 0.");
-    return;
-  }
-
-  if(index===null) expenses.unshift(data);
-  else expenses[index]=data;
-
-  save("batiflow_expenses",expenses);
-
-  closeModal();
-
-  renderExpenses();
-  updateDashboard();
-
-  toast("Dépense enregistrée.");
-}
-
-function renderExpenses(){
-
-  const search=($("expenseSearch")?.value||"").toLowerCase();
-
-  const list=expenses.filter(e=>
-    `${e.name} ${e.category} ${e.beneficiary}`
-    .toLowerCase()
-    .includes(search)
-  );
-
-  $("expensesTable").innerHTML=list.length?list.map(e=>{
-
-    const index=expenses.findIndex(x=>x.id===e.id);
-
-    const project=projects.find(
-      p=>String(p.id)===String(e.projectId)
-    );
-
-    return `
-      <tr>
-
-        <td>${escapeHTML(e.date)}</td>
-
-        <td>
-          <strong>${escapeHTML(e.name)}</strong>
-          ${e.beneficiary?
-            `<br><small style="color:#718096">
-              ${escapeHTML(e.beneficiary)}
-            </small>`:""}
-        </td>
-
-        <td>
-          <span class="badge badge-blue">
-            ${escapeHTML(e.category)}
-          </span>
-        </td>
-
-        <td>${escapeHTML(project?.name||"—")}</td>
-
-        <td>
-          <strong style="color:#dc2626">
-            ${money(e.amount)}
-          </strong>
-        </td>
-
-        <td>${escapeHTML(e.payment)}</td>
-
-        <td>
-          <div class="actions">
-
-            <button class="action btn-light"
-              onclick="openExpenseModal(${index})">
-              Modifier
-            </button>
-
-            <button class="action btn-danger"
-              onclick="deleteExpense(${index})">
-              Supprimer
-            </button>
-
-          </div>
-        </td>
-
-      </tr>
-    `;
-
-  }).join(""):`
-    <tr>
-      <td colspan="7">
-        <div class="empty">
-          Aucune dépense enregistrée.
-        </div>
-      </td>
-    </tr>
-  `;
-
-
-  updateExpenseStats();
-}
-
-function deleteExpense(index){
-
-  if(!confirm("Supprimer cette dépense ?")) return;
-
-  expenses.splice(index,1);
-
-  save("batiflow_expenses",expenses);
-
-  renderExpenses();
-  updateDashboard();
-
-  toast("Dépense supprimée.");
-}
-
-function updateExpenseStats(){
-
-  const total=expenses.reduce(
-    (sum,e)=>sum+Number(e.amount||0),0
-  );
-
-  const now=new Date();
-
-  const month=expenses
-    .filter(e=>{
-      if(!e.date)return false;
-
-      const d=new Date(e.date);
-
-      return d.getMonth()===now.getMonth() &&
-             d.getFullYear()===now.getFullYear();
-    })
-    .reduce((sum,e)=>sum+Number(e.amount||0),0);
-
-  const materialsTotal=expenses
-    .filter(e=>e.category==="Matériaux")
-    .reduce((sum,e)=>sum+Number(e.amount||0),0);
-
-  const other=total-materialsTotal;
-
-  $("expenseTotal").textContent=money(total);
-  $("expenseMonth").textContent=money(month);
-  $("expenseMaterials").textContent=money(materialsTotal);
-  $("expenseOther").textContent=money(other);
-
-
-  /* résumé catégories */
-
-  const categories={};
-
-  expenses.forEach(e=>{
-    categories[e.category]=
-      (categories[e.category]||0)+Number(e.amount||0);
+    select.innerHTML=
+      `<option value="">${first}</option>`+
+      projects.map(p=>`
+        <option value="${p.id}">
+          ${escapeHTML(p.name)}
+        </option>
+      `).join("");
   });
-
-  const categoryEntries=Object.entries(categories)
-    .sort((a,b)=>b[1]-a[1]);
-
-  $("expenseSummary").innerHTML=
-    categoryEntries.length?
-
-    categoryEntries.map(([cat,value])=>`
-
-      <div style="
-        display:flex;
-        justify-content:space-between;
-        padding:12px 0;
-        border-bottom:1px solid #edf1f5">
-
-        <span>${escapeHTML(cat)}</span>
-
-        <strong>${money(value)}</strong>
-
-      </div>
-
-    `).join("")
-
-    :
-
-    `<div class="empty">Aucune donnée.</div>`;
-
-
-  /* dernières dépenses */
-
-  const recent=expenses.slice(0,5);
-
-  $("recentExpenses").innerHTML=
-    recent.length?
-
-    recent.map(e=>`
-
-      <div style="
-        display:flex;
-        justify-content:space-between;
-        padding:11px 0;
-        border-bottom:1px solid #edf1f5">
-
-        <div>
-
-          <strong>${escapeHTML(e.name)}</strong>
-
-          <div style="font-size:11px;color:#718096">
-            ${escapeHTML(e.date)}
-          </div>
-
-        </div>
-
-        <strong style="color:#dc2626">
-          ${money(e.amount)}
-        </strong>
-
-      </div>
-
-    `).join("")
-
-    :
-
-    `<div class="empty">Aucune dépense.</div>`;
 }
 
+function populateClientSelects(){
 
-/* =====================================================
-   CALCULATEUR
-===================================================== */
+  const ids=[
+    "transactionClient",
+    "quoteClient"
+  ];
 
-function calculateBTP(){
+  ids.forEach(id=>{
 
-  const type=$("calcType").value;
+    const select=document.getElementById(id);
 
-  const L=Number($("calcL").value)||0;
-  const W=Number($("calcW").value)||0;
-  const H=Number($("calcH").value)||0;
+    if(!select)return;
 
-  if(L<=0 || W<=0 || H<=0){
+    const first=id==="quoteClient"
+      ? "Sélectionner un client"
+      : "Aucun client";
 
-    alert("Veuillez renseigner les dimensions.");
+    select.innerHTML=
+      `<option value="">${first}</option>`+
+      clients.map(c=>`
+        <option value="${c.id}">
+          ${escapeHTML(c.name)}
+        </option>
+      `).join("");
+  });
+}
+
+function openTransactionModal(){
+
+  populateProjectSelects();
+  populateClientSelects();
+
+  document.getElementById("transactionType").value="income";
+  document.getElementById("transactionAmount").value="";
+  document.getElementById("transactionDate").value=today();
+  document.getElementById("transactionCategory").value="Paiement client";
+  document.getElementById("transactionProject").value="";
+  document.getElementById("transactionClient").value="";
+  document.getElementById("transactionReference").value="";
+  document.getElementById("transactionNote").value="";
+
+  openModal("transactionModal");
+}
+
+function saveTransaction(){
+
+  const amount=Number(document.getElementById("transactionAmount").value||0);
+
+  if(amount<=0){
+    alert("Veuillez saisir un montant supérieur à zéro.");
+    return;
+  }
+
+  const t={
+    id:uid(),
+    type:document.getElementById("transactionType").value,
+    amount,
+    date:document.getElementById("transactionDate").value||today(),
+    category:document.getElementById("transactionCategory").value,
+    projectId:document.getElementById("transactionProject").value,
+    clientId:document.getElementById("transactionClient").value,
+    reference:document.getElementById("transactionReference").value.trim(),
+    note:document.getElementById("transactionNote").value.trim()
+  };
+
+  transactions.push(t);
+
+  save("batiflow_transactions",transactions);
+
+  closeModal("transactionModal");
+
+  renderFinance();
+  renderProfitability();
+  updateDashboard();
+}
+
+function renderFinance(){
+
+  const revenue=transactions
+    .filter(x=>x.type==="income")
+    .reduce((a,x)=>a+Number(x.amount||0),0);
+
+  const expenses=transactions
+    .filter(x=>x.type==="expense")
+    .reduce((a,x)=>a+Number(x.amount||0),0);
+
+  const profit=revenue-expenses;
+  const margin=revenue ? profit/revenue*100 : 0;
+
+  setText("financeRevenue",money(revenue));
+  setText("financeExpenses",money(expenses));
+  setText("financeProfit",money(profit));
+  setText("financeMargin",margin.toFixed(1)+" %");
+
+  const tbody=document.getElementById("transactionsTable");
+
+  if(!transactions.length){
+
+    tbody.innerHTML=
+      '<tr><td colspan="8" class="empty">Aucune transaction.</td></tr>';
 
     return;
   }
 
-  const volume=L*W*H;
+  tbody.innerHTML=[...transactions].reverse().map(t=>`
 
-  $("calcResult").style.display="block";
+    <tr>
 
-  $("calcResult").innerHTML=`
+      <td>${escapeHTML(t.date)}</td>
 
-    <p>Élément : <strong>${escapeHTML(type)}</strong></p>
+      <td>
+        ${
+          t.type==="income"
+          ? '<span class="badge badge-green">Recette</span>'
+          : '<span class="badge badge-red">Dépense</span>'
+        }
+      </td>
 
-    <p style="margin-top:10px">
-      Volume de béton indicatif :
-    </p>
+      <td>${escapeHTML(t.category)}</td>
 
-    <strong>
-      ${volume.toFixed(3)} m³
-    </strong>
+      <td><strong>${money(t.amount)}</strong></td>
 
-    <hr style="margin:18px 0;border:0;border-top:1px solid #dbeafe">
+      <td>${escapeHTML(projectName(t.projectId))}</td>
 
-    <p>
-      Estimation indicative de ciment :
-      <strong>${(volume*7).toFixed(1)} sacs</strong>
-    </p>
+      <td>${escapeHTML(clientName(t.clientId))}</td>
 
-    <p style="margin-top:7px">
-      Estimation indicative de sable :
-      <strong>${(volume*0.5).toFixed(2)} m³</strong>
-    </p>
+      <td>${escapeHTML(t.reference)}</td>
 
-    <p style="margin-top:7px">
-      Estimation indicative de gravier :
-      <strong>${(volume*0.8).toFixed(2)} m³</strong>
-    </p>
+      <td>
+        <button class="btn btn-danger btn-small"
+                onclick="deleteTransaction('${t.id}')">
+          Supprimer
+        </button>
+      </td>
 
-    <p style="margin-top:15px;font-size:11px;color:#718096">
-      Ces valeurs sont indicatives et ne remplacent pas une étude
-      structurelle réalisée par un professionnel.
-    </p>
+    </tr>
 
-  `;
+  `).join("");
+}
+
+function deleteTransaction(id){
+
+  if(!confirm("Supprimer cette transaction ?"))return;
+
+  transactions=transactions.filter(x=>x.id!==id);
+
+  save("batiflow_transactions",transactions);
+
+  renderFinance();
+  renderProfitability();
+  updateDashboard();
 }
 
 
-/* =====================================================
-   PARAMÈTRES
-===================================================== */
+/* ================= RENTABILITE ETAPE 9 ================= */
 
-function loadSettings(){
+function getProjectFinance(projectId){
 
-  const data=load(
-    "batiflow_settings",
-    {
-      companyName:"",
-      companyPhone:"",
-      companyEmail:"",
-      companyAddress:"",
-      country:"Togo"
-    }
+  const projectTransactions=transactions.filter(
+    t=>t.projectId===projectId
   );
 
-  $("companyName").value=data.companyName||"";
-  $("companyPhone").value=data.companyPhone||"";
-  $("companyEmail").value=data.companyEmail||"";
-  $("companyAddress").value=data.companyAddress||"";
+  const revenue=projectTransactions
+    .filter(t=>t.type==="income")
+    .reduce((a,t)=>a+Number(t.amount||0),0);
 
-  const select=$("country");
+  const expenses=projectTransactions
+    .filter(t=>t.type==="expense")
+    .reduce((a,t)=>a+Number(t.amount||0),0);
+
+  const profit=revenue-expenses;
+
+  const margin=revenue
+    ? (profit/revenue)*100
+    : 0;
+
+  return {
+    revenue,
+    expenses,
+    profit,
+    margin
+  };
+}
+
+function renderProfitability(){
+
+  const revenue=transactions
+    .filter(t=>t.type==="income")
+    .reduce((a,t)=>a+Number(t.amount||0),0);
+
+  const expenses=transactions
+    .filter(t=>t.type==="expense")
+    .reduce((a,t)=>a+Number(t.amount||0),0);
+
+  const profit=revenue-expenses;
+
+  const margin=revenue
+    ? profit/revenue*100
+    : 0;
+
+  setText("profitRevenue",money(revenue));
+  setText("profitExpenses",money(expenses));
+  setText("profitGlobal",money(profit));
+  setText("profitMargin",margin.toFixed(1)+" %");
+
+  const tbody=document.getElementById("profitabilityTable");
+
+  if(!projects.length){
+
+    tbody.innerHTML=
+      '<tr><td colspan="7" class="empty">Aucun chantier.</td></tr>';
+
+    return;
+  }
+
+  tbody.innerHTML=projects.map(p=>{
+
+    const f=getProjectFinance(p.id);
+
+    let situation;
+    let badge;
+
+    if(f.revenue===0 && f.expenses===0){
+
+      situation='<span class="badge badge-gray">Pas encore de données</span>';
+
+    }else if(f.profit<0){
+
+      situation='<span class="badge badge-red">Déficitaire</span>';
+
+    }else if(f.margin<15){
+
+      situation='<span class="badge badge-orange">Marge faible</span>';
+
+    }else{
+
+      situation='<span class="badge badge-green">Bénéficiaire</span>';
+    }
+
+    const profitClass=f.profit>=0
+      ? "margin-positive"
+      : "margin-negative";
+
+    return `
+
+      <tr>
+
+        <td>
+          <strong>${escapeHTML(p.name)}</strong>
+          <div style="font-size:11px;color:#718096">
+            ${escapeHTML(clientName(p.clientId))}
+          </div>
+        </td>
+
+        <td>${money(p.budget)}</td>
+
+        <td>${money(f.revenue)}</td>
+
+        <td>${money(f.expenses)}</td>
+
+        <td class="${profitClass}">
+          ${money(f.profit)}
+        </td>
+
+        <td class="${profitClass}">
+          ${f.margin.toFixed(1)} %
+        </td>
+
+        <td>${situation}</td>
+
+      </tr>
+
+    `;
+
+  }).join("");
+}
+
+
+/* ================= DEVIS ================= */
+
+function populateQuoteClients(){
+
+  populateClientSelects();
+
+  const select=document.getElementById("quoteClient");
+
+  if(!select)return;
+
+  select.value=select.value||"";
+
+  fillQuoteClient();
+}
+
+function fillQuoteClient(){
+
+  const id=document.getElementById("quoteClient").value;
+
+  const c=clients.find(x=>x.id===id);
+
+  if(!c)return;
+
+  document.getElementById("previewClient").textContent=c.name;
+  document.getElementById("previewClientPhone").textContent=
+    c.phone||"";
+}
+
+function generateQuote(){
+
+  const company=
+    document.getElementById("quoteCompany").value||settings.company;
+
+  const companyPhone=
+    document.getElementById("quoteCompanyPhone").value||settings.phone;
+
+  const clientId=document.getElementById("quoteClient").value;
+  const client=clients.find(x=>x.id===clientId);
+
+  const project=document.getElementById("quoteProject").value;
+
+  const tva=Number(document.getElementById("quoteTva").value||0);
+
+  const conditions=
+    document.getElementById("quoteConditions").value;
+
+  let number=Number(localStorage.getItem("batiflow_quote_number")||0)+1;
+
+  localStorage.setItem("batiflow_quote_number",number);
+
+  const quoteNumber=
+    "DEV-"+String(number).padStart(4,"0");
+
+  const subtotal=dqe.reduce(
+    (a,x)=>a+Number(x.qty)*Number(x.price),0
+  );
+
+  const vat=subtotal*tva/100;
+  const total=subtotal+vat;
+
+  document.getElementById("previewCompany").textContent=company;
+
+  document.getElementById("previewCompanyPhone").textContent=
+    "Téléphone : "+(companyPhone||"—");
+
+  document.getElementById("previewQuoteNumber").textContent=
+    quoteNumber;
+
+  document.getElementById("previewDate").textContent=
+    new Date().toLocaleDateString("fr-FR");
+
+  document.getElementById("previewClient").textContent=
+    client?.name||"—";
+
+  document.getElementById("previewClientPhone").textContent=
+    client?.phone||"—";
+
+  document.getElementById("previewProject").textContent=
+    project||"—";
+
+  document.getElementById("previewConditions").textContent=
+    conditions;
+
+  document.getElementById("quoteSubtotal").textContent=
+    money(subtotal);
+
+  document.getElementById("quoteVat").textContent=
+    money(vat);
+
+  document.getElementById("quoteGrandTotal").textContent=
+    money(total);
+
+  document.getElementById("quoteItems").innerHTML=
+
+    dqe.length
+
+    ? dqe.map(x=>`
+
+      <tr>
+        <td>${escapeHTML(x.designation)}</td>
+        <td>${x.qty} ${escapeHTML(x.unit)}</td>
+        <td>${money(x.price)}</td>
+        <td>${money(Number(x.qty)*Number(x.price))}</td>
+      </tr>
+
+    `).join("")
+
+    : `
+      <tr>
+        <td colspan="4" style="text-align:center">
+          Aucun poste DQE
+        </td>
+      </tr>
+    `;
+}
+
+
+/* ================= SETTINGS ================= */
+
+function initSettings(){
+
+  const select=document.getElementById("countrySelect");
 
   select.innerHTML=Object.keys(countries)
-    .map(c=>`
-      <option ${c===data.country?"selected":""}>
-        ${c}
+    .map(country=>`
+      <option value="${escapeHTML(country)}">
+        ${escapeHTML(country)}
       </option>
-    `)
-    .join("");
+    `).join("");
 
-  updateCurrency();
-}
+  select.value=settings.country;
 
-function updateCurrency(){
+  document.getElementById("currencyInput").value=
+    countries[settings.country]||settings.currency;
 
-  const country=$("country").value;
+  document.getElementById("companySettings").value=
+    settings.company||"";
 
-  const currency=countries[country]||"FCFA";
+  document.getElementById("companyPhoneSettings").value=
+    settings.phone||"";
 
-  $("currency").value=currency;
+  select.onchange=function(){
 
-  localStorage.setItem(
-    "batiflow_currency",
-    currency
-  );
+    document.getElementById("currencyInput").value=
+      countries[this.value]||"";
+  };
 }
 
 function saveSettings(){
 
-  const data={
-    companyName:$("companyName").value,
-    companyPhone:$("companyPhone").value,
-    companyEmail:$("companyEmail").value,
-    companyAddress:$("companyAddress").value,
-    country:$("country").value
+  const country=document.getElementById("countrySelect").value;
+
+  settings={
+    country,
+    currency:countries[country]||"FCFA",
+    company:document.getElementById("companySettings").value,
+    phone:document.getElementById("companyPhoneSettings").value
   };
 
-  save("batiflow_settings",data);
+  save("batiflow_settings",settings);
 
-  localStorage.setItem(
-    "batiflow_currency",
-    countries[data.country]||"FCFA"
-  );
-
-  toast("Paramètres enregistrés.");
+  alert("Paramètres enregistrés.");
 
   updateDashboard();
 }
 
 
-/* =====================================================
-   DASHBOARD
-===================================================== */
+/* ================= INITIALISATION ================= */
 
-function updateDashboard(){
+function initApp(){
 
-  $("statClients").textContent=clients.length;
-  $("statProjects").textContent=projects.length;
-  $("statMaterials").textContent=materials.length;
-  $("statStock").textContent=stock.length;
-
-  const expenseTotal=expenses.reduce(
-    (sum,e)=>sum+Number(e.amount||0),0
-  );
-
-  const quoteTotal=quotes.reduce(
-    (sum,q)=>sum+Number(q.total||0),0
-  );
-
-  $("dashExpenses").textContent=money(expenseTotal);
-  $("dashQuotes").textContent=money(quoteTotal);
-
-
-  const alerts=stock.filter(
-    s=>Number(s.quantity)<=Number(s.threshold)
-  );
-
-  $("dashboardAlerts").innerHTML=
-    alerts.length?
-
-    alerts.map(s=>{
-
-      const m=materials.find(
-        x=>String(x.id)===String(s.materialId)
-      );
-
-      return `
-        <div style="
-          padding:10px 0;
-          border-bottom:1px solid #edf1f5">
-
-          <strong>${escapeHTML(m?.name||"Matériau")}</strong>
-
-          <div style="font-size:12px;color:#dc2626">
-            Stock : ${Number(s.quantity)}
-            ${escapeHTML(m?.unit||"")}
-          </div>
-
-        </div>
-      `;
-
-    }).join("")
-
-    :
-
-    `<div class="empty">
-      ✓ Aucun stock sous le seuil.
-    </div>`;
-}
-
-
-/* =====================================================
-   INITIALISATION
-===================================================== */
-
-function init(){
-
-  const logged=localStorage.getItem("batiflow_logged");
-
-  if(logged==="1"){
-
-    $("loginScreen").style.display="none";
-
-    const user=
-      localStorage.getItem("batiflow_user") ||
-      "Administrateur";
-
-    $("currentUser").textContent=user;
-
-  }
-
-  if(!localStorage.getItem("batiflow_currency")){
-    localStorage.setItem("batiflow_currency","FCFA");
-  }
+  initSettings();
 
   renderClients();
   renderProjects();
+  renderDqe();
   renderMaterials();
   renderStock();
   renderMovements();
-  renderDQE();
-  renderQuotes();
-  renderExpenses();
-  updateDashboard();
+  renderFinance();
+  renderProfitability();
 
+  populateClientSelects();
+  populateProjectSelects();
+  populateDqeMaterials();
+  populateStockMaterials();
+
+  updateDashboard();
 }
 
-init();
 
+/* ================= DEMARRAGE ================= */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+  if(localStorage.getItem("batiflow_session")==="1"){
+
+    document.getElementById("loginScreen").classList.add("hidden");
+    document.getElementById("app").classList.remove("hidden");
+
+    initApp();
+
+  }
+
+});
 </script>
 
 </body>
