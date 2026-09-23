@@ -305,4 +305,4520 @@ button{
 .field textarea{
   width:100%;
   border:1px solid #d7e0ea;
+  border-radius:9px;
+  padding:11px 12px;
+  outline:none;
+  background:#fff;
+  color:var(--text);
+}
+
+.field textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(37,99,235,.08);
+}
+
+.actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:10px 15px;
+  font-weight:700;
+  font-size:12px;
+}
+
+.btn-primary{
+  background:var(--blue);
+  color:#fff;
+}
+
+.btn-primary:hover{
+  background:#1d4ed8;
+}
+
+.btn-secondary{
+  background:#edf3fb;
+  color:var(--navy);
+}
+
+.btn-success{
+  background:var(--green);
+  color:#fff;
+}
+
+.btn-danger{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+.btn-warning{
+  background:#fff7ed;
+  color:#c2410c;
+}
+
+.btn-dark{
+  background:var(--navy);
+  color:#fff;
+}
+
+.btn-small{
+  padding:7px 10px;
+  font-size:11px;
+}
+
+.search{
+  min-width:220px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:10px 12px;
+  outline:none;
+}
+
+.table-wrap{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  background:#f8fafc;
+  color:#64748b;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  padding:12px;
+  text-align:left;
+  white-space:nowrap;
+}
+
+td{
+  padding:12px;
+  border-top:1px solid #edf1f5;
+  font-size:12px;
+  vertical-align:middle;
+}
+
+.empty{
+  padding:35px 15px;
+  text-align:center;
+  color:#94a3b8;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  border-radius:30px;
+  padding:5px 9px;
+  font-size:10px;
+  font-weight:800;
+}
+
+.badge-blue{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.badge-green{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.badge-red{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+.badge-orange{
+  background:#ffedd5;
+  color:#c2410c;
+}
+
+.badge-gray{
+  background:#f1f5f9;
+  color:#64748b;
+}
+
+/* ================= DASHBOARD ================= */
+
+.hero{
+  background:linear-gradient(135deg,#0b1f3a,#174273);
+  color:#fff;
+  border-radius:20px;
+  padding:26px;
+  margin-bottom:22px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  border:35px solid rgba(255,255,255,.04);
+  border-radius:50%;
+  right:-80px;
+  top:-110px;
+}
+
+.hero h2{
+  margin:0 0 8px;
+  font-size:25px;
+}
+
+.hero p{
+  margin:0;
+  color:#b9c9dc;
+  font-size:13px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.stat{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.stat-icon{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  background:#edf4ff;
+  margin-bottom:12px;
+}
+
+.stat-label{
+  color:#64748b;
+  font-size:11px;
+  font-weight:700;
+}
+
+.stat-value{
+  margin-top:4px;
+  color:var(--navy);
+  font-size:21px;
+  font-weight:900;
+}
+
+.dashboard-bottom{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:18px;
+}
+
+.quick{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.quick button{
+  text-align:left;
+  padding:16px;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:12px;
+}
+
+.quick strong{
+  display:block;
+  color:var(--navy);
+}
+
+.quick span{
+  font-size:11px;
+  color:var(--muted);
+}
+
+/* ================= FINANCE ================= */
+
+.finance-summary{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.money-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.money-card small{
+  color:#64748b;
+  font-size:11px;
+  font-weight:700;
+}
+
+.money-card strong{
+  display:block;
+  margin-top:7px;
+  font-size:22px;
+  color:var(--navy);
+}
+
+.money-card.red strong{
+  color:var(--red);
+}
+
+.money-card.green strong{
+  color:var(--green);
+}
+
+.money-card.orange strong{
+  color:var(--orange);
+}
+
+.progress{
+  height:8px;
+  background:#e8eef5;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:8px;
+}
+
+.progress-bar{
+  height:100%;
+  background:var(--blue);
+  border-radius:10px;
+}
+
+/* ================= LOGIN ================= */
+
+#loginScreen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at top right,#dbeafe,transparent 35%),
+    linear-gradient(135deg,#f8fbff,#eef4fb);
+}
+
+.login-box{
+  width:min(430px,92%);
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:35px;
+  box-shadow:0 25px 70px rgba(11,31,58,.12);
+}
+
+.login-brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:30px;
+}
+
+.login-brand-mark{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border-radius:17px;
+  background:linear-gradient(145deg,#edf4ff,#fff);
+  border:1px solid #e2e8f0;
+}
+
+.login-brand-mark svg{
+  width:46px;
+  height:46px;
+}
+
+.login-brand-name{
+  font-size:32px;
+  line-height:1;
+  font-weight:900;
+  color:var(--navy);
+}
+
+.login-brand-name span{
+  color:var(--gold);
+}
+
+.login-brand-sub{
+  margin-top:6px;
+  color:#718096;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+
+.login-box h2{
+  margin:0 0 6px;
+  color:var(--navy);
+}
+
+.login-box>p{
+  margin:0 0 24px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.login-box .field{
+  margin-bottom:14px;
+}
+
+.login-box .btn{
+  width:100%;
+  margin-top:5px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(4,15,30,.58);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:100;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(700px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 20px;
+  border-bottom:1px solid var(--border);
+}
+
+.modal-head h3{
+  margin:0;
+  color:var(--navy);
+}
+
+.close{
+  border:0;
+  background:#f1f5f9;
+  border-radius:8px;
+  width:32px;
+  height:32px;
+}
+
+.modal-body{
+  padding:20px;
+}
+
+/* ================= PRINT ================= */
+
+#printArea{
+  display:none;
+}
+
+@media print{
+  body>*{
+    display:none!important;
+  }
+
+  #printArea{
+    display:block!important;
+    padding:30px;
+    color:#111;
+  }
+
+  @page{
+    size:A4;
+    margin:15mm;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1250px){
+  .stats{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .finance-summary{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:950px){
+  .sidebar{
+    width:75px;
+    padding:18px 10px;
+  }
+
+  .brand-text,
+  .nav-title,
+  .nav-btn span:not(.nav-icon),
+  .sidebar-footer{
+    display:none;
+  }
+
+  .brand{
+    justify-content:center;
+    padding:0;
+  }
+
+  .nav-btn{
+    justify-content:center;
+    padding:13px;
+  }
+
+  .main{
+    margin-left:75px;
+    width:calc(100% - 75px);
+  }
+
+  .dashboard-bottom{
+    grid-template-columns:1fr;
+  }
+
+  .grid-3,
+  .grid-4{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:650px){
+  .topbar{
+    padding:0 15px;
+  }
+
+  .content{
+    padding:18px 15px 40px;
+  }
+
+  .stats,
+  .finance-summary,
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .page-title h1{
+    font-size:18px;
+  }
+
+  .search{
+    min-width:0;
+    width:100%;
+  }
+
+  .card-head{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOGIN ================= -->
+
+<div id="loginScreen">
+
+  <div class="login-box">
+
+    <div class="login-brand">
+      <div class="login-brand-mark">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M12 52V24L32 10L52 24V52"
+                fill="none"
+                stroke="#0b1f3a"
+                stroke-width="5"
+                stroke-linejoin="round"/>
+          <path d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
+                fill="#f59e0b"/>
+          <path d="M28 31V47"
+                stroke="white"
+                stroke-width="4"
+                stroke-linecap="round"/>
+          <path d="M12 55H52"
+                stroke="#0b1f3a"
+                stroke-width="4"
+                stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="login-brand-name">BATI<span>FLOW</span></div>
+        <div class="login-brand-sub">BUILD • CALCULATE • MANAGE</div>
+      </div>
+    </div>
+
+    <h2>Bienvenue sur BATIFLOW</h2>
+    <p>Gestion professionnelle de vos projets BTP.</p>
+
+    <div class="field">
+      <label>Nom d'utilisateur</label>
+      <input id="loginUser" value="admin" placeholder="Votre nom">
+    </div>
+
+    <div class="field">
+      <label>Mot de passe</label>
+      <input id="loginPass" type="password" value="1234" placeholder="Mot de passe">
+    </div>
+
+    <button class="btn btn-primary" onclick="login()">
+      Se connecter
+    </button>
+
+    <p style="margin:15px 0 0;text-align:center;font-size:10px;">
+      Démo : admin / 1234
+    </p>
+
+  </div>
+</div>
+
+
+<!-- ================= APPLICATION ================= -->
+
+<div id="app" class="app hidden">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+
+      <div class="brand-mark">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M12 52V24L32 10L52 24V52"
+                fill="none"
+                stroke="white"
+                stroke-width="5"
+                stroke-linejoin="round"/>
+          <path d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
+                fill="#f59e0b"/>
+          <path d="M28 31V47"
+                stroke="#0b1f3a"
+                stroke-width="4"
+                stroke-linecap="round"/>
+          <path d="M12 55H52"
+                stroke="white"
+                stroke-width="4"
+                stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="brand-text">
+        <div class="brand-name">BATI<span>FLOW</span></div>
+        <small>BUILD • CALCULATE • MANAGE</small>
+      </div>
+
+    </div>
+
+    <div class="nav-title">PRINCIPAL</div>
+
+    <button class="nav-btn active" onclick="showSection('dashboard',this)">
+      <span class="nav-icon">📊</span>
+      <span>Tableau de bord</span>
+    </button>
+
+    <button class="nav-btn" onclick="showSection('clients',this)">
+      <span class="nav-icon">👥</span>
+      <span>Clients</span>
+    </button>
+
+    <button class="nav-btn" onclick="showSection('projects',this)">
+      <span class="nav-icon">🏗️</span>
+      <span>Projets / Chantiers</span>
+    </button>
+
+    <button class="nav-btn" onclick="showSection('calculator',this)">
+      <span class="nav-icon">📐</span>
+      <span>Calculateur BTP</span>
+    </button>
+
+    <button class="nav-btn" onclick="showSection('dqe',this)">
+      <span class="nav-icon">📋</span>
+      <span>DQE</span>
+    </button>
+
+    <button class="nav-btn" onclick="showSection('quotes',this)">
+      <span class="nav-icon">🧾</span>
+      <span>Devis</span>
+    </button>
+
+    <div class="nav-title">RESSOURCES</div>
+
+    <button class="nav-btn" onclick="showSection('materials',this)">
+      <span class="nav-icon">🧱</span>
+      <span>Matériaux & prix</span>
+    </button>
+
+    <button class="nav-btn" onclick="showSection('stock',this)">
+      <span class="nav-icon">📦</span>
+      <span>Stock & mouvements</span>
+    </button>
+
+    <div class="nav-title">FINANCES</div>
+
+    <button class="nav-btn" onclick="showSection('finance',this)">
+      <span class="nav-icon">💰</span>
+      <span>Finances & dépenses</span>
+    </button>
+
+    <div class="nav-title">PARAMÈTRES</div>
+
+    <button class="nav-btn" onclick="showSection('settings',this)">
+      <span class="nav-icon">⚙️</span>
+      <span>Pays & paramètres</span>
+    </button>
+
+    <div class="sidebar-footer">
+      BATIFLOW v8.0<br>
+      Gestion BTP intelligente
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="page-title">
+        <h1 id="pageTitle">Tableau de bord</h1>
+        <p id="pageSubtitle">Vue générale de votre activité</p>
+      </div>
+
+      <div class="top-user">
+        <div>
+          <strong style="font-size:12px">Administrateur</strong>
+          <div style="font-size:10px;color:#718096">BATIFLOW</div>
+        </div>
+
+        <div class="avatar">A</div>
+      </div>
+
+    </header>
+
+
+    <div class="content">
+
+      <!-- ================= DASHBOARD ================= -->
+
+      <section id="dashboard" class="section active">
+
+        <div class="hero">
+          <h2>Bienvenue sur BATIFLOW 👋</h2>
+          <p>
+            Pilotez vos chantiers, clients, matériaux, stocks,
+            devis et finances depuis un seul espace.
+          </p>
+        </div>
+
+        <div class="stats">
+
+          <div class="stat">
+            <div class="stat-icon">👥</div>
+            <div class="stat-label">Clients</div>
+            <div class="stat-value" id="statClients">0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">🏗️</div>
+            <div class="stat-label">Projets</div>
+            <div class="stat-value" id="statProjects">0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">📋</div>
+            <div class="stat-label">Postes DQE</div>
+            <div class="stat-value" id="statDQE">0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">🧱</div>
+            <div class="stat-label">Matériaux</div>
+            <div class="stat-value" id="statMaterials">0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">📦</div>
+            <div class="stat-label">Stock</div>
+            <div class="stat-value" id="statStock">0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">💰</div>
+            <div class="stat-label">Dépenses</div>
+            <div class="stat-value" id="statExpenses">0</div>
+          </div>
+
+        </div>
+
+
+        <div class="dashboard-bottom">
+
+          <div class="card">
+
+            <div class="card-head">
+              <div>
+                <h3>Accès rapides</h3>
+                <p>Gagnez du temps sur vos opérations courantes.</p>
+              </div>
+            </div>
+
+            <div class="card-body">
+
+              <div class="quick">
+
+                <button onclick="openClientModal()">
+                  <strong>➕ Nouveau client</strong>
+                  <span>Ajouter un client</span>
+                </button>
+
+                <button onclick="openProjectModal()">
+                  <strong>🏗️ Nouveau chantier</strong>
+                  <span>Créer un projet</span>
+                </button>
+
+                <button onclick="showSection('finance')">
+                  <strong>💰 Ajouter une dépense</strong>
+                  <span>Enregistrer une dépense</span>
+                </button>
+
+                <button onclick="showSection('quotes')">
+                  <strong>🧾 Nouveau devis</strong>
+                  <span>Préparer un devis</span>
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="card-head">
+              <div>
+                <h3>Résumé financier</h3>
+                <p>Situation globale.</p>
+              </div>
+            </div>
+
+            <div class="card-body">
+
+              <div style="display:flex;justify-content:space-between;margin-bottom:12px">
+                <span style="font-size:12px;color:#64748b">Budget projets</span>
+                <strong id="dashBudget">0 FCFA</strong>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;margin-bottom:12px">
+                <span style="font-size:12px;color:#64748b">Dépenses</span>
+                <strong id="dashExpenses">0 FCFA</strong>
+              </div>
+
+              <div style="display:flex;justify-content:space-between">
+                <span style="font-size:12px;color:#64748b">Solde théorique</span>
+                <strong id="dashBalance">0 FCFA</strong>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= CLIENTS ================= -->
+
+      <section id="clients" class="section">
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <div>
+              <h2>Clients</h2>
+              <p>Gérez vos clients et partenaires.</p>
+            </div>
+
+            <div class="actions">
+              <input
+                class="search"
+                id="clientSearch"
+                placeholder="Rechercher..."
+                oninput="renderClients()">
+
+              <button class="btn btn-primary" onclick="openClientModal()">
+                + Nouveau client
+              </button>
+            </div>
+
+          </div>
+
+          <div class="table-wrap">
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Type</th>
+                  <th>Téléphone</th>
+                  <th>Email</th>
+                  <th>Ville</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="clientsTable"></tbody>
+
+            </table>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= PROJECTS ================= -->
+
+      <section id="projects" class="section">
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <div>
+              <h2>Projets / Chantiers</h2>
+              <p>Suivez vos travaux et leurs budgets.</p>
+            </div>
+
+            <div class="actions">
+              <input
+                class="search"
+                id="projectSearch"
+                placeholder="Rechercher..."
+                oninput="renderProjects()">
+
+              <button class="btn btn-primary" onclick="openProjectModal()">
+                + Nouveau projet
+              </button>
+            </div>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Projet</th>
+                  <th>Client</th>
+                  <th>Localisation</th>
+                  <th>Budget</th>
+                  <th>Début</th>
+                  <th>Statut</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="projectsTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= CALCULATOR ================= -->
+
+      <section id="calculator" class="section">
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <div>
+              <h2>Calculateur BTP</h2>
+              <p>Estimations indicatives de volumes.</p>
+            </div>
+
+          </div>
+
+          <div class="card-body">
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label>Élément</label>
+
+                <select id="calcType">
+                  <option value="dalle">Dalle</option>
+                  <option value="poutre">Poutre</option>
+                  <option value="poteau">Poteau</option>
+                  <option value="semelle">Semelle</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Longueur (m)</label>
+                <input id="calcL" type="number" step="0.01">
+              </div>
+
+              <div class="field">
+                <label>Largeur (m)</label>
+                <input id="calcW" type="number" step="0.01">
+              </div>
+
+              <div class="field">
+                <label>Hauteur / épaisseur (m)</label>
+                <input id="calcH" type="number" step="0.01">
+              </div>
+
+            </div>
+
+            <div class="actions" style="margin-top:18px">
+              <button class="btn btn-primary" onclick="calculateVolume()">
+                Calculer
+              </button>
+            </div>
+
+            <div id="calcResult" style="margin-top:20px"></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= DQE ================= -->
+
+      <section id="dqe" class="section">
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <div>
+              <h2>DQE — Devis Quantitatif Estimatif</h2>
+              <p>Quantités, prix unitaires et montants.</p>
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-secondary" onclick="clearDQE()">
+                Vider
+              </button>
+            </div>
+
+          </div>
+
+          <div class="card-body">
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label>Matériau enregistré</label>
+
+                <select id="dqeMaterial" onchange="fillMaterial(this.value)">
+                  <option value="">— Sélectionner —</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Désignation</label>
+                <input id="dqeDesignation">
+              </div>
+
+              <div class="field">
+                <label>Unité</label>
+                <input id="dqeUnit" placeholder="m³, m², kg, unité...">
+              </div>
+
+              <div class="field">
+                <label>Quantité</label>
+                <input id="dqeQty" type="number" step="0.01">
+              </div>
+
+              <div class="field">
+                <label>Prix unitaire</label>
+                <input id="dqePrice" type="number" step="0.01">
+              </div>
+
+            </div>
+
+            <div class="actions" style="margin-top:15px">
+              <button class="btn btn-primary" onclick="saveDQE()">
+                Ajouter au DQE
+              </button>
+            </div>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Désignation</th>
+                  <th>Unité</th>
+                  <th>Qté</th>
+                  <th>PU</th>
+                  <th>Total</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="dqeTable"></tbody>
+
+            </table>
+
+          </div>
+
+          <div style="padding:18px;text-align:right">
+            <strong>Total DQE : <span id="dqeTotal">0 FCFA</span></strong>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= QUOTES ================= -->
+
+      <section id="quotes" class="section">
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <div>
+              <h2>Générateur de devis</h2>
+              <p>Créez un devis professionnel imprimable.</p>
+            </div>
+
+            <button class="btn btn-dark" onclick="printQuote()">
+              🖨️ Imprimer / PDF
+            </button>
+
+          </div>
+
+          <div class="card-body">
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label>Entreprise</label>
+                <input id="quoteCompany" placeholder="Nom de votre entreprise">
+              </div>
+
+              <div class="field">
+                <label>Téléphone entreprise</label>
+                <input id="quotePhone" placeholder="+228 ...">
+              </div>
+
+              <div class="field">
+                <label>Email entreprise</label>
+                <input id="quoteEmail">
+              </div>
+
+              <div class="field">
+                <label>Adresse entreprise</label>
+                <input id="quoteAddress">
+              </div>
+
+              <div class="field">
+                <label>Client</label>
+                <select id="quoteClient" onchange="fillQuoteClient(this.value)">
+                  <option value="">— Sélectionner —</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Téléphone client</label>
+                <input id="quoteClientPhone">
+              </div>
+
+              <div class="field">
+                <label>Projet / chantier</label>
+                <input id="quoteProject">
+              </div>
+
+              <div class="field">
+                <label>Validité du devis</label>
+                <input id="quoteValidity" value="30 jours">
+              </div>
+
+              <div class="field">
+                <label>TVA (%)</label>
+                <input id="quoteTVA" type="number" value="0" step="0.01" oninput="updateQuotePreview()">
+              </div>
+
+              <div class="field">
+                <label>Conditions de paiement</label>
+                <input id="quotePayment" value="Selon accord avec le client">
+              </div>
+
+              <div class="field full">
+                <label>Observations / conditions</label>
+                <textarea id="quoteConditions">Les travaux seront réalisés conformément aux règles de l'art et aux conditions convenues avec le client.</textarea>
+              </div>
+
+            </div>
+
+            <div style="margin-top:20px">
+
+              <h3 style="color:var(--navy)">Lignes du devis</h3>
+
+              <div class="table-wrap">
+
+                <table>
+
+                  <thead>
+                    <tr>
+                      <th>Désignation</th>
+                      <th>Unité</th>
+                      <th>Qté</th>
+                      <th>PU</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="quoteLines"></tbody>
+
+                </table>
+
+              </div>
+
+              <div style="text-align:right;margin-top:15px">
+
+                <div>
+                  Sous-total :
+                  <strong id="quoteSubtotal">0 FCFA</strong>
+                </div>
+
+                <div>
+                  TVA :
+                  <strong id="quoteTax">0 FCFA</strong>
+                </div>
+
+                <div style="font-size:20px;margin-top:8px;color:var(--navy)">
+                  Total :
+                  <strong id="quoteGrandTotal">0 FCFA</strong>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= MATERIALS ================= -->
+
+      <section id="materials" class="section">
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <div>
+              <h2>Matériaux & prix</h2>
+              <p>Votre bibliothèque de matériaux et tarifs.</p>
+            </div>
+
+            <div class="actions">
+
+              <input
+                class="search"
+                id="materialSearch"
+                placeholder="Rechercher..."
+                oninput="renderMaterials()">
+
+              <button class="btn btn-primary" onclick="openMaterialModal()">
+                + Nouveau matériau
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Matériau</th>
+                  <th>Catégorie</th>
+                  <th>Unité</th>
+                  <th>Prix unitaire</th>
+                  <th>Fournisseur</th>
+                  <th>Stock</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="materialsTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= STOCK ================= -->
+
+      <section id="stock" class="section">
+
+        <div class="finance-summary">
+
+          <div class="money-card">
+            <small>Articles suivis</small>
+            <strong id="stockCount">0</strong>
+          </div>
+
+          <div class="money-card">
+            <small>Valeur du stock</small>
+            <strong id="stockValue">0 FCFA</strong>
+          </div>
+
+          <div class="money-card red">
+            <small>Alertes stock</small>
+            <strong id="stockAlerts">0</strong>
+          </div>
+
+          <div class="money-card">
+            <small>Mouvements</small>
+            <strong id="movementCount">0</strong>
+          </div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <div>
+              <h2>Stock</h2>
+              <p>Suivez les quantités disponibles sur vos dépôts.</p>
+            </div>
+
+            <button class="btn btn-primary" onclick="openStockModal()">
+              + Configurer un stock
+            </button>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Matériau</th>
+                  <th>Unité</th>
+                  <th>Stock</th>
+                  <th>Seuil</th>
+                  <th>Emplacement</th>
+                  <th>État</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="stockTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <div class="card" style="margin-top:18px">
+
+          <div class="card-head">
+
+            <div>
+              <h2>Mouvements de stock</h2>
+              <p>Entrées, sorties et ajustements.</p>
+            </div>
+
+            <button class="btn btn-primary" onclick="openMovementModal()">
+              + Nouveau mouvement
+            </button>
+
+          </div>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Matériau</th>
+                  <th>Type</th>
+                  <th>Quantité</th>
+                  <th>Projet</th>
+                  <th>Référence</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="movementsTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= FINANCE ================= -->
+
+      <section id="finance" class="section">
+
+        <div class="finance-summary">
+
+          <div class="money-card">
+            <small>Budget total projets</small>
+            <strong id="financeBudget">0 FCFA</strong>
+          </div>
+
+          <div class="money-card red">
+            <small>Dépenses totales</small>
+            <strong id="financeExpenses">0 FCFA</strong>
+          </div>
+
+          <div class="money-card green">
+            <small>Budget restant</small>
+            <strong id="financeRemaining">0 FCFA</strong>
+          </div>
+
+          <div class="money-card orange">
+            <small>Nombre de dépenses</small>
+            <strong id="financeCount">0</strong>
+          </div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <div>
+              <h2>Finances & dépenses</h2>
+              <p>
+                Suivez les coûts réels de vos chantiers.
+              </p>
+            </div>
+
+            <div class="actions">
+
+              <input
+                class="search"
+                id="expenseSearch"
+                placeholder="Rechercher..."
+                oninput="renderExpenses()">
+
+              <button class="btn btn-primary" onclick="openExpenseModal()">
+                + Nouvelle dépense
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Projet</th>
+                  <th>Désignation</th>
+                  <th>Catégorie</th>
+                  <th>Mode</th>
+                  <th>Montant</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="expensesTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <div class="grid grid-2" style="margin-top:18px">
+
+          <div class="card">
+
+            <div class="card-head">
+              <div>
+                <h3>Dépenses par catégorie</h3>
+                <p>Répartition des dépenses.</p>
+              </div>
+            </div>
+
+            <div class="card-body" id="categoryExpenses"></div>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="card-head">
+              <div>
+                <h3>Suivi des projets</h3>
+                <p>Budget prévu contre dépenses réelles.</p>
+              </div>
+            </div>
+
+            <div class="card-body" id="projectFinancials"></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SETTINGS ================= -->
+
+      <section id="settings" class="section">
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <div>
+              <h2>Pays & paramètres</h2>
+              <p>Configurez votre pays et votre devise.</p>
+            </div>
+
+          </div>
+
+          <div class="card-body">
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label>Pays</label>
+
+                <select id="countrySelect" onchange="saveSettings()"></select>
+
+              </div>
+
+              <div class="field">
+                <label>Devise</label>
+
+                <input id="currencyDisplay" readonly>
+
+              </div>
+
+              <div class="field">
+                <label>Nom de l'entreprise</label>
+
+                <input id="companySetting"
+                       placeholder="Votre entreprise"
+                       onchange="saveSettings()">
+
+              </div>
+
+              <div class="field">
+                <label>Téléphone</label>
+
+                <input id="companyPhoneSetting"
+                       onchange="saveSettings()">
+
+              </div>
+
+            </div>
+
+            <div style="margin-top:20px">
+              <button class="btn btn-primary" onclick="saveSettings()">
+                Enregistrer les paramètres
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- ================= MODAL CLIENT ================= -->
+
+<div id="clientModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h3 id="clientModalTitle">Nouveau client</h3>
+      <button class="close" onclick="closeModal('clientModal')">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <input type="hidden" id="clientEditId">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>Nom / entreprise</label>
+          <input id="clientName">
+        </div>
+
+        <div class="field">
+          <label>Type</label>
+
+          <select id="clientType">
+            <option>Particulier</option>
+            <option>Entreprise</option>
+            <option>Administration</option>
+            <option>Promoteur immobilier</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Téléphone</label>
+          <input id="clientPhone">
+        </div>
+
+        <div class="field">
+          <label>Email</label>
+          <input id="clientEmail">
+        </div>
+
+        <div class="field">
+          <label>Adresse</label>
+          <input id="clientAddress">
+        </div>
+
+        <div class="field">
+          <label>Ville</label>
+          <input id="clientCity">
+        </div>
+
+        <div class="field full">
+          <label>Notes</label>
+          <textarea id="clientNotes"></textarea>
+        </div>
+
+      </div>
+
+      <div class="actions" style="margin-top:18px">
+        <button class="btn btn-secondary" onclick="closeModal('clientModal')">
+          Annuler
+        </button>
+
+        <button class="btn btn-primary" onclick="saveClient()">
+          Enregistrer
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= MODAL PROJECT ================= -->
+
+<div id="projectModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h3 id="projectModalTitle">Nouveau projet</h3>
+      <button class="close" onclick="closeModal('projectModal')">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <input type="hidden" id="projectEditId">
+
+      <div class="form-grid">
+
+        <div class="field full">
+          <label>Nom du projet</label>
+          <input id="projectName">
+        </div>
+
+        <div class="field">
+          <label>Client</label>
+          <select id="projectClient"></select>
+        </div>
+
+        <div class="field">
+          <label>Localisation</label>
+          <input id="projectLocation">
+        </div>
+
+        <div class="field">
+          <label>Budget</label>
+          <input id="projectBudget" type="number">
+        </div>
+
+        <div class="field">
+          <label>Responsable</label>
+          <input id="projectManager">
+        </div>
+
+        <div class="field">
+          <label>Date de début</label>
+          <input id="projectStart" type="date">
+        </div>
+
+        <div class="field">
+          <label>Date de fin</label>
+          <input id="projectEnd" type="date">
+        </div>
+
+        <div class="field">
+          <label>Statut</label>
+
+          <select id="projectStatus">
+            <option>Planifié</option>
+            <option>En cours</option>
+            <option>En pause</option>
+            <option>Terminé</option>
+          </select>
+
+        </div>
+
+        <div class="field full">
+          <label>Description</label>
+          <textarea id="projectDescription"></textarea>
+        </div>
+
+      </div>
+
+      <div class="actions" style="margin-top:18px">
+
+        <button class="btn btn-secondary"
+                onclick="closeModal('projectModal')">
+          Annuler
+        </button>
+
+        <button class="btn btn-primary"
+                onclick="saveProject()">
+          Enregistrer
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= MODAL MATERIAL ================= -->
+
+<div id="materialModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h3 id="materialModalTitle">Nouveau matériau</h3>
+      <button class="close" onclick="closeModal('materialModal')">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <input type="hidden" id="materialEditId">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>Nom du matériau</label>
+          <input id="materialName">
+        </div>
+
+        <div class="field">
+          <label>Catégorie</label>
+          <input id="materialCategory" placeholder="Ciment, acier...">
+        </div>
+
+        <div class="field">
+          <label>Unité</label>
+          <input id="materialUnit" placeholder="sac, kg, m³...">
+        </div>
+
+        <div class="field">
+          <label>Prix unitaire</label>
+          <input id="materialPrice" type="number">
+        </div>
+
+        <div class="field">
+          <label>Fournisseur</label>
+          <input id="materialSupplier">
+        </div>
+
+        <div class="field full">
+          <label>Notes</label>
+          <textarea id="materialNotes"></textarea>
+        </div>
+
+      </div>
+
+      <div class="actions" style="margin-top:18px">
+
+        <button class="btn btn-secondary"
+                onclick="closeModal('materialModal')">
+          Annuler
+        </button>
+
+        <button class="btn btn-primary"
+                onclick="saveMaterial()">
+          Enregistrer
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= MODAL STOCK ================= -->
+
+<div id="stockModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h3>Configurer un stock</h3>
+      <button class="close" onclick="closeModal('stockModal')">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <input type="hidden" id="stockEditId">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>Matériau</label>
+          <select id="stockMaterial" onchange="updateStockUnit()"></select>
+        </div>
+
+        <div class="field">
+          <label>Unité</label>
+          <input id="stockUnit" readonly>
+        </div>
+
+        <div class="field">
+          <label>Quantité initiale</label>
+          <input id="stockQuantity" type="number" step="0.01">
+        </div>
+
+        <div class="field">
+          <label>Seuil d'alerte</label>
+          <input id="stockThreshold" type="number" step="0.01">
+        </div>
+
+        <div class="field full">
+          <label>Emplacement / dépôt</label>
+          <input id="stockLocation" placeholder="Dépôt principal">
+        </div>
+
+      </div>
+
+      <div class="actions" style="margin-top:18px">
+
+        <button class="btn btn-secondary"
+                onclick="closeModal('stockModal')">
+          Annuler
+        </button>
+
+        <button class="btn btn-primary"
+                onclick="saveStock()">
+          Enregistrer
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= MODAL MOVEMENT ================= -->
+
+<div id="movementModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h3>Nouveau mouvement de stock</h3>
+      <button class="close" onclick="closeModal('movementModal')">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>Matériau</label>
+          <select id="movementMaterial" onchange="showCurrentStock()"></select>
+        </div>
+
+        <div class="field">
+          <label>Type</label>
+
+          <select id="movementType" onchange="updateMovementLabel()">
+            <option value="entree">Entrée</option>
+            <option value="sortie">Sortie</option>
+            <option value="ajustement">Ajustement</option>
+          </select>
+
+        </div>
+
+        <div class="field">
+          <label id="movementQtyLabel">Quantité</label>
+          <input id="movementQty" type="number" step="0.01">
+        </div>
+
+        <div class="field">
+          <label>Date</label>
+          <input id="movementDate" type="date">
+        </div>
+
+        <div class="field">
+          <label>Projet / chantier</label>
+          <select id="movementProject">
+            <option value="">— Aucun —</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Référence</label>
+          <input id="movementReference" placeholder="BL, facture...">
+        </div>
+
+        <div class="field full">
+          <label>Note</label>
+          <textarea id="movementNote"></textarea>
+        </div>
+
+      </div>
+
+      <div id="currentStockInfo"
+           style="margin-top:15px;padding:12px;background:#f8fafc;border-radius:9px;font-size:12px">
+        Sélectionnez un matériau.
+      </div>
+
+      <div class="actions" style="margin-top:18px">
+
+        <button class="btn btn-secondary"
+                onclick="closeModal('movementModal')">
+          Annuler
+        </button>
+
+        <button class="btn btn-primary"
+                onclick="recordMovement()">
+          Enregistrer
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= MODAL EXPENSE ================= -->
+
+<div id="expenseModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h3 id="expenseModalTitle">Nouvelle dépense</h3>
+      <button class="close" onclick="closeModal('expenseModal')">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <input type="hidden" id="expenseEditId">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>Date</label>
+          <input id="expenseDate" type="date">
+        </div>
+
+        <div class="field">
+          <label>Projet / chantier</label>
+          <select id="expenseProject">
+            <option value="">— Général —</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Désignation</label>
+          <input id="expenseName" placeholder="Achat de ciment...">
+        </div>
+
+        <div class="field">
+          <label>Catégorie</label>
+
+          <select id="expenseCategory">
+            <option>Matériaux</option>
+            <option>Main-d’œuvre</option>
+            <option>Transport</option>
+            <option>Équipement</option>
+            <option>Location</option>
+            <option>Administration</option>
+            <option>Énergie</option>
+            <option>Autre</option>
+          </select>
+
+        </div>
+
+        <div class="field">
+          <label>Montant</label>
+          <input id="expenseAmount" type="number" step="0.01">
+        </div>
+
+        <div class="field">
+          <label>Mode de paiement</label>
+
+          <select id="expensePayment">
+            <option>Espèces</option>
+            <option>Mobile Money</option>
+            <option>Virement</option>
+            <option>Carte</option>
+            <option>Chèque</option>
+            <option>Autre</option>
+          </select>
+
+        </div>
+
+        <div class="field">
+          <label>Référence</label>
+          <input id="expenseReference">
+        </div>
+
+        <div class="field full">
+          <label>Note</label>
+          <textarea id="expenseNote"></textarea>
+        </div>
+
+      </div>
+
+      <div class="actions" style="margin-top:18px">
+
+        <button class="btn btn-secondary"
+                onclick="closeModal('expenseModal')">
+          Annuler
+        </button>
+
+        <button class="btn btn-primary"
+                onclick="saveExpense()">
+          Enregistrer
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="printArea"></div>
+
+
+<script>
+
+/* ============================================================
+   BATIFLOW — DONNÉES
+============================================================ */
+
+const countries={
+  "Togo":"FCFA",
+  "Bénin":"FCFA",
+  "Côte d’Ivoire":"FCFA",
+  "Sénégal":"FCFA",
+  "Burkina Faso":"FCFA",
+  "Mali":"FCFA",
+  "Niger":"FCFA",
+  "Guinée-Bissau":"FCFA",
+  "Cameroun":"FCFA",
+  "Gabon":"FCFA",
+  "Congo":"FCFA",
+  "Guinée équatoriale":"FCFA",
+  "RCA":"FCFA",
+  "Tchad":"FCFA",
+  "Ghana":"GHS",
+  "Nigeria":"NGN",
+  "Guinée":"GNF",
+  "Sierra Leone":"SLE",
+  "Liberia":"LRD",
+  "Gambie":"GMD",
+  "Mauritanie":"MRU",
+  "Cap-Vert":"CVE",
+  "Maroc":"MAD",
+  "Algérie":"DZD",
+  "Tunisie":"TND",
+  "Égypte":"EGP",
+  "Libye":"LYD",
+  "Soudan":"SDG",
+  "Kenya":"KES",
+  "Ouganda":"UGX",
+  "Tanzanie":"TZS",
+  "Rwanda":"RWF",
+  "Burundi":"BIF",
+  "Éthiopie":"ETB",
+  "Somalie":"SOS",
+  "Djibouti":"DJF",
+  "Seychelles":"SCR",
+  "Maurice":"MUR",
+  "Afrique du Sud":"ZAR",
+  "Namibie":"NAD",
+  "Botswana":"BWP",
+  "Zambie":"ZMW",
+  "Zimbabwe":"ZWG",
+  "Mozambique":"MZN",
+  "Angola":"AOA",
+  "Malawi":"MWK",
+  "Lesotho":"LSL",
+  "Eswatini":"SZL",
+  "Madagascar":"MGA",
+  "Comores":"KMF"
+};
+
+let clients=JSON.parse(localStorage.getItem("batiflow_clients")||"[]");
+let projects=JSON.parse(localStorage.getItem("batiflow_projects")||"[]");
+let dqe=JSON.parse(localStorage.getItem("batiflow_dqe")||"[]");
+let materials=JSON.parse(localStorage.getItem("batiflow_materials")||"[]");
+let stocks=JSON.parse(localStorage.getItem("batiflow_stock")||"[]");
+let movements=JSON.parse(localStorage.getItem("batiflow_movements")||"[]");
+let expenses=JSON.parse(localStorage.getItem("batiflow_expenses")||"[]");
+
+let settings=JSON.parse(
+  localStorage.getItem("batiflow_settings")||"{}"
+);
+
+let currency=settings.currency||"FCFA";
+
+
+/* ============================================================
+   OUTILS
+============================================================ */
+
+function saveData(key,data){
+  localStorage.setItem(key,JSON.stringify(data));
+}
+
+function escapeHTML(value){
+  return String(value??"")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function money(value){
+  return new Intl.NumberFormat("fr-FR",{
+    maximumFractionDigits:2
+  }).format(Number(value)||0)+" "+currency;
+}
+
+function today(){
+  return new Date().toISOString().slice(0,10);
+}
+
+function clientName(id){
+  const c=clients.find(x=>String(x.id)===String(id));
+  return c?c.name:"—";
+}
+
+function projectName(id){
+  const p=projects.find(x=>String(x.id)===String(id));
+  return p?p.name:"—";
+}
+
+
+/* ============================================================
+   LOGIN
+============================================================ */
+
+function login(){
+
+  const user=document.getElementById("loginUser").value.trim();
+  const pass=document.getElementById("loginPass").value;
+
+  if(user==="admin" && pass==="1234"){
+
+    document.getElementById("loginScreen").style.display="none";
+    document.getElementById("app").classList.remove("hidden");
+
+    initApp();
+
+  }else{
+
+    alert("Identifiants incorrects.\n\nDémo : admin / 1234");
+
+  }
+
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+const titles={
+  dashboard:["Tableau de bord","Vue générale de votre activité"],
+  clients:["Clients","Gestion de votre portefeuille clients"],
+  projects:["Projets / Chantiers","Suivi de vos travaux"],
+  calculator:["Calculateur BTP","Estimations indicatives"],
+  dqe:["DQE","Devis Quantitatif Estimatif"],
+  quotes:["Devis","Création de devis professionnels"],
+  materials:["Matériaux & prix","Bibliothèque de matériaux"],
+  stock:["Stock & mouvements","Gestion des stocks de chantier"],
+  finance:["Finances & dépenses","Suivi financier des projets"],
+  settings:["Pays & paramètres","Configuration de BATIFLOW"]
+};
+
+function showSection(id,button){
+
+  document.querySelectorAll(".section")
+    .forEach(s=>s.classList.remove("active"));
+
+  document.getElementById(id)
+    ?.classList.add("active");
+
+  document.querySelectorAll(".nav-btn")
+    .forEach(b=>b.classList.remove("active"));
+
+  if(button){
+    button.classList.add("active");
+  }else{
+
+    const buttons=document.querySelectorAll(".nav-btn");
+
+    buttons.forEach(b=>{
+
+      if(b.getAttribute("onclick")?.includes("'"+id+"'")){
+        b.classList.add("active");
+      }
+
+    });
+
+  }
+
+  document.getElementById("pageTitle").textContent=titles[id][0];
+  document.getElementById("pageSubtitle").textContent=titles[id][1];
+
+  if(id==="dashboard") updateDashboard();
+  if(id==="clients") renderClients();
+  if(id==="projects") renderProjects();
+  if(id==="dqe") renderDQE();
+  if(id==="materials") renderMaterials();
+  if(id==="stock"){
+    renderStock();
+    renderMovements();
+  }
+  if(id==="finance"){
+    renderExpenses();
+    renderFinance();
+  }
+  if(id==="quotes"){
+    populateQuoteClients();
+    renderQuoteLines();
+  }
+
+}
+
+
+/* ============================================================
+   INIT
+============================================================ */
+
+function initApp(){
+
+  initSettings();
+  populateCountrySelect();
+
+  renderClients();
+  renderProjects();
+  renderMaterials();
+  renderDQE();
+  renderStock();
+  renderMovements();
+  renderExpenses();
+
+  populateClientSelect();
+  populateMaterialSelect();
+  populateStockMaterialSelect();
+  populateMovementMaterialSelect();
+  populateProjectSelects();
+  populateQuoteClients();
+
+  updateDashboard();
+  renderFinance();
+}
+
+
+/* ============================================================
+   MODALS
+============================================================ */
+
+function openModal(id){
+  document.getElementById(id).classList.add("show");
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.remove("show");
+}
+
+
+/* ============================================================
+   CLIENTS
+============================================================ */
+
+function openClientModal(id=null){
+
+  document.getElementById("clientEditId").value=id||"";
+  document.getElementById("clientModalTitle").textContent=
+    id?"Modifier le client":"Nouveau client";
+
+  if(id){
+
+    const c=clients.find(x=>String(x.id)===String(id));
+
+    if(c){
+
+      document.getElementById("clientName").value=c.name||"";
+      document.getElementById("clientType").value=c.type||"Particulier";
+      document.getElementById("clientPhone").value=c.phone||"";
+      document.getElementById("clientEmail").value=c.email||"";
+      document.getElementById("clientAddress").value=c.address||"";
+      document.getElementById("clientCity").value=c.city||"";
+      document.getElementById("clientNotes").value=c.notes||"";
+
+    }
+
+  }else{
+
+    [
+      "clientName",
+      "clientPhone",
+      "clientEmail",
+      "clientAddress",
+      "clientCity",
+      "clientNotes"
+    ].forEach(id=>document.getElementById(id).value="");
+
+  }
+
+  openModal("clientModal");
+}
+
+function saveClient(){
+
+  const id=document.getElementById("clientEditId").value;
+
+  const data={
+    id:id||Date.now(),
+    name:document.getElementById("clientName").value.trim(),
+    type:document.getElementById("clientType").value,
+    phone:document.getElementById("clientPhone").value.trim(),
+    email:document.getElementById("clientEmail").value.trim(),
+    address:document.getElementById("clientAddress").value.trim(),
+    city:document.getElementById("clientCity").value.trim(),
+    notes:document.getElementById("clientNotes").value.trim()
+  };
+
+  if(!data.name){
+    alert("Veuillez renseigner le nom du client.");
+    return;
+  }
+
+  if(id){
+
+    const index=clients.findIndex(x=>String(x.id)===String(id));
+
+    if(index>=0) clients[index]=data;
+
+  }else{
+
+    clients.push(data);
+
+  }
+
+  saveData("batiflow_clients",clients);
+
+  closeModal("clientModal");
+
+  renderClients();
+  populateClientSelect();
+  populateQuoteClients();
+  updateDashboard();
+}
+
+function renderClients(){
+
+  const tbody=document.getElementById("clientsTable");
+  const search=(document.getElementById("clientSearch")?.value||"").toLowerCase();
+
+  const list=clients.filter(c=>
+    `${c.name} ${c.phone} ${c.email} ${c.city}`
+      .toLowerCase()
+      .includes(search)
+  );
+
+  if(!list.length){
+
+    tbody.innerHTML=`
+      <tr>
+        <td colspan="6" class="empty">
+          Aucun client enregistré.
+        </td>
+      </tr>`;
+
+    return;
+  }
+
+  tbody.innerHTML=list.map(c=>`
+
+    <tr>
+
+      <td>
+        <strong>${escapeHTML(c.name)}</strong>
+      </td>
+
+      <td>
+        <span class="badge badge-blue">
+          ${escapeHTML(c.type)}
+        </span>
+      </td>
+
+      <td>${escapeHTML(c.phone)}</td>
+      <td>${escapeHTML(c.email)}</td>
+      <td>${escapeHTML(c.city)}</td>
+
+      <td>
+
+        <div class="actions">
+
+          <button class="btn btn-secondary btn-small"
+            onclick="openClientModal('${c.id}')">
+            Modifier
+          </button>
+
+          <button class="btn btn-danger btn-small"
+            onclick="deleteClient('${c.id}')">
+            Supprimer
+          </button>
+
+        </div>
+
+      </td>
+
+    </tr>
+
+  `).join("");
+
+}
+
+function deleteClient(id){
+
+  if(!confirm("Supprimer ce client ?")) return;
+
+  clients=clients.filter(c=>String(c.id)!==String(id));
+
+  saveData("batiflow_clients",clients);
+
+  renderClients();
+  populateClientSelect();
+  populateQuoteClients();
+  updateDashboard();
+}
+
+function populateClientSelect(){
+
+  const select=document.getElementById("projectClient");
+
+  if(!select) return;
+
+  select.innerHTML=
+    `<option value="">— Aucun client —</option>`+
+    clients.map(c=>
+      `<option value="${c.id}">
+        ${escapeHTML(c.name)}
+      </option>`
+    ).join("");
+}
+
+
+/* ============================================================
+   PROJECTS
+============================================================ */
+
+function openProjectModal(id=null){
+
+  populateClientSelect();
+
+  document.getElementById("projectEditId").value=id||"";
+
+  document.getElementById("projectModalTitle").textContent=
+    id?"Modifier le projet":"Nouveau projet";
+
+  if(id){
+
+    const p=projects.find(x=>String(x.id)===String(id));
+
+    if(p){
+
+      document.getElementById("projectName").value=p.name||"";
+      document.getElementById("projectClient").value=p.clientId||"";
+      document.getElementById("projectLocation").value=p.location||"";
+      document.getElementById("projectBudget").value=p.budget||"";
+      document.getElementById("projectManager").value=p.manager||"";
+      document.getElementById("projectStart").value=p.start||"";
+      document.getElementById("projectEnd").value=p.end||"";
+      document.getElementById("projectStatus").value=p.status||"Planifié";
+      document.getElementById("projectDescription").value=p.description||"";
+
+    }
+
+  }else{
+
+    [
+      "projectName",
+      "projectLocation",
+      "projectBudget",
+      "projectManager",
+      "projectStart",
+      "projectEnd",
+      "projectDescription"
+    ].forEach(id=>document.getElementById(id).value="");
+
+    document.getElementById("projectClient").value="";
+    document.getElementById("projectStatus").value="Planifié";
+
+  }
+
+  openModal("projectModal");
+}
+
+function saveProject(){
+
+  const id=document.getElementById("projectEditId").value;
+
+  const data={
+    id:id||Date.now(),
+    name:document.getElementById("projectName").value.trim(),
+    clientId:document.getElementById("projectClient").value,
+    location:document.getElementById("projectLocation").value.trim(),
+    budget:Number(document.getElementById("projectBudget").value)||0,
+    manager:document.getElementById("projectManager").value.trim(),
+    start:document.getElementById("projectStart").value,
+    end:document.getElementById("projectEnd").value,
+    status:document.getElementById("projectStatus").value,
+    description:document.getElementById("projectDescription").value.trim()
+  };
+
+  if(!data.name){
+    alert("Veuillez renseigner le nom du projet.");
+    return;
+  }
+
+  if(id){
+
+    const index=projects.findIndex(x=>String(x.id)===String(id));
+
+    if(index>=0) projects[index]=data;
+
+  }else{
+
+    projects.push(data);
+
+  }
+
+  saveData("batiflow_projects",projects);
+
+  closeModal("projectModal");
+
+  renderProjects();
+  populateProjectSelects();
+  updateDashboard();
+  renderFinance();
+}
+
+function renderProjects(){
+
+  const tbody=document.getElementById("projectsTable");
+
+  const search=(document.getElementById("projectSearch")?.value||"").toLowerCase();
+
+  const list=projects.filter(p=>
+    `${p.name} ${clientName(p.clientId)} ${p.location}`
+      .toLowerCase()
+      .includes(search)
+  );
+
+  if(!list.length){
+
+    tbody.innerHTML=`
+      <tr>
+        <td colspan="7" class="empty">
+          Aucun projet enregistré.
+        </td>
+      </tr>`;
+
+    return;
+  }
+
+  tbody.innerHTML=list.map(p=>`
+
+    <tr>
+
+      <td>
+        <strong>${escapeHTML(p.name)}</strong>
+      </td>
+
+      <td>${escapeHTML(clientName(p.clientId))}</td>
+
+      <td>${escapeHTML(p.location)}</td>
+
+      <td>${money(p.budget)}</td>
+
+      <td>${escapeHTML(p.start||"—")}</td>
+
+      <td>
+        <span class="badge ${
+          p.status==="Terminé"
+            ?"badge-green"
+            :p.status==="En cours"
+            ?"badge-blue"
+            :p.status==="En pause"
+            ?"badge-orange"
+            :"badge-gray"
+        }">
+          ${escapeHTML(p.status)}
+        </span>
+      </td>
+
+      <td>
+
+        <div class="actions">
+
+          <button class="btn btn-secondary btn-small"
+            onclick="openProjectModal('${p.id}')">
+            Modifier
+          </button>
+
+          <button class="btn btn-danger btn-small"
+            onclick="deleteProject('${p.id}')">
+            Supprimer
+          </button>
+
+        </div>
+
+      </td>
+
+    </tr>
+
+  `).join("");
+}
+
+function deleteProject(id){
+
+  if(!confirm("Supprimer ce projet ?")) return;
+
+  projects=projects.filter(p=>String(p.id)!==String(id));
+
+  saveData("batiflow_projects",projects);
+
+  renderProjects();
+  populateProjectSelects();
+  updateDashboard();
+  renderFinance();
+}
+
+function populateProjectSelects(){
+
+  ["movementProject","expenseProject"].forEach(id=>{
+
+    const select=document.getElementById(id);
+
+    if(!select) return;
+
+    const first=id==="movementProject"
+      ?`<option value="">— Aucun —</option>`
+      :`<option value="">— Général —</option>`;
+
+    select.innerHTML=
+      first+
+      projects.map(p=>
+        `<option value="${p.id}">
+          ${escapeHTML(p.name)}
+        </option>`
+      ).join("");
+
+  });
+
+}
+
+
+/* ============================================================
+   CALCULATEUR
+============================================================ */
+
+function calculateVolume(){
+
+  const L=Number(document.getElementById("calcL").value)||0;
+  const W=Number(document.getElementById("calcW").value)||0;
+  const H=Number(document.getElementById("calcH").value)||0;
+
+  const volume=L*W*H;
+
+  const ciment=volume*7;
+  const sable=volume*0.5;
+  const gravier=volume*0.8;
+
+  document.getElementById("calcResult").innerHTML=`
+
+    <div class="grid grid-3">
+
+      <div class="money-card">
+        <small>Volume béton</small>
+        <strong>${volume.toFixed(2)} m³</strong>
+      </div>
+
+      <div class="money-card">
+        <small>Ciment indicatif</small>
+        <strong>${ciment.toFixed(0)} sacs</strong>
+      </div>
+
+      <div class="money-card">
+        <small>Sable + gravier</small>
+        <strong>${(sable+gravier).toFixed(2)} m³</strong>
+      </div>
+
+    </div>
+
+    <p style="font-size:11px;color:#718096;margin-top:15px">
+      Estimation indicative. Les quantités réelles doivent être
+      déterminées selon les prescriptions techniques et le dosage retenu.
+    </p>
+
+  `;
+}
+
+
+/* ============================================================
+   MATÉRIAUX
+============================================================ */
+
+function openMaterialModal(id=null){
+
+  document.getElementById("materialEditId").value=id||"";
+
+  document.getElementById("materialModalTitle").textContent=
+    id?"Modifier le matériau":"Nouveau matériau";
+
+  if(id){
+
+    const m=materials.find(x=>String(x.id)===String(id));
+
+    if(m){
+
+      document.getElementById("materialName").value=m.name||"";
+      document.getElementById("materialCategory").value=m.category||"";
+      document.getElementById("materialUnit").value=m.unit||"";
+      document.getElementById("materialPrice").value=m.price||"";
+      document.getElementById("materialSupplier").value=m.supplier||"";
+      document.getElementById("materialNotes").value=m.notes||"";
+
+    }
+
+  }else{
+
+    [
+      "materialName",
+      "materialCategory",
+      "materialUnit",
+      "materialPrice",
+      "materialSupplier",
+      "materialNotes"
+    ].forEach(id=>document.getElementById(id).value="");
+
+  }
+
+  openModal("materialModal");
+}
+
+function saveMaterial(){
+
+  const id=document.getElementById("materialEditId").value;
+
+  const data={
+    id:id||Date.now(),
+    name:document.getElementById("materialName").value.trim(),
+    category:document.getElementById("materialCategory").value.trim(),
+    unit:document.getElementById("materialUnit").value.trim(),
+    price:Number(document.getElementById("materialPrice").value)||0,
+    supplier:document.getElementById("materialSupplier").value.trim(),
+    notes:document.getElementById("materialNotes").value.trim()
+  };
+
+  if(!data.name){
+    alert("Veuillez renseigner le matériau.");
+    return;
+  }
+
+  if(id){
+
+    const index=materials.findIndex(x=>String(x.id)===String(id));
+
+    if(index>=0) materials[index]=data;
+
+  }else{
+
+    materials.push(data);
+
+  }
+
+  saveData("batiflow_materials",materials);
+
+  closeModal("materialModal");
+
+  renderMaterials();
+  populateMaterialSelect();
+  populateStockMaterialSelect();
+  populateMovementMaterialSelect();
+  updateDashboard();
+}
+
+function renderMaterials(){
+
+  const tbody=document.getElementById("materialsTable");
+
+  const search=(document.getElementById("materialSearch")?.value||"").toLowerCase();
+
+  const list=materials.filter(m=>
+    `${m.name} ${m.category} ${m.supplier}`
+      .toLowerCase()
+      .includes(search)
+  );
+
+  if(!list.length){
+
+    tbody.innerHTML=`
+      <tr>
+        <td colspan="7" class="empty">
+          Aucun matériau enregistré.
+        </td>
+      </tr>`;
+
+    return;
+  }
+
+  tbody.innerHTML=list.map(m=>{
+
+    const stock=getStockQty(m.id);
+
+    return `
+
+      <tr>
+
+        <td>
+          <strong>${escapeHTML(m.name)}</strong>
+        </td>
+
+        <td>${escapeHTML(m.category)}</td>
+
+        <td>${escapeHTML(m.unit)}</td>
+
+        <td>${money(m.price)}</td>
+
+        <td>${escapeHTML(m.supplier)}</td>
+
+        <td>${stock} ${escapeHTML(m.unit)}</td>
+
+        <td>
+
+          <div class="actions">
+
+            <button class="btn btn-secondary btn-small"
+              onclick="openMaterialModal('${m.id}')">
+              Modifier
+            </button>
+
+            <button class="btn btn-danger btn-small"
+              onclick="deleteMaterial('${m.id}')">
+              Supprimer
+            </button>
+
+          </div>
+
+        </td>
+
+      </tr>
+
+    `;
+
+  }).join("");
+}
+
+function deleteMaterial(id){
+
+  if(!confirm("Supprimer ce matériau ?")) return;
+
+  materials=materials.filter(m=>String(m.id)!==String(id));
+
+  saveData("batiflow_materials",materials);
+
+  renderMaterials();
+  populateMaterialSelect();
+  populateStockMaterialSelect();
+  populateMovementMaterialSelect();
+  updateDashboard();
+}
+
+function populateMaterialSelect(){
+
+  const select=document.getElementById("dqeMaterial");
+
+  if(!select) return;
+
+  select.innerHTML=
+    `<option value="">— Sélectionner —</option>`+
+    materials.map(m=>
+      `<option value="${m.id}">
+        ${escapeHTML(m.name)}
+      </option>`
+    ).join("");
+}
+
+function fillMaterial(id){
+
+  const m=materials.find(x=>String(x.id)===String(id));
+
+  if(!m) return;
+
+  document.getElementById("dqeDesignation").value=m.name||"";
+  document.getElementById("dqeUnit").value=m.unit||"";
+  document.getElementById("dqePrice").value=m.price||"";
+}
+
+
+/* ============================================================
+   DQE
+============================================================ */
+
+function saveDQE(){
+
+  const designation=document.getElementById("dqeDesignation").value.trim();
+  const unit=document.getElementById("dqeUnit").value.trim();
+  const qty=Number(document.getElementById("dqeQty").value)||0;
+  const price=Number(document.getElementById("dqePrice").value)||0;
+
+  if(!designation || qty<=0){
+    alert("Veuillez renseigner la désignation et une quantité valide.");
+    return;
+  }
+
+  dqe.push({
+    id:Date.now(),
+    designation,
+    unit,
+    qty,
+    price,
+    total:qty*price
+  });
+
+  saveData("batiflow_dqe",dqe);
+
+  document.getElementById("dqeDesignation").value="";
+  document.getElementById("dqeUnit").value="";
+  document.getElementById("dqeQty").value="";
+  document.getElementById("dqePrice").value="";
+  document.getElementById("dqeMaterial").value="";
+
+  renderDQE();
+  updateDashboard();
+}
+
+function renderDQE(){
+
+  const tbody=document.getElementById("dqeTable");
+
+  if(!dqe.length){
+
+    tbody.innerHTML=`
+      <tr>
+        <td colspan="6" class="empty">
+          Aucun poste DQE.
+        </td>
+      </tr>`;
+
+    document.getElementById("dqeTotal").textContent=money(0);
+
+    return;
+  }
+
+  tbody.innerHTML=dqe.map((x,index)=>`
+
+    <tr>
+
+      <td>${escapeHTML(x.designation)}</td>
+      <td>${escapeHTML(x.unit)}</td>
+      <td>${x.qty}</td>
+      <td>${money(x.price)}</td>
+      <td><strong>${money(x.total)}</strong></td>
+
+      <td>
+        <button class="btn btn-danger btn-small"
+          onclick="deleteDQE(${index})">
+          Supprimer
+        </button>
+      </td>
+
+    </tr>
+
+  `).join("");
+
+  const total=dqe.reduce((s,x)=>s+(Number(x.total)||0),0);
+
+  document.getElementById("dqeTotal").textContent=money(total);
+}
+
+function deleteDQE(index){
+
+  dqe.splice(index,1);
+
+  saveData("batiflow_dqe",dqe);
+
+  renderDQE();
+  updateDashboard();
+}
+
+function clearDQE(){
+
+  if(!dqe.length) return;
+
+  if(!confirm("Vider entièrement le DQE ?")) return;
+
+  dqe=[];
+
+  saveData("batiflow_dqe",dqe);
+
+  renderDQE();
+  updateDashboard();
+}
+
+
+/* ============================================================
+   STOCK
+============================================================ */
+
+function populateStockMaterialSelect(){
+
+  const select=document.getElementById("stockMaterial");
+
+  if(!select) return;
+
+  select.innerHTML=
+    `<option value="">— Sélectionner —</option>`+
+    materials.map(m=>
+      `<option value="${m.id}">
+        ${escapeHTML(m.name)}
+      </option>`
+    ).join("");
+}
+
+function populateMovementMaterialSelect(){
+
+  const select=document.getElementById("movementMaterial");
+
+  if(!select) return;
+
+  select.innerHTML=
+    `<option value="">— Sélectionner —</option>`+
+    materials.map(m=>
+      `<option value="${m.id}">
+        ${escapeHTML(m.name)}
+      </option>`
+    ).join("");
+}
+
+function getStockRecord(materialId){
+
+  return stocks.find(
+    x=>String(x.materialId)===String(materialId)
+  );
+}
+
+function getStockQty(materialId){
+
+  const s=getStockRecord(materialId);
+
+  if(!s) return 0;
+
+  return Number(s.quantity)||0;
+}
+
+function openStockModal(id=null){
+
+  populateStockMaterialSelect();
+
+  document.getElementById("stockEditId").value=id||"";
+
+  if(id){
+
+    const s=stocks.find(x=>String(x.id)===String(id));
+
+    if(s){
+
+      document.getElementById("stockMaterial").value=s.materialId;
+      document.getElementById("stockQuantity").value=s.quantity;
+      document.getElementById("stockThreshold").value=s.threshold;
+      document.getElementById("stockLocation").value=s.location||"";
+
+      updateStockUnit();
+
+    }
+
+  }else{
+
+    document.getElementById("stockMaterial").value="";
+    document.getElementById("stockQuantity").value="";
+    document.getElementById("stockThreshold").value="";
+    document.getElementById("stockLocation").value="";
+    document.getElementById("stockUnit").value="";
+
+  }
+
+  openModal("stockModal");
+}
+
+function updateStockUnit(){
+
+  const id=document.getElementById("stockMaterial").value;
+
+  const m=materials.find(x=>String(x.id)===String(id));
+
+  document.getElementById("stockUnit").value=m?.unit||"";
+}
+
+function saveStock(){
+
+  const editId=document.getElementById("stockEditId").value;
+  const materialId=document.getElementById("stockMaterial").value;
+
+  if(!materialId){
+    alert("Sélectionnez un matériau.");
+    return;
+  }
+
+  const existing=stocks.find(
+    x=>String(x.materialId)===String(materialId)
+  );
+
+  if(existing && !editId){
+
+    alert("Ce matériau possède déjà un stock.");
+    return;
+  }
+
+  const data={
+    id:editId||Date.now(),
+    materialId,
+    quantity:Number(document.getElementById("stockQuantity").value)||0,
+    threshold:Number(document.getElementById("stockThreshold").value)||0,
+    location:document.getElementById("stockLocation").value.trim()
+  };
+
+  if(editId){
+
+    const index=stocks.findIndex(x=>String(x.id)===String(editId));
+
+    if(index>=0) stocks[index]=data;
+
+  }else{
+
+    stocks.push(data);
+
+  }
+
+  saveData("batiflow_stock",stocks);
+
+  closeModal("stockModal");
+
+  renderStock();
+  renderMaterials();
+  updateDashboard();
+}
+
+function renderStock(){
+
+  const tbody=document.getElementById("stockTable");
+
+  if(!stocks.length){
+
+    tbody.innerHTML=`
+      <tr>
+        <td colspan="7" class="empty">
+          Aucun stock configuré.
+        </td>
+      </tr>`;
+
+  }else{
+
+    tbody.innerHTML=stocks.map(s=>{
+
+      const m=materials.find(
+        x=>String(x.id)===String(s.materialId)
+      );
+
+      if(!m) return "";
+
+      const qty=Number(s.quantity)||0;
+      const threshold=Number(s.threshold)||0;
+      const low=qty<=threshold;
+
+      return `
+
+        <tr>
+
+          <td>
+            <strong>${escapeHTML(m.name)}</strong>
+          </td>
+
+          <td>${escapeHTML(m.unit)}</td>
+
+          <td><strong>${qty}</strong></td>
+
+          <td>${threshold}</td>
+
+          <td>${escapeHTML(s.location)}</td>
+
+          <td>
+            <span class="badge ${low?"badge-red":"badge-green"}">
+              ${low?"Stock faible":"Normal"}
+            </span>
+          </td>
+
+          <td>
+
+            <div class="actions">
+
+              <button class="btn btn-secondary btn-small"
+                onclick="openStockModal('${s.id}')">
+                Modifier
+              </button>
+
+              <button class="btn btn-danger btn-small"
+                onclick="deleteStock('${s.id}')">
+                Supprimer
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }).join("");
+
+  }
+
+  const value=stocks.reduce((sum,s)=>{
+
+    const m=materials.find(
+      x=>String(x.id)===String(s.materialId)
+    );
+
+    return sum+(Number(s.quantity)||0)*(Number(m?.price)||0);
+
+  },0);
+
+  const alerts=stocks.filter(
+    s=>(Number(s.quantity)||0)<=(Number(s.threshold)||0)
+  ).length;
+
+  document.getElementById("stockCount").textContent=stocks.length;
+  document.getElementById("stockValue").textContent=money(value);
+  document.getElementById("stockAlerts").textContent=alerts;
+  document.getElementById("movementCount").textContent=movements.length;
+}
+
+function deleteStock(id){
+
+  if(!confirm("Supprimer ce suivi de stock ?")) return;
+
+  stocks=stocks.filter(s=>String(s.id)!==String(id));
+
+  saveData("batiflow_stock",stocks);
+
+  renderStock();
+  renderMaterials();
+  updateDashboard();
+}
+
+
+/* ============================================================
+   MOUVEMENTS STOCK
+============================================================ */
+
+function openMovementModal(){
+
+  populateMovementMaterialSelect();
+  populateProjectSelects();
+
+  document.getElementById("movementDate").value=today();
+  document.getElementById("movementMaterial").value="";
+  document.getElementById("movementType").value="entree";
+  document.getElementById("movementQty").value="";
+  document.getElementById("movementReference").value="";
+  document.getElementById("movementNote").value="";
+  document.getElementById("currentStockInfo").innerHTML=
+    "Sélectionnez un matériau.";
+
+  updateMovementLabel();
+
+  openModal("movementModal");
+}
+
+function showCurrentStock(){
+
+  const id=document.getElementById("movementMaterial").value;
+
+  const m=materials.find(x=>String(x.id)===String(id));
+
+  if(!m){
+
+    document.getElementById("currentStockInfo").innerHTML=
+      "Sélectionnez un matériau.";
+
+    return;
+  }
+
+  const qty=getStockQty(id);
+
+  document.getElementById("currentStockInfo").innerHTML=`
+
+    Stock actuel :
+    <strong>${qty} ${escapeHTML(m.unit)}</strong>
+
+  `;
+}
+
+function updateMovementLabel(){
+
+  const type=document.getElementById("movementType").value;
+
+  document.getElementById("movementQtyLabel").textContent=
+    type==="ajustement"
+      ?"Nouvelle quantité"
+      :"Quantité";
+}
+
+function recordMovement(){
+
+  const materialId=document.getElementById("movementMaterial").value;
+  const type=document.getElementById("movementType").value;
+  const qty=Number(document.getElementById("movementQty").value)||0;
+
+  if(!materialId || qty<=0){
+
+    alert("Sélectionnez un matériau et indiquez une quantité valide.");
+
+    return;
+  }
+
+  let stock=getStockRecord(materialId);
+
+  if(!stock){
+
+    stock={
+      id:Date.now(),
+      materialId,
+      quantity:0,
+      threshold:0,
+      location:""
+    };
+
+    stocks.push(stock);
+
+  }
+
+  const current=Number(stock.quantity)||0;
+
+  let delta=0;
+
+  if(type==="entree"){
+
+    delta=qty;
+
+  }else if(type==="sortie"){
+
+    if(qty>current){
+
+      alert(
+        "Stock insuffisant.\n\n"+
+        "Stock disponible : "+current
+      );
+
+      return;
+    }
+
+    delta=-qty;
+
+  }else{
+
+    delta=qty-current;
+
+  }
+
+  stock.quantity=current+delta;
+
+  const movement={
+    id:Date.now(),
+    materialId,
+    type,
+    quantity:qty,
+    delta,
+    date:document.getElementById("movementDate").value||today(),
+    projectId:document.getElementById("movementProject").value,
+    reference:document.getElementById("movementReference").value.trim(),
+    note:document.getElementById("movementNote").value.trim()
+  };
+
+  movements.unshift(movement);
+
+  saveData("batiflow_stock",stocks);
+  saveData("batiflow_movements",movements);
+
+  closeModal("movementModal");
+
+  renderStock();
+  renderMovements();
+  renderMaterials();
+  updateDashboard();
+}
+
+function renderMovements(){
+
+  const tbody=document.getElementById("movementsTable");
+
+  if(!movements.length){
+
+    tbody.innerHTML=`
+      <tr>
+        <td colspan="7" class="empty">
+          Aucun mouvement enregistré.
+        </td>
+      </tr>`;
+
+    return;
+  }
+
+  tbody.innerHTML=movements.map(m=>{
+
+    const mat=materials.find(
+      x=>String(x.id)===String(m.materialId)
+    );
+
+    return `
+
+      <tr>
+
+        <td>${escapeHTML(m.date)}</td>
+
+        <td>${escapeHTML(mat?.name||"Matériau supprimé")}</td>
+
+        <td>
+          <span class="badge ${
+            m.type==="entree"
+              ?"badge-green"
+              :m.type==="sortie"
+              ?"badge-red"
+              :"badge-orange"
+          }">
+            ${
+              m.type==="entree"
+                ?"Entrée"
+                :m.type==="sortie"
+                ?"Sortie"
+                :"Ajustement"
+            }
+          </span>
+        </td>
+
+        <td>
+          ${m.quantity} ${escapeHTML(mat?.unit||"")}
+        </td>
+
+        <td>${escapeHTML(projectName(m.projectId))}</td>
+
+        <td>${escapeHTML(m.reference)}</td>
+
+        <td>
+
+          <button class="btn btn-danger btn-small"
+            onclick="deleteMovement('${m.id}')">
+            Supprimer
+          </button>
+
+        </td>
+
+      </tr>
+
+    `;
+
+  }).join("");
+}
+
+function deleteMovement(id){
+
+  if(!confirm(
+    "Supprimer ce mouvement ?\n\n"+
+    "Le stock sera recalculé."
+  )) return;
+
+  movements=movements.filter(
+    m=>String(m.id)!==String(id)
+  );
+
+  recalculateStocks();
+
+  saveData("batiflow_movements",movements);
+  saveData("batiflow_stock",stocks);
+
+  renderStock();
+  renderMovements();
+  renderMaterials();
+  updateDashboard();
+}
+
+function recalculateStocks(){
+
+  stocks.forEach(s=>{
+    s.quantity=0;
+  });
+
+  movements
+    .slice()
+    .sort((a,b)=>String(a.date).localeCompare(String(b.date)))
+    .forEach(m=>{
+
+      let stock=getStockRecord(m.materialId);
+
+      if(!stock){
+
+        stock={
+          id:Date.now()+Math.random(),
+          materialId:m.materialId,
+          quantity:0,
+          threshold:0,
+          location:""
+        };
+
+        stocks.push(stock);
+
+      }
+
+      const current=Number(stock.quantity)||0;
+
+      if(m.type==="ajustement"){
+        stock.quantity=Number(m.quantity)||0;
+      }else{
+        stock.quantity=current+(Number(m.delta)||0);
+      }
+
+    });
+}
+
+
+/* ============================================================
+   FINANCES
+============================================================ */
+
+function openExpenseModal(id=null){
+
+  populateProjectSelects();
+
+  document.getElementById("expenseEditId").value=id||"";
+
+  document.getElementById("expenseModalTitle").textContent=
+    id?"Modifier la dépense":"Nouvelle dépense";
+
+  if(id){
+
+    const e=expenses.find(x=>String(x.id)===String(id));
+
+    if(e){
+
+      document.getElementById("expenseDate").value=e.date||"";
+      document.getElementById("expenseProject").value=e.projectId||"";
+      document.getElementById("expenseName").value=e.name||"";
+      document.getElementById("expenseCategory").value=e.category||"Matériaux";
+      document.getElementById("expenseAmount").value=e.amount||"";
+      document.getElementById("expensePayment").value=e.payment||"Espèces";
+      document.getElementById("expenseReference").value=e.reference||"";
+      document.getElementById("expenseNote").value=e.note||"";
+
+    }
+
+  }else{
+
+    document.getElementById("expenseDate").value=today();
+    document.getElementById("expenseProject").value="";
+    document.getElementById("expenseName").value="";
+    document.getElementById("expenseCategory").value="Matériaux";
+    document.getElementById("expenseAmount").value="";
+    document.getElementById("expensePayment").value="Espèces";
+    document.getElementById("expenseReference").value="";
+    document.getElementById("expenseNote").value="";
+
+  }
+
+  openModal("expenseModal");
+}
+
+function saveExpense(){
+
+  const id=document.getElementById("expenseEditId").value;
+
+  const data={
+    id:id||Date.now(),
+    date:document.getElementById("expenseDate").value||today(),
+    projectId:document.getElementById("expenseProject").value,
+    name:document.getElementById("expenseName").value.trim(),
+    category:document.getElementById("expenseCategory").value,
+    amount:Number(document.getElementById("expenseAmount").value)||0,
+    payment:document.getElementById("expensePayment").value,
+    reference:document.getElementById("expenseReference").value.trim(),
+    note:document.getElementById("expenseNote").value.trim()
+  };
+
+  if(!data.name){
+
+    alert("Veuillez renseigner la désignation de la dépense.");
+
+    return;
+  }
+
+  if(data.amount<=0){
+
+    alert("Veuillez renseigner un montant valide.");
+
+    return;
+  }
+
+  if(id){
+
+    const index=expenses.findIndex(
+      x=>String(x.id)===String(id)
+    );
+
+    if(index>=0) expenses[index]=data;
+
+  }else{
+
+    expenses.unshift(data);
+
+  }
+
+  saveData("batiflow_expenses",expenses);
+
+  closeModal("expenseModal");
+
+  renderExpenses();
+  renderFinance();
+  updateDashboard();
+}
+
+function renderExpenses(){
+
+  const tbody=document.getElementById("expensesTable");
+
+  const search=(
+    document.getElementById("expenseSearch")?.value||""
+  ).toLowerCase();
+
+  const list=expenses.filter(e=>
+    `${e.name} ${projectName(e.projectId)} ${e.category} ${e.reference}`
+      .toLowerCase()
+      .includes(search)
+  );
+
+  if(!list.length){
+
+    tbody.innerHTML=`
+      <tr>
+        <td colspan="7" class="empty">
+          Aucune dépense enregistrée.
+        </td>
+      </tr>`;
+
+    return;
+  }
+
+  tbody.innerHTML=list.map(e=>`
+
+    <tr>
+
+      <td>${escapeHTML(e.date)}</td>
+
+      <td>${escapeHTML(projectName(e.projectId))}</td>
+
+      <td>
+        <strong>${escapeHTML(e.name)}</strong>
+      </td>
+
+      <td>
+        <span class="badge badge-blue">
+          ${escapeHTML(e.category)}
+        </span>
+      </td>
+
+      <td>${escapeHTML(e.payment)}</td>
+
+      <td>
+        <strong>${money(e.amount)}</strong>
+      </td>
+
+      <td>
+
+        <div class="actions">
+
+          <button class="btn btn-secondary btn-small"
+            onclick="openExpenseModal('${e.id}')">
+            Modifier
+          </button>
+
+          <button class="btn btn-danger btn-small"
+            onclick="deleteExpense('${e.id}')">
+            Supprimer
+          </button>
+
+        </div>
+
+      </td>
+
+    </tr>
+
+  `).join("");
+}
+
+function deleteExpense(id){
+
+  if(!confirm("Supprimer cette dépense ?")) return;
+
+  expenses=expenses.filter(
+    e=>String(e.id)!==String(id)
+  );
+
+  saveData("batiflow_expenses",expenses);
+
+  renderExpenses();
+  renderFinance();
+  updateDashboard();
+}
+
+function renderFinance(){
+
+  const budget=projects.reduce(
+    (sum,p)=>sum+(Number(p.budget)||0),0
+  );
+
+  const total=expenses.reduce(
+    (sum,e)=>sum+(Number(e.amount)||0),0
+  );
+
+  const remaining=budget-total;
+
+  document.getElementById("financeBudget").textContent=money(budget);
+  document.getElementById("financeExpenses").textContent=money(total);
+  document.getElementById("financeRemaining").textContent=money(remaining);
+  document.getElementById("financeCount").textContent=expenses.length;
+
+
+  /* catégories */
+
+  const categories={};
+
+  expenses.forEach(e=>{
+
+    categories[e.category]=
+      (categories[e.category]||0)+Number(e.amount||0);
+
+  });
+
+  const categoryBox=document.getElementById("categoryExpenses");
+
+  if(!Object.keys(categories).length){
+
+    categoryBox.innerHTML=
+      `<div class="empty">Aucune dépense.</div>`;
+
+  }else{
+
+    categoryBox.innerHTML=
+      Object.entries(categories)
+      .sort((a,b)=>b[1]-a[1])
+      .map(([name,value])=>{
+
+        const pct=total?Math.min(100,value/total*100):0;
+
+        return `
+
+          <div style="margin-bottom:15px">
+
+            <div style="
+              display:flex;
+              justify-content:space-between;
+              font-size:12px;
+              margin-bottom:5px">
+
+              <strong>${escapeHTML(name)}</strong>
+              <span>${money(value)}</span>
+
+            </div>
+
+            <div class="progress">
+              <div class="progress-bar"
+                   style="width:${pct}%"></div>
+            </div>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* projets */
+
+  const box=document.getElementById("projectFinancials");
+
+  if(!projects.length){
+
+    box.innerHTML=
+      `<div class="empty">Aucun projet.</div>`;
+
+    return;
+  }
+
+  box.innerHTML=projects.map(p=>{
+
+    const spent=expenses
+      .filter(e=>String(e.projectId)===String(p.id))
+      .reduce((s,e)=>s+(Number(e.amount)||0),0);
+
+    const budget=Number(p.budget)||0;
+
+    const pct=budget
+      ?Math.min(100,spent/budget*100)
+      :0;
+
+    const exceeded=spent>budget && budget>0;
+
+    return `
+
+      <div style="margin-bottom:18px">
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          gap:10px;
+          font-size:12px">
+
+          <strong>${escapeHTML(p.name)}</strong>
+
+          <span>
+            ${money(spent)}
+            /
+            ${money(budget)}
+          </span>
+
+        </div>
+
+        <div class="progress">
+          <div
+            class="progress-bar"
+            style="
+              width:${pct}%;
+              background:${exceeded?"#dc2626":"#2563eb"};
+            ">
+          </div>
+        </div>
+
+        <div style="
+          margin-top:5px;
+          font-size:10px;
+          color:${exceeded?"#dc2626":"#718096"}">
+
+          ${
+            exceeded
+              ?"Budget dépassé"
+              :budget
+                ?Math.round(pct)+"% du budget consommé"
+                :"Budget non défini"
+          }
+
+        </div>
+
+      </div>
+
+    `;
+
+  }).join("");
+
+}
+
+
+/* ============================================================
+   DEVIS
+============================================================ */
+
+function populateQuoteClients(){
+
+  const select=document.getElementById("quoteClient");
+
+  if(!select) return;
+
+  select.innerHTML=
+    `<option value="">— Sélectionner —</option>`+
+    clients.map(c=>
+      `<option value="${c.id}">
+        ${escapeHTML(c.name)}
+      </option>`
+    ).join("");
+}
+
+function fillQuoteClient(id){
+
+  const c=clients.find(
+    x=>String(x.id)===String(id)
+  );
+
+  if(!c) return;
+
+  document.getElementById("quoteClientPhone").value=
+    c.phone||"";
+
+  updateQuotePreview();
+}
+
+function renderQuoteLines(){
+
+  const tbody=document.getElementById("quoteLines");
+
+  if(!dqe.length){
+
+    tbody.innerHTML=`
+      <tr>
+        <td colspan="5" class="empty">
+          Ajoutez d'abord des lignes dans le DQE.
+        </td>
+      </tr>`;
+
+    updateQuotePreview();
+
+    return;
+  }
+
+  tbody.innerHTML=dqe.map(x=>`
+
+    <tr>
+
+      <td>${escapeHTML(x.designation)}</td>
+      <td>${escapeHTML(x.unit)}</td>
+      <td>${x.qty}</td>
+      <td>${money(x.price)}</td>
+      <td>${money(x.total)}</td>
+
+    </tr>
+
+  `).join("");
+
+  updateQuotePreview();
+}
+
+function updateQuotePreview(){
+
+  const subtotal=dqe.reduce(
+    (s,x)=>s+(Number(x.total)||0),0
+  );
+
+  const tva=Number(
+    document.getElementById("quoteTVA")?.value
+  )||0;
+
+  const tax=subtotal*tva/100;
+
+  const total=subtotal+tax;
+
+  document.getElementById("quoteSubtotal").textContent=money(subtotal);
+  document.getElementById("quoteTax").textContent=money(tax);
+  document.getElementById("quoteGrandTotal").textContent=money(total);
+}
+
+function printQuote(){
+
+  const company=
+    document.getElementById("quoteCompany").value||
+    settings.company||
+    "BATIFLOW";
+
+  const phone=
+    document.getElementById("quotePhone").value||
+    settings.phone||
+    "";
+
+  const email=
+    document.getElementById("quoteEmail").value||
+    "";
+
+  const address=
+    document.getElementById("quoteAddress").value||
+    "";
+
+  const clientId=
+    document.getElementById("quoteClient").value;
+
+  const client=clients.find(
+    x=>String(x.id)===String(clientId)
+  );
+
+  const clientNameValue=
+    client?.name||
+    "Client";
+
+  const project=
+    document.getElementById("quoteProject").value||
+    "Projet BTP";
+
+  const validity=
+    document.getElementById("quoteValidity").value||
+    "30 jours";
+
+  const payment=
+    document.getElementById("quotePayment").value||
+    "";
+
+  const conditions=
+    document.getElementById("quoteConditions").value||
+    "";
+
+  const subtotal=dqe.reduce(
+    (s,x)=>s+(Number(x.total)||0),0
+  );
+
+  const tvaRate=
+    Number(document.getElementById("quoteTVA").value)||0;
+
+  const tax=subtotal*tvaRate/100;
+  const total=subtotal+tax;
+
+  const quoteNumber=
+    "DEV-"+new Date().getFullYear()+"-"+String(
+      Number(localStorage.getItem("batiflow_quote_counter")||0)+1
+    ).padStart(4,"0");
+
+  localStorage.setItem(
+    "batiflow_quote_counter",
+    Number(localStorage.getItem("batiflow_quote_counter")||0)+1
+  );
+
+  const lines=dqe.map(x=>`
+
+    <tr>
+      <td>${escapeHTML(x.designation)}</td>
+      <td>${escapeHTML(x.unit)}</td>
+      <td>${x.qty}</td>
+      <td style="text-align:right">${money(x.price)}</td>
+      <td style="text-align:right">${money(x.total)}</td>
+    </tr>
+
+  `).join("");
+
+  document.getElementById("printArea").innerHTML=`
+
+    <div style="font-family:Arial,sans-serif">
+
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        border-bottom:3px solid #0b1f3a;
+        padding-bottom:20px;
+        margin-bottom:25px">
+
+        <div>
+
+          <div style="
+            font-size:30px;
+            font-weight:900;
+            color:#0b1f3a">
+
+            BATI<span style="color:#f59e0b">FLOW</span>
+
+          </div>
+
+          <div style="font-size:10px;color:#718096">
+            BUILD • CALCULATE • MANAGE
+          </div>
+
+          <div style="margin-top:15px;font-size:12px">
+            <strong>${escapeHTML(company)}</strong><br>
+            ${escapeHTML(address)}<br>
+            ${escapeHTML(phone)}<br>
+            ${escapeHTML(email)}
+          </div>
+
+        </div>
+
+        <div style="text-align:right">
+
+          <h1 style="
+            margin:0;
+            color:#0b1f3a;
+            font-size:28px">
+
+            DEVIS
+
+          </h1>
+
+          <p style="font-size:12px">
+            N° ${quoteNumber}<br>
+            Date : ${today()}<br>
+            Validité : ${escapeHTML(validity)}
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:20px;
+        margin-bottom:25px">
+
+        <div style="
+          background:#f8fafc;
+          padding:15px;
+          border-radius:8px">
+
+          <strong>CLIENT</strong><br><br>
+
+          ${escapeHTML(clientNameValue)}<br>
+          ${escapeHTML(client?.phone||"")}<br>
+          ${escapeHTML(client?.email||"")}<br>
+          ${escapeHTML(client?.address||"")}
+
+        </div>
+
+        <div style="
+          background:#f8fafc;
+          padding:15px;
+          border-radius:8px">
+
+          <strong>PROJET</strong><br><br>
+
+          ${escapeHTML(project)}
+
+        </div>
+
+      </div>
+
+
+      <table style="
+        width:100%;
+        border-collapse:collapse;
+        margin-top:20px">
+
+        <thead>
+
+          <tr>
+
+            <th style="
+              background:#0b1f3a;
+              color:white;
+              padding:10px;
+              text-align:left">
+
+              Désignation
+
+            </th>
+
+            <th style="
+              background:#0b1f3a;
+              color:white;
+              padding:10px">
+
+              Unité
+
+            </th>
+
+            <th style="
+              background:#0b1f3a;
+              color:white;
+              padding:10px">
+
+              Qté
+
+            </th>
+
+            <th style="
+              background:#0b1f3a;
+              color:white;
+              padding:10px">
+
+              PU
+
+            </th>
+
+            <th style="
+              background:#0b1f3a;
+              color:white;
+              padding:10px">
+
+              Total
+
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${lines}
+
+        </tbody>
+
+      </table>
+
+
+      <div style="
+        width:320px;
+        margin-left:auto;
+        margin-top:25px">
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          padding:7px">
+
+          <span>Sous-total</span>
+          <strong>${money(subtotal)}</strong>
+
+        </div>
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          padding:7px">
+
+          <span>TVA (${tvaRate}%)</span>
+          <strong>${money(tax)}</strong>
+
+        </div>
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          padding:12px;
+          background:#0b1f3a;
+          color:white;
+          font-size:17px">
+
+          <strong>TOTAL</strong>
+          <strong>${money(total)}</strong>
+
+        </div>
+
+      </div>
+
+
+      <div style="margin-top:35px">
+
+        <strong>Conditions de paiement</strong>
+
+        <p style="font-size:12px">
+          ${escapeHTML(payment)}
+        </p>
+
+        <strong>Observations / conditions</strong>
+
+        <p style="font-size:12px;white-space:pre-line">
+          ${escapeHTML(conditions)}
+        </p>
+
+      </div>
+
+
+      <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:100px;
+        margin-top:70px;
+        font-size:12px">
+
+        <div>
+          <strong>Signature du client</strong>
+          <br><br><br>
+          ______________________
+        </div>
+
+        <div>
+          <strong>Signature de l'entreprise</strong>
+          <br><br><br>
+          ______________________
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+  window.print();
+}
+
+
+/* ============================================================
+   PARAMÈTRES
+============================================================ */
+
+function populateCountrySelect(){
+
+  const select=document.getElementById("countrySelect");
+
+  if(!select) return;
+
+  select.innerHTML=Object.entries(countries)
+    .map(([name,c])=>
+      `<option value="${escapeHTML(name)}">
+        ${escapeHTML(name)}
+      </option>`
+    ).join("");
+
+  select.value=settings.country||"Togo";
+
+  document.getElementById("currencyDisplay").value=
+    countries[select.value]||"FCFA";
+
+}
+
+function initSettings(){
+
+  if(!settings.country){
+    settings.country="Togo";
+    settings.currency="FCFA";
+    saveData("batiflow_settings",settings);
+  }
+
+  currency=settings.currency||countries[settings.country]||"FCFA";
+
+  document.getElementById("companySetting").value=
+    settings.company||"";
+
+  document.getElementById("companyPhoneSetting").value=
+    settings.phone||"";
+}
+
+function saveSettings(){
+
+  const country=
+    document.getElementById("countrySelect").value;
+
+  currency=countries[country]||"FCFA";
+
+  settings={
+    country,
+    currency,
+    company:
+      document.getElementById("companySetting").value.trim(),
+    phone:
+      document.getElementById("companyPhoneSetting").value.trim()
+  };
+
+  saveData("batiflow_settings",settings);
+
+  document.getElementById("currencyDisplay").value=currency;
+
+  updateDashboard();
+  renderFinance();
+  renderDQE();
+  renderMaterials();
+  renderStock();
+}
+
+
+/* ============================================================
+   DASHBOARD
+============================================================ */
+
+function updateDashboard(){
+
+  const totalDQE=dqe.reduce(
+    (s,x)=>s+(Number(x.total)||0),0
+  );
+
+  const totalExpenses=expenses.reduce(
+    (s,x)=>s+(Number(x.amount)||0),0
+  );
+
+  const budget=projects.reduce(
+    (s,x)=>s+(Number(x.budget)||0),0
+  );
+
+  const stockAlerts=stocks.filter(
+    s=>(Number(s.quantity)||0)<=
+       (Number(s.threshold)||0)
+  ).length;
+
+  document.getElementById("statClients").textContent=
+    clients.length;
+
+  document.getElementById("statProjects").textContent=
+    projects.length;
+
+  document.getElementById("statDQE").textContent=
+    dqe.length;
+
+  document.getElementById("statMaterials").textContent=
+    materials.length;
+
+  document.getElementById("statStock").textContent=
+    stocks.length;
+
+  document.getElementById("statExpenses").textContent=
+    money(totalExpenses);
+
+  document.getElementById("dashBudget").textContent=
+    money(budget);
+
+  document.getElementById("dashExpenses").textContent=
+    money(totalExpenses);
+
+  document.getElementById("dashBalance").textContent=
+    money(budget-totalExpenses);
+
+  document.getElementById("statStock").title=
+    stockAlerts+" alerte(s) de stock";
+
+}
+
+
+/* ============================================================
+   INITIALISATION AUTOMATIQUE
+============================================================ */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+  /*
+   * L'application démarre sur la page de connexion.
+   * Les identifiants de démonstration sont :
+   * admin / 1234
+   */
+
+});
+
+</script>
+
+</body>
+</html>
 ```
