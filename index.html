@@ -1,30 +1,34 @@
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BATIFLOW — Gestion BTP</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BATIFLOW — BTP Management</title>
 
 <style>
 :root{
   --navy:#0b1f3a;
+  --navy2:#102d50;
   --blue:#2563eb;
-  --blue2:#173b68;
+  --blue2:#3b82f6;
   --gold:#f59e0b;
+  --green:#16a34a;
+  --red:#dc2626;
+  --orange:#ea580c;
   --bg:#f4f7fb;
-  --line:#e2e8f0;
+  --white:#fff;
   --text:#172033;
   --muted:#718096;
-  --danger:#dc2626;
-  --success:#16a34a;
+  --border:#e2e8f0;
+  --shadow:0 10px 30px rgba(11,31,58,.08);
 }
 
 *{box-sizing:border-box}
 
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
 }
@@ -33,19 +37,272 @@ button,input,select,textarea{
   font:inherit;
 }
 
-button{cursor:pointer}
+button{
+  cursor:pointer;
+}
 
-.hide{display:none!important}
-
-/* =========================
-   LOGIN
-========================= */
-
-.login{
+.app{
   min-height:100vh;
+  display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+  width:270px;
+  background:linear-gradient(180deg,#0b1f3a,#07172b);
+  color:#fff;
+  padding:24px 16px;
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  overflow-y:auto;
+  z-index:50;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:4px 10px;
+  margin-bottom:35px;
+}
+
+.brand-mark{
+  width:48px;
+  height:48px;
+  flex:none;
   display:grid;
   place-items:center;
-  background:
-    radial-gradient(circle at top right,#2563eb55,transparent 35%),
-    linear-gradient(135deg,#08182d
+  border-radius:14px;
+  background:linear-gradient(145deg,#173b68,#0b1f3a);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 8px 22px rgba(0,0,0,.25);
+}
+
+.brand-mark svg{
+  width:38px;
+  height:38px;
+}
+
+.brand-text{
+  min-width:0;
+}
+
+.brand-name{
+  font-size:25px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-.8px;
+}
+
+.brand-name span{
+  color:var(--gold);
+}
+
+.brand-text small{
+  display:block;
+  margin-top:6px;
+  color:#8ea5c4;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  white-space:nowrap;
+}
+
+.nav-title{
+  color:#7189aa;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.4px;
+  padding:0 12px;
+  margin:22px 0 8px;
+}
+
+.nav-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  border:0;
+  background:transparent;
+  color:#c8d5e6;
+  padding:12px 13px;
+  border-radius:11px;
+  margin-bottom:4px;
+  text-align:left;
+  font-weight:600;
+  transition:.2s;
+}
+
+.nav-btn:hover{
+  background:rgba(255,255,255,.07);
+  color:#fff;
+}
+
+.nav-btn.active{
+  background:linear-gradient(90deg,#1d4ed8,#2563eb);
+  color:#fff;
+  box-shadow:0 8px 20px rgba(37,99,235,.25);
+}
+
+.nav-icon{
+  width:22px;
+  text-align:center;
+  font-size:17px;
+}
+
+.sidebar-footer{
+  margin-top:25px;
+  padding:15px 12px;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:#7f96b5;
+  font-size:11px;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+  margin-left:270px;
+  width:calc(100% - 270px);
+  min-height:100vh;
+}
+
+.topbar{
+  height:76px;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.page-title h1{
+  margin:0;
+  font-size:23px;
+  color:var(--navy);
+}
+
+.page-title p{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.top-user{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--navy));
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+}
+
+.content{
+  padding:28px 32px 50px;
+}
+
+/* ================= GENERAL ================= */
+
+.hidden{
+  display:none!important;
+}
+
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+}
+
+.card-head{
+  padding:18px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.card-head h2,
+.card-head h3{
+  margin:0;
+  color:var(--navy);
+}
+
+.card-head p{
+  margin:5px 0 0;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.card-body{
+  padding:20px;
+}
+
+.grid{
+  display:grid;
+  gap:18px;
+}
+
+.grid-2{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+.grid-3{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.grid-4{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  font-size:12px;
+  font-weight:700;
+  color:#475569;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  border:1px solid #d7e0ea;
 ```
