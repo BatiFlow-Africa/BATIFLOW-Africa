@@ -1755,5 +1755,1296 @@ th{
 
         <input
           id="project"
-          placehold
+          placeholder="Maison RDC">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          TVA (%)
+        </label>
+
+        <input
+          id="tax"
+          type="number"
+          value="0">
+
+      </div>
+
+    </div>
+
+
+    <div class="actions">
+
+      <button
+        class="btn"
+        onclick="quote()">
+
+        Générer le devis
+
+      </button>
+
+      <button
+        class="btn alt"
+        onclick="window.print()">
+
+        Imprimer / PDF
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div
+    id="preview"
+    class="card quote-preview hide">
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PAYS
+========================= -->
+
+<section
+  id="country"
+  class="page hide">
+
+  <div class="card">
+
+    <h2>
+      Pays & paramètres
+    </h2>
+
+    <p class="muted">
+      Base BATIFLOW : pays africains et devises principales.
+      Les prix et taxes doivent être alimentés par des données
+      locales validées.
+    </p>
+
+    <div class="row">
+
+      <div class="field">
+
+        <label>
+          Pays
+        </label>
+
+        <select
+          id="country"
+          onchange="setCountry(this.value)">
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Devise
+        </label>
+
+        <input
+          id="currency"
+          readonly>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+</div>
+
+
+<script>
+
+/* =========================
+   PAYS
+========================= */
+
+const countries = {
+
+  "Togo":"FCFA",
+  "Bénin":"FCFA",
+  "Côte d’Ivoire":"FCFA",
+  "Sénégal":"FCFA",
+  "Burkina Faso":"FCFA",
+  "Mali":"FCFA",
+  "Niger":"FCFA",
+  "Guinée-Bissau":"FCFA",
+  "Cameroun":"FCFA",
+  "Gabon":"FCFA",
+  "Congo":"FCFA",
+  "Guinée équatoriale":"FCFA",
+  "RCA":"FCFA",
+  "Tchad":"FCFA",
+
+  "Ghana":"GHS",
+  "Nigeria":"NGN",
+  "Guinée":"GNF",
+  "Sierra Leone":"SLE",
+  "Liberia":"LRD",
+  "Gambie":"GMD",
+  "Mauritanie":"MRU",
+  "Cap-Vert":"CVE",
+
+  "Maroc":"MAD",
+  "Algérie":"DZD",
+  "Tunisie":"TND",
+  "Égypte":"EGP",
+  "Libye":"LYD",
+  "Soudan":"SDG",
+
+  "Kenya":"KES",
+  "Ouganda":"UGX",
+  "Tanzanie":"TZS",
+  "Rwanda":"RWF",
+  "Burundi":"BIF",
+  "Éthiopie":"ETB",
+  "Somalie":"SOS",
+  "Djibouti":"DJF",
+
+  "Seychelles":"SCR",
+  "Maurice":"MUR",
+
+  "Afrique du Sud":"ZAR",
+  "Namibie":"NAD",
+  "Botswana":"BWP",
+  "Zambie":"ZMW",
+  "Zimbabwe":"ZWG",
+  "Mozambique":"MZN",
+  "Angola":"AOA",
+  "Malawi":"MWK",
+  "Lesotho":"LSL",
+  "Eswatini":"SZL",
+
+  "Madagascar":"MGA",
+  "Comores":"KMF"
+
+};
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let countryName = "Togo";
+
+let items = [];
+
+let sum = 0;
+
+let projects = JSON.parse(
+  localStorage.getItem("batiflow_projects") || "[]"
+);
+
+
+/* =========================
+   INITIALISATION
+========================= */
+
+function init(){
+
+  const options =
+    Object.keys(countries)
+      .map(
+        x => `<option value="${x}">${x}</option>`
+      )
+      .join("");
+
+  topCountry.innerHTML = options;
+
+  country.innerHTML = options;
+
+  topCountry.value =
+    country.value =
+    countryName;
+
+  sync();
+
+  renderProjects();
+
+}
+
+
+/* =========================
+   SYNCHRONISATION
+========================= */
+
+function sync(){
+
+  const c =
+    countries[countryName];
+
+  currency.value = c;
+
+  dashCountry.textContent =
+    countryName;
+
+  dashCur.textContent =
+    c;
+
+  render();
+
+}
+
+
+/* =========================
+   PAYS
+========================= */
+
+function setCountry(c){
+
+  countryName = c;
+
+  topCountry.value = c;
+
+  country.value = c;
+
+  sync();
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function login(e){
+
+  e.preventDefault();
+
+  document
+    .getElementById("login")
+    .classList.add("hide");
+
+  document
+    .getElementById("app")
+    .classList.remove("hide");
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function show(id,b){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      x => x.classList.add("hide")
+    );
+
+  document
+    .getElementById(id)
+    .classList.remove("hide");
+
+  document
+    .querySelectorAll(".nav button")
+    .forEach(
+      x => x.classList.remove("active")
+    );
+
+  if(b){
+    b.classList.add("active");
+  }
+
+  const titles = {
+
+    dashboard:"Tableau de bord",
+    projects:"Projets / Chantiers",
+    calc:"Calculateur BTP",
+    dqe:"DQE",
+    quote:"Générateur de devis",
+    country:"Pays & paramètres"
+
+  };
+
+  title.textContent =
+    titles[id];
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function goto(id){
+
+  const buttons =
+    [...document.querySelectorAll(".nav button")];
+
+  const search = {
+
+    dashboard:"tableau",
+    projects:"projets",
+    calc:"calculateur",
+    dqe:"dqe",
+    quote:"devis",
+    country:"pays"
+
+  }[id];
+
+  const b =
+    buttons.find(
+      x =>
+        x.textContent
+          .toLowerCase()
+          .includes(search)
+    );
+
+  show(id,b);
+
+}
+
+
+/* =========================
+   FORMULAIRE PROJET
+========================= */
+
+function toggleProjectForm(){
+
+  const form =
+    document.getElementById("projectForm");
+
+  form.classList.toggle("hide");
+
+  if(!form.classList.contains("hide")){
+
+    document
+      .getElementById("projectName")
+      .focus();
+
+  }
+
+}
+
+
+/* =========================
+   SAUVEGARDER PROJET
+========================= */
+
+function saveProject(){
+
+  const name =
+    projectName.value.trim();
+
+  const clientName =
+    projectClient.value.trim();
+
+  if(!name || !clientName){
+
+    alert(
+      "Veuillez renseigner au minimum le nom du projet et le client."
+    );
+
+    return;
+
+  }
+
+
+  const project = {
+
+    id:Date.now(),
+
+    name:name,
+
+    client:clientName,
+
+    location:
+      projectLocation.value.trim(),
+
+    budget:
+      Number(projectBudget.value) || 0,
+
+    start:
+      projectStart.value,
+
+    end:
+      projectEnd.value,
+
+    status:
+      projectStatus.value,
+
+    manager:
+      projectManager.value.trim(),
+
+    description:
+      projectDescription.value.trim(),
+
+    createdAt:
+      new Date().toISOString()
+
+  };
+
+
+  projects.unshift(project);
+
+
+  localStorage.setItem(
+    "batiflow_projects",
+    JSON.stringify(projects)
+  );
+
+
+  clearProjectForm();
+
+  projectForm.classList.add("hide");
+
+  renderProjects();
+
+  alert(
+    "Le chantier a été enregistré avec succès."
+  );
+
+}
+
+
+/* =========================
+   NETTOYER FORMULAIRE
+========================= */
+
+function clearProjectForm(){
+
+  projectName.value = "";
+
+  projectClient.value = "";
+
+  projectLocation.value = "";
+
+  projectBudget.value = "";
+
+  projectStart.value = "";
+
+  projectEnd.value = "";
+
+  projectStatus.value = "todo";
+
+  projectManager.value = "";
+
+  projectDescription.value = "";
+
+}
+
+
+/* =========================
+   SUPPRIMER PROJET
+========================= */
+
+function deleteProject(id){
+
+  const ok =
+    confirm(
+      "Voulez-vous vraiment supprimer ce chantier ?"
+    );
+
+  if(!ok){
+    return;
+  }
+
+
+  projects =
+    projects.filter(
+      p => p.id !== id
+    );
+
+
+  localStorage.setItem(
+    "batiflow_projects",
+    JSON.stringify(projects)
+  );
+
+
+  renderProjects();
+
+}
+
+
+/* =========================
+   AFFICHER PROJETS
+========================= */
+
+function renderProjects(){
+
+  const list =
+    document.getElementById("projectList");
+
+  if(!list){
+    return;
+  }
+
+
+  if(projects.length === 0){
+
+    list.innerHTML = `
+
+      <div
+        class="card empty-project"
+        style="grid-column:1/-1">
+
+        <div class="empty-project-icon">
+          🏗️
+        </div>
+
+        <h3>
+          Aucun chantier pour le moment
+        </h3>
+
+        <p>
+          Commencez par créer votre premier projet.
+        </p>
+
+        <button
+          class="btn gold"
+          onclick="toggleProjectForm()">
+
+          + Créer mon premier chantier
+
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+  else{
+
+    list.innerHTML =
+      projects
+        .map(
+          p => projectHTML(p)
+        )
+        .join("");
+
+  }
+
+
+  updateProjectStats();
+
+}
+
+
+/* =========================
+   CARTE PROJET
+========================= */
+
+function projectHTML(p){
+
+  const statusData = {
+
+    todo:{
+      label:"À venir",
+      cls:"todo"
+    },
+
+    progress:{
+      label:"En cours",
+      cls:"progress"
+    },
+
+    done:{
+      label:"Terminé",
+      cls:"done"
+    }
+
+  };
+
+
+  const status =
+    statusData[p.status]
+    || statusData.todo;
+
+
+  const budget =
+    p.budget
+    ? p.budget.toLocaleString("fr-FR")
+      + " "
+      + countries[countryName]
+    : "Non défini";
+
+
+  const start =
+    p.start
+    ? formatDate(p.start)
+    : "Non définie";
+
+
+  const end =
+    p.end
+    ? formatDate(p.end)
+    : "Non définie";
+
+
+  return `
+
+    <div class="project-card">
+
+      <div class="project-top">
+
+        <div class="project-icon">
+          🏗️
+        </div>
+
+        <span class="status ${status.cls}">
+          ${status.label}
+        </span>
+
+      </div>
+
+
+      <h3>
+        ${escapeHTML(p.name)}
+      </h3>
+
+
+      <div class="project-info">
+
+        👤
+        <strong>Client :</strong>
+        ${escapeHTML(p.client)}
+        <br>
+
+        📍
+        <strong>Lieu :</strong>
+        ${escapeHTML(p.location || "Non renseigné")}
+        <br>
+
+        💰
+        <strong>Budget :</strong>
+        ${budget}
+        <br>
+
+        📅
+        <strong>Début :</strong>
+        ${start}
+        <br>
+
+        🏁
+        <strong>Fin :</strong>
+        ${end}
+
+        ${
+          p.manager
+          ?
+          `<br>👷 <strong>Responsable :</strong>
+          ${escapeHTML(p.manager)}`
+          :
+          ""
+        }
+
+      </div>
+
+
+      ${
+        p.description
+        ?
+        `
+          <p
+            class="muted"
+            style="margin-top:12px">
+
+            ${escapeHTML(p.description)}
+
+          </p>
+        `
+        :
+        ""
+      }
+
+
+      <div class="project-actions">
+
+        <button
+          class="btn small"
+          onclick="useProject('${p.id}')">
+
+          Ouvrir
+
+        </button>
+
+        <button
+          class="btn danger small"
+          onclick="deleteProject(${p.id})">
+
+          Supprimer
+
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   OUVRIR PROJET
+========================= */
+
+function useProject(id){
+
+  const p =
+    projects.find(
+      x => String(x.id) === String(id)
+    );
+
+  if(!p){
+    return;
+  }
+
+
+  project.value =
+    p.name;
+
+  client.value =
+    p.client;
+
+  alert(
+    "Le projet « "
+    + p.name
+    + " » a été sélectionné pour le devis."
+  );
+
+
+  goto("quote");
+
+}
+
+
+/* =========================
+   STATS PROJETS
+========================= */
+
+function updateProjectStats(){
+
+  const totalProjects =
+    projects.length;
+
+  const progressProjects =
+    projects.filter(
+      p => p.status === "progress"
+    ).length;
+
+
+  const dashProjectsEl =
+    document.getElementById("dashProjects");
+
+  const dashProgressEl =
+    document.getElementById("dashProgress");
+
+
+  if(dashProjectsEl){
+    dashProjectsEl.textContent =
+      totalProjects;
+  }
+
+  if(dashProgressEl){
+    dashProgressEl.textContent =
+      progressProjects;
+  }
+
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+function formatDate(date){
+
+  const d =
+    new Date(date + "T00:00:00");
+
+  if(isNaN(d)){
+    return date;
+  }
+
+  return d.toLocaleDateString(
+    "fr-FR"
+  );
+
+}
+
+
+/* =========================
+   CALCULATEUR
+========================= */
+
+function calc(){
+
+  const length =
+    Number(L.value) || 0;
+
+  const width =
+    Number(W.value) || 0;
+
+  const height =
+    Number(H.value) || 0;
+
+  const volume =
+    length * width * height;
+
+
+  result.classList.remove("hide");
+
+
+  result.innerHTML = `
+
+    <h3 style="margin-top:0">
+      Résultat du calcul
+    </h3>
+
+    <p>
+      Élément :
+      <strong>
+        ${element.value}
+      </strong>
+    </p>
+
+    <p>
+      Volume :
+      <strong>
+        ${volume.toFixed(2)} m³
+      </strong>
+    </p>
+
+    <hr
+      style="border:0;border-top:1px solid #e3e9f2">
+
+    <p>
+      Estimation indicative :
+    </p>
+
+    <ul>
+
+      <li>
+        Ciment :
+        <strong>
+          ${(volume * 7.5).toFixed(1)}
+        </strong>
+        sacs
+      </li>
+
+      <li>
+        Sable :
+        <strong>
+          ${(volume * .5).toFixed(2)}
+        </strong>
+        m³
+      </li>
+
+      <li>
+        Gravier :
+        <strong>
+          ${(volume * .8).toFixed(2)}
+        </strong>
+        m³
+      </li>
+
+    </ul>
+
+    <small class="muted">
+      Valeurs de démonstration à valider selon le dosage,
+      les caractéristiques des matériaux et les normes applicables
+      au projet.
+    </small>
+
+  `;
+
+}
+
+
+/* =========================
+   DQE
+========================= */
+
+function add(){
+
+  const q =
+    Number(qty.value) || 0;
+
+  const p =
+    Number(pu.value) || 0;
+
+  const m =
+    q * p;
+
+
+  items.push({
+
+    n:item.value || "Poste BTP",
+
+    u:unit.value,
+
+    q:q,
+
+    p:p,
+
+    m:m
+
+  });
+
+
+  render();
+
+  item.value = "";
+
+}
+
+
+/* =========================
+   RENDU DQE
+========================= */
+
+function render(){
+
+  body.innerHTML =
+    items
+      .map(
+        (x,i) => `
+
+          <tr>
+
+            <td>
+              ${i+1}
+            </td>
+
+            <td>
+              ${escapeHTML(x.n)}
+            </td>
+
+            <td>
+              ${x.u}
+            </td>
+
+            <td>
+              ${x.q}
+            </td>
+
+            <td>
+              ${x.p.toLocaleString("fr-FR")}
+            </td>
+
+            <td>
+              ${x.m.toLocaleString("fr-FR")}
+              ${countries[countryName]}
+            </td>
+
+          </tr>
+
+        `
+      )
+      .join("");
+
+
+  sum =
+    items.reduce(
+      (a,x) => a + x.m,
+      0
+    );
+
+
+  total.textContent =
+    sum.toLocaleString("fr-FR")
+    + " "
+    + countries[countryName];
+
+
+  dashTotal.textContent =
+    sum.toLocaleString("fr-FR");
+
+}
+
+
+/* =========================
+   DEVIS
+========================= */
+
+function quote(){
+
+  const t =
+    Number(tax.value) || 0;
+
+  const vat =
+    sum * t / 100;
+
+  const ttc =
+    sum + vat;
+
+
+  preview.classList.remove("hide");
+
+
+  preview.innerHTML = `
+
+    <div class="quote-header">
+
+      <div>
+
+        <h2 style="margin:0 0 6px">
+          ${escapeHTML(company.value)}
+        </h2>
+
+        <div class="muted">
+          Devis professionnel BATIFLOW
+        </div>
+
+      </div>
+
+      <div class="right">
+
+        <strong>
+          DEVIS
+        </strong>
+
+        <div class="muted">
+          ${new Date().toLocaleDateString("fr-FR")}
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="row">
+
+      <div>
+
+        <p>
+
+          <strong>
+            Client
+          </strong>
+
+          <br>
+
+          ${escapeHTML(client.value || "—")}
+
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <p>
+
+          <strong>
+            Projet
+          </strong>
+
+          <br>
+
+          ${escapeHTML(project.value || "—")}
+
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <p>
+
+          <strong>
+            Pays
+          </strong>
+
+          <br>
+
+          ${countryName}
+
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <p>
+
+          <strong>
+            Devise
+          </strong>
+
+          <br>
+
+          ${countries[countryName]}
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="tablewrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Désignation
+            </th>
+
+            <th>
+              Qté
+            </th>
+
+            <th>
+              PU
+            </th>
+
+            <th>
+              Montant
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          ${
+            items.length
+            ?
+            items
+              .map(
+                x => `
+
+                  <tr>
+
+                    <td>
+                      ${escapeHTML(x.n)}
+                    </td>
+
+                    <td>
+                      ${x.q} ${x.u}
+                    </td>
+
+                    <td>
+                      ${x.p.toLocaleString("fr-FR")}
+                    </td>
+
+                    <td>
+                      ${x.m.toLocaleString("fr-FR")}
+                    </td>
+
+                  </tr>
+
+                `
+              )
+              .join("")
+            :
+            `
+              <tr>
+
+                <td colspan="4">
+                  Aucun poste ajouté au DQE.
+                </td>
+
+              </tr>
+            `
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="quote-total">
+
+      <p class="right">
+
+        <strong>
+
+          Total HT :
+          ${sum.toLocaleString("fr-FR")}
+          ${countries[countryName]}
+
+        </strong>
+
+        <br>
+
+        TVA :
+        ${vat.toLocaleString("fr-FR")}
+        ${countries[countryName]}
+
+        <br>
+
+        <strong style="font-size:18px">
+
+          Total TTC :
+          ${ttc.toLocaleString("fr-FR")}
+          ${countries[countryName]}
+
+        </strong>
+
+      </p>
+
+    </div>
+
+
+    <p class="muted">
+      Document généré avec BATIFLOW.
+    </p>
+
+  `;
+
+}
+
+
+/* =========================
+   PROTECTION HTML
+========================= */
+
+function escapeHTML(value){
+
+  return String(value)
+
+    .replaceAll("&","&amp;")
+
+    .replaceAll("<","&lt;")
+
+    .replaceAll(">","&gt;")
+
+    .replaceAll('"',"&quot;")
+
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================
+   INITIALISATION
+========================= */
+
+init();
+
+</script>
+
+</body>
+</html>
 ```
