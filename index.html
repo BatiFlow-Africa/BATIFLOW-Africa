@@ -739,6 +739,23 @@ tr:last-child td{border-bottom:0}
 /* ================= ETAPE 12 - FOURNISSEURS & ACHATS ================= */
 .purchase-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}.purchase-kpi{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px}.purchase-kpi small{display:block;color:#718096;font-size:11px;font-weight:700;text-transform:uppercase}.purchase-kpi strong{display:block;font-size:23px;margin-top:6px}.purchase-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}.purchase-tab{border:0;background:#eef3f8;color:var(--navy);padding:10px 14px;border-radius:9px;font-weight:700;cursor:pointer}.purchase-tab.active{background:var(--navy);color:#fff}.purchase-pane{display:none}.purchase-pane.active{display:block}.purchase-status{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:700}.purchase-status.draft{background:#f3f4f6;color:#4b5563}.purchase-status.ordered{background:#dbeafe;color:#1d4ed8}.purchase-status.delivered{background:#dcfce7;color:#166534}.purchase-status.partial{background:#fef3c7;color:#92400e}.purchase-status.paid{background:#dcfce7;color:#166534}.purchase-status.cancelled{background:#fee2e2;color:#991b1b}.supplier-card{border:1px solid #e5e7eb;border-radius:12px;padding:14px;background:#fff}.supplier-card h3{margin:0 0 5px}.supplier-meta{font-size:12px;color:#718096;line-height:1.6}.purchase-actions{display:flex;gap:6px;flex-wrap:wrap}.purchase-line{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}.purchase-line .remove-line{margin-bottom:1px}.purchase-total{font-size:20px;font-weight:800;text-align:right;padding:12px;background:#f8fafc;border-radius:10px}.purchase-alert{padding:12px 14px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:10px;margin-bottom:14px}.purchase-ok{padding:12px 14px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;border-radius:10px;margin-bottom:14px}.supplier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.purchase-detail{background:#f8fafc;border-radius:10px;padding:12px;line-height:1.7}.@media(max-width:900px){.purchase-kpis{grid-template-columns:repeat(2,1fr)}.supplier-grid{grid-template-columns:1fr 1fr}.purchase-line{grid-template-columns:1fr 1fr}}
 
+
+
+/* ================= ETAPE 19 — ESPACE SAAS ================= */
+.saas-userbar{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:12px;color:#64748b}
+.saas-userbar strong{color:var(--navy)}
+.saas-avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:800}
+.auth-switch{margin-top:10px;text-align:center}
+.auth-link{border:0;background:none;color:#1769aa;font-weight:700;cursor:pointer}
+.saas-modal{position:fixed;inset:0;background:rgba(7,23,43,.55);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}
+.saas-modal.show{display:flex}
+.saas-modal-box{width:min(460px,100%);background:#fff;border-radius:18px;padding:24px;box-shadow:0 25px 70px rgba(0,0,0,.22)}
+.saas-modal-box h2{margin:0 0 6px;color:var(--navy)}
+.saas-modal-box p{color:var(--muted);font-size:13px}
+.saas-modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+.saas-badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#dcfce7;color:#166534;font-size:11px;font-weight:800}
+@media(max-width:700px){.saas-userbar{display:none}}
+
 </style>
 </head>
 
@@ -787,15 +804,42 @@ tr:last-child td{border-bottom:0}
     </button>
 
     <div class="login-info">
-      Prototype BATIFLOW — vos données sont conservées dans ce navigateur.
+      BATIFLOW V1 — vos données sont conservées dans ce navigateur.
+    </div>
+    <div class="auth-switch">
+      Pas encore de compte ? <button class="auth-link" onclick="openRegister()">Créer un compte</button>
     </div>
 
   </div>
 </div>
 
 
+
+
+<!-- ================= ETAPE 19 — COMPTE SAAS ================= -->
+<div id="registerModal" class="saas-modal">
+  <div class="saas-modal-box">
+    <h2>Créer votre espace BATIFLOW</h2>
+    <p>Compte local de démonstration pour la V1. Les données sont conservées dans ce navigateur.</p>
+    <div class="form-group"><label>Nom de l'entreprise</label><input id="registerCompany" placeholder="Ex. LMBAT GROUP"></div>
+    <div class="form-group"><label>Nom complet</label><input id="registerName" placeholder="Votre nom"></div>
+    <div class="form-group"><label>Email</label><input id="registerEmail" type="email" placeholder="vous@email.com"></div>
+    <div class="form-group"><label>Mot de passe</label><input id="registerPassword" type="password" placeholder="Minimum 6 caractères"></div>
+    <div class="saas-modal-actions">
+      <button class="btn" onclick="closeRegister()">Annuler</button>
+      <button class="btn btn-primary" onclick="registerAccount()">Créer le compte</button>
+    </div>
+  </div>
+</div>
+
 <!-- ================= APPLICATION ================= -->
 <div id="app" class="app hidden">
+
+  <div class="saas-userbar" style="position:fixed;top:12px;right:18px;z-index:30;background:#fff;padding:7px 10px;border-radius:12px;box-shadow:0 5px 20px rgba(11,31,58,.08)">
+    <div class="saas-avatar" id="saasAvatar">B</div>
+    <div><strong id="saasUserName">Utilisateur</strong><br><span id="saasUserCompany">BATIFLOW BTP</span></div>
+    <span class="saas-badge">V1.19</span>
+  </div>
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
@@ -4097,54 +4141,8 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 
 });
+\n\n/* =========================================================\n   BATIFLOW — ETAPE 19 : COUCHE COMPTE / ESPACE SAAS V1\n   Cette couche prépare la gestion multi-utilisateur.\n   Pour une vraie production SaaS, remplacer le stockage local\n   par une base distante + authentification serveur.\n========================================================= */\n(function(){\n  const USERS_KEY = "batiflow_users";\n  const CURRENT_USER_KEY = "batiflow_current_user";\n\n  function getUsers(){\n    try { return JSON.parse(localStorage.getItem(USERS_KEY) || "[]"); }\n    catch(e){ return []; }\n  }\n\n  function setUsers(users){\n    localStorage.setItem(USERS_KEY, JSON.stringify(users));\n  }\n\n  function normalizeEmail(v){ return String(v || "").trim().toLowerCase(); }\n\n  window.openRegister = function(){\n    const m=document.getElementById("registerModal");\n    if(m) m.classList.add("show");\n  };\n\n  window.closeRegister = function(){\n    const m=document.getElementById("registerModal");\n    if(m) m.classList.remove("show");\n  };\n\n  window.registerAccount = function(){\n    const company=(document.getElementById("registerCompany")?.value || "").trim();\n    const name=(document.getElementById("registerName")?.value || "").trim();\n    const email=normalizeEmail(document.getElementById("registerEmail")?.value);\n    const password=document.getElementById("registerPassword")?.value || "";\n\n    if(!company || !name || !email || !password){\n      alert("Veuillez remplir tous les champs."); return;\n    }\n    if(password.length < 6){\n      alert("Le mot de passe doit contenir au moins 6 caractères."); return;\n    }\n    if(!email.includes("@")){\n      alert("Veuillez saisir une adresse email valide."); return;\n    }\n\n    const users=getUsers();\n    if(users.some(u=>u.email===email)){\n      alert("Un compte existe déjà avec cet email."); return;\n    }\n\n    users.push({\n      id: typeof uid === "function" ? uid() : Date.now().toString(),\n      company, name, email, password,\n      createdAt:new Date().toISOString()\n    });\n    setUsers(users);\n\n    document.getElementById("loginEmail").value=email;\n    document.getElementById("loginPassword").value=password;\n    closeRegister();\n    alert("Compte créé. Vous pouvez maintenant vous connecter.");\n  };\n\n  window.login = function(){\n    const email=normalizeEmail(document.getElementById("loginEmail")?.value);\n    const password=document.getElementById("loginPassword")?.value || "";\n    const users=getUsers();\n\n    /* Compatibilité avec l'ancien prototype : si aucun compte n'existe,\n       l'accès démo reste possible. */\n    if(users.length===0){\n      localStorage.setItem("batiflow_session","1");\n      localStorage.setItem(CURRENT_USER_KEY,JSON.stringify({\n        name:"Utilisateur BATIFLOW", company:(settings && settings.company) || "BATIFLOW BTP", email:email || "demo@batiflow.local"\n      }));\n    }else{\n      const user=users.find(u=>u.email===email && u.password===password);\n      if(!user){\n        alert("Email ou mot de passe incorrect."); return;\n      }\n      localStorage.setItem("batiflow_session","1");\n      localStorage.setItem(CURRENT_USER_KEY,JSON.stringify({\n        id:user.id,name:user.name,company:user.company,email:user.email\n      }));\n    }\n\n    const ls=document.getElementById("loginScreen");\n    const app=document.getElementById("app");\n    if(ls) ls.classList.add("hidden");\n    if(app) app.classList.remove("hidden");\n    try{ initApp(); }catch(e){ console.error(e); }\n    updateSaasUserBar();\n  };\n\n  window.logout = function(){\n    localStorage.removeItem("batiflow_session");\n    localStorage.removeItem(CURRENT_USER_KEY);\n    const app=document.getElementById("app");\n    const ls=document.getElementById("loginScreen");\n    if(app) app.classList.add("hidden");\n    if(ls) ls.classList.remove("hidden");\n  };\n\n  function updateSaasUserBar(){\n    let u=null;\n    try{ u=JSON.parse(localStorage.getItem(CURRENT_USER_KEY)||"null"); }catch(e){}\n    if(!u) return;\n    const el=document.getElementById("saasUserName");\n    const company=document.getElementById("saasUserCompany");\n    const avatar=document.getElementById("saasAvatar");\n    if(el) el.textContent=u.name || u.email;\n    if(company) company.textContent=u.company || "BATIFLOW BTP";\n    if(avatar) avatar.textContent=(u.name || u.email || "B").charAt(0).toUpperCase();\n  }\n\n  window.BATIFLOW_SAAS = {\n    version:"1.19",\n    getCurrentUser:function(){\n      try{return JSON.parse(localStorage.getItem(CURRENT_USER_KEY)||"null");}\n      catch(e){return null;}\n    },\n    getUsers:getUsers,\n    logout:window.logout\n  };\n\n  document.addEventListener("DOMContentLoaded",function(){\n    updateSaasUserBar();\n    const modal=document.getElementById("registerModal");\n    if(modal){\n      modal.addEventListener("click",function(e){\n        if(e.target===modal) closeRegister();\n      });\n    }\n  });\n})();\n
 </script>
 
-<!-- =========================================================
-     BATIFLOW ETAPE 18 — FUSION GENERALE / CENTRE DE PILOTAGE
-     Extension autonome compatible avec l'index BATIFLOW existant
-========================================================= -->
-<script>
-(function(){
-  'use strict';
-
-  const BF={
-    version:'1.0.18',
-    money(v){return Number(v||0).toLocaleString('fr-FR')+' FCFA';},
-    num(v){const x=Number(v);return Number.isFinite(x)?x:0;},
-    arr(name){try{return Array.isArray(window[name])?window[name]:JSON.parse(localStorage.getItem(name)||'[]')}catch(e){return []}},
-    pid(x){return String(x?.projectId||x?.chantierId||x?.project_id||x?.chantier||'')},
-    oid(x){return String(x?.id||x?._id||'')},
-    data(){return {
-      clients:BF.arr('clients'),projects:BF.arr('projects'),materials:BF.arr('materials'),dqe:BF.arr('dqe'),
-      stocks:BF.arr('stocks'),movements:BF.arr('movements'),transactions:BF.arr('transactions'),workers:BF.arr('workers'),
-      assignments:BF.arr('assignments'),attendance:BF.arr('attendance'),suppliers:BF.arr('suppliers'),purchases:BF.arr('purchases'),
-      supplierPayments:BF.arr('supplierPayments')
-    }},
-    tx(type){return BF.data().transactions.filter(x=>String(x.type||'').toLowerCase()===type)},
-    global(){const d=BF.data(),income=BF.tx('income').reduce((a,x)=>a+BF.num(x.amount),0),expense=BF.tx('expense').reduce((a,x)=>a+BF.num(x.amount),0),budget=d.projects.reduce((a,x)=>a+BF.num(x.budget||x.totalBudget||x.budgetTotal||x.montant),0);return {projects:d.projects.length,clients:d.clients.length,materials:d.materials.length,suppliers:d.suppliers.length,purchases:d.purchases.length,budget,income,expense,profit:income-expense,margin:income?(income-expense)/income*100:0}},
-    project(id){const d=BF.data(),p=d.projects.find(x=>BF.oid(x)===String(id));if(!p)return null;const tx=d.transactions.filter(x=>BF.pid(x)===String(id)),income=tx.filter(x=>String(x.type).toLowerCase()==='income').reduce((a,x)=>a+BF.num(x.amount),0),expense=tx.filter(x=>String(x.type).toLowerCase()==='expense').reduce((a,x)=>a+BF.num(x.amount),0),budget=BF.num(p.budget||p.totalBudget||p.budgetTotal||p.montant),progress=Math.max(0,Math.min(100,BF.num(p.progress??p.avancement??p.percent)));return {project:p,budget,income,expense,profit:income-expense,remaining:budget-expense,progress}},
-    saveAll(){const d=BF.data();Object.entries({batiflow_clients:d.clients,batiflow_projects:d.projects,batiflow_materials:d.materials,batiflow_dqe:d.dqe,batiflow_stock:d.stocks,batiflow_movements:d.movements,batiflow_transactions:d.transactions,batiflow_workers:d.workers,batiflow_assignments:d.assignments,batiflow_attendance:d.attendance,batiflow_suppliers:d.suppliers,batiflow_purchases:d.purchases,batiflow_supplier_payments:d.supplierPayments}).forEach(([k,v])=>localStorage.setItem(k,JSON.stringify(v)));return true},
-    export(){const payload={app:'BATIFLOW',version:BF.version,date:new Date().toISOString(),...BF.data(),settings:window.settings||JSON.parse(localStorage.getItem('batiflow_settings')||'{}')};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='BATIFLOW_SAUVEGARDE_'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)},
-    refresh(){['renderClients','renderProjects','renderDqe','renderMaterials','renderStock','renderMovements','renderFinance','renderProfitability','initTeams','initPurchases','updateDashboard'].forEach(f=>{try{if(typeof window[f]==='function')window[f]()}catch(e){console.warn(f,e)}});BF.mount();},
-    mount(){const box=document.getElementById('batiflowEtape18');if(!box)return;const g=BF.global();box.innerHTML=`<div class="bf18-head"><div><span class="bf18-kicker">BATIFLOW V1</span><h2>Centre de pilotage</h2><p>Vision consolidée des clients, chantiers, finances, achats et rentabilité.</p></div><div class="bf18-actions"><button onclick="BATIFLOW18.refresh()">↻ Actualiser</button><button onclick="BATIFLOW18.saveAll()">💾 Sauvegarder</button><button onclick="BATIFLOW18.export()">⬇ Export JSON</button></div></div><div class="bf18-grid">${[['Chantiers',g.projects],['Clients',g.clients],['Matériaux',g.materials],['Fournisseurs',g.suppliers],['Budget',BF.money(g.budget)],['Encaissements',BF.money(g.income)],['Dépenses',BF.money(g.expense)],['Résultat',BF.money(g.profit)]].map(x=>`<div class="bf18-card"><small>${x[0]}</small><strong>${x[1]}</strong></div>`).join('')}</div><div class="bf18-panel"><h3>Flux de gestion</h3><div class="bf18-flow"><span>Client</span><b>→</b><span>Chantier</span><b>→</b><span>DQE</span><b>→</b><span>Devis</span><b>→</b><span>Budget</span><b>→</b><span>Achats</span><b>→</b><span>Stock</span><b>→</b><span>Finance</span><b>→</b><span>Rentabilité</span></div></div><div class="bf18-panel"><h3>Chantiers</h3><div class="bf18-table"><div class="bf18-tr bf18-th"><span>Chantier</span><span>Avancement</span><span>Budget</span><span>Dépenses</span><span>Résultat</span></div>${BF.data().projects.slice(0,30).map(p=>{const r=BF.project(BF.oid(p));return `<div class="bf18-tr"><span>${p.name||p.nom||p.title||'Chantier sans nom'}</span><span><div class="bf18-progress"><i style="width:${r.progress}%"></i></div>${r.progress.toFixed(0)}%</span><span>${BF.money(r.budget)}</span><span>${BF.money(r.expense)}</span><span>${BF.money(r.profit)}</span></div>`}).join('')||'<div class="bf18-empty">Aucun chantier enregistré.</div>'}</div></div>`;}
-  };
-
-  window.BATIFLOW18=BF;
-  window.batiflowExportData=BF.export;
-  window.batiflowSaveAll=BF.saveAll;
-  window.batiflowGlobalReport=BF.global;
-  window.batiflowProjectFinancials=BF.project;
-
-  function inject(){
-    if(!document.getElementById('bf18style')){const st=document.createElement('style');st.id='bf18style';st.textContent=`#batiflowEtape18{font-family:inherit;margin:20px 0}.bf18-head{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px;border-radius:18px;background:var(--card,#fff);border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 28px rgba(0,0,0,.06)}.bf18-kicker{font-size:11px;letter-spacing:2px;font-weight:800;opacity:.6}.bf18-head h2{margin:5px 0}.bf18-head p{margin:0;opacity:.7}.bf18-actions{display:flex;gap:8px;flex-wrap:wrap}.bf18-actions button{border:0;border-radius:10px;padding:10px 14px;cursor:pointer;background:#111;color:#fff}.bf18-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0}.bf18-card,.bf18-panel{background:var(--card,#fff);border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:18px;box-shadow:0 6px 22px rgba(0,0,0,.05)}.bf18-card small{display:block;opacity:.65}.bf18-card strong{display:block;font-size:22px;margin-top:7px}.bf18-panel{margin:14px 0}.bf18-flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.bf18-flow span{padding:9px 12px;border-radius:10px;background:rgba(0,0,0,.05);font-weight:700}.bf18-flow b{opacity:.5}.bf18-table{overflow:auto}.bf18-tr{display:grid;grid-template-columns:1.5fr 1.2fr 1fr 1fr 1fr;gap:12px;align-items:center;padding:12px 4px;border-bottom:1px solid rgba(0,0,0,.07);min-width:720px}.bf18-th{font-weight:800}.bf18-progress{height:7px;background:rgba(0,0,0,.1);border-radius:10px;overflow:hidden;margin-bottom:4px}.bf18-progress i{display:block;height:100%;background:currentColor}.bf18-empty{text-align:center;padding:20px;opacity:.6}@media(max-width:900px){.bf18-grid{grid-template-columns:repeat(2,1fr)}.bf18-head{flex-direction:column;align-items:flex-start}}@media(max-width:560px){.bf18-grid{grid-template-columns:1fr}}`;document.head.appendChild(st)}
-    if(!document.getElementById('batiflowEtape18')){const app=document.getElementById('app');if(app){const main=app.querySelector('.main,.content,.page-content')||app;const box=document.createElement('section');box.id='batiflowEtape18';box.innerHTML='<div class="bf18-panel">Chargement du centre de pilotage…</div>';main.appendChild(box)}}
-    BF.mount();
-  }
-
-  document.addEventListener('DOMContentLoaded',()=>setTimeout(inject,400));
-  window.addEventListener('load',()=>setTimeout(inject,500));
-})();
-</script>
-\n<!-- BATIFLOW ETAPE 18 - FUSION GENERALE -->\n<script>\n(function(){\n  'use strict';\n  function num(v){var x=Number(v);return isFinite(x)?x:0;}\n  function arr(v){return Array.isArray(v)?v:[];}\n  function pid(x){return x&&(x.projectId||x.chantierId||x.project_id||x.chantier||'');}\n  function oid(x){return x&&(x.id||x._id||'');}\n  function financial(projectId){\n    var id=String(projectId||'');\n    var ts=arr(window.transactions);\n    var income=0,expense=0;\n    ts.forEach(function(t){if(String(pid(t))===id){if(t.type==='income')income+=num(t.amount);if(t.type==='expense')expense+=num(t.amount);}});\n    return {income:income,expense:expense,profit:income-expense};\n  }\n  function report(){\n    var ts=arr(window.transactions), income=0, expense=0;\n    ts.forEach(function(t){if(t.type==='income')income+=num(t.amount);if(t.type==='expense')expense+=num(t.amount);});\n    return {clients:arr(window.clients).length,projects:arr(window.projects).length,materials:arr(window.materials).length,suppliers:arr(window.suppliers).length,income:income,expense:expense,profit:income-expense};\n  }\n  function saveAll(){\n    try{\n      var pairs={batiflow_clients:window.clients,batiflow_projects:window.projects,batiflow_materials:window.materials,batiflow_dqe:window.dqe,batiflow_stock:window.stocks,batiflow_movements:window.movements,batiflow_transactions:window.transactions,batiflow_workers:window.workers,batiflow_assignments:window.assignments,batiflow_attendance:window.attendance,batiflow_suppliers:window.suppliers,batiflow_purchases:window.purchases,batiflow_supplier_payments:window.supplierPayments,batiflow_settings:window.settings};\n      Object.keys(pairs).forEach(function(k){if(typeof window.save==='function' && pairs[k]!==undefined)window.save(k,pairs[k]);});\n      return true;\n    }catch(e){console.error('BATIFLOW sauvegarde:',e);return false;}\n  }\n  function exportData(){\n    var data={version:'BATIFLOW V1 - Etape 18',date:new Date().toISOString(),clients:window.clients,projects:window.projects,materials:window.materials,dqe:window.dqe,stocks:window.stocks,movements:window.movements,transactions:window.transactions,workers:window.workers,assignments:window.assignments,attendance:window.attendance,suppliers:window.suppliers,purchases:window.purchases,supplierPayments:window.supplierPayments,settings:window.settings};\n    var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');\n    a.href=url;a.download='BATIFLOW_SAUVEGARDE_'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);\n  }\n  function inject(){\n    if(document.getElementById('batiflowStep18'))return;\n    var main=document.querySelector('main')||document.querySelector('.content')||document.body;\n    var box=document.createElement('section');box.id='batiflowStep18';box.style.cssText='margin:24px 0;padding:20px;border:1px solid #e3eaf2;border-radius:16px;background:#fff;box-shadow:0 8px 24px rgba(11,31,58,.06);';\n    var r=report();\n    box.innerHTML='<h2 style="margin:0 0 14px;color:#0b1f3a">Centre de pilotage BATIFLOW — Étape 18</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">'+\n      card('Chantiers',r.projects)+card('Clients',r.clients)+card('Matériaux',r.materials)+card('Fournisseurs',r.suppliers)+card('Recettes',money(r.income))+card('Dépenses',money(r.expense))+card('Résultat',money(r.profit))+'</div>'+\n      '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px"><button id="bf18save" style="padding:10px 14px;border:0;border-radius:9px;cursor:pointer">💾 Sauvegarder</button><button id="bf18export" style="padding:10px 14px;border:0;border-radius:9px;cursor:pointer">⬇️ Exporter les données</button><button id="bf18refresh" style="padding:10px 14px;border:0;border-radius:9px;cursor:pointer">🔄 Actualiser</button></div>';\n    main.appendChild(box);\n    document.getElementById('bf18save').onclick=function(){if(saveAll())alert('BATIFLOW : données sauvegardées.');};\n    document.getElementById('bf18export').onclick=exportData;\n    document.getElementById('bf18refresh').onclick=function(){box.remove();inject();};\n  }\n  function money(v){return num(v).toLocaleString('fr-FR')+' FCFA';}\n  function card(t,v){return '<div style="padding:13px;border:1px solid #e3eaf2;border-radius:12px"><div style="font-size:12px;color:#718096">'+t+'</div><strong style="display:block;margin-top:5px;font-size:18px;color:#172033">'+v+'</strong></div>'; }\n  window.BATIFLOW=window.BATIFLOW||{};window.BATIFLOW.version='1.0.18';window.BATIFLOW.report=report;window.BATIFLOW.financial=financial;window.BATIFLOW.saveAll=saveAll;window.BATIFLOW.exportData=exportData;\n  document.addEventListener('DOMContentLoaded',function(){setTimeout(inject,500);});\n})();\n</script>\n
 </body>
-</html>localStorage.removeItem("batiflow_session")
+</html>
