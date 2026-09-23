@@ -100,8 +100,6 @@ button{cursor:pointer}
   letter-spacing:1.5px;
 }
 
-.loginbox h2{margin:0 0 8px}
-
 /* =========================
    APP
 ========================= */
@@ -392,6 +390,57 @@ th{
 }
 
 /* =========================
+   MATERIALS
+========================= */
+
+.material-search{
+  max-width:500px;
+}
+
+.material-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:18px;
+}
+
+.material-card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:18px;
+}
+
+.material-icon{
+  width:45px;
+  height:45px;
+  border-radius:13px;
+  background:#fff7df;
+  color:#b45309;
+  display:grid;
+  place-items:center;
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+.material-card h3{
+  margin:0 0 6px;
+}
+
+.material-price{
+  font-size:21px;
+  font-weight:900;
+  margin:12px 0;
+  color:var(--navy);
+}
+
+.material-meta{
+  color:var(--muted);
+  font-size:12px;
+  margin:7px 0;
+}
+
+/* =========================
    CLIENTS
 ========================= */
 
@@ -578,36 +627,37 @@ th{
 
 @media print{
 
-  body{background:white}
+body{background:white}
 
-  .side,
-  .top,
-  .no-print,
-  .page:not(#quote){
-    display:none!important;
-  }
+.side,
+.top,
+.no-print,
+.page:not(#quote){
+display:none!important;
+}
 
-  .main{
-    margin:0;
-    padding:0;
-  }
+.main{
+margin:0;
+padding:0;
+}
 
-  #quote{
-    display:block!important;
-  }
+#quote{
+display:block!important;
+}
 
-  .quote-preview{
-    box-shadow:none;
-    border:0;
-    margin:0;
-    padding:20px;
-    max-width:none;
-  }
+.quote-preview{
+box-shadow:none;
+border:0;
+margin:0;
+padding:20px;
+max-width:none;
+}
 
-  @page{
-    size:A4;
-    margin:12mm;
-  }
+@page{
+size:A4;
+margin:12mm;
+}
+
 }
 
 /* =========================
@@ -616,83 +666,86 @@ th{
 
 @media(max-width:1050px){
 
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
 
-  .project-grid,
-  .client-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+.project-grid,
+.client-grid,
+.material-grid{
+grid-template-columns:repeat(2,1fr);
+}
 
 }
 
 @media(max-width:800px){
 
-  .side{width:210px}
+.side{width:210px}
 
-  .main{margin-left:210px}
+.main{margin-left:210px}
 
-  .quote-head{
-    flex-direction:column;
-  }
+.quote-head{
+flex-direction:column;
+}
 
-  .quote-number{text-align:left}
+.quote-number{text-align:left}
 
 }
 
 @media(max-width:650px){
 
-  .app{display:block}
+.app{display:block}
 
-  .side{
-    position:static;
-    width:100%;
-  }
+.side{
+position:static;
+width:100%;
+}
 
-  .main{
-    margin:0;
-    padding:15px;
-  }
+.main{
+margin:0;
+padding:15px;
+}
 
-  .grid,
-  .row,
-  .project-grid,
-  .client-grid,
-  .quote-info{
-    grid-template-columns:1fr;
-  }
+.grid,
+.row,
+.project-grid,
+.client-grid,
+.material-grid,
+.quote-info{
+grid-template-columns:1fr;
+}
 
-  .top{
-    flex-direction:column;
-    align-items:stretch;
-  }
+.top{
+flex-direction:column;
+align-items:stretch;
+}
 
-  .country{
-    width:100%;
-  }
+.country{
+width:100%;
+}
 
-  .quote-preview{
-    padding:20px;
-  }
+.quote-preview{
+padding:20px;
+}
 
-  .quote-total{
-    width:100%;
-  }
+.quote-total{
+width:100%;
+}
 
-  .quote-footer{
-    grid-template-columns:1fr;
-  }
+.quote-footer{
+grid-template-columns:1fr;
+}
 
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- =========================
+<!-- =====================================================
      LOGIN
-========================= -->
+===================================================== -->
 
 <div id="login" class="login">
 
@@ -787,9 +840,9 @@ Version démo : les données sont enregistrées localement dans votre navigateur
 </div>
 
 
-<!-- =========================
-     APP
-========================= -->
+<!-- =====================================================
+     APPLICATION
+===================================================== -->
 
 <div id="app" class="app hide">
 
@@ -861,6 +914,11 @@ onclick="show('projects',this)">
 </button>
 
 <button
+onclick="show('materials',this)">
+🧱 Matériaux & prix
+</button>
+
+<button
 onclick="show('calc',this)">
 📐 Calculateur BTP
 </button>
@@ -910,9 +968,9 @@ onchange="setCountry(this.value)">
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      DASHBOARD
-========================= -->
+===================================================== -->
 
 <section id="dashboard" class="page">
 
@@ -927,7 +985,7 @@ Construisez mieux. Gérez vos chantiers plus facilement.
 </h2>
 
 <p>
-Calculez, chiffrez, gérez vos clients, préparez vos devis et suivez vos projets depuis une seule plateforme.
+Calculez, chiffrez, gérez vos clients, vos matériaux et vos projets depuis une seule plateforme.
 </p>
 
 <div class="actions">
@@ -940,8 +998,8 @@ onclick="goto('clients')">
 
 <button
 class="btn"
-onclick="goto('projects')">
-+ Nouveau chantier
+onclick="goto('materials')">
++ Nouveau matériau
 </button>
 
 <button
@@ -988,12 +1046,12 @@ id="dashProjects">
 <div class="card">
 
 <div class="muted">
-Postes DQE
+Matériaux
 </div>
 
 <div
 class="stat"
-id="dashItems">
+id="dashMaterials">
 0
 </div>
 
@@ -1049,16 +1107,16 @@ Suivez vos projets.
 </div>
 
 <div>
-<strong>📋 DQE</strong>
+<strong>🧱 Matériaux</strong>
 <p class="muted">
-Chiffrez vos travaux.
+Centralisez vos prix.
 </p>
 </div>
 
 <div>
-<strong>🧾 Devis</strong>
+<strong>📋 DQE & devis</strong>
 <p class="muted">
-Créez vos documents commerciaux.
+Chiffrez et commercialisez vos travaux.
 </p>
 </div>
 
@@ -1069,9 +1127,9 @@ Créez vos documents commerciaux.
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      CLIENTS
-========================= -->
+===================================================== -->
 
 <section id="clients" class="page hide">
 
@@ -1085,14 +1143,11 @@ Gestion des clients
 Créez votre base clients et réutilisez leurs informations dans vos projets et devis.
 </p>
 
-
 <div class="row">
 
 <div class="field">
 
-<label>
-Nom / Entreprise
-</label>
+<label>Nom / Entreprise</label>
 
 <input
 id="clientName"
@@ -1100,12 +1155,9 @@ placeholder="Ex. Jean Dupont / ETS ABC">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Type de client
-</label>
+<label>Type de client</label>
 
 <select id="clientType">
 
@@ -1119,12 +1171,9 @@ Type de client
 
 </div>
 
-
 <div class="field">
 
-<label>
-Téléphone
-</label>
+<label>Téléphone</label>
 
 <input
 id="clientPhone"
@@ -1132,12 +1181,9 @@ placeholder="+228 XX XX XX XX">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Email
-</label>
+<label>Email</label>
 
 <input
 id="clientEmail"
@@ -1146,12 +1192,9 @@ placeholder="client@email.com">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Adresse
-</label>
+<label>Adresse</label>
 
 <input
 id="clientAddress"
@@ -1159,12 +1202,9 @@ placeholder="Lomé, Togo">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Ville
-</label>
+<label>Ville</label>
 
 <input
 id="clientCity"
@@ -1174,19 +1214,15 @@ placeholder="Lomé">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Notes
-</label>
+<label>Notes</label>
 
 <textarea
 id="clientNotes"
 placeholder="Informations complémentaires sur le client..."></textarea>
 
 </div>
-
 
 <div class="actions">
 
@@ -1243,9 +1279,9 @@ class="client-grid">
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      PROJECTS
-========================= -->
+===================================================== -->
 
 <section id="projects" class="page hide">
 
@@ -1259,14 +1295,11 @@ Nouveau projet / chantier
 Enregistrez les informations principales de votre chantier.
 </p>
 
-
 <div class="row">
 
 <div class="field">
 
-<label>
-Nom du projet
-</label>
+<label>Nom du projet</label>
 
 <input
 id="projectName"
@@ -1274,27 +1307,23 @@ placeholder="Ex. Construction maison RDC">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Client
-</label>
+<label>Client</label>
 
 <select id="projectClientSelect">
+
 <option value="">
 -- Sélectionner un client --
 </option>
+
 </select>
 
 </div>
 
-
 <div class="field">
 
-<label>
-Localisation
-</label>
+<label>Localisation</label>
 
 <input
 id="projectLocation"
@@ -1302,12 +1331,9 @@ placeholder="Ex. Lomé">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Budget
-</label>
+<label>Budget</label>
 
 <input
 id="projectBudget"
@@ -1317,12 +1343,9 @@ placeholder="15000000">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Date de début
-</label>
+<label>Date de début</label>
 
 <input
 id="projectStart"
@@ -1330,12 +1353,9 @@ type="date">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Date de fin prévue
-</label>
+<label>Date de fin prévue</label>
 
 <input
 id="projectEnd"
@@ -1343,12 +1363,9 @@ type="date">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Statut
-</label>
+<label>Statut</label>
 
 <select id="projectStatus">
 
@@ -1360,12 +1377,9 @@ Statut
 
 </div>
 
-
 <div class="field">
 
-<label>
-Responsable
-</label>
+<label>Responsable</label>
 
 <input
 id="projectManager"
@@ -1375,19 +1389,15 @@ placeholder="Chef de projet">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Description
-</label>
+<label>Description</label>
 
 <textarea
 id="projectDescription"
 placeholder="Description du chantier..."></textarea>
 
 </div>
-
 
 <button
 class="btn"
@@ -1406,9 +1416,195 @@ class="project-grid">
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
+     MATERIAUX
+===================================================== -->
+
+<section id="materials" class="page hide">
+
+<div class="card">
+
+<h2>
+🧱 Bibliothèque des matériaux & prix
+</h2>
+
+<p class="muted">
+Centralisez vos matériaux, leurs unités et vos prix de référence.
+</p>
+
+<div class="row">
+
+<div class="field">
+
+<label>
+Nom du matériau
+</label>
+
+<input
+id="materialName"
+placeholder="Ex. Ciment 50 kg">
+
+</div>
+
+<div class="field">
+
+<label>
+Catégorie
+</label>
+
+<select id="materialCategory">
+
+<option>Ciment</option>
+<option>Sable</option>
+<option>Gravier</option>
+<option>Ferraillage</option>
+<option>Maçonnerie</option>
+<option>Bois</option>
+<option>Carrelage</option>
+<option>Peinture</option>
+<option>Plomberie</option>
+<option>Électricité</option>
+<option>Toiture</option>
+<option>Main-d'œuvre</option>
+<option>Autre</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>
+Unité
+</label>
+
+<select id="materialUnit">
+
+<option>sac</option>
+<option>m³</option>
+<option>m²</option>
+<option>ml</option>
+<option>kg</option>
+<option>barre</option>
+<option>pièce</option>
+<option>litre</option>
+<option>forfait</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>
+Prix unitaire
+</label>
+
+<input
+id="materialPrice"
+type="number"
+step="1"
+min="0"
+placeholder="5000">
+
+</div>
+
+<div class="field">
+
+<label>
+Fournisseur
+</label>
+
+<input
+id="materialSupplier"
+placeholder="Nom du fournisseur">
+
+</div>
+
+<div class="field">
+
+<label>
+Référence
+</label>
+
+<input
+id="materialReference"
+placeholder="Réf. produit">
+
+</div>
+
+</div>
+
+<div class="field">
+
+<label>
+Notes
+</label>
+
+<textarea
+id="materialNotes"
+placeholder="Informations sur le matériau, qualité, conditionnement, etc."></textarea>
+
+</div>
+
+<div class="actions">
+
+<button
+id="materialAddBtn"
+class="btn"
+onclick="addMaterial()">
++ Enregistrer le matériau
+</button>
+
+<button
+class="btn danger"
+onclick="clearMaterialForm()">
+Annuler
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card" style="margin-top:18px">
+
+<div style="display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap">
+
+<div>
+
+<h2 style="margin:0">
+Ma bibliothèque
+</h2>
+
+<div class="muted">
+Prix de référence enregistrés dans BATIFLOW.
+</div>
+
+</div>
+
+<input
+id="materialSearch"
+class="material-search"
+placeholder="🔎 Rechercher un matériau..."
+oninput="renderMaterials()">
+
+</div>
+
+</div>
+
+
+<div
+id="materialList"
+class="material-grid">
+</div>
+
+</section>
+
+
+<!-- =====================================================
      CALCULATEUR
-========================= -->
+===================================================== -->
 
 <section id="calc" class="page hide">
 
@@ -1426,25 +1622,22 @@ Calcul indicatif du volume de béton et des composants.
 
 <div class="field">
 
-<label>
-Élément
-</label>
+<label>Élément</label>
 
 <select id="element">
+
 <option>Dalle</option>
 <option>Poutre</option>
 <option>Poteau</option>
 <option>Semelle</option>
+
 </select>
 
 </div>
 
-
 <div class="field">
 
-<label>
-Longueur (m)
-</label>
+<label>Longueur (m)</label>
 
 <input
 id="L"
@@ -1454,12 +1647,9 @@ value="5">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Largeur (m)
-</label>
+<label>Largeur (m)</label>
 
 <input
 id="W"
@@ -1469,12 +1659,9 @@ value="4">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Épaisseur / hauteur (m)
-</label>
+<label>Épaisseur / hauteur (m)</label>
 
 <input
 id="H"
@@ -1486,13 +1673,11 @@ value=".15">
 
 </div>
 
-
 <button
 class="btn"
 onclick="calc()">
 Calculer
 </button>
-
 
 <div
 id="result"
@@ -1505,9 +1690,9 @@ style="margin-top:15px">
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      DQE
-========================= -->
+===================================================== -->
 
 <section id="dqe" class="page hide">
 
@@ -1521,14 +1706,11 @@ DQE — Devis Quantitatif Estimatif
 Ajoutez les différents postes de votre chantier.
 </p>
 
-
 <div class="row">
 
 <div class="field">
 
-<label>
-Désignation
-</label>
+<label>Désignation</label>
 
 <input
 id="item"
@@ -1536,12 +1718,9 @@ placeholder="Ex. Béton dosé">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Unité
-</label>
+<label>Unité</label>
 
 <select id="unit">
 
@@ -1556,12 +1735,9 @@ Unité
 
 </div>
 
-
 <div class="field">
 
-<label>
-Quantité
-</label>
+<label>Quantité</label>
 
 <input
 id="qty"
@@ -1571,12 +1747,9 @@ value="1">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Prix unitaire
-</label>
+<label>Prix unitaire</label>
 
 <input
 id="pu"
@@ -1587,7 +1760,6 @@ value="75000">
 </div>
 
 </div>
-
 
 <div class="actions">
 
@@ -1616,6 +1788,7 @@ onclick="clearDQE()">
 <thead>
 
 <tr>
+
 <th>#</th>
 <th>Désignation</th>
 <th>Unité</th>
@@ -1623,6 +1796,7 @@ onclick="clearDQE()">
 <th>PU</th>
 <th>Montant</th>
 <th>Action</th>
+
 </tr>
 
 </thead>
@@ -1638,9 +1812,7 @@ onclick="clearDQE()">
 TOTAL
 </th>
 
-<th
-id="total"
-class="right">
+<th id="total" class="right">
 0
 </th>
 
@@ -1657,9 +1829,9 @@ class="right">
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      DEVIS
-========================= -->
+===================================================== -->
 
 <section id="quote" class="page hide">
 
@@ -1670,9 +1842,8 @@ Générateur de devis professionnel
 </h2>
 
 <p class="muted">
-Les informations du client peuvent maintenant être récupérées depuis votre base clients.
+Utilisez vos clients enregistrés et votre DQE pour créer un devis.
 </p>
-
 
 <div class="field">
 
@@ -1692,14 +1863,11 @@ onchange="fillQuoteClient(this.value)">
 
 </div>
 
-
 <div class="row">
 
 <div class="field">
 
-<label>
-Entreprise
-</label>
+<label>Entreprise</label>
 
 <input
 id="company"
@@ -1707,12 +1875,9 @@ value="BATIFLOW BTP">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Téléphone entreprise
-</label>
+<label>Téléphone entreprise</label>
 
 <input
 id="companyPhone"
@@ -1720,12 +1885,9 @@ placeholder="+228 XX XX XX XX">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Email entreprise
-</label>
+<label>Email entreprise</label>
 
 <input
 id="companyEmail"
@@ -1733,12 +1895,9 @@ placeholder="contact@entreprise.com">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Adresse entreprise
-</label>
+<label>Adresse entreprise</label>
 
 <input
 id="companyAddress"
@@ -1746,12 +1905,9 @@ placeholder="Lomé, Togo">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Client
-</label>
+<label>Client</label>
 
 <input
 id="client"
@@ -1759,12 +1915,9 @@ placeholder="Nom du client">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Téléphone client
-</label>
+<label>Téléphone client</label>
 
 <input
 id="clientPhone"
@@ -1772,12 +1925,9 @@ placeholder="+228 XX XX XX XX">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Projet
-</label>
+<label>Projet</label>
 
 <input
 id="project"
@@ -1785,12 +1935,9 @@ placeholder="Maison RDC">
 
 </div>
 
-
 <div class="field">
 
-<label>
-TVA (%)
-</label>
+<label>TVA (%)</label>
 
 <input
 id="tax"
@@ -1801,12 +1948,9 @@ step=".01">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Validité du devis
-</label>
+<label>Validité du devis</label>
 
 <input
 id="validity"
@@ -1814,12 +1958,9 @@ value="30 jours">
 
 </div>
 
-
 <div class="field">
 
-<label>
-Conditions de paiement
-</label>
+<label>Conditions de paiement</label>
 
 <input
 id="payment"
@@ -1828,7 +1969,6 @@ value="Selon accord avec le client">
 </div>
 
 </div>
-
 
 <div class="field">
 
@@ -1840,7 +1980,6 @@ Conditions / observations
 id="conditions">Les travaux seront réalisés selon les règles de l'art et les spécifications convenues avec le client.</textarea>
 
 </div>
-
 
 <div class="actions">
 
@@ -1869,9 +2008,9 @@ class="quote-preview hide">
 </section>
 
 
-<!-- =========================
-     COUNTRY
-========================= -->
+<!-- =====================================================
+     PAYS
+===================================================== -->
 
 <section id="country" class="page hide">
 
@@ -1885,7 +2024,6 @@ Pays & paramètres
 Sélectionnez le pays utilisé pour vos calculs et vos devis.
 </p>
 
-
 <div class="row">
 
 <div class="field">
@@ -1898,7 +2036,6 @@ onchange="setCountry(this.value)">
 </select>
 
 </div>
-
 
 <div class="field">
 
@@ -1923,9 +2060,9 @@ readonly>
 
 <script>
 
-/* =========================
-   PAYS / DEVISES
-========================= */
+/* =====================================================
+   PAYS
+===================================================== */
 
 const countries={
 
@@ -1983,9 +2120,9 @@ const countries={
 };
 
 
-/* =========================
+/* =====================================================
    VARIABLES
-========================= */
+===================================================== */
 
 let countryName="Togo";
 
@@ -1995,16 +2132,20 @@ let projects=[];
 
 let clients=[];
 
+let materials=[];
+
 let sum=0;
 
 let editIndex=-1;
 
 let editClientIndex=-1;
 
+let editMaterialIndex=-1;
 
-/* =========================
+
+/* =====================================================
    OUTILS
-========================= */
+===================================================== */
 
 function escapeHTML(value){
 
@@ -2033,9 +2174,9 @@ const clean=String(name||"Client")
 .split(/\s+/)
 .filter(Boolean);
 
-if(!clean.length) return "C";
+if(!clean.length)return"C";
 
-return (
+return(
 (clean[0][0]||"")+
 (clean[1]?.[0]||"")
 ).toUpperCase();
@@ -2043,9 +2184,34 @@ return (
 }
 
 
-/* =========================
+function materialIcon(category){
+
+const icons={
+
+"Ciment":"🧱",
+"Sable":"🏖️",
+"Gravier":"🪨",
+"Ferraillage":"🔩",
+"Maçonnerie":"🧱",
+"Bois":"🪵",
+"Carrelage":"🔲",
+"Peinture":"🎨",
+"Plomberie":"🚰",
+"Électricité":"⚡",
+"Toiture":"🏠",
+"Main-d'œuvre":"👷",
+"Autre":"📦"
+
+};
+
+return icons[category]||"📦";
+
+}
+
+
+/* =====================================================
    INIT
-========================= */
+===================================================== */
 
 function init(){
 
@@ -2076,14 +2242,16 @@ renderClients();
 
 renderProjects();
 
+renderMaterials();
+
 populateClientSelects();
 
 }
 
 
-/* =========================
+/* =====================================================
    STORAGE
-========================= */
+===================================================== */
 
 function loadData(){
 
@@ -2098,6 +2266,9 @@ localStorage.getItem("batiflow_projects");
 const savedClients=
 localStorage.getItem("batiflow_clients");
 
+const savedMaterials=
+localStorage.getItem("batiflow_materials");
+
 if(savedItems)
 items=JSON.parse(savedItems);
 
@@ -2107,6 +2278,9 @@ projects=JSON.parse(savedProjects);
 if(savedClients)
 clients=JSON.parse(savedClients);
 
+if(savedMaterials)
+materials=JSON.parse(savedMaterials);
+
 }catch(e){
 
 items=[];
@@ -2114,6 +2288,8 @@ items=[];
 projects=[];
 
 clients=[];
+
+materials=[];
 
 }
 
@@ -2137,12 +2313,17 @@ localStorage.setItem(
 JSON.stringify(clients)
 );
 
+localStorage.setItem(
+"batiflow_materials",
+JSON.stringify(materials)
+);
+
 }
 
 
-/* =========================
+/* =====================================================
    PAYS
-========================= */
+===================================================== */
 
 function sync(){
 
@@ -2171,12 +2352,14 @@ render();
 
 renderProjects();
 
+renderMaterials();
+
 }
 
 
-/* =========================
+/* =====================================================
    LOGIN
-========================= */
+===================================================== */
 
 function login(e){
 
@@ -2193,9 +2376,9 @@ document
 }
 
 
-/* =========================
+/* =====================================================
    NAVIGATION
-========================= */
+===================================================== */
 
 function show(id,button){
 
@@ -2221,6 +2404,8 @@ dashboard:"Tableau de bord",
 clients:"Clients",
 
 projects:"Projets / Chantiers",
+
+materials:"Matériaux & prix",
 
 calc:"Calculateur BTP",
 
@@ -2252,6 +2437,9 @@ return t.includes("clients");
 if(id==="projects")
 return t.includes("projets");
 
+if(id==="materials")
+return t.includes("matériaux");
+
 if(id==="calc")
 return t.includes("calculateur");
 
@@ -2270,9 +2458,9 @@ show(id,button);
 }
 
 
-/* =========================
+/* =====================================================
    CLIENTS
-========================= */
+===================================================== */
 
 function addClient(){
 
@@ -2288,7 +2476,6 @@ alert(
 return;
 
 }
-
 
 const obj={
 
@@ -2331,7 +2518,6 @@ clientAddBtn.textContent=
 clients.push(obj);
 
 }
-
 
 saveData();
 
@@ -2388,15 +2574,15 @@ clientNotes.value=c.notes||"";
 
 editClientIndex=index;
 
-clientAddBtn.textContent=
-"✓ Enregistrer la modification";
-
 goto("clients");
 
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
+
+clientAddBtn.textContent=
+"✓ Enregistrer la modification";
 
 }
 
@@ -2407,7 +2593,7 @@ const c=clients[index];
 
 if(!confirm(
 `Supprimer le client "${c.name}" ?`
-)) return;
+))return;
 
 clients.splice(index,1);
 
@@ -2481,7 +2667,7 @@ clients.findIndex(
 x=>x.id===c.id
 );
 
-return `
+return`
 
 <div class="client-card">
 
@@ -2547,9 +2733,9 @@ Supprimer
 }
 
 
-/* =========================
+/* =====================================================
    CLIENTS → SELECTS
-========================= */
+===================================================== */
 
 function populateClientSelects(){
 
@@ -2565,7 +2751,6 @@ ${c.phone?" — "+escapeHTML(c.phone):""}
 `)
 .join("");
 
-
 projectClientSelect.innerHTML=
 `
 <option value="">
@@ -2574,7 +2759,6 @@ projectClientSelect.innerHTML=
 `
 +
 options;
-
 
 quoteClientSelect.innerHTML=
 `
@@ -2588,24 +2772,20 @@ options;
 }
 
 
-/* =========================
-   REMPLIR DEVIS
-========================= */
+/* =====================================================
+   DEVIS → CLIENT
+===================================================== */
 
 function fillQuoteClient(id){
 
-if(!id){
-
-return;
-
-}
+if(!id)return;
 
 const c=
 clients.find(
 x=>String(x.id)===String(id)
 );
 
-if(!c) return;
+if(!c)return;
 
 client.value=c.name||"";
 
@@ -2614,9 +2794,309 @@ clientPhone.value=c.phone||"";
 }
 
 
-/* =========================
+/* =====================================================
+   MATERIAUX
+===================================================== */
+
+function addMaterial(){
+
+const name=
+materialName.value.trim();
+
+const price=
+Number(materialPrice.value)||0;
+
+if(!name){
+
+alert(
+"Veuillez saisir le nom du matériau."
+);
+
+return;
+
+}
+
+if(price<0){
+
+alert(
+"Le prix ne peut pas être négatif."
+);
+
+return;
+
+}
+
+
+const obj={
+
+id:
+editMaterialIndex>=0
+?materials[editMaterialIndex].id
+:Date.now(),
+
+name:name,
+
+category:
+materialCategory.value,
+
+unit:
+materialUnit.value,
+
+price:price,
+
+supplier:
+materialSupplier.value.trim(),
+
+reference:
+materialReference.value.trim(),
+
+notes:
+materialNotes.value.trim(),
+
+updatedAt:
+new Date().toISOString()
+
+};
+
+
+if(editMaterialIndex>=0){
+
+materials[editMaterialIndex]=obj;
+
+editMaterialIndex=-1;
+
+materialAddBtn.textContent=
+"+ Enregistrer le matériau";
+
+}else{
+
+materials.push(obj);
+
+}
+
+
+saveData();
+
+clearMaterialForm();
+
+renderMaterials();
+
+}
+
+
+function clearMaterialForm(){
+
+materialName.value="";
+
+materialCategory.value="Ciment";
+
+materialUnit.value="sac";
+
+materialPrice.value="";
+
+materialSupplier.value="";
+
+materialReference.value="";
+
+materialNotes.value="";
+
+editMaterialIndex=-1;
+
+materialAddBtn.textContent=
+"+ Enregistrer le matériau";
+
+}
+
+
+function editMaterial(index){
+
+const m=materials[index];
+
+materialName.value=m.name||"";
+
+materialCategory.value=m.category||"Autre";
+
+materialUnit.value=m.unit||"pièce";
+
+materialPrice.value=m.price||0;
+
+materialSupplier.value=m.supplier||"";
+
+materialReference.value=m.reference||"";
+
+materialNotes.value=m.notes||"";
+
+editMaterialIndex=index;
+
+materialAddBtn.textContent=
+"✓ Enregistrer la modification";
+
+goto("materials");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function deleteMaterial(index){
+
+const m=materials[index];
+
+if(!confirm(
+`Supprimer "${m.name}" de la bibliothèque ?`
+))return;
+
+materials.splice(index,1);
+
+saveData();
+
+renderMaterials();
+
+}
+
+
+function renderMaterials(){
+
+dashMaterials.textContent=
+materials.length;
+
+const search=
+(materialSearch.value||"")
+.toLowerCase()
+.trim();
+
+const filtered=
+materials.filter(m=>{
+
+const text=[
+m.name,
+m.category,
+m.unit,
+m.supplier,
+m.reference
+]
+.join(" ")
+.toLowerCase();
+
+return text.includes(search);
+
+});
+
+
+if(!filtered.length){
+
+materialList.innerHTML=`
+
+<div class="card">
+
+<h3>
+Aucun matériau trouvé
+</h3>
+
+<p class="muted">
+Ajoutez votre premier matériau avec son prix de référence.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+materialList.innerHTML=
+filtered
+.map(m=>{
+
+const realIndex=
+materials.findIndex(
+x=>x.id===m.id
+);
+
+return`
+
+<div class="material-card">
+
+<div class="material-icon">
+${materialIcon(m.category)}
+</div>
+
+<h3>
+${escapeHTML(m.name)}
+</h3>
+
+<span class="badge orange">
+${escapeHTML(m.category)}
+</span>
+
+<div class="material-price">
+
+${money(m.price)}
+${escapeHTML(countries[countryName])}
+
+<span style="font-size:12px;color:#718096">
+/ ${escapeHTML(m.unit)}
+</span>
+
+</div>
+
+<div class="material-meta">
+📦 Unité :
+${escapeHTML(m.unit)}
+</div>
+
+<div class="material-meta">
+🏪 Fournisseur :
+${escapeHTML(m.supplier||"Non renseigné")}
+</div>
+
+<div class="material-meta">
+🔖 Référence :
+${escapeHTML(m.reference||"Non renseignée")}
+</div>
+
+${m.notes?`
+
+<div class="material-meta">
+📝 ${escapeHTML(m.notes)}
+</div>
+
+`:""}
+
+<div class="actions">
+
+<button
+class="btn alt"
+onclick="editMaterial(${realIndex})">
+Modifier
+</button>
+
+<button
+class="btn danger"
+onclick="deleteMaterial(${realIndex})">
+Supprimer
+</button>
+
+</div>
+
+</div>
+
+`;
+
+})
+.join("");
+
+}
+
+
+/* =====================================================
    CALCULATEUR
-========================= */
+===================================================== */
 
 function calc(){
 
@@ -2658,9 +3138,9 @@ les normes et les spécifications du projet.
 }
 
 
-/* =========================
+/* =====================================================
    DQE
-========================= */
+===================================================== */
 
 function add(){
 
@@ -2762,7 +3242,7 @@ function deleteDQE(index){
 
 if(!confirm(
 "Supprimer ce poste du DQE ?"
-)) return;
+))return;
 
 items.splice(index,1);
 
@@ -2787,7 +3267,7 @@ return;
 
 if(!confirm(
 "Voulez-vous vraiment vider tout le DQE ?"
-)) return;
+))return;
 
 items=[];
 
@@ -2867,15 +3347,12 @@ money(sum)+" "+countries[countryName];
 dashTotal.textContent=
 money(sum);
 
-dashItems.textContent=
-items.length;
-
 }
 
 
-/* =========================
+/* =====================================================
    PROJETS
-========================= */
+===================================================== */
 
 function addProject(){
 
@@ -2891,7 +3368,6 @@ alert(
 return;
 
 }
-
 
 const selectedClient=
 clients.find(
@@ -2967,7 +3443,7 @@ function deleteProject(id){
 
 if(!confirm(
 "Supprimer ce chantier ?"
-)) return;
+))return;
 
 projects=
 projects.filter(
@@ -2984,20 +3460,20 @@ renderProjects();
 function statusBadge(status){
 
 if(status==="En cours")
-return `
+return`
 <span class="badge blue">
 En cours
 </span>
 `;
 
 if(status==="Terminé")
-return `
+return`
 <span class="badge green">
 Terminé
 </span>
 `;
 
-return `
+return`
 <span class="badge orange">
 À venir
 </span>
@@ -3103,9 +3579,9 @@ Supprimer
 }
 
 
-/* =========================
-   NUMÉRO DEVIS
-========================= */
+/* =====================================================
+   NUMERO DE DEVIS
+===================================================== */
 
 function getQuoteNumber(){
 
@@ -3136,9 +3612,9 @@ String(counter).padStart(4,"0")
 }
 
 
-/* =========================
+/* =====================================================
    DEVIS
-========================= */
+===================================================== */
 
 function quote(){
 
@@ -3364,13 +3840,9 @@ ${items.map((x,i)=>`
 
 <tr>
 
-<td>
-${i+1}
-</td>
+<td>${i+1}</td>
 
-<td>
-${escapeHTML(x.n)}
-</td>
+<td>${escapeHTML(x.n)}</td>
 
 <td>
 ${x.q}
@@ -3511,7 +3983,6 @@ Gestion BTP intelligente
 
 `;
 
-
 preview.scrollIntoView({
 behavior:"smooth"
 });
@@ -3519,9 +3990,9 @@ behavior:"smooth"
 }
 
 
-/* =========================
-   DÉMARRAGE
-========================= */
+/* =====================================================
+   DEMARRAGE
+===================================================== */
 
 init();
 
