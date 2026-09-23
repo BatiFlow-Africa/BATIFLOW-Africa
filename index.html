@@ -739,6 +739,10 @@ tr:last-child td{border-bottom:0}
 /* ================= ETAPE 12 - FOURNISSEURS & ACHATS ================= */
 .purchase-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}.purchase-kpi{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px}.purchase-kpi small{display:block;color:#718096;font-size:11px;font-weight:700;text-transform:uppercase}.purchase-kpi strong{display:block;font-size:23px;margin-top:6px}.purchase-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}.purchase-tab{border:0;background:#eef3f8;color:var(--navy);padding:10px 14px;border-radius:9px;font-weight:700;cursor:pointer}.purchase-tab.active{background:var(--navy);color:#fff}.purchase-pane{display:none}.purchase-pane.active{display:block}.purchase-status{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:700}.purchase-status.draft{background:#f3f4f6;color:#4b5563}.purchase-status.ordered{background:#dbeafe;color:#1d4ed8}.purchase-status.delivered{background:#dcfce7;color:#166534}.purchase-status.partial{background:#fef3c7;color:#92400e}.purchase-status.paid{background:#dcfce7;color:#166534}.purchase-status.cancelled{background:#fee2e2;color:#991b1b}.supplier-card{border:1px solid #e5e7eb;border-radius:12px;padding:14px;background:#fff}.supplier-card h3{margin:0 0 5px}.supplier-meta{font-size:12px;color:#718096;line-height:1.6}.purchase-actions{display:flex;gap:6px;flex-wrap:wrap}.purchase-line{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}.purchase-line .remove-line{margin-bottom:1px}.purchase-total{font-size:20px;font-weight:800;text-align:right;padding:12px;background:#f8fafc;border-radius:10px}.purchase-alert{padding:12px 14px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:10px;margin-bottom:14px}.purchase-ok{padding:12px 14px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;border-radius:10px;margin-bottom:14px}.supplier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.purchase-detail{background:#f8fafc;border-radius:10px;padding:12px;line-height:1.7}.@media(max-width:900px){.purchase-kpis{grid-template-columns:repeat(2,1fr)}.supplier-grid{grid-template-columns:1fr 1fr}.purchase-line{grid-template-columns:1fr 1fr}}
 
+
+/* ================= DOCUMENTS ETAPE 14 ================= */
+.doc-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}.doc-kpi{background:#fff;border:1px solid #e7edf4;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(15,23,42,.04)}.doc-kpi small{display:block;color:#718096;font-size:11px;font-weight:800;letter-spacing:.5px}.doc-kpi strong{display:block;font-size:24px;margin-top:8px;color:#0b1f3a}.doc-type-list{display:grid;gap:10px}.doc-type-list div{padding:12px;border:1px solid #edf1f5;border-radius:10px;background:#fbfcfe}.doc-type-list b{display:block}.doc-type-list span{font-size:12px;color:#718096}.quick-docs{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quick-docs button{border:1px solid #dce5ef;background:#fff;border-radius:10px;padding:12px;text-align:left;cursor:pointer}.quick-docs button:hover{background:#f5f8fc}.doc-badge{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#eef4ff;color:#244c86}.doc-status{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800}.doc-status.brouillon{background:#fff7e6;color:#9a6500}.doc-status.emis{background:#eef4ff;color:#245b9c}.doc-status.valide{background:#eaf8ef;color:#217a42}.doc-status.paye{background:#e8faf6;color:#147a66}.doc-status.archive{background:#eef0f3;color:#5b6470}.doc-modal-items{border:1px solid #e5ebf2;border-radius:12px;padding:12px;margin-top:12px}.doc-item-row{display:grid;grid-template-columns:2fr .7fr 1fr 1fr auto;gap:8px;margin-bottom:8px;align-items:center}.doc-item-row input{width:100%;box-sizing:border-box}.doc-total-box{display:flex;justify-content:flex-end;font-size:18px;font-weight:800;margin-top:10px}.doc-preview{background:#fff;max-width:900px;margin:auto;padding:36px;border:1px solid #ddd;box-shadow:0 10px 35px rgba(0,0,0,.08)}.doc-preview-head{display:flex;justify-content:space-between;border-bottom:2px solid #0b1f3a;padding-bottom:18px;margin-bottom:20px}.doc-preview h1{margin:0;color:#0b1f3a}.doc-preview table{width:100%;border-collapse:collapse;margin-top:18px}.doc-preview th,.doc-preview td{border:1px solid #d8dee7;padding:9px;text-align:left}.doc-preview .right{text-align:right}.doc-preview-footer{margin-top:30px;display:flex;justify-content:space-between}.doc-small{font-size:11px;color:#667085}@media(max-width:900px){.doc-kpis{grid-template-columns:1fr 1fr}.doc-item-row{grid-template-columns:1fr 80px 110px 110px auto}}@media(max-width:600px){.doc-kpis{grid-template-columns:1fr}.quick-docs{grid-template-columns:1fr}.doc-preview{padding:18px}.doc-preview-head{display:block}}
+
 </style>
 </head>
 
@@ -857,6 +861,10 @@ tr:last-child td{border-bottom:0}
 
     <button class="nav-btn" onclick="showPage('quotes',this)">
       <span>📄</span><span class="nav-label">Devis</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('documents',this)">
+      <span>📑</span><span class="nav-label">Documents BTP</span>
     </button>
 
     <div class="nav-section">RESSOURCES</div>
@@ -1454,6 +1462,36 @@ tr:last-child td{border-bottom:0}
 
       </section>
 
+
+      <!-- ================= DOCUMENTS BTP ETAPE 14 ================= -->
+      <section id="pageDocuments" class="page">
+        <div class="page-head">
+          <div><h1>📑 Documents BTP</h1><p>Créez, gérez, imprimez et exportez vos documents de chantier.</p></div>
+          <div class="actions"><button class="btn btn-light" onclick="openDocumentModal('rapport')">+ Rapport</button><button class="btn btn-primary" onclick="openDocumentModal('devis')">+ Nouveau document</button></div>
+        </div>
+        <div class="doc-kpis">
+          <div class="doc-kpi"><small>DOCUMENTS</small><strong id="docCount">0</strong></div>
+          <div class="doc-kpi"><small>DEVIS</small><strong id="docQuotes">0</strong></div>
+          <div class="doc-kpi"><small>FACTURES</small><strong id="docInvoices">0</strong></div>
+          <div class="doc-kpi"><small>MONTANT DOCUMENTS</small><strong id="docAmount">0 FCFA</strong></div>
+        </div>
+        <div class="card">
+          <div class="form-grid">
+            <div class="form-group"><label>Rechercher</label><input id="docSearch" oninput="renderDocuments()" placeholder="Référence, client, chantier..."></div>
+            <div class="form-group"><label>Type</label><select id="docTypeFilter" onchange="renderDocuments()"><option value="">Tous</option><option value="devis">Devis</option><option value="facture">Facture</option><option value="bon_commande">Bon de commande</option><option value="bon_livraison">Bon de livraison</option><option value="situation">Situation de travaux</option><option value="attachement">Attachement</option><option value="rapport">Rapport de chantier</option><option value="contrat">Contrat</option><option value="recu">Reçu</option></select></div>
+            <div class="form-group"><label>Statut</label><select id="docStatusFilter" onchange="renderDocuments()"><option value="">Tous</option><option>Brouillon</option><option>Émis</option><option>Validé</option><option>Payé</option><option>Archivé</option></select></div>
+          </div>
+        </div>
+        <div class="card"><div class="card-title"><h2>📚 Bibliothèque des documents</h2><button class="btn btn-primary btn-small" onclick="openDocumentModal('devis')">+ Créer</button></div>
+          <div class="table-wrap"><table><thead><tr><th>Référence</th><th>Type</th><th>Client</th><th>Chantier</th><th>Date</th><th>Montant</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="documentsTable"></tbody></table></div>
+        </div>
+        <div class="grid-2">
+          <div class="card"><div class="card-title"><h2>📌 Types disponibles</h2></div><div class="doc-type-list">
+            <div><b>📄 Devis</b><span>Proposition commerciale détaillée</span></div><div><b>🧾 Facture</b><span>Demande de règlement</span></div><div><b>🛒 Bon de commande</b><span>Commande de matériaux/services</span></div><div><b>📦 Bon de livraison</b><span>Réception des fournitures</span></div><div><b>📊 Situation de travaux</b><span>État financier des travaux réalisés</span></div><div><b>📐 Attachement</b><span>Quantités réellement exécutées</span></div><div><b>📝 Rapport</b><span>Suivi quotidien ou périodique du chantier</span></div>
+          </div></div>
+          <div class="card"><div class="card-title"><h2>⚡ Actions rapides</h2></div><div class="quick-docs"><button onclick="openDocumentModal('facture')">🧾 Nouvelle facture</button><button onclick="openDocumentModal('bon_commande')">🛒 Bon de commande</button><button onclick="openDocumentModal('bon_livraison')">📦 Bon de livraison</button><button onclick="openDocumentModal('situation')">📊 Situation de travaux</button><button onclick="openDocumentModal('attachement')">📐 Attachement</button><button onclick="openDocumentModal('rapport')">📝 Rapport de chantier</button></div></div>
+        </div>
+      </section>
 
       <!-- ================= MATERIALS ================= -->
       <section id="pageMaterials" class="page">
@@ -2404,6 +2442,7 @@ const pageTitles={
   calculator:"Calculateur BTP",
   dqe:"DQE",
   quotes:"Devis",
+  documents:"Documents BTP",
   materials:"Matériaux & prix",
   stock:"Stock & mouvements",
   finance:"Finance & paiements",
@@ -2435,6 +2474,7 @@ function showPage(page,button){
   if(page==="tracking") initTrackingPage();
   if(page==="dqe") renderDqe();
   if(page==="quotes") populateQuoteClients();
+  if(page==="documents") initDocuments();
   if(page==="materials") renderMaterials();
   if(page==="stock"){
     renderStock();
@@ -4097,7 +4137,75 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 
 });
+
+/* ================= DOCUMENTS BTP ETAPE 14 ================= */
+const DOCUMENT_TYPES={devis:'Devis',facture:'Facture','bon_commande':'Bon de commande','bon_livraison':'Bon de livraison',situation:'Situation de travaux',attachement:'Attachement',rapport:'Rapport de chantier',contrat:'Contrat',recu:'Reçu'};
+let documents=JSON.parse(localStorage.getItem('batiflow_documents')||'[]');
+let editingDocumentId=null,currentDocumentId=null;
+function saveDocuments(){localStorage.setItem('batiflow_documents',JSON.stringify(documents));}
+function docMoney(n){return Number(n||0).toLocaleString('fr-FR')+' FCFA';}
+function docDate(v){if(!v)return '';const d=new Date(v+'T00:00:00');return d.toLocaleDateString('fr-FR');}
+function docRef(type){const y=new Date().getFullYear();const p={devis:'DEV',facture:'FAC',bon_commande:'BC',bon_livraison:'BL',situation:'SIT',attachement:'ATT',rapport:'RAP',contrat:'CTR',recu:'REC'}[type]||'DOC';let n=documents.filter(d=>d.type===type).length+1;return `${p}-${y}-${String(n).padStart(4,'0')}`;}
+function initDocuments(){renderDocuments();}
+function populateDocumentSelects(){
+  const c=document.getElementById('docClient'), p=document.getElementById('docProject'); if(!c||!p)return;
+  c.innerHTML='<option value="">— Aucun client —</option>'+clients.map(x=>`<option value="${x.id}">${escapeHtml(x.name||x.nom||'Client')}</option>`).join('');
+  p.innerHTML='<option value="">— Aucun chantier —</option>'+projects.map(x=>`<option value="${x.id}">${escapeHtml(x.name||x.nom||'Chantier')}</option>`).join('');
+}
+function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));}
+function openDocumentModal(type='devis',id=null){
+  editingDocumentId=id; populateDocumentSelects();
+  const d=id?documents.find(x=>x.id===id):null;
+  document.getElementById('documentModal').classList.remove('hidden');
+  document.getElementById('docType').value=d?.type||type; document.getElementById('docRef').value=d?.ref||docRef(d?.type||type); document.getElementById('docDate').value=d?.date||today(); document.getElementById('docStatus').value=d?.status||'Brouillon'; document.getElementById('docDescription').value=d?.description||''; document.getElementById('docText').value=d?.text||'';
+  if(d){document.getElementById('docClient').value=d.clientId||'';document.getElementById('docProject').value=d.projectId||'';}else{document.getElementById('docClient').value='';document.getElementById('docProject').value='';}
+  document.getElementById('docItems').innerHTML='';
+  if(d?.items?.length)d.items.forEach(i=>addDocumentItem(i)); else if(!['rapport','contrat'].includes(type)) addDocumentItem();
+  updateDocumentForm();
+  document.getElementById('documentModalTitle').textContent=(d?'Modifier ':'Nouveau ')+(DOCUMENT_TYPES[document.getElementById('docType').value]||'Document');
+}
+function closeDocumentModal(){document.getElementById('documentModal').classList.add('hidden');}
+function updateDocumentForm(){
+ const type=document.getElementById('docType').value; const textTypes=['rapport','contrat']; document.getElementById('docItemsWrap').style.display=textTypes.includes(type)?'none':'block'; document.getElementById('docTextWrap').style.display=textTypes.includes(type)||type==='situation'||type==='attachement'?'block':'none'; document.getElementById('documentModalTitle').textContent=(editingDocumentId?'Modifier ':'Nouveau ')+(DOCUMENT_TYPES[type]||'Document');
+}
+function addDocumentItem(item={}){
+ const wrap=document.getElementById('docItems'); const row=document.createElement('div'); row.className='doc-item-row'; row.innerHTML=`<input class="di-desc" placeholder="Désignation" value="${escapeHtml(item.description||'')}"><input class="di-qty" type="number" min="0" step="0.01" placeholder="Qté" value="${item.qty??1}"><input class="di-unit" placeholder="Unité" value="${escapeHtml(item.unit||'u')}"><input class="di-price" type="number" min="0" step="1" placeholder="PU" value="${item.price??0}"><button class="btn btn-light btn-small" onclick="this.parentElement.remove();updateDocTotal()">×</button>`; wrap.appendChild(row); row.querySelectorAll('input').forEach(x=>x.addEventListener('input',updateDocTotal)); updateDocTotal();}
+function getDocumentItems(){return [...document.querySelectorAll('#docItems .doc-item-row')].map(r=>({description:r.querySelector('.di-desc').value,qty:Number(r.querySelector('.di-qty').value||0),unit:r.querySelector('.di-unit').value||'u',price:Number(r.querySelector('.di-price').value||0)})).filter(i=>i.description||i.price);}
+function documentTotal(items=getDocumentItems()){return items.reduce((a,i)=>a+i.qty*i.price,0);}
+function updateDocTotal(){document.getElementById('docFormTotal').textContent=docMoney(documentTotal());}
+function saveDocument(){
+ const type=document.getElementById('docType').value, items=getDocumentItems(); const old=editingDocumentId?documents.find(x=>x.id===editingDocumentId):null;
+ const d={id:editingDocumentId||('doc_'+Date.now()),ref:document.getElementById('docRef').value.trim()||docRef(type),type,clientId:document.getElementById('docClient').value,projectId:document.getElementById('docProject').value,date:document.getElementById('docDate').value,status:document.getElementById('docStatus').value,description:document.getElementById('docDescription').value,text:document.getElementById('docText').value,items,total:documentTotal(items),createdAt:old?.createdAt||new Date().toISOString()};
+ if(old){const idx=documents.findIndex(x=>x.id===old.id);documents[idx]=d;}else documents.unshift(d);saveDocuments();closeDocumentModal();renderDocuments();
+}
+function renderDocuments(){
+ const q=(document.getElementById('docSearch')?.value||'').toLowerCase(), tf=document.getElementById('docTypeFilter')?.value||'', sf=document.getElementById('docStatusFilter')?.value||''; const rows=documents.filter(d=>{const c=clients.find(x=>x.id===d.clientId),p=projects.find(x=>x.id===d.projectId),txt=[d.ref,d.description,c?.name,c?.nom,p?.name,p?.nom].join(' ').toLowerCase();return(!q||txt.includes(q))&&(!tf||d.type===tf)&&(!sf||d.status===sf);});
+ const tb=document.getElementById('documentsTable'); if(tb)tb.innerHTML=rows.length?rows.map(d=>{const c=clients.find(x=>x.id===d.clientId),p=projects.find(x=>x.id===d.projectId);return `<tr><td><b>${escapeHtml(d.ref)}</b></td><td><span class="doc-badge">${escapeHtml(DOCUMENT_TYPES[d.type]||d.type)}</span></td><td>${escapeHtml(c?.name||c?.nom||'—')}</td><td>${escapeHtml(p?.name||p?.nom||'—')}</td><td>${docDate(d.date)}</td><td>${docMoney(d.total)}</td><td><span class="doc-status ${d.status.toLowerCase().replace(/[^a-z]/g,'')}">${escapeHtml(d.status)}</span></td><td><button class="btn btn-light btn-small" onclick="previewDocument('${d.id}')">👁️</button> <button class="btn btn-light btn-small" onclick="openDocumentModal('${d.type}','${d.id}')">✏️</button> <button class="btn btn-light btn-small" onclick="deleteDocument('${d.id}')">🗑️</button></td></tr>`}).join(''):'<tr><td colspan="8" style="text-align:center;color:#718096;padding:30px">Aucun document.</td></tr>';
+ const total=documents.reduce((a,d)=>a+Number(d.total||0),0); if(document.getElementById('docCount'))document.getElementById('docCount').textContent=documents.length;if(document.getElementById('docQuotes'))document.getElementById('docQuotes').textContent=documents.filter(d=>d.type==='devis').length;if(document.getElementById('docInvoices'))document.getElementById('docInvoices').textContent=documents.filter(d=>d.type==='facture').length;if(document.getElementById('docAmount'))document.getElementById('docAmount').textContent=docMoney(total);
+}
+function deleteDocument(id){if(!confirm('Supprimer ce document ?'))return;documents=documents.filter(d=>d.id!==id);saveDocuments();renderDocuments();}
+function previewDocument(id){currentDocumentId=id;const d=documents.find(x=>x.id===id);if(!d)return;const c=clients.find(x=>x.id===d.clientId),p=projects.find(x=>x.id===d.projectId);const company=(typeof settings!=='undefined'&&settings.companyName)?settings.companyName:'BATIFLOW';const items=d.items||[];document.getElementById('documentPreview').innerHTML=`<div class="doc-preview"><div class="doc-preview-head"><div><h1>${escapeHtml(company)}</h1><div class="doc-small">Gestion BTP • Document professionnel</div></div><div class="right"><h2>${escapeHtml(DOCUMENT_TYPES[d.type]||'Document').toUpperCase()}</h2><b>${escapeHtml(d.ref)}</b><br>${docDate(d.date)}</div></div><div class="grid-2"><div><b>Client</b><br>${escapeHtml(c?.name||c?.nom||'—')}<br>${escapeHtml(c?.phone||c?.telephone||'')}</div><div><b>Chantier</b><br>${escapeHtml(p?.name||p?.nom||'—')}<br>${escapeHtml(p?.location||p?.lieu||'')}</div></div><h3>${escapeHtml(d.description||'')}</h3>${items.length?`<table><thead><tr><th>Désignation</th><th>Qté</th><th>Unité</th><th>PU</th><th>Total</th></tr></thead><tbody>${items.map(i=>`<tr><td>${escapeHtml(i.description)}</td><td>${i.qty}</td><td>${escapeHtml(i.unit)}</td><td class="right">${docMoney(i.price)}</td><td class="right">${docMoney(i.qty*i.price)}</td></tr>`).join('')}</tbody><tfoot><tr><th colspan="4" class="right">TOTAL</th><th class="right">${docMoney(d.total)}</th></tr></tfoot></table>`:''}${d.text?`<div style="margin-top:25px"><b>Observations / contenu</b><div style="white-space:pre-wrap;margin-top:8px">${escapeHtml(d.text)}</div></div>`:''}<div class="doc-preview-footer"><div>Statut : <b>${escapeHtml(d.status)}</b></div><div>Signature : __________________</div></div></div>`;document.getElementById('documentPreviewModal').classList.remove('hidden');}
+function closeDocumentPreview(){document.getElementById('documentPreviewModal').classList.add('hidden');}
+function printCurrentDocument(){const html=document.getElementById('documentPreview').innerHTML;const w=window.open('','_blank');w.document.write(`<html><head><title>BATIFLOW - Document</title><style>body{font-family:Arial,sans-serif;padding:30px;color:#172033}.doc-preview{max-width:900px;margin:auto}.doc-preview-head{display:flex;justify-content:space-between;border-bottom:2px solid #0b1f3a;padding-bottom:18px}.doc-preview table{width:100%;border-collapse:collapse;margin-top:18px}.doc-preview th,.doc-preview td{border:1px solid #d8dee7;padding:9px;text-align:left}.right{text-align:right}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}</style></head><body>${html}</body></html>`);w.document.close();w.focus();setTimeout(()=>w.print(),300);}
+
 </script>
+
+
+<div id="documentModal" class="modal hidden"><div class="modal-box" style="max-width:950px"><div class="modal-head"><h2 id="documentModalTitle">Nouveau document</h2><button class="modal-close" onclick="closeDocumentModal()">×</button></div><div class="modal-body">
+  <div class="form-grid">
+    <div class="form-group"><label>Type de document</label><select id="docType" onchange="updateDocumentForm()"><option value="devis">Devis</option><option value="facture">Facture</option><option value="bon_commande">Bon de commande</option><option value="bon_livraison">Bon de livraison</option><option value="situation">Situation de travaux</option><option value="attachement">Attachement</option><option value="rapport">Rapport de chantier</option><option value="contrat">Contrat</option><option value="recu">Reçu</option></select></div>
+    <div class="form-group"><label>Référence</label><input id="docRef" placeholder="Automatique"></div>
+    <div class="form-group"><label>Client</label><select id="docClient"></select></div>
+    <div class="form-group"><label>Chantier</label><select id="docProject"></select></div>
+    <div class="form-group"><label>Date</label><input id="docDate" type="date"></div>
+    <div class="form-group"><label>Statut</label><select id="docStatus"><option>Brouillon</option><option>Émis</option><option>Validé</option><option>Payé</option><option>Archivé</option></select></div>
+  </div>
+  <div class="form-group" style="margin-top:12px"><label>Objet / description</label><input id="docDescription" placeholder="Ex. Travaux de gros œuvre — Villa Lomé"></div>
+  <div id="docItemsWrap" class="doc-modal-items"><div class="card-title"><h3 style="margin:0">Lignes du document</h3><button class="btn btn-light btn-small" onclick="addDocumentItem()">+ Ligne</button></div><div id="docItems"></div><div class="doc-total-box">Total : <span id="docFormTotal" style="margin-left:8px">0 FCFA</span></div></div>
+  <div id="docTextWrap" class="form-group" style="display:none;margin-top:12px"><label>Contenu / observations</label><textarea id="docText" rows="7" placeholder="Travaux réalisés, problèmes, observations, clauses..."></textarea></div>
+</div><div class="modal-foot"><button class="btn btn-light" onclick="closeDocumentModal()">Annuler</button><button class="btn btn-primary" onclick="saveDocument()">Enregistrer</button></div></div></div>
+
+<div id="documentPreviewModal" class="modal hidden"><div class="modal-box" style="max-width:1000px"><div class="modal-head no-print"><h2>Aperçu du document</h2><button class="modal-close" onclick="closeDocumentPreview()">×</button></div><div class="modal-body" id="documentPreview"></div><div class="modal-foot no-print"><button class="btn btn-light" onclick="closeDocumentPreview()">Fermer</button><button class="btn btn-primary" onclick="printCurrentDocument()">🖨️ Imprimer / PDF</button></div></div></div>
 
 </body>
 </html>
