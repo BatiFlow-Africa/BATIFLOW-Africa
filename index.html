@@ -100,6 +100,8 @@ button{cursor:pointer}
   letter-spacing:1.5px;
 }
 
+.loginbox h2{margin:0 0 8px}
+
 /* =========================
    APP
 ========================= */
@@ -390,57 +392,6 @@ th{
 }
 
 /* =========================
-   MATERIALS
-========================= */
-
-.material-search{
-  max-width:500px;
-}
-
-.material-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-top:18px;
-}
-
-.material-card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:18px;
-}
-
-.material-icon{
-  width:45px;
-  height:45px;
-  border-radius:13px;
-  background:#fff7df;
-  color:#b45309;
-  display:grid;
-  place-items:center;
-  font-size:21px;
-  margin-bottom:12px;
-}
-
-.material-card h3{
-  margin:0 0 6px;
-}
-
-.material-price{
-  font-size:21px;
-  font-weight:900;
-  margin:12px 0;
-  color:var(--navy);
-}
-
-.material-meta{
-  color:var(--muted);
-  font-size:12px;
-  margin:7px 0;
-}
-
-/* =========================
    CLIENTS
 ========================= */
 
@@ -627,37 +578,36 @@ th{
 
 @media print{
 
-body{background:white}
+  body{background:white}
 
-.side,
-.top,
-.no-print,
-.page:not(#quote){
-display:none!important;
-}
+  .side,
+  .top,
+  .no-print,
+  .page:not(#quote){
+    display:none!important;
+  }
 
-.main{
-margin:0;
-padding:0;
-}
+  .main{
+    margin:0;
+    padding:0;
+  }
 
-#quote{
-display:block!important;
-}
+  #quote{
+    display:block!important;
+  }
 
-.quote-preview{
-box-shadow:none;
-border:0;
-margin:0;
-padding:20px;
-max-width:none;
-}
+  .quote-preview{
+    box-shadow:none;
+    border:0;
+    margin:0;
+    padding:20px;
+    max-width:none;
+  }
 
-@page{
-size:A4;
-margin:12mm;
-}
-
+  @page{
+    size:A4;
+    margin:12mm;
+  }
 }
 
 /* =========================
@@ -666,86 +616,83 @@ margin:12mm;
 
 @media(max-width:1050px){
 
-.grid{
-grid-template-columns:repeat(2,1fr);
-}
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-.project-grid,
-.client-grid,
-.material-grid{
-grid-template-columns:repeat(2,1fr);
-}
+  .project-grid,
+  .client-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
 
 }
 
 @media(max-width:800px){
 
-.side{width:210px}
+  .side{width:210px}
 
-.main{margin-left:210px}
+  .main{margin-left:210px}
 
-.quote-head{
-flex-direction:column;
-}
+  .quote-head{
+    flex-direction:column;
+  }
 
-.quote-number{text-align:left}
+  .quote-number{text-align:left}
 
 }
 
 @media(max-width:650px){
 
-.app{display:block}
+  .app{display:block}
 
-.side{
-position:static;
-width:100%;
+  .side{
+    position:static;
+    width:100%;
+  }
+
+  .main{
+    margin:0;
+    padding:15px;
+  }
+
+  .grid,
+  .row,
+  .project-grid,
+  .client-grid,
+  .quote-info{
+    grid-template-columns:1fr;
+  }
+
+  .top{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .country{
+    width:100%;
+  }
+
+  .quote-preview{
+    padding:20px;
+  }
+
+  .quote-total{
+    width:100%;
+  }
+
+  .quote-footer{
+    grid-template-columns:1fr;
+  }
+
 }
-
-.main{
-margin:0;
-padding:15px;
-}
-
-.grid,
-.row,
-.project-grid,
-.client-grid,
-.material-grid,
-.quote-info{
-grid-template-columns:1fr;
-}
-
-.top{
-flex-direction:column;
-align-items:stretch;
-}
-
-.country{
-width:100%;
-}
-
-.quote-preview{
-padding:20px;
-}
-
-.quote-total{
-width:100%;
-}
-
-.quote-footer{
-grid-template-columns:1fr;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
+<!-- =========================
      LOGIN
-===================================================== -->
+========================= -->
 
 <div id="login" class="login">
 
@@ -840,9 +787,9 @@ Version démo : les données sont enregistrées localement dans votre navigateur
 </div>
 
 
-<!-- =====================================================
-     APPLICATION
-===================================================== -->
+<!-- =========================
+     APP
+========================= -->
 
 <div id="app" class="app hide">
 
@@ -914,11 +861,6 @@ onclick="show('projects',this)">
 </button>
 
 <button
-onclick="show('materials',this)">
-🧱 Matériaux & prix
-</button>
-
-<button
 onclick="show('calc',this)">
 📐 Calculateur BTP
 </button>
@@ -968,9 +910,9 @@ onchange="setCountry(this.value)">
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      DASHBOARD
-===================================================== -->
+========================= -->
 
 <section id="dashboard" class="page">
 
@@ -985,7 +927,7 @@ Construisez mieux. Gérez vos chantiers plus facilement.
 </h2>
 
 <p>
-Calculez, chiffrez, gérez vos clients, vos matériaux et vos projets depuis une seule plateforme.
+Calculez, chiffrez, gérez vos clients, préparez vos devis et suivez vos projets depuis une seule plateforme.
 </p>
 
 <div class="actions">
@@ -998,8 +940,8 @@ onclick="goto('clients')">
 
 <button
 class="btn"
-onclick="goto('materials')">
-+ Nouveau matériau
+onclick="goto('projects')">
++ Nouveau chantier
 </button>
 
 <button
@@ -1046,12 +988,12 @@ id="dashProjects">
 <div class="card">
 
 <div class="muted">
-Matériaux
+Postes DQE
 </div>
 
 <div
 class="stat"
-id="dashMaterials">
+id="dashItems">
 0
 </div>
 
@@ -1107,16 +1049,16 @@ Suivez vos projets.
 </div>
 
 <div>
-<strong>🧱 Matériaux</strong>
+<strong>📋 DQE</strong>
 <p class="muted">
-Centralisez vos prix.
+Chiffrez vos travaux.
 </p>
 </div>
 
 <div>
-<strong>📋 DQE & devis</strong>
+<strong>🧾 Devis</strong>
 <p class="muted">
-Chiffrez et commercialisez vos travaux.
+Créez vos documents commerciaux.
 </p>
 </div>
 
@@ -1127,9 +1069,9 @@ Chiffrez et commercialisez vos travaux.
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CLIENTS
-===================================================== -->
+========================= -->
 
 <section id="clients" class="page hide">
 
@@ -1143,11 +1085,14 @@ Gestion des clients
 Créez votre base clients et réutilisez leurs informations dans vos projets et devis.
 </p>
 
+
 <div class="row">
 
 <div class="field">
 
-<label>Nom / Entreprise</label>
+<label>
+Nom / Entreprise
+</label>
 
 <input
 id="clientName"
@@ -1155,9 +1100,12 @@ placeholder="Ex. Jean Dupont / ETS ABC">
 
 </div>
 
+
 <div class="field">
 
-<label>Type de client</label>
+<label>
+Type de client
+</label>
 
 <select id="clientType">
 
@@ -1171,9 +1119,12 @@ placeholder="Ex. Jean Dupont / ETS ABC">
 
 </div>
 
+
 <div class="field">
 
-<label>Téléphone</label>
+<label>
+Téléphone
+</label>
 
 <input
 id="clientPhone"
@@ -1181,9 +1132,12 @@ placeholder="+228 XX XX XX XX">
 
 </div>
 
+
 <div class="field">
 
-<label>Email</label>
+<label>
+Email
+</label>
 
 <input
 id="clientEmail"
@@ -1192,11 +1146,2387 @@ placeholder="client@email.com">
 
 </div>
 
+
 <div class="field">
 
-<label>Adresse</label>
+<label>
+Adresse
+</label>
 
 <input
 id="clientAddress"
-placehold
+placeholder="Lomé, Togo">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Ville
+</label>
+
+<input
+id="clientCity"
+placeholder="Lomé">
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Notes
+</label>
+
+<textarea
+id="clientNotes"
+placeholder="Informations complémentaires sur le client..."></textarea>
+
+</div>
+
+
+<div class="actions">
+
+<button
+id="clientAddBtn"
+class="btn"
+onclick="addClient()">
++ Enregistrer le client
+</button>
+
+<button
+class="btn danger"
+onclick="clearClientForm()">
+Annuler
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card" style="margin-top:18px">
+
+<div style="display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap">
+
+<div>
+
+<h2 style="margin:0">
+Mes clients
+</h2>
+
+<div class="muted">
+Retrouvez rapidement vos contacts.
+</div>
+
+</div>
+
+<input
+id="clientSearch"
+class="client-search"
+placeholder="🔎 Rechercher un client..."
+oninput="renderClients()">
+
+</div>
+
+</div>
+
+
+<div
+id="clientList"
+class="client-grid">
+</div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects" class="page hide">
+
+<div class="card">
+
+<h2>
+Nouveau projet / chantier
+</h2>
+
+<p class="muted">
+Enregistrez les informations principales de votre chantier.
+</p>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>
+Nom du projet
+</label>
+
+<input
+id="projectName"
+placeholder="Ex. Construction maison RDC">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Client
+</label>
+
+<select id="projectClientSelect">
+<option value="">
+-- Sélectionner un client --
+</option>
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Localisation
+</label>
+
+<input
+id="projectLocation"
+placeholder="Ex. Lomé">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Budget
+</label>
+
+<input
+id="projectBudget"
+type="number"
+step="1"
+placeholder="15000000">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Date de début
+</label>
+
+<input
+id="projectStart"
+type="date">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Date de fin prévue
+</label>
+
+<input
+id="projectEnd"
+type="date">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Statut
+</label>
+
+<select id="projectStatus">
+
+<option>À venir</option>
+<option>En cours</option>
+<option>Terminé</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Responsable
+</label>
+
+<input
+id="projectManager"
+placeholder="Chef de projet">
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Description
+</label>
+
+<textarea
+id="projectDescription"
+placeholder="Description du chantier..."></textarea>
+
+</div>
+
+
+<button
+class="btn"
+onclick="addProject()">
++ Enregistrer le chantier
+</button>
+
+</div>
+
+
+<div
+id="projectList"
+class="project-grid">
+</div>
+
+</section>
+
+
+<!-- =========================
+     CALCULATEUR
+========================= -->
+
+<section id="calc" class="page hide">
+
+<div class="card">
+
+<h2>
+Calculateur BTP
+</h2>
+
+<p class="muted">
+Calcul indicatif du volume de béton et des composants.
+</p>
+
+<div class="row">
+
+<div class="field">
+
+<label>
+Élément
+</label>
+
+<select id="element">
+<option>Dalle</option>
+<option>Poutre</option>
+<option>Poteau</option>
+<option>Semelle</option>
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Longueur (m)
+</label>
+
+<input
+id="L"
+type="number"
+step=".01"
+value="5">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Largeur (m)
+</label>
+
+<input
+id="W"
+type="number"
+step=".01"
+value="4">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Épaisseur / hauteur (m)
+</label>
+
+<input
+id="H"
+type="number"
+step=".01"
+value=".15">
+
+</div>
+
+</div>
+
+
+<button
+class="btn"
+onclick="calc()">
+Calculer
+</button>
+
+
+<div
+id="result"
+class="card hide"
+style="margin-top:15px">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     DQE
+========================= -->
+
+<section id="dqe" class="page hide">
+
+<div class="card">
+
+<h2>
+DQE — Devis Quantitatif Estimatif
+</h2>
+
+<p class="muted">
+Ajoutez les différents postes de votre chantier.
+</p>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>
+Désignation
+</label>
+
+<input
+id="item"
+placeholder="Ex. Béton dosé">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Unité
+</label>
+
+<select id="unit">
+
+<option>m³</option>
+<option>m²</option>
+<option>ml</option>
+<option>u</option>
+<option>kg</option>
+<option>forfait</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Quantité
+</label>
+
+<input
+id="qty"
+type="number"
+step=".01"
+value="1">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Prix unitaire
+</label>
+
+<input
+id="pu"
+type="number"
+step="1"
+value="75000">
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button
+id="dqeAddBtn"
+class="btn"
+onclick="add()">
++ Ajouter au DQE
+</button>
+
+<button
+class="btn danger"
+onclick="clearDQE()">
+🗑️ Vider le DQE
+</button>
+
+</div>
+
+</div>
+
+
+<div class="tablewrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>#</th>
+<th>Désignation</th>
+<th>Unité</th>
+<th>Qté</th>
+<th>PU</th>
+<th>Montant</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="body">
+</tbody>
+
+<tfoot>
+
+<tr>
+
+<th colspan="5" class="right">
+TOTAL
+</th>
+
+<th
+id="total"
+class="right">
+0
+</th>
+
+<th></th>
+
+</tr>
+
+</tfoot>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     DEVIS
+========================= -->
+
+<section id="quote" class="page hide">
+
+<div class="card no-print quote-tools">
+
+<h2>
+Générateur de devis professionnel
+</h2>
+
+<p class="muted">
+Les informations du client peuvent maintenant être récupérées depuis votre base clients.
+</p>
+
+
+<div class="field">
+
+<label>
+Sélectionner un client enregistré
+</label>
+
+<select
+id="quoteClientSelect"
+onchange="fillQuoteClient(this.value)">
+
+<option value="">
+-- Saisir manuellement --
+</option>
+
+</select>
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>
+Entreprise
+</label>
+
+<input
+id="company"
+value="BATIFLOW BTP">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Téléphone entreprise
+</label>
+
+<input
+id="companyPhone"
+placeholder="+228 XX XX XX XX">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Email entreprise
+</label>
+
+<input
+id="companyEmail"
+placeholder="contact@entreprise.com">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Adresse entreprise
+</label>
+
+<input
+id="companyAddress"
+placeholder="Lomé, Togo">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Client
+</label>
+
+<input
+id="client"
+placeholder="Nom du client">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Téléphone client
+</label>
+
+<input
+id="clientPhone"
+placeholder="+228 XX XX XX XX">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Projet
+</label>
+
+<input
+id="project"
+placeholder="Maison RDC">
+
+</div>
+
+
+<div class="field">
+
+<label>
+TVA (%)
+</label>
+
+<input
+id="tax"
+type="number"
+value="0"
+min="0"
+step=".01">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Validité du devis
+</label>
+
+<input
+id="validity"
+value="30 jours">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Conditions de paiement
+</label>
+
+<input
+id="payment"
+value="Selon accord avec le client">
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Conditions / observations
+</label>
+
+<textarea
+id="conditions">Les travaux seront réalisés selon les règles de l'art et les spécifications convenues avec le client.</textarea>
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn"
+onclick="quote()">
+🧾 Générer le devis
+</button>
+
+<button
+class="btn gold"
+onclick="window.print()">
+🖨️ Imprimer / PDF
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="preview"
+class="quote-preview hide">
+</div>
+
+</section>
+
+
+<!-- =========================
+     COUNTRY
+========================= -->
+
+<section id="country" class="page hide">
+
+<div class="card">
+
+<h2>
+Pays & paramètres
+</h2>
+
+<p class="muted">
+Sélectionnez le pays utilisé pour vos calculs et vos devis.
+</p>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>Pays</label>
+
+<select
+id="country"
+onchange="setCountry(this.value)">
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>Devise</label>
+
+<input
+id="currency"
+readonly>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PAYS / DEVISES
+========================= */
+
+const countries={
+
+"Togo":"FCFA",
+"Bénin":"FCFA",
+"Côte d’Ivoire":"FCFA",
+"Sénégal":"FCFA",
+"Burkina Faso":"FCFA",
+"Mali":"FCFA",
+"Niger":"FCFA",
+"Guinée-Bissau":"FCFA",
+"Cameroun":"FCFA",
+"Gabon":"FCFA",
+"Congo":"FCFA",
+"Guinée équatoriale":"FCFA",
+"RCA":"FCFA",
+"Tchad":"FCFA",
+"Ghana":"GHS",
+"Nigeria":"NGN",
+"Guinée":"GNF",
+"Sierra Leone":"SLE",
+"Liberia":"LRD",
+"Gambie":"GMD",
+"Mauritanie":"MRU",
+"Cap-Vert":"CVE",
+"Maroc":"MAD",
+"Algérie":"DZD",
+"Tunisie":"TND",
+"Égypte":"EGP",
+"Libye":"LYD",
+"Soudan":"SDG",
+"Kenya":"KES",
+"Ouganda":"UGX",
+"Tanzanie":"TZS",
+"Rwanda":"RWF",
+"Burundi":"BIF",
+"Éthiopie":"ETB",
+"Somalie":"SOS",
+"Djibouti":"DJF",
+"Seychelles":"SCR",
+"Maurice":"MUR",
+"Afrique du Sud":"ZAR",
+"Namibie":"NAD",
+"Botswana":"BWP",
+"Zambie":"ZMW",
+"Zimbabwe":"ZWG",
+"Mozambique":"MZN",
+"Angola":"AOA",
+"Malawi":"MWK",
+"Lesotho":"LSL",
+"Eswatini":"SZL",
+"Madagascar":"MGA",
+"Comores":"KMF"
+
+};
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let countryName="Togo";
+
+let items=[];
+
+let projects=[];
+
+let clients=[];
+
+let sum=0;
+
+let editIndex=-1;
+
+let editClientIndex=-1;
+
+
+/* =========================
+   OUTILS
+========================= */
+
+function escapeHTML(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function money(value){
+
+return Number(value||0)
+.toLocaleString("fr-FR");
+
+}
+
+
+function initials(name){
+
+const clean=String(name||"Client")
+.trim()
+.split(/\s+/)
+.filter(Boolean);
+
+if(!clean.length) return "C";
+
+return (
+(clean[0][0]||"")+
+(clean[1]?.[0]||"")
+).toUpperCase();
+
+}
+
+
+/* =========================
+   INIT
+========================= */
+
+function init(){
+
+const options=
+Object.keys(countries)
+.map(c=>`
+<option value="${escapeHTML(c)}">
+${escapeHTML(c)}
+</option>
+`)
+.join("");
+
+topCountry.innerHTML=options;
+
+country.innerHTML=options;
+
+topCountry.value=
+country.value=
+countryName;
+
+loadData();
+
+sync();
+
+render();
+
+renderClients();
+
+renderProjects();
+
+populateClientSelects();
+
+}
+
+
+/* =========================
+   STORAGE
+========================= */
+
+function loadData(){
+
+try{
+
+const savedItems=
+localStorage.getItem("batiflow_dqe");
+
+const savedProjects=
+localStorage.getItem("batiflow_projects");
+
+const savedClients=
+localStorage.getItem("batiflow_clients");
+
+if(savedItems)
+items=JSON.parse(savedItems);
+
+if(savedProjects)
+projects=JSON.parse(savedProjects);
+
+if(savedClients)
+clients=JSON.parse(savedClients);
+
+}catch(e){
+
+items=[];
+
+projects=[];
+
+clients=[];
+
+}
+
+}
+
+
+function saveData(){
+
+localStorage.setItem(
+"batiflow_dqe",
+JSON.stringify(items)
+);
+
+localStorage.setItem(
+"batiflow_projects",
+JSON.stringify(projects)
+);
+
+localStorage.setItem(
+"batiflow_clients",
+JSON.stringify(clients)
+);
+
+}
+
+
+/* =========================
+   PAYS
+========================= */
+
+function sync(){
+
+const cur=countries[countryName];
+
+currency.value=cur;
+
+dashCountry.textContent=countryName;
+
+dashCur.textContent=cur;
+
+}
+
+
+function setCountry(c){
+
+countryName=c;
+
+topCountry.value=
+country.value=
+countryName;
+
+sync();
+
+render();
+
+renderProjects();
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function login(e){
+
+e.preventDefault();
+
+document
+.getElementById("login")
+.classList.add("hide");
+
+document
+.getElementById("app")
+.classList.remove("hide");
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function show(id,button){
+
+document
+.querySelectorAll(".page")
+.forEach(x=>x.classList.add("hide"));
+
+document
+.getElementById(id)
+.classList.remove("hide");
+
+document
+.querySelectorAll(".nav button")
+.forEach(x=>x.classList.remove("active"));
+
+if(button)
+button.classList.add("active");
+
+const titles={
+
+dashboard:"Tableau de bord",
+
+clients:"Clients",
+
+projects:"Projets / Chantiers",
+
+calc:"Calculateur BTP",
+
+dqe:"DQE",
+
+quote:"Générateur de devis",
+
+country:"Pays & paramètres"
+
+};
+
+title.textContent=
+titles[id]||"BATIFLOW";
+
+}
+
+
+function goto(id){
+
+const button=
+[...document.querySelectorAll(".nav button")]
+.find(x=>{
+
+const t=x.textContent.toLowerCase();
+
+if(id==="clients")
+return t.includes("clients");
+
+if(id==="projects")
+return t.includes("projets");
+
+if(id==="calc")
+return t.includes("calculateur");
+
+if(id==="dqe")
+return t.includes("dqe");
+
+if(id==="quote")
+return t.includes("devis");
+
+return t.includes("tableau");
+
+});
+
+show(id,button);
+
+}
+
+
+/* =========================
+   CLIENTS
+========================= */
+
+function addClient(){
+
+const name=
+clientName.value.trim();
+
+if(!name){
+
+alert(
+"Veuillez saisir le nom du client."
+);
+
+return;
+
+}
+
+
+const obj={
+
+id:
+editClientIndex>=0
+?clients[editClientIndex].id
+:Date.now(),
+
+name:name,
+
+type:clientType.value,
+
+phone:clientPhone.value.trim(),
+
+email:clientEmail.value.trim(),
+
+address:clientAddress.value.trim(),
+
+city:clientCity.value.trim(),
+
+notes:clientNotes.value.trim(),
+
+createdAt:
+new Date().toISOString()
+
+};
+
+
+if(editClientIndex>=0){
+
+clients[editClientIndex]=obj;
+
+editClientIndex=-1;
+
+clientAddBtn.textContent=
+"+ Enregistrer le client";
+
+}else{
+
+clients.push(obj);
+
+}
+
+
+saveData();
+
+clearClientForm();
+
+renderClients();
+
+populateClientSelects();
+
+}
+
+
+function clearClientForm(){
+
+clientName.value="";
+
+clientType.value="Particulier";
+
+clientPhone.value="";
+
+clientEmail.value="";
+
+clientAddress.value="";
+
+clientCity.value="";
+
+clientNotes.value="";
+
+editClientIndex=-1;
+
+clientAddBtn.textContent=
+"+ Enregistrer le client";
+
+}
+
+
+function editClient(index){
+
+const c=clients[index];
+
+clientName.value=c.name||"";
+
+clientType.value=c.type||"Particulier";
+
+clientPhone.value=c.phone||"";
+
+clientEmail.value=c.email||"";
+
+clientAddress.value=c.address||"";
+
+clientCity.value=c.city||"";
+
+clientNotes.value=c.notes||"";
+
+editClientIndex=index;
+
+clientAddBtn.textContent=
+"✓ Enregistrer la modification";
+
+goto("clients");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function deleteClient(index){
+
+const c=clients[index];
+
+if(!confirm(
+`Supprimer le client "${c.name}" ?`
+)) return;
+
+clients.splice(index,1);
+
+saveData();
+
+renderClients();
+
+populateClientSelects();
+
+}
+
+
+function renderClients(){
+
+dashClients.textContent=
+clients.length;
+
+const search=
+(clientSearch.value||"")
+.toLowerCase()
+.trim();
+
+const filtered=
+clients.filter(c=>{
+
+const text=[
+c.name,
+c.type,
+c.phone,
+c.email,
+c.address,
+c.city
+]
+.join(" ")
+.toLowerCase();
+
+return text.includes(search);
+
+});
+
+
+if(!filtered.length){
+
+clientList.innerHTML=`
+
+<div class="card">
+
+<h3>
+Aucun client trouvé
+</h3>
+
+<p class="muted">
+Ajoutez votre premier client ou modifiez votre recherche.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+clientList.innerHTML=
+filtered
+.map(c=>{
+
+const realIndex=
+clients.findIndex(
+x=>x.id===c.id
+);
+
+return `
+
+<div class="client-card">
+
+<div class="client-avatar">
+${escapeHTML(initials(c.name))}
+</div>
+
+<h3>
+${escapeHTML(c.name)}
+</h3>
+
+<span class="badge blue">
+${escapeHTML(c.type)}
+</span>
+
+<div class="client-meta">
+📞 ${escapeHTML(c.phone||"Non renseigné")}
+</div>
+
+<div class="client-meta">
+✉️ ${escapeHTML(c.email||"Non renseigné")}
+</div>
+
+<div class="client-meta">
+📍 ${escapeHTML(
+[c.address,c.city]
+.filter(Boolean)
+.join(", ")||"Non renseignée"
+)}
+</div>
+
+${c.notes?`
+
+<div class="client-meta">
+📝 ${escapeHTML(c.notes)}
+</div>
+
+`:""}
+
+<div class="actions">
+
+<button
+class="btn alt"
+onclick="editClient(${realIndex})">
+Modifier
+</button>
+
+<button
+class="btn danger"
+onclick="deleteClient(${realIndex})">
+Supprimer
+</button>
+
+</div>
+
+</div>
+
+`;
+
+})
+.join("");
+
+}
+
+
+/* =========================
+   CLIENTS → SELECTS
+========================= */
+
+function populateClientSelects(){
+
+const options=
+clients
+.map(c=>`
+
+<option value="${escapeHTML(c.id)}">
+${escapeHTML(c.name)}
+${c.phone?" — "+escapeHTML(c.phone):""}
+</option>
+
+`)
+.join("");
+
+
+projectClientSelect.innerHTML=
+`
+<option value="">
+-- Sélectionner un client --
+</option>
+`
++
+options;
+
+
+quoteClientSelect.innerHTML=
+`
+<option value="">
+-- Saisir manuellement --
+</option>
+`
++
+options;
+
+}
+
+
+/* =========================
+   REMPLIR DEVIS
+========================= */
+
+function fillQuoteClient(id){
+
+if(!id){
+
+return;
+
+}
+
+const c=
+clients.find(
+x=>String(x.id)===String(id)
+);
+
+if(!c) return;
+
+client.value=c.name||"";
+
+clientPhone.value=c.phone||"";
+
+}
+
+
+/* =========================
+   CALCULATEUR
+========================= */
+
+function calc(){
+
+const volume=
+(+L.value||0)*
+(+W.value||0)*
+(+H.value||0);
+
+result.classList.remove("hide");
+
+result.innerHTML=`
+
+<b>
+${escapeHTML(element.value)}
+</b>
+
+<p>
+Volume :
+<strong>
+${volume.toFixed(2)} m³
+</strong>
+</p>
+
+<p>
+Estimation indicative :
+ciment ${(volume*7.5).toFixed(1)} sacs ·
+sable ${(volume*.5).toFixed(2)} m³ ·
+gravier ${(volume*.8).toFixed(2)} m³.
+</p>
+
+<small class="muted">
+Valeurs de démonstration.
+À valider selon le dosage,
+les normes et les spécifications du projet.
+</small>
+
+`;
+
+}
+
+
+/* =========================
+   DQE
+========================= */
+
+function add(){
+
+const name=
+item.value.trim()||"Poste BTP";
+
+const q=
+Number(qty.value)||0;
+
+const p=
+Number(pu.value)||0;
+
+if(q<=0){
+
+alert(
+"La quantité doit être supérieure à 0."
+);
+
+return;
+
+}
+
+if(p<0){
+
+alert(
+"Le prix unitaire ne peut pas être négatif."
+);
+
+return;
+
+}
+
+const obj={
+n:name,
+u:unit.value,
+q:q,
+p:p,
+m:q*p
+};
+
+
+if(editIndex>=0){
+
+items[editIndex]=obj;
+
+editIndex=-1;
+
+dqeAddBtn.textContent=
+"+ Ajouter au DQE";
+
+}else{
+
+items.push(obj);
+
+}
+
+
+item.value="";
+
+qty.value=1;
+
+pu.value=75000;
+
+saveData();
+
+render();
+
+}
+
+
+function editDQE(index){
+
+const x=items[index];
+
+item.value=x.n;
+
+unit.value=x.u;
+
+qty.value=x.q;
+
+pu.value=x.p;
+
+editIndex=index;
+
+dqeAddBtn.textContent=
+"✓ Enregistrer la modification";
+
+goto("dqe");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function deleteDQE(index){
+
+if(!confirm(
+"Supprimer ce poste du DQE ?"
+)) return;
+
+items.splice(index,1);
+
+saveData();
+
+render();
+
+}
+
+
+function clearDQE(){
+
+if(!items.length){
+
+alert(
+"Le DQE est déjà vide."
+);
+
+return;
+
+}
+
+if(!confirm(
+"Voulez-vous vraiment vider tout le DQE ?"
+)) return;
+
+items=[];
+
+editIndex=-1;
+
+dqeAddBtn.textContent=
+"+ Ajouter au DQE";
+
+saveData();
+
+render();
+
+}
+
+
+function render(){
+
+body.innerHTML=
+items
+.map((x,i)=>`
+
+<tr>
+
+<td>${i+1}</td>
+
+<td>
+${escapeHTML(x.n)}
+</td>
+
+<td>
+${escapeHTML(x.u)}
+</td>
+
+<td>
+${x.q}
+</td>
+
+<td>
+${money(x.p)}
+</td>
+
+<td>
+${money(x.m)}
+${escapeHTML(countries[countryName])}
+</td>
+
+<td>
+
+<button
+class="btn alt"
+onclick="editDQE(${i})">
+Modifier
+</button>
+
+<button
+class="btn danger"
+onclick="deleteDQE(${i})">
+Supprimer
+</button>
+
+</td>
+
+</tr>
+
+`)
+.join("");
+
+sum=
+items.reduce(
+(a,x)=>a+Number(x.m||0),
+0
+);
+
+total.textContent=
+money(sum)+" "+countries[countryName];
+
+dashTotal.textContent=
+money(sum);
+
+dashItems.textContent=
+items.length;
+
+}
+
+
+/* =========================
+   PROJETS
+========================= */
+
+function addProject(){
+
+const name=
+projectName.value.trim();
+
+if(!name){
+
+alert(
+"Veuillez saisir le nom du projet."
+);
+
+return;
+
+}
+
+
+const selectedClient=
+clients.find(
+c=>String(c.id)===
+String(projectClientSelect.value)
+);
+
+
+projects.push({
+
+id:Date.now(),
+
+name:name,
+
+clientId:
+selectedClient
+?selectedClient.id
+:null,
+
+client:
+selectedClient
+?selectedClient.name
+:"",
+
+location:
+projectLocation.value.trim(),
+
+budget:
+Number(projectBudget.value)||0,
+
+start:
+projectStart.value,
+
+end:
+projectEnd.value,
+
+status:
+projectStatus.value,
+
+manager:
+projectManager.value.trim(),
+
+description:
+projectDescription.value.trim()
+
+});
+
+
+saveData();
+
+renderProjects();
+
+projectName.value="";
+
+projectClientSelect.value="";
+
+projectLocation.value="";
+
+projectBudget.value="";
+
+projectStart.value="";
+
+projectEnd.value="";
+
+projectManager.value="";
+
+projectDescription.value="";
+
+}
+
+
+function deleteProject(id){
+
+if(!confirm(
+"Supprimer ce chantier ?"
+)) return;
+
+projects=
+projects.filter(
+x=>x.id!==id
+);
+
+saveData();
+
+renderProjects();
+
+}
+
+
+function statusBadge(status){
+
+if(status==="En cours")
+return `
+<span class="badge blue">
+En cours
+</span>
+`;
+
+if(status==="Terminé")
+return `
+<span class="badge green">
+Terminé
+</span>
+`;
+
+return `
+<span class="badge orange">
+À venir
+</span>
+`;
+
+}
+
+
+function renderProjects(){
+
+dashProjects.textContent=
+projects.length;
+
+
+if(!projects.length){
+
+projectList.innerHTML=`
+
+<div class="card">
+
+<h3>
+Aucun chantier
+</h3>
+
+<p class="muted">
+Commencez par créer votre premier projet.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+projectList.innerHTML=
+projects
+.map(p=>`
+
+<div class="project-card">
+
+<h3>
+${escapeHTML(p.name)}
+</h3>
+
+${statusBadge(p.status)}
+
+<div class="project-budget">
+${money(p.budget)}
+${escapeHTML(countries[countryName])}
+</div>
+
+<div class="project-meta">
+👤 Client :
+${escapeHTML(p.client||"—")}
+</div>
+
+<div class="project-meta">
+📍 Localisation :
+${escapeHTML(p.location||"—")}
+</div>
+
+<div class="project-meta">
+👷 Responsable :
+${escapeHTML(p.manager||"—")}
+</div>
+
+<div class="project-meta">
+📅 Début :
+${escapeHTML(p.start||"—")}
+</div>
+
+<div class="project-meta">
+🏁 Fin :
+${escapeHTML(p.end||"—")}
+</div>
+
+${p.description?`
+
+<div class="project-meta">
+📝 ${escapeHTML(p.description)}
+</div>
+
+`:""}
+
+<div class="actions">
+
+<button
+class="btn danger"
+onclick="deleteProject(${p.id})">
+Supprimer
+</button>
+
+</div>
+
+</div>
+
+`)
+.join("");
+
+}
+
+
+/* =========================
+   NUMÉRO DEVIS
+========================= */
+
+function getQuoteNumber(){
+
+const today=new Date();
+
+const year=today.getFullYear();
+
+const key=
+"batiflow_quote_counter_"+year;
+
+let counter=
+Number(
+localStorage.getItem(key)||0
+)+1;
+
+localStorage.setItem(
+key,
+counter
+);
+
+return(
+"BF-"+
+year+
+"-"+
+String(counter).padStart(4,"0")
+);
+
+}
+
+
+/* =========================
+   DEVIS
+========================= */
+
+function quote(){
+
+if(!items.length){
+
+alert(
+"Ajoutez d'abord des postes dans le DQE."
+);
+
+return;
+
+}
+
+
+const quoteNumber=
+getQuoteNumber();
+
+const date=
+new Date()
+.toLocaleDateString("fr-FR");
+
+const taxRate=
+Number(tax.value)||0;
+
+const vat=
+sum*taxRate/100;
+
+const ttc=
+sum+vat;
+
+const companyName=
+company.value.trim()||
+"BATIFLOW BTP";
+
+const companyPhoneValue=
+companyPhone.value.trim();
+
+const companyEmailValue=
+companyEmail.value.trim();
+
+const companyAddressValue=
+companyAddress.value.trim();
+
+const clientValue=
+client.value.trim()||"—";
+
+const clientPhoneValue=
+clientPhone.value.trim();
+
+const projectValue=
+project.value.trim()||"—";
+
+const validityValue=
+validity.value.trim()||"30 jours";
+
+const paymentValue=
+payment.value.trim()||
+"Selon accord";
+
+const conditionsValue=
+conditions.value.trim()||"—";
+
+
+preview.classList.remove("hide");
+
+preview.innerHTML=`
+
+<div class="quote-head">
+
+<div>
+
+<div class="quote-logo">
+
+<div class="quote-logo-mark">
+
+<svg viewBox="0 0 64 64">
+
+<path
+d="M12 52V24L32 10L52 24V52"
+fill="none"
+stroke="white"
+stroke-width="5"
+stroke-linejoin="round"/>
+
+<path
+d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
+fill="#f59e0b"/>
+
+<path
+d="M28 31V47"
+stroke="#0b1f3a"
+stroke-width="4"
+stroke-linecap="round"/>
+
+</svg>
+
+</div>
+
+<div>
+
+<div class="quote-brand">
+BATI<span>FLOW</span>
+</div>
+
+<div class="muted">
+BUILD • CALCULATE • MANAGE
+</div>
+
+</div>
+
+</div>
+
+<p>
+<strong>
+${escapeHTML(companyName)}
+</strong>
+</p>
+
+<div class="muted">
+
+${escapeHTML(companyAddressValue)}
+
+<br>
+
+${escapeHTML(companyPhoneValue)}
+
+<br>
+
+${escapeHTML(companyEmailValue)}
+
+</div>
+
+</div>
+
+
+<div class="quote-number">
+
+<div class="muted">
+DEVIS
+</div>
+
+<strong>
+${escapeHTML(quoteNumber)}
+</strong>
+
+<p>
+Date : ${date}
+</p>
+
+<p>
+Validité : ${escapeHTML(validityValue)}
+</p>
+
+</div>
+
+</div>
+
+
+<div class="quote-info">
+
+<div class="quote-info-box">
+
+<strong>
+FACTURÉ À
+</strong>
+
+<p>
+${escapeHTML(clientValue)}
+</p>
+
+<div class="muted">
+${escapeHTML(clientPhoneValue)}
+</div>
+
+</div>
+
+
+<div class="quote-info-box">
+
+<strong>
+PROJET
+</strong>
+
+<p>
+${escapeHTML(projectValue)}
+</p>
+
+<div class="muted">
+Pays :
+${escapeHTML(countryName)}
+</div>
+
+</div>
+
+</div>
+
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+
+<th>Désignation</th>
+
+<th>Qté</th>
+
+<th>PU</th>
+
+<th class="right">
+Montant
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${items.map((x,i)=>`
+
+<tr>
+
+<td>
+${i+1}
+</td>
+
+<td>
+${escapeHTML(x.n)}
+</td>
+
+<td>
+${x.q}
+${escapeHTML(x.u)}
+</td>
+
+<td>
+${money(x.p)}
+</td>
+
+<td class="right">
+${money(x.m)}
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+
+<div class="quote-total">
+
+<div>
+
+<span>
+Total HT
+</span>
+
+<strong>
+${money(sum)}
+${escapeHTML(countries[countryName])}
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+TVA (${taxRate}%)
+</span>
+
+<strong>
+${money(vat)}
+${escapeHTML(countries[countryName])}
+</strong>
+
+</div>
+
+
+<div class="grand">
+
+<span>
+TOTAL TTC
+</span>
+
+<strong>
+${money(ttc)}
+${escapeHTML(countries[countryName])}
+</strong>
+
+</div>
+
+</div>
+
+
+<div style="margin-top:35px">
+
+<strong>
+Conditions de paiement
+</strong>
+
+<p>
+${escapeHTML(paymentValue)}
+</p>
+
+</div>
+
+
+<div style="margin-top:25px">
+
+<strong>
+Conditions / observations
+</strong>
+
+<p>
+${escapeHTML(conditionsValue)}
+</p>
+
+</div>
+
+
+<div class="quote-footer">
+
+<div>
+
+<strong>
+Le client
+</strong>
+
+<div class="signature"></div>
+
+<small>
+Signature et cachet
+</small>
+
+</div>
+
+
+<div>
+
+<strong>
+L'entreprise
+</strong>
+
+<div class="signature"></div>
+
+<small>
+Signature et cachet
+</small>
+
+</div>
+
+</div>
+
+
+<div
+class="muted"
+style="margin-top:35px;text-align:center">
+
+Document généré avec BATIFLOW —
+Gestion BTP intelligente
+
+</div>
+
+`;
+
+
+preview.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================
+   DÉMARRAGE
+========================= */
+
+init();
+
+</script>
+
+</body>
+</html>
 ```
