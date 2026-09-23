@@ -20,7 +20,9 @@
   --text:#182230;
   --muted:#718096;
   --line:#e3e9f2;
-  --success:#16a34a;
+  --green:#16a34a;
+  --orange:#f97316;
+  --red:#dc2626;
   --shadow:0 10px 30px rgba(11,31,58,.08);
 }
 
@@ -39,7 +41,7 @@ body{
   color:var(--text);
 }
 
-button,input,select{
+button,input,select,textarea{
   font:inherit;
 }
 
@@ -143,8 +145,7 @@ button{
 
 .side{
   width:255px;
-  background:
-    linear-gradient(180deg,#0b1f3a 0%,#102d50 100%);
+  background:linear-gradient(180deg,#0b1f3a 0%,#102d50 100%);
   color:white;
   padding:22px 14px;
   position:fixed;
@@ -178,7 +179,6 @@ button{
 .brand-mark svg{
   width:38px;
   height:38px;
-  display:block;
 }
 
 .brand-text{
@@ -222,7 +222,7 @@ button{
   align-items:center;
   gap:10px;
   width:100%;
-  padding:13px 13px;
+  padding:13px;
   margin:5px 0;
   border:0;
   border-radius:11px;
@@ -279,10 +279,6 @@ button{
   margin-top:5px;
 }
 
-.country{
-  width:220px;
-}
-
 /* =========================
    GENERAL
 ========================= */
@@ -307,17 +303,6 @@ button{
   box-shadow:0 15px 40px rgba(11,31,58,.18);
 }
 
-.hero:after{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:50%;
-  right:-70px;
-  bottom:-100px;
-}
-
 .hero-label{
   display:inline-block;
   padding:6px 10px;
@@ -331,16 +316,11 @@ button{
 }
 
 .hero h2{
-  position:relative;
-  z-index:1;
   font-size:32px;
   margin:14px 0 8px;
-  letter-spacing:-1px;
 }
 
 .hero p{
-  position:relative;
-  z-index:1;
   max-width:650px;
   color:#dbeafe;
   line-height:1.6;
@@ -349,10 +329,6 @@ button{
 .muted{
   color:var(--muted);
   font-size:13px;
-}
-
-.hero .muted{
-  color:#d9e5f5;
 }
 
 .grid{
@@ -443,8 +419,14 @@ button{
   color:var(--navy);
 }
 
-.btn.alt:hover{
-  background:#dce7f7;
+.btn.danger{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.btn.small{
+  padding:8px 12px;
+  font-size:12px;
 }
 
 .actions{
@@ -477,6 +459,7 @@ button{
 
 .field input,
 .field select,
+.field textarea,
 .country{
   width:100%;
   padding:12px 13px;
@@ -485,14 +468,125 @@ button{
   background:white;
   color:var(--text);
   outline:none;
-  transition:.2s;
+}
+
+.field textarea{
+  min-height:90px;
+  resize:vertical;
 }
 
 .field input:focus,
 .field select:focus,
-.country:focus{
+.field textarea:focus{
   border-color:var(--blue2);
   box-shadow:0 0 0 3px rgba(59,130,246,.10);
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.project-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.project-header h2{
+  margin:0;
+}
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.project-card{
+  position:relative;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:20px;
+  box-shadow:var(--shadow);
+  transition:.2s;
+}
+
+.project-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px rgba(11,31,58,.12);
+}
+
+.project-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.project-icon{
+  width:45px;
+  height:45px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#edf4ff;
+  font-size:20px;
+}
+
+.project-card h3{
+  margin:14px 0 5px;
+  font-size:18px;
+}
+
+.project-info{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:800;
+}
+
+.status.todo{
+  background:#fff7ed;
+  color:#c2410c;
+}
+
+.status.progress{
+  background:#eff6ff;
+  color:#1d4ed8;
+}
+
+.status.done{
+  background:#f0fdf4;
+  color:#15803d;
+}
+
+.project-actions{
+  display:flex;
+  gap:7px;
+  margin-top:16px;
+}
+
+.empty-project{
+  text-align:center;
+  padding:50px 20px;
+  color:var(--muted);
+}
+
+.empty-project-icon{
+  font-size:45px;
+  margin-bottom:10px;
 }
 
 /* =========================
@@ -529,21 +623,8 @@ th{
   font-size:12px;
 }
 
-tr:last-child td{
-  border-bottom:0;
-}
-
 .right{
   text-align:right;
-}
-
-/* =========================
-   RESULT
-========================= */
-
-.result-box{
-  border-left:4px solid var(--blue);
-  background:#f7faff;
 }
 
 /* =========================
@@ -574,7 +655,11 @@ tr:last-child td{
    RESPONSIVE
 ========================= */
 
-@media(max-width:1050px){
+@media(max-width:1100px){
+
+  .project-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
 
   .grid{
     grid-template-columns:repeat(2,1fr);
@@ -596,12 +681,8 @@ tr:last-child td{
     padding:20px;
   }
 
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .hero h2{
-    font-size:27px;
+  .project-grid{
+    grid-template-columns:1fr;
   }
 }
 
@@ -645,14 +726,6 @@ tr:last-child td{
     flex-direction:column;
   }
 
-  .top h1{
-    font-size:23px;
-  }
-
-  .country{
-    width:100%;
-  }
-
   .grid,
   .row{
     grid-template-columns:1fr;
@@ -664,6 +737,11 @@ tr:last-child td{
 
   .hero h2{
     font-size:25px;
+  }
+
+  .project-header{
+    flex-direction:column;
+    align-items:stretch;
   }
 
   .loginbox{
@@ -680,6 +758,7 @@ tr:last-child td{
   .side,
   .top,
   .actions,
+  .project-actions,
   .btn{
     display:none!important;
   }
@@ -709,90 +788,93 @@ tr:last-child td{
 
 <div id="login" class="login">
 
-  <form class="loginbox" onsubmit="login(event)">
+<form class="loginbox" onsubmit="login(event)">
 
-    <div class="login-brand">
+  <div class="login-brand">
 
-      <div class="login-brand-mark">
+    <div class="login-brand-mark">
 
-        <svg viewBox="0 0 64 64" aria-hidden="true">
+      <svg viewBox="0 0 64 64">
 
-          <path
-            d="M12 52V24L32 10L52 24V52"
-            fill="none"
-            stroke="#0b1f3a"
-            stroke-width="5"
-            stroke-linejoin="round"/>
+        <path
+          d="M12 52V24L32 10L52 24V52"
+          fill="none"
+          stroke="#0b1f3a"
+          stroke-width="5"
+          stroke-linejoin="round"/>
 
-          <path
-            d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
-            fill="#f59e0b"/>
+        <path
+          d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
+          fill="#f59e0b"/>
 
-          <path
-            d="M28 31V47"
-            stroke="white"
-            stroke-width="4"
-            stroke-linecap="round"/>
+        <path
+          d="M28 31V47"
+          stroke="white"
+          stroke-width="4"
+          stroke-linecap="round"/>
 
-          <path
-            d="M12 55H52"
-            stroke="#0b1f3a"
-            stroke-width="4"
-            stroke-linecap="round"/>
+        <path
+          d="M12 55H52"
+          stroke="#0b1f3a"
+          stroke-width="4"
+          stroke-linecap="round"/>
 
-        </svg>
+      </svg>
 
+    </div>
+
+    <div>
+
+      <div class="login-brand-name">
+        BATI<span>FLOW</span>
       </div>
 
-      <div>
-
-        <div class="login-brand-name">
-          BATI<span>FLOW</span>
-        </div>
-
-        <div class="login-brand-sub">
-          BUILD • CALCULATE • MANAGE
-        </div>
-
+      <div class="login-brand-sub">
+        BUILD • CALCULATE • MANAGE
       </div>
 
     </div>
 
-    <div class="login-title">
-      Bienvenue sur BATIFLOW
-    </div>
+  </div>
 
-    <p class="login-description">
-      La plateforme intelligente de gestion BTP pensée pour l'Afrique.
-    </p>
+  <div class="login-title">
+    Bienvenue sur BATIFLOW
+  </div>
 
-    <div class="field">
-      <label>Email</label>
-      <input
-        type="email"
-        required
-        placeholder="vous@entreprise.com">
-    </div>
+  <p class="login-description">
+    La plateforme intelligente de gestion BTP pensée pour l'Afrique.
+  </p>
 
-    <div class="field">
-      <label>Mot de passe</label>
-      <input
-        type="password"
-        required
-        placeholder="••••••••">
-    </div>
+  <div class="field">
+    <label>Email</label>
+    <input
+      id="loginEmail"
+      type="email"
+      required
+      placeholder="vous@entreprise.com">
+  </div>
 
-    <button
-      class="btn"
-      style="width:100%;margin-top:8px">
-      Se connecter
-    </button>
+  <div class="field">
+    <label>Mot de passe</label>
+    <input
+      type="password"
+      required
+      placeholder="••••••••">
+  </div>
 
-    <p class="muted" style="margin-top:16px;text-align:center">
-      Prototype V2 — aucune donnée envoyée en ligne.
-    </p>
+  <button
+    class="btn"
+    style="width:100%;margin-top:8px">
+    Se connecter
+  </button>
 
-  </form>
+  <p
+    class="muted"
+    style="margin-top:16px;text-align:center">
+    Prototype V3 — données enregistrées uniquement dans ce navigateur.
+  </p>
+
+</form>
 
 </div>
 
@@ -803,1304 +885,303 @@ tr:last-child td{
 
 <div id="app" class="app hide">
 
-  <!-- SIDEBAR -->
+<aside class="side">
 
-  <aside class="side">
+  <div class="brand">
 
-    <div class="brand">
+    <div class="brand-mark">
 
-      <div class="brand-mark">
+      <svg viewBox="0 0 64 64">
 
-        <svg viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
 
-          <defs>
+          <linearGradient
+            id="logoGold"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="1">
 
-            <linearGradient
-              id="logoGold"
-              x1="0"
-              y1="0"
-              x2="1"
-              y2="1">
+            <stop
+              offset="0%"
+              stop-color="#fbbf24"/>
 
-              <stop
-                offset="0%"
-                stop-color="#fbbf24"/>
+            <stop
+              offset="100%"
+              stop-color="#f59e0b"/>
 
-              <stop
-                offset="100%"
-                stop-color="#f59e0b"/>
+          </linearGradient>
 
-            </linearGradient>
+        </defs>
 
-          </defs>
+        <path
+          d="M12 52V24L32 10L52 24V52"
+          fill="none"
+          stroke="white"
+          stroke-width="5"
+          stroke-linejoin="round"/>
 
-          <path
-            d="M12 52V24L32 10L52 24V52"
-            fill="none"
-            stroke="white"
-            stroke-width="5"
-            stroke-linejoin="round"/>
+        <path
+          d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
+          fill="url(#logoGold)"/>
 
-          <path
-            d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
-            fill="url(#logoGold)"/>
+        <path
+          d="M28 31V47"
+          stroke="#0b1f3a"
+          stroke-width="4"
+          stroke-linecap="round"/>
 
-          <path
-            d="M28 31V47"
-            stroke="#0b1f3a"
-            stroke-width="4"
-            stroke-linecap="round"/>
+        <path
+          d="M12 55H52"
+          stroke="white"
+          stroke-width="4"
+          stroke-linecap="round"/>
 
-          <path
-            d="M12 55H52"
-            stroke="white"
-            stroke-width="4"
-            stroke-linecap="round"/>
-
-        </svg>
-
-      </div>
-
-      <div class="brand-text">
-
-        <div class="brand-name">
-          BATI<span>FLOW</span>
-        </div>
-
-        <small>
-          BUILD • CALCULATE • MANAGE
-        </small>
-
-      </div>
+      </svg>
 
     </div>
 
-    <div class="nav-title">
-      Navigation
-    </div>
+    <div class="brand-text">
 
-    <div class="nav">
+      <div class="brand-name">
+        BATI<span>FLOW</span>
+      </div>
 
-      <button
-        class="active"
-        onclick="show('dashboard',this)">
-
-        <span class="nav-icon">⌂</span>
-        Tableau de bord
-
-      </button>
-
-      <button
-        onclick="show('calc',this)">
-
-        <span class="nav-icon">📐</span>
-        Calculateur BTP
-
-      </button>
-
-      <button
-        onclick="show('dqe',this)">
-
-        <span class="nav-icon">📋</span>
-        DQE
-
-      </button>
-
-      <button
-        onclick="show('quote',this)">
-
-        <span class="nav-icon">🧾</span>
-        Devis
-
-      </button>
-
-      <button
-        onclick="show('country',this)">
-
-        <span class="nav-icon">🌍</span>
-        Pays & paramètres
-
-      </button>
+      <small>
+        BUILD • CALCULATE • MANAGE
+      </small>
 
     </div>
 
-  </aside>
+  </div>
+
+  <div class="nav-title">
+    Navigation
+  </div>
+
+  <div class="nav">
+
+    <button
+      class="active"
+      onclick="show('dashboard',this)">
+
+      <span class="nav-icon">⌂</span>
+      Tableau de bord
+
+    </button>
+
+    <button
+      onclick="show('projects',this)">
+
+      <span class="nav-icon">🏗️</span>
+      Projets / Chantiers
+
+    </button>
+
+    <button
+      onclick="show('calc',this)">
+
+      <span class="nav-icon">📐</span>
+      Calculateur BTP
+
+    </button>
+
+    <button
+      onclick="show('dqe',this)">
+
+      <span class="nav-icon">📋</span>
+      DQE
+
+    </button>
+
+    <button
+      onclick="show('quote',this)">
+
+      <span class="nav-icon">🧾</span>
+      Devis
+
+    </button>
+
+    <button
+      onclick="show('country',this)">
+
+      <span class="nav-icon">🌍</span>
+      Pays & paramètres
+
+    </button>
+
+  </div>
+
+</aside>
 
 
-  <!-- MAIN -->
+<main class="main">
 
-  <main class="main">
+<!-- TOP -->
 
-    <!-- TOP BAR -->
+<div class="top">
 
-    <div class="top">
+  <div>
 
-      <div>
+    <h1 id="title">
+      Tableau de bord
+    </h1>
 
-        <h1 id="title">
-          Tableau de bord
-        </h1>
-
-        <div class="muted">
-          Gestion BTP intelligente
-        </div>
-
-      </div>
-
-      <select
-        id="topCountry"
-        class="country"
-        onchange="setCountry(this.value)">
-      </select>
-
+    <div class="muted">
+      Gestion BTP intelligente
     </div>
 
-
-    <!-- =========================
-         DASHBOARD
-    ========================= -->
-
-    <section
-      id="dashboard"
-      class="page">
-
-      <div class="hero">
-
-        <div class="hero-label">
-          BATIFLOW V2
-        </div>
-
-        <h2>
-          Construisez mieux. Calculez plus vite.
-        </h2>
-
-        <p>
-          Centralisez vos calculs BTP, vos DQE et vos devis
-          depuis une seule plateforme conçue pour les professionnels
-          de la construction en Afrique.
-        </p>
-
-        <div class="actions">
-
-          <button
-            class="btn gold"
-            onclick="goto('calc')">
-            Nouveau calcul
-          </button>
-
-          <button
-            class="btn alt"
-            onclick="goto('dqe')">
-            Créer un DQE
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- STATS -->
-
-      <div class="grid">
-
-        <div class="card">
-
-          <div class="stat-label">
-            Projets
-          </div>
-
-          <div class="stat">
-            8
-          </div>
-
-          <div class="muted">
-            projets actifs
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="stat-label">
-            Devis ce mois
-          </div>
-
-          <div class="stat">
-            14
-          </div>
-
-          <div class="muted">
-            documents préparés
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="stat-label">
-            Montant DQE
-          </div>
-
-          <div
-            class="stat"
-            id="dashTotal">
-            0
-          </div>
-
-          <div
-            class="muted"
-            id="dashCur">
-            FCFA
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="stat-label">
-            Pays actif
-          </div>
-
-          <div
-            class="stat"
-            id="dashCountry">
-            Togo
-          </div>
-
-          <div class="muted">
-            configuration locale
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- FEATURES -->
-
-      <div class="feature-grid">
-
-        <div class="card feature">
-
-          <div class="feature-icon">
-            📐
-          </div>
-
-          <div>
-
-            <h3>
-              Calculateur BTP
-            </h3>
-
-            <p>
-              Estimez rapidement les volumes et composants
-              nécessaires à vos travaux.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card feature">
-
-          <div class="feature-icon">
-            📋
-          </div>
-
-          <div>
-
-            <h3>
-              DQE intelligent
-            </h3>
-
-            <p>
-              Quantifiez vos postes et calculez automatiquement
-              les montants.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card feature">
-
-          <div class="feature-icon">
-            🧾
-          </div>
-
-          <div>
-
-            <h3>
-              Devis professionnel
-            </h3>
-
-            <p>
-              Préparez un devis clair et imprimez-le ou exportez-le
-              en PDF.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CALCULATEUR
-    ========================= -->
-
-    <section
-      id="calc"
-      class="page hide">
-
-      <div class="card">
-
-        <h2>
-          Calculateur BTP
-        </h2>
-
-        <p class="muted">
-          Calcul indicatif du volume de béton et des composants.
-        </p>
-
-        <div class="row">
-
-          <div class="field">
-
-            <label>
-              Élément
-            </label>
-
-            <select id="element">
-
-              <option>
-                Dalle
-              </option>
-
-              <option>
-                Poutre
-              </option>
-
-              <option>
-                Poteau
-              </option>
-
-              <option>
-                Semelle
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Longueur (m)
-            </label>
-
-            <input
-              id="L"
-              type="number"
-              step=".01"
-              value="5">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Largeur (m)
-            </label>
-
-            <input
-              id="W"
-              type="number"
-              step=".01"
-              value="4">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Épaisseur / hauteur (m)
-            </label>
-
-            <input
-              id="H"
-              type="number"
-              step=".01"
-              value=".15">
-
-          </div>
-
-        </div>
-
-
-        <button
-          class="btn"
-          onclick="calc()">
-          Calculer
-        </button>
-
-
-        <div
-          id="result"
-          class="card result-box hide"
-          style="margin-top:18px">
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         DQE
-    ========================= -->
-
-    <section
-      id="dqe"
-      class="page hide">
-
-      <div class="card">
-
-        <h2>
-          DQE
-        </h2>
-
-        <p class="muted">
-          Ajoutez les différents postes de votre projet.
-        </p>
-
-        <div class="row">
-
-          <div class="field">
-
-            <label>
-              Désignation
-            </label>
-
-            <input
-              id="item"
-              placeholder="Ex. Béton dosé">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Unité
-            </label>
-
-            <select id="unit">
-
-              <option>
-                m³
-              </option>
-
-              <option>
-                m²
-              </option>
-
-              <option>
-                ml
-              </option>
-
-              <option>
-                u
-              </option>
-
-              <option>
-                kg
-              </option>
-
-              <option>
-                forfait
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Quantité
-            </label>
-
-            <input
-              id="qty"
-              type="number"
-              step=".01"
-              value="1">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Prix unitaire
-            </label>
-
-            <input
-              id="pu"
-              type="number"
-              step="1"
-              value="75000">
-
-          </div>
-
-        </div>
-
-
-        <button
-          class="btn"
-          onclick="add()">
-          + Ajouter au DQE
-        </button>
-
-      </div>
-
-
-      <div class="tablewrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>
-                #
-              </th>
-
-              <th>
-                Désignation
-              </th>
-
-              <th>
-                Unité
-              </th>
-
-              <th>
-                Qté
-              </th>
-
-              <th>
-                PU
-              </th>
-
-              <th>
-                Montant
-              </th>
-
-            </tr>
-
-          </thead>
-
-
-          <tbody id="body">
-          </tbody>
-
-
-          <tfoot>
-
-            <tr>
-
-              <th
-                colspan="5"
-                class="right">
-
-                TOTAL
-
-              </th>
-
-              <th
-                id="total"
-                class="right">
-
-                0
-
-              </th>
-
-            </tr>
-
-          </tfoot>
-
-        </table>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         DEVIS
-    ========================= -->
-
-    <section
-      id="quote"
-      class="page hide">
-
-      <div class="card">
-
-        <h2>
-          Générateur de devis
-        </h2>
-
-        <p class="muted">
-          Préparez un devis professionnel à partir de votre DQE.
-        </p>
-
-
-        <div class="row">
-
-          <div class="field">
-
-            <label>
-              Entreprise
-            </label>
-
-            <input
-              id="company"
-              value="BATIFLOW DEMO">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Client
-            </label>
-
-            <input
-              id="client"
-              placeholder="Nom du client">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Projet
-            </label>
-
-            <input
-              id="project"
-              placeholder="Maison RDC">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              TVA (%)
-            </label>
-
-            <input
-              id="tax"
-              type="number"
-              value="0">
-
-          </div>
-
-        </div>
-
-
-        <div class="actions">
-
-          <button
-            class="btn"
-            onclick="quote()">
-            Générer le devis
-          </button>
-
-          <button
-            class="btn alt"
-            onclick="window.print()">
-            Imprimer / PDF
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div
-        id="preview"
-        class="card quote-preview hide">
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         PAYS
-    ========================= -->
-
-    <section
-      id="country"
-      class="page hide">
-
-      <div class="card">
-
-        <h2>
-          Pays & paramètres
-        </h2>
-
-        <p class="muted">
-          Base BATIFLOW : pays africains et devises principales.
-          Les prix et taxes doivent être alimentés par des données
-          locales validées.
-        </p>
-
-
-        <div class="row">
-
-          <div class="field">
-
-            <label>
-              Pays
-            </label>
-
-            <select
-              id="country"
-              onchange="setCountry(this.value)">
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Devise
-            </label>
-
-            <input
-              id="currency"
-              readonly>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
+  </div>
+
+  <select
+    id="topCountry"
+    class="country"
+    onchange="setCountry(this.value)">
+  </select>
 
 </div>
 
 
-<script>
-
-/* =========================
-   PAYS ET DEVISES
-========================= */
-
-const countries = {
-
-  "Togo":"FCFA",
-  "Bénin":"FCFA",
-  "Côte d’Ivoire":"FCFA",
-  "Sénégal":"FCFA",
-  "Burkina Faso":"FCFA",
-  "Mali":"FCFA",
-  "Niger":"FCFA",
-  "Guinée-Bissau":"FCFA",
-  "Cameroun":"FCFA",
-  "Gabon":"FCFA",
-  "Congo":"FCFA",
-  "Guinée équatoriale":"FCFA",
-  "RCA":"FCFA",
-  "Tchad":"FCFA",
-
-  "Ghana":"GHS",
-  "Nigeria":"NGN",
-  "Guinée":"GNF",
-  "Sierra Leone":"SLE",
-  "Liberia":"LRD",
-  "Gambie":"GMD",
-  "Mauritanie":"MRU",
-  "Cap-Vert":"CVE",
-
-  "Maroc":"MAD",
-  "Algérie":"DZD",
-  "Tunisie":"TND",
-  "Égypte":"EGP",
-  "Libye":"LYD",
-  "Soudan":"SDG",
-
-  "Kenya":"KES",
-  "Ouganda":"UGX",
-  "Tanzanie":"TZS",
-  "Rwanda":"RWF",
-  "Burundi":"BIF",
-  "Éthiopie":"ETB",
-  "Somalie":"SOS",
-  "Djibouti":"DJF",
-
-  "Seychelles":"SCR",
-  "Maurice":"MUR",
-
-  "Afrique du Sud":"ZAR",
-  "Namibie":"NAD",
-  "Botswana":"BWP",
-  "Zambie":"ZMW",
-  "Zimbabwe":"ZWG",
-  "Mozambique":"MZN",
-  "Angola":"AOA",
-  "Malawi":"MWK",
-  "Lesotho":"LSL",
-  "Eswatini":"SZL",
-
-  "Madagascar":"MGA",
-  "Comores":"KMF"
-
-};
-
-
-/* =========================
-   VARIABLES
-========================= */
-
-let countryName = "Togo";
-
-let items = [];
-
-let sum = 0;
-
-
-/* =========================
-   INITIALISATION
-========================= */
-
-function init(){
-
-  const options = Object.keys(countries)
-    .map(
-      x => `<option value="${x}">${x}</option>`
-    )
-    .join("");
-
-  topCountry.innerHTML = options;
-
-  country.innerHTML = options;
-
-  topCountry.value = country.value = countryName;
-
-  sync();
-
-}
-
-
-/* =========================
-   SYNCHRONISATION PAYS
-========================= */
-
-function sync(){
-
-  const c = countries[countryName];
-
-  currency.value = c;
-
-  dashCountry.textContent = countryName;
-
-  dashCur.textContent = c;
-
-  render();
-
-}
-
-
-/* =========================
-   CHANGER DE PAYS
-========================= */
-
-function setCountry(c){
-
-  countryName = c;
-
-  topCountry.value = c;
-
-  country.value = c;
-
-  sync();
-
-}
-
-
-/* =========================
-   CONNEXION
-========================= */
-
-function login(e){
-
-  e.preventDefault();
-
-  document.getElementById("login")
-    .classList.add("hide");
-
-  document.getElementById("app")
-    .classList.remove("hide");
-
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-function show(id,b){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(
-      x => x.classList.add("hide")
-    );
-
-  document
-    .getElementById(id)
-    .classList.remove("hide");
-
-  document
-    .querySelectorAll(".nav button")
-    .forEach(
-      x => x.classList.remove("active")
-    );
-
-  if(b){
-    b.classList.add("active");
-  }
-
-  const titles = {
-
-    dashboard:"Tableau de bord",
-    calc:"Calculateur BTP",
-    dqe:"DQE",
-    quote:"Générateur de devis",
-    country:"Pays & paramètres"
-
-  };
-
-  title.textContent = titles[id];
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* =========================
-   RACCOURCI NAVIGATION
-========================= */
-
-function goto(id){
-
-  const buttons =
-    [...document.querySelectorAll(".nav button")];
-
-  let search = "";
-
-  if(id === "dqe"){
-    search = "dqe";
-  }
-
-  else if(id === "calc"){
-    search = "calculateur";
-  }
-
-  else if(id === "quote"){
-    search = "devis";
-  }
-
-  else{
-    search = "tableau";
-  }
-
-  const b =
-    buttons.find(
-      x =>
-        x.textContent
-          .toLowerCase()
-          .includes(search)
-    );
-
-  show(id,b);
-
-}
-
-
-/* =========================
-   CALCULATEUR BTP
-========================= */
-
-function calc(){
-
-  const length = Number(L.value) || 0;
-
-  const width = Number(W.value) || 0;
-
-  const height = Number(H.value) || 0;
-
-  const volume =
-    length * width * height;
-
-  result.classList.remove("hide");
-
-  result.innerHTML = `
-
-    <h3 style="margin-top:0">
-      Résultat du calcul
-    </h3>
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<section
+  id="dashboard"
+  class="page">
+
+  <div class="hero">
+
+    <div class="hero-label">
+      BATIFLOW V3
+    </div>
+
+    <h2>
+      Construisez mieux. Gérez vos chantiers plus facilement.
+    </h2>
 
     <p>
-      Élément :
-      <strong>${element.value}</strong>
+      Centralisez vos projets, calculs BTP, DQE et devis
+      depuis une seule plateforme conçue pour les professionnels
+      de la construction en Afrique.
     </p>
 
-    <p>
-      Volume :
-      <strong>${volume.toFixed(2)} m³</strong>
-    </p>
+    <div class="actions">
 
-    <hr style="border:0;border-top:1px solid #e3e9f2">
+      <button
+        class="btn gold"
+        onclick="goto('projects')">
+        + Nouveau chantier
+      </button>
 
-    <p>
-      Estimation indicative :
-    </p>
+      <button
+        class="btn alt"
+        onclick="goto('calc')">
+        Nouveau calcul
+      </button>
 
-    <ul>
+    </div>
 
-      <li>
-        Ciment :
-        <strong>${(volume * 7.5).toFixed(1)}</strong>
-        sacs
-      </li>
-
-      <li>
-        Sable :
-        <strong>${(volume * .5).toFixed(2)}</strong>
-        m³
-      </li>
-
-      <li>
-        Gravier :
-        <strong>${(volume * .8).toFixed(2)}</strong>
-        m³
-      </li>
-
-    </ul>
-
-    <small class="muted">
-      Valeurs de démonstration à valider selon le dosage,
-      les caractéristiques des matériaux et les normes applicables
-      au projet.
-    </small>
-
-  `;
-
-}
+  </div>
 
 
-/* =========================
-   AJOUT DQE
-========================= */
+  <div class="grid">
 
-function add(){
+    <div class="card">
 
-  const q =
-    Number(qty.value) || 0;
-
-  const p =
-    Number(pu.value) || 0;
-
-  const m = q * p;
-
-  items.push({
-
-    n:item.value || "Poste BTP",
-
-    u:unit.value,
-
-    q:q,
-
-    p:p,
-
-    m:m
-
-  });
-
-  render();
-
-  item.value = "";
-
-}
-
-
-/* =========================
-   AFFICHAGE DQE
-========================= */
-
-function render(){
-
-  body.innerHTML =
-    items
-      .map(
-        (x,i) => `
-
-          <tr>
-
-            <td>
-              ${i+1}
-            </td>
-
-            <td>
-              ${escapeHTML(x.n)}
-            </td>
-
-            <td>
-              ${x.u}
-            </td>
-
-            <td>
-              ${x.q}
-            </td>
-
-            <td>
-              ${x.p.toLocaleString("fr-FR")}
-            </td>
-
-            <td>
-              ${x.m.toLocaleString("fr-FR")}
-              ${countries[countryName]}
-            </td>
-
-          </tr>
-
-        `
-      )
-      .join("");
-
-  sum =
-    items.reduce(
-      (a,x) => a + x.m,
-      0
-    );
-
-  total.textContent =
-    sum.toLocaleString("fr-FR")
-    + " "
-    + countries[countryName];
-
-  dashTotal.textContent =
-    sum.toLocaleString("fr-FR");
-
-}
-
-
-/* =========================
-   GÉNÉRER DEVIS
-========================= */
-
-function quote(){
-
-  const t =
-    Number(tax.value) || 0;
-
-  const vat =
-    sum * t / 100;
-
-  const ttc =
-    sum + vat;
-
-  preview.classList.remove("hide");
-
-  preview.innerHTML = `
-
-    <div class="quote-header">
-
-      <div>
-
-        <h2 style="margin:0 0 6px">
-          ${escapeHTML(company.value)}
-        </h2>
-
-        <div class="muted">
-          Devis professionnel BATIFLOW
-        </div>
-
+      <div class="stat-label">
+        Projets
       </div>
 
-      <div class="right">
+      <div
+        class="stat"
+        id="dashProjects">
+        0
+      </div>
 
-        <strong>
-          DEVIS
-        </strong>
-
-        <div class="muted">
-          ${new Date().toLocaleDateString("fr-FR")}
-        </div>
-
+      <div class="muted">
+        chantiers enregistrés
       </div>
 
     </div>
 
 
-    <div class="row">
+    <div class="card">
 
-      <div>
+      <div class="stat-label">
+        Projets en cours
+      </div>
 
-        <p>
-          <strong>Client</strong><br>
-          ${escapeHTML(client.value || "—")}
-        </p>
+      <div
+        class="stat"
+        id="dashProgress">
+        0
+      </div>
 
+      <div class="muted">
+        actuellement actifs
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="stat-label">
+        Devis ce mois
+      </div>
+
+      <div class="stat">
+        14
+      </div>
+
+      <div class="muted">
+        documents préparés
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="stat-label">
+        Pays actif
+      </div>
+
+      <div
+        class="stat"
+        id="dashCountry">
+        Togo
+      </div>
+
+      <div
+        class="muted"
+        id="dashCur">
+        FCFA
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="feature-grid">
+
+    <div class="card feature">
+
+      <div class="feature-icon">
+        🏗️
       </div>
 
       <div>
 
-        <p>
-          <strong>Projet</strong><br>
-          ${escapeHTML(project.value || "—")}
-        </p>
-
-      </div>
-
-      <div>
+        <h3>
+          Gestion des chantiers
+        </h3>
 
         <p>
-          <strong>Pays</strong><br>
-          ${countryName}
-        </p>
-
-      </div>
-
-      <div>
-
-        <p>
-          <strong>Devise</strong><br>
-          ${countries[countryName]}
+          Suivez vos projets, leurs budgets, clients,
+          localisations et états d'avancement.
         </p>
 
       </div>
@@ -2108,147 +1189,571 @@ function quote(){
     </div>
 
 
-    <div class="tablewrap">
+    <div class="card feature">
 
-      <table>
+      <div class="feature-icon">
+        📐
+      </div>
 
-        <thead>
+      <div>
 
-          <tr>
+        <h3>
+          Calculateur BTP
+        </h3>
 
-            <th>
-              Désignation
-            </th>
+        <p>
+          Estimez rapidement les volumes et composants
+          nécessaires à vos travaux.
+        </p>
 
-            <th>
-              Qté
-            </th>
-
-            <th>
-              PU
-            </th>
-
-            <th>
-              Montant
-            </th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${
-            items.length
-            ?
-            items
-              .map(
-                x => `
-
-                  <tr>
-
-                    <td>
-                      ${escapeHTML(x.n)}
-                    </td>
-
-                    <td>
-                      ${x.q} ${x.u}
-                    </td>
-
-                    <td>
-                      ${x.p.toLocaleString("fr-FR")}
-                    </td>
-
-                    <td>
-                      ${x.m.toLocaleString("fr-FR")}
-                    </td>
-
-                  </tr>
-
-                `
-              )
-              .join("")
-            :
-            `
-              <tr>
-                <td colspan="4">
-                  Aucun poste ajouté au DQE.
-                </td>
-              </tr>
-            `
-          }
-
-        </tbody>
-
-      </table>
+      </div>
 
     </div>
 
 
-    <div class="quote-total">
+    <div class="card feature">
 
-      <p class="right">
+      <div class="feature-icon">
+        🧾
+      </div>
 
-        <strong>
-          Total HT :
-          ${sum.toLocaleString("fr-FR")}
-          ${countries[countryName]}
-        </strong>
+      <div>
 
-        <br>
+        <h3>
+          Devis professionnel
+        </h3>
 
-        TVA :
-        ${vat.toLocaleString("fr-FR")}
-        ${countries[countryName]}
+        <p>
+          Préparez vos devis à partir des éléments
+          de votre projet.
+        </p>
 
-        <br>
+      </div>
 
-        <strong style="font-size:18px">
+    </div>
 
-          Total TTC :
-          ${ttc.toLocaleString("fr-FR")}
-          ${countries[countryName]}
+  </div>
 
-        </strong>
+</section>
 
+
+<!-- =========================
+     PROJETS
+========================= -->
+
+<section
+  id="projects"
+  class="page hide">
+
+  <div class="project-header">
+
+    <div>
+
+      <h2>
+        Projets / Chantiers
+      </h2>
+
+      <p class="muted">
+        Créez et suivez vos différents chantiers.
       </p>
 
     </div>
 
+    <button
+      class="btn gold"
+      onclick="toggleProjectForm()">
+
+      + Nouveau chantier
+
+    </button>
+
+  </div>
+
+
+  <!-- FORMULAIRE -->
+
+  <div
+    id="projectForm"
+    class="card hide">
+
+    <h3 style="margin-top:0">
+      Nouveau chantier
+    </h3>
+
+    <div class="row">
+
+      <div class="field">
+
+        <label>
+          Nom du projet *
+        </label>
+
+        <input
+          id="projectName"
+          placeholder="Ex. Construction maison familiale">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Client *
+        </label>
+
+        <input
+          id="projectClient"
+          placeholder="Nom du client">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Localisation
+        </label>
+
+        <input
+          id="projectLocation"
+          placeholder="Ex. Lomé, Togo">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Budget
+        </label>
+
+        <input
+          id="projectBudget"
+          type="number"
+          step="1"
+          placeholder="Ex. 15000000">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Date de début
+        </label>
+
+        <input
+          id="projectStart"
+          type="date">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Date prévue de fin
+        </label>
+
+        <input
+          id="projectEnd"
+          type="date">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Statut
+        </label>
+
+        <select id="projectStatus">
+
+          <option value="todo">
+            À venir
+          </option>
+
+          <option value="progress">
+            En cours
+          </option>
+
+          <option value="done">
+            Terminé
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Responsable
+        </label>
+
+        <input
+          id="projectManager"
+          placeholder="Chef de chantier">
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Description / Notes
+      </label>
+
+      <textarea
+        id="projectDescription"
+        placeholder="Informations complémentaires sur le chantier..."></textarea>
+
+    </div>
+
+
+    <div class="actions">
+
+      <button
+        class="btn"
+        onclick="saveProject()">
+
+        Enregistrer le chantier
+
+      </button>
+
+      <button
+        class="btn alt"
+        onclick="toggleProjectForm()">
+
+        Annuler
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- LISTE -->
+
+  <div
+    id="projectList"
+    class="project-grid">
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CALCULATEUR
+========================= -->
+
+<section
+  id="calc"
+  class="page hide">
+
+  <div class="card">
+
+    <h2>
+      Calculateur BTP
+    </h2>
 
     <p class="muted">
-      Document généré avec BATIFLOW.
+      Calcul indicatif du volume de béton et des composants.
     </p>
 
-  `;
+    <div class="row">
 
-}
+      <div class="field">
+
+        <label>
+          Élément
+        </label>
+
+        <select id="element">
+
+          <option>Dalle</option>
+          <option>Poutre</option>
+          <option>Poteau</option>
+          <option>Semelle</option>
+
+        </select>
+
+      </div>
 
 
-/* =========================
-   SÉCURITÉ HTML
-========================= */
+      <div class="field">
 
-function escapeHTML(value){
+        <label>
+          Longueur (m)
+        </label>
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+        <input
+          id="L"
+          type="number"
+          step=".01"
+          value="5">
 
-}
+      </div>
 
 
-/* =========================
-   LANCEMENT
-========================= */
+      <div class="field">
 
-init();
+        <label>
+          Largeur (m)
+        </label>
 
-</script>
+        <input
+          id="W"
+          type="number"
+          step=".01"
+          value="4">
 
-</body>
-</html>
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Épaisseur / hauteur (m)
+        </label>
+
+        <input
+          id="H"
+          type="number"
+          step=".01"
+          value=".15">
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="btn"
+      onclick="calc()">
+      Calculer
+    </button>
+
+
+    <div
+      id="result"
+      class="card hide"
+      style="margin-top:18px;border-left:4px solid var(--blue)">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     DQE
+========================= -->
+
+<section
+  id="dqe"
+  class="page hide">
+
+  <div class="card">
+
+    <h2>
+      DQE
+    </h2>
+
+    <p class="muted">
+      Ajoutez les différents postes de votre projet.
+    </p>
+
+    <div class="row">
+
+      <div class="field">
+
+        <label>
+          Désignation
+        </label>
+
+        <input
+          id="item"
+          placeholder="Ex. Béton dosé">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Unité
+        </label>
+
+        <select id="unit">
+
+          <option>m³</option>
+          <option>m²</option>
+          <option>ml</option>
+          <option>u</option>
+          <option>kg</option>
+          <option>forfait</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Quantité
+        </label>
+
+        <input
+          id="qty"
+          type="number"
+          step=".01"
+          value="1">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Prix unitaire
+        </label>
+
+        <input
+          id="pu"
+          type="number"
+          step="1"
+          value="75000">
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="btn"
+      onclick="add()">
+
+      + Ajouter au DQE
+
+    </button>
+
+  </div>
+
+
+  <div class="tablewrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>#</th>
+          <th>Désignation</th>
+          <th>Unité</th>
+          <th>Qté</th>
+          <th>PU</th>
+          <th>Montant</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody id="body">
+      </tbody>
+
+      <tfoot>
+
+        <tr>
+
+          <th
+            colspan="5"
+            class="right">
+
+            TOTAL
+
+          </th>
+
+          <th
+            id="total"
+            class="right">
+
+            0
+
+          </th>
+
+        </tr>
+
+      </tfoot>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     DEVIS
+========================= -->
+
+<section
+  id="quote"
+  class="page hide">
+
+  <div class="card">
+
+    <h2>
+      Générateur de devis
+    </h2>
+
+    <p class="muted">
+      Préparez un devis professionnel à partir de votre DQE.
+    </p>
+
+
+    <div class="row">
+
+      <div class="field">
+
+        <label>
+          Entreprise
+        </label>
+
+        <input
+          id="company"
+          value="BATIFLOW DEMO">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Client
+        </label>
+
+        <input
+          id="client"
+          placeholder="Nom du client">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Projet
+        </label>
+
+        <input
+          id="project"
+          placehold
 ```
