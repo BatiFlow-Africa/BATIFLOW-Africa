@@ -1,32 +1,2254 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BATIFLOW V1</title>
+```html
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>BATIFLOW — Gestion BTP</title>
+
 <style>
-:root{--n:#10233f;--b:#2563eb;--bg:#f4f7fb;--line:#e4e9f0}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#182230}button,input,select{font:inherit}.hide{display:none!important}.app{display:flex;min-height:100vh}.side{width:245px;background:var(--n);color:white;padding:22px 14px;position:fixed;inset:0 auto 0 0}.logo{font-size:25px;font-weight:800;margin:0 10px 30px}.logo span{color:#63a3ff}.nav button{display:block;width:100%;padding:12px;margin:4px 0;border:0;border-radius:9px;background:transparent;color:#dce6f5;text-align:left;cursor:pointer}.nav button:hover,.nav .active{background:#1d385f;color:white}.main{margin-left:245px;padding:25px;flex:1}.top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:20px}.top h1{margin:0}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:20px;box-shadow:0 4px 18px #00000008}.hero{background:linear-gradient(120deg,#10233f,#2563a9);color:white;border-radius:18px;padding:28px}.hero h2{font-size:28px;margin:8px 0}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:18px}.stat{font-size:25px;font-weight:800;margin-top:7px}.muted{color:#687588;font-size:13px}.hero .muted{color:#d9e5f5}.btn{border:0;border-radius:9px;padding:11px 16px;background:var(--b);color:white;font-weight:700;cursor:pointer}.btn.alt{background:#eaf0fa;color:var(--n)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.field{margin:12px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}.field input,.field select,.country{width:100%;padding:11px;border:1px solid #d8dee8;border-radius:9px;background:white}.tablewrap{overflow:auto;margin-top:18px;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;background:white}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}.right{text-align:right}.login{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#10233f,#245ea5)}.loginbox{width:min(430px,92%);background:white;padding:34px;border-radius:20px}.loginlogo{font-size:30px;font-weight:900}.loginlogo span{color:var(--b)}@media(max-width:800px){.side{width:205px}.main{margin-left:205px}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.app{display:block}.side{position:static;width:100%}.main{margin:0;padding:16px}.grid,.row{grid-template-columns:1fr}.top{align-items:stretch;flex-direction:column}}
-</style></head><body>
-<div id="login" class="login"><form class="loginbox" onsubmit="login(event)"><div class="loginlogo">BATI<span>FLOW</span></div><p class="muted">La plateforme BTP pour l'Afrique</p>
-<div class="field"><label>Email</label><input type="email" required placeholder="vous@entreprise.com"></div><div class="field"><label>Mot de passe</label><input type="password" required placeholder="••••••••"></div><button class="btn" style="width:100%">Se connecter</button><p class="muted">Prototype V1 : aucune donnée envoyée en ligne.</p></form></div>
-<div id="app" class="app hide"><aside class="side"><div class="logo">BATI<span>FLOW</span></div><div class="nav">
-<button class="active" onclick="show('dashboard',this)">⌂ Tableau de bord</button><button onclick="show('calc',this)">📐 Calculateur BTP</button><button onclick="show('dqe',this)">📋 DQE</button><button onclick="show('quote',this)">🧾 Devis</button><button onclick="show('country',this)">🌍 Pays & paramètres</button></div></aside>
-<main class="main"><div class="top"><div><h1 id="title">Tableau de bord</h1><div class="muted">Gestion BTP intelligente</div></div><select id="topCountry" class="country" style="max-width:260px" onchange="setCountry(this.value)"></select></div>
-<section id="dashboard" class="page"><div class="hero"><div>V1 ACTIVE</div><h2>Bienvenue sur BATIFLOW</h2><p>Calculez, chiffrez et préparez vos devis BTP depuis une seule plateforme.</p><div class="actions"><button class="btn" onclick="goto('calc')">Nouveau calcul</button><button class="btn alt" onclick="goto('dqe')">Créer un DQE</button></div></div>
-<div class="grid"><div class="card"><div class="muted">Projets</div><div class="stat">8</div></div><div class="card"><div class="muted">Devis ce mois</div><div class="stat">14</div></div><div class="card"><div class="muted">Montant DQE</div><div class="stat" id="dashTotal">0</div><div class="muted" id="dashCur">FCFA</div></div><div class="card"><div class="muted">Pays actif</div><div class="stat" id="dashCountry">Togo</div></div></div></section>
-<section id="calc" class="page hide"><div class="card"><h2>Calculateur BTP</h2><p class="muted">Calcul indicatif du volume de béton et des composants.</p><div class="row"><div class="field"><label>Élément</label><select id="element"><option>Dalle</option><option>Poutre</option><option>Poteau</option><option>Semelle</option></select></div><div class="field"><label>Longueur (m)</label><input id="L" type="number" step=".01" value="5"></div><div class="field"><label>Largeur (m)</label><input id="W" type="number" step=".01" value="4"></div><div class="field"><label>Épaisseur/hauteur (m)</label><input id="H" type="number" step=".01" value=".15"></div></div><button class="btn" onclick="calc()">Calculer</button><div id="result" class="card hide" style="margin-top:15px"></div></div></section>
-<section id="dqe" class="page hide"><div class="card"><h2>DQE</h2><div class="row"><div class="field"><label>Désignation</label><input id="item" placeholder="Ex. Béton dosé"></div><div class="field"><label>Unité</label><select id="unit"><option>m³</option><option>m²</option><option>ml</option><option>u</option><option>kg</option><option>forfait</option></select></div><div class="field"><label>Quantité</label><input id="qty" type="number" step=".01" value="1"></div><div class="field"><label>Prix unitaire</label><input id="pu" type="number" step="1" value="75000"></div></div><button class="btn" onclick="add()">Ajouter</button></div><div class="tablewrap"><table><thead><tr><th>#</th><th>Désignation</th><th>Unité</th><th>Qté</th><th>PU</th><th>Montant</th></tr></thead><tbody id="body"></tbody><tfoot><tr><th colspan="5" class="right">TOTAL</th><th id="total" class="right">0</th></tr></tfoot></table></div></section>
-<section id="quote" class="page hide"><div class="card"><h2>Générateur de devis</h2><div class="row"><div class="field"><label>Entreprise</label><input id="company" value="BATIFLOW DEMO"></div><div class="field"><label>Client</label><input id="client" placeholder="Nom du client"></div><div class="field"><label>Projet</label><input id="project" placeholder="Maison RDC"></div><div class="field"><label>TVA (%)</label><input id="tax" type="number" value="0"></div></div><div class="actions"><button class="btn" onclick="quote()">Générer</button><button class="btn alt" onclick="window.print()">Imprimer / PDF</button></div></div><div id="preview" class="card hide" style="margin-top:18px"></div></section>
-<section id="country" class="page hide"><div class="card"><h2>Pays & paramètres</h2><p class="muted">Base V1 : pays africains et devises principales. Les prix et taxes doivent être alimentés par des données locales validées.</p><div class="row"><div class="field"><label>Pays</label><select id="country" onchange="setCountry(this.value)"></select></div><div class="field"><label>Devise</label><input id="currency" readonly></div></div></div></section>
-</main></div>
+:root{
+  --navy:#0b1f3a;
+  --navy2:#102d50;
+  --blue:#2563eb;
+  --blue2:#3b82f6;
+  --gold:#f59e0b;
+  --gold2:#fbbf24;
+  --bg:#f4f7fb;
+  --white:#ffffff;
+  --text:#182230;
+  --muted:#718096;
+  --line:#e3e9f2;
+  --success:#16a34a;
+  --shadow:0 10px 30px rgba(11,31,58,.08);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hide{
+  display:none!important;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at top right,rgba(59,130,246,.35),transparent 35%),
+    linear-gradient(135deg,#07182e,#174b82);
+}
+
+.loginbox{
+  width:min(450px,100%);
+  background:white;
+  padding:38px;
+  border-radius:24px;
+  box-shadow:0 30px 70px rgba(0,0,0,.22);
+}
+
+.login-brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:24px;
+}
+
+.login-brand-mark{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border-radius:17px;
+  background:linear-gradient(145deg,#edf4ff,#ffffff);
+  border:1px solid #e2e8f0;
+  box-shadow:0 10px 25px rgba(11,31,58,.10);
+}
+
+.login-brand-mark svg{
+  width:46px;
+  height:46px;
+}
+
+.login-brand-name{
+  font-size:32px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-1px;
+  color:var(--navy);
+}
+
+.login-brand-name span{
+  color:var(--gold);
+}
+
+.login-brand-sub{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+
+.login-title{
+  font-size:25px;
+  font-weight:800;
+  margin:20px 0 7px;
+}
+
+.login-description{
+  margin:0 0 22px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+  display:flex;
+  min-height:100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.side{
+  width:255px;
+  background:
+    linear-gradient(180deg,#0b1f3a 0%,#102d50 100%);
+  color:white;
+  padding:22px 14px;
+  position:fixed;
+  inset:0 auto 0 0;
+  box-shadow:8px 0 30px rgba(11,31,58,.10);
+  z-index:20;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:4px 10px;
+  margin-bottom:35px;
+}
+
+.brand-mark{
+  width:48px;
+  height:48px;
+  flex:none;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:linear-gradient(145deg,#173b68,#0b1f3a);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.brand-mark svg{
+  width:38px;
+  height:38px;
+  display:block;
+}
+
+.brand-text{
+  min-width:0;
+}
+
+.brand-name{
+  font-size:25px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-.8px;
+  color:white;
+}
+
+.brand-name span{
+  color:var(--gold);
+}
+
+.brand-text small{
+  display:block;
+  margin-top:6px;
+  color:#8ea5c4;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  white-space:nowrap;
+}
+
+.nav-title{
+  color:#7892b5;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  padding:0 12px;
+  margin:0 0 8px;
+  text-transform:uppercase;
+}
+
+.nav button{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  padding:13px 13px;
+  margin:5px 0;
+  border:0;
+  border-radius:11px;
+  background:transparent;
+  color:#dce6f5;
+  text-align:left;
+  transition:.2s;
+}
+
+.nav button:hover{
+  background:rgba(255,255,255,.08);
+  color:white;
+  transform:translateX(2px);
+}
+
+.nav button.active{
+  background:linear-gradient(90deg,rgba(37,99,235,.9),rgba(37,99,235,.55));
+  color:white;
+  box-shadow:0 7px 20px rgba(37,99,235,.20);
+}
+
+.nav-icon{
+  width:22px;
+  text-align:center;
+  font-size:16px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+  margin-left:255px;
+  padding:28px;
+  flex:1;
+  min-width:0;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:center;
+  margin-bottom:24px;
+}
+
+.top h1{
+  margin:0;
+  font-size:27px;
+  letter-spacing:-.5px;
+}
+
+.top .muted{
+  margin-top:5px;
+}
+
+.country{
+  width:220px;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+.card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:20px;
+  box-shadow:var(--shadow);
+}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 85% 10%,rgba(59,130,246,.35),transparent 30%),
+    linear-gradient(120deg,#0b1f3a,#205a97);
+  color:white;
+  border-radius:22px;
+  padding:34px;
+  box-shadow:0 15px 40px rgba(11,31,58,.18);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  right:-70px;
+  bottom:-100px;
+}
+
+.hero-label{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:rgba(245,158,11,.15);
+  border:1px solid rgba(245,158,11,.30);
+  color:#ffd36a;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.hero h2{
+  position:relative;
+  z-index:1;
+  font-size:32px;
+  margin:14px 0 8px;
+  letter-spacing:-1px;
+}
+
+.hero p{
+  position:relative;
+  z-index:1;
+  max-width:650px;
+  color:#dbeafe;
+  line-height:1.6;
+}
+
+.muted{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.hero .muted{
+  color:#d9e5f5;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.stat{
+  font-size:27px;
+  font-weight:900;
+  margin-top:8px;
+  color:var(--navy);
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.feature{
+  display:flex;
+  gap:13px;
+  align-items:flex-start;
+}
+
+.feature-icon{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:#edf4ff;
+  font-size:19px;
+  flex:none;
+}
+
+.feature h3{
+  margin:2px 0 5px;
+  font-size:15px;
+}
+
+.feature p{
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 17px;
+  background:var(--blue);
+  color:white;
+  font-weight:800;
+  transition:.2s;
+}
+
+.btn:hover{
+  background:#1d4ed8;
+  transform:translateY(-1px);
+}
+
+.btn.gold{
+  background:var(--gold);
+  color:#172033;
+}
+
+.btn.gold:hover{
+  background:#d97706;
+}
+
+.btn.alt{
+  background:#eaf0fa;
+  color:var(--navy);
+}
+
+.btn.alt:hover{
+  background:#dce7f7;
+}
+
+.actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:17px;
+}
+
+/* =========================
+   FORMS
+========================= */
+
+.row{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.field{
+  margin:12px 0;
+}
+
+.field label{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.field input,
+.field select,
+.country{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #d8dee8;
+  border-radius:10px;
+  background:white;
+  color:var(--text);
+  outline:none;
+  transition:.2s;
+}
+
+.field input:focus,
+.field select:focus,
+.country:focus{
+  border-color:var(--blue2);
+  box-shadow:0 0 0 3px rgba(59,130,246,.10);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.tablewrap{
+  overflow:auto;
+  margin-top:18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:white;
+  box-shadow:var(--shadow);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+}
+
+th,
+td{
+  padding:12px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+th{
+  background:#f8fafc;
+  color:#46566d;
+  font-size:12px;
+}
+
+tr:last-child td{
+  border-bottom:0;
+}
+
+.right{
+  text-align:right;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+.result-box{
+  border-left:4px solid var(--blue);
+  background:#f7faff;
+}
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote-preview{
+  margin-top:18px;
+}
+
+.quote-header{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-start;
+  border-bottom:1px solid var(--line);
+  padding-bottom:18px;
+  margin-bottom:18px;
+}
+
+.quote-total{
+  background:#f8fafc;
+  border-radius:12px;
+  padding:15px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1050px){
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:800px){
+
+  .side{
+    width:205px;
+  }
+
+  .main{
+    margin-left:205px;
+    padding:20px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero h2{
+    font-size:27px;
+  }
+}
+
+@media(max-width:600px){
+
+  .app{
+    display:block;
+  }
+
+  .side{
+    position:static;
+    width:100%;
+    padding:15px;
+  }
+
+  .brand{
+    margin-bottom:20px;
+  }
+
+  .nav{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:4px;
+  }
+
+  .nav button{
+    margin:2px 0;
+  }
+
+  .nav-title{
+    display:none;
+  }
+
+  .main{
+    margin:0;
+    padding:15px;
+  }
+
+  .top{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .top h1{
+    font-size:23px;
+  }
+
+  .country{
+    width:100%;
+  }
+
+  .grid,
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:24px;
+  }
+
+  .hero h2{
+    font-size:25px;
+  }
+
+  .loginbox{
+    padding:28px 22px;
+  }
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@media print{
+
+  .side,
+  .top,
+  .actions,
+  .btn{
+    display:none!important;
+  }
+
+  .main{
+    margin:0;
+    padding:0;
+  }
+
+  .card{
+    box-shadow:none;
+    border:0;
+  }
+
+  body{
+    background:white;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div id="login" class="login">
+
+  <form class="loginbox" onsubmit="login(event)">
+
+    <div class="login-brand">
+
+      <div class="login-brand-mark">
+
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+
+          <path
+            d="M12 52V24L32 10L52 24V52"
+            fill="none"
+            stroke="#0b1f3a"
+            stroke-width="5"
+            stroke-linejoin="round"/>
+
+          <path
+            d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
+            fill="#f59e0b"/>
+
+          <path
+            d="M28 31V47"
+            stroke="white"
+            stroke-width="4"
+            stroke-linecap="round"/>
+
+          <path
+            d="M12 55H52"
+            stroke="#0b1f3a"
+            stroke-width="4"
+            stroke-linecap="round"/>
+
+        </svg>
+
+      </div>
+
+      <div>
+
+        <div class="login-brand-name">
+          BATI<span>FLOW</span>
+        </div>
+
+        <div class="login-brand-sub">
+          BUILD • CALCULATE • MANAGE
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="login-title">
+      Bienvenue sur BATIFLOW
+    </div>
+
+    <p class="login-description">
+      La plateforme intelligente de gestion BTP pensée pour l'Afrique.
+    </p>
+
+    <div class="field">
+      <label>Email</label>
+      <input
+        type="email"
+        required
+        placeholder="vous@entreprise.com">
+    </div>
+
+    <div class="field">
+      <label>Mot de passe</label>
+      <input
+        type="password"
+        required
+        placeholder="••••••••">
+    </div>
+
+    <button
+      class="btn"
+      style="width:100%;margin-top:8px">
+      Se connecter
+    </button>
+
+    <p class="muted" style="margin-top:16px;text-align:center">
+      Prototype V2 — aucune donnée envoyée en ligne.
+    </p>
+
+  </form>
+
+</div>
+
+
+<!-- =========================
+     APPLICATION
+========================= -->
+
+<div id="app" class="app hide">
+
+  <!-- SIDEBAR -->
+
+  <aside class="side">
+
+    <div class="brand">
+
+      <div class="brand-mark">
+
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+
+          <defs>
+
+            <linearGradient
+              id="logoGold"
+              x1="0"
+              y1="0"
+              x2="1"
+              y2="1">
+
+              <stop
+                offset="0%"
+                stop-color="#fbbf24"/>
+
+              <stop
+                offset="100%"
+                stop-color="#f59e0b"/>
+
+            </linearGradient>
+
+          </defs>
+
+          <path
+            d="M12 52V24L32 10L52 24V52"
+            fill="none"
+            stroke="white"
+            stroke-width="5"
+            stroke-linejoin="round"/>
+
+          <path
+            d="M21 25H36C42 25 45 28 45 32C45 35 43 37 40 38C44 39 47 41 47 45C47 50 43 53 36 53H21V25Z"
+            fill="url(#logoGold)"/>
+
+          <path
+            d="M28 31V47"
+            stroke="#0b1f3a"
+            stroke-width="4"
+            stroke-linecap="round"/>
+
+          <path
+            d="M12 55H52"
+            stroke="white"
+            stroke-width="4"
+            stroke-linecap="round"/>
+
+        </svg>
+
+      </div>
+
+      <div class="brand-text">
+
+        <div class="brand-name">
+          BATI<span>FLOW</span>
+        </div>
+
+        <small>
+          BUILD • CALCULATE • MANAGE
+        </small>
+
+      </div>
+
+    </div>
+
+    <div class="nav-title">
+      Navigation
+    </div>
+
+    <div class="nav">
+
+      <button
+        class="active"
+        onclick="show('dashboard',this)">
+
+        <span class="nav-icon">⌂</span>
+        Tableau de bord
+
+      </button>
+
+      <button
+        onclick="show('calc',this)">
+
+        <span class="nav-icon">📐</span>
+        Calculateur BTP
+
+      </button>
+
+      <button
+        onclick="show('dqe',this)">
+
+        <span class="nav-icon">📋</span>
+        DQE
+
+      </button>
+
+      <button
+        onclick="show('quote',this)">
+
+        <span class="nav-icon">🧾</span>
+        Devis
+
+      </button>
+
+      <button
+        onclick="show('country',this)">
+
+        <span class="nav-icon">🌍</span>
+        Pays & paramètres
+
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <!-- TOP BAR -->
+
+    <div class="top">
+
+      <div>
+
+        <h1 id="title">
+          Tableau de bord
+        </h1>
+
+        <div class="muted">
+          Gestion BTP intelligente
+        </div>
+
+      </div>
+
+      <select
+        id="topCountry"
+        class="country"
+        onchange="setCountry(this.value)">
+      </select>
+
+    </div>
+
+
+    <!-- =========================
+         DASHBOARD
+    ========================= -->
+
+    <section
+      id="dashboard"
+      class="page">
+
+      <div class="hero">
+
+        <div class="hero-label">
+          BATIFLOW V2
+        </div>
+
+        <h2>
+          Construisez mieux. Calculez plus vite.
+        </h2>
+
+        <p>
+          Centralisez vos calculs BTP, vos DQE et vos devis
+          depuis une seule plateforme conçue pour les professionnels
+          de la construction en Afrique.
+        </p>
+
+        <div class="actions">
+
+          <button
+            class="btn gold"
+            onclick="goto('calc')">
+            Nouveau calcul
+          </button>
+
+          <button
+            class="btn alt"
+            onclick="goto('dqe')">
+            Créer un DQE
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- STATS -->
+
+      <div class="grid">
+
+        <div class="card">
+
+          <div class="stat-label">
+            Projets
+          </div>
+
+          <div class="stat">
+            8
+          </div>
+
+          <div class="muted">
+            projets actifs
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="stat-label">
+            Devis ce mois
+          </div>
+
+          <div class="stat">
+            14
+          </div>
+
+          <div class="muted">
+            documents préparés
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="stat-label">
+            Montant DQE
+          </div>
+
+          <div
+            class="stat"
+            id="dashTotal">
+            0
+          </div>
+
+          <div
+            class="muted"
+            id="dashCur">
+            FCFA
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="stat-label">
+            Pays actif
+          </div>
+
+          <div
+            class="stat"
+            id="dashCountry">
+            Togo
+          </div>
+
+          <div class="muted">
+            configuration locale
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FEATURES -->
+
+      <div class="feature-grid">
+
+        <div class="card feature">
+
+          <div class="feature-icon">
+            📐
+          </div>
+
+          <div>
+
+            <h3>
+              Calculateur BTP
+            </h3>
+
+            <p>
+              Estimez rapidement les volumes et composants
+              nécessaires à vos travaux.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="card feature">
+
+          <div class="feature-icon">
+            📋
+          </div>
+
+          <div>
+
+            <h3>
+              DQE intelligent
+            </h3>
+
+            <p>
+              Quantifiez vos postes et calculez automatiquement
+              les montants.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="card feature">
+
+          <div class="feature-icon">
+            🧾
+          </div>
+
+          <div>
+
+            <h3>
+              Devis professionnel
+            </h3>
+
+            <p>
+              Préparez un devis clair et imprimez-le ou exportez-le
+              en PDF.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CALCULATEUR
+    ========================= -->
+
+    <section
+      id="calc"
+      class="page hide">
+
+      <div class="card">
+
+        <h2>
+          Calculateur BTP
+        </h2>
+
+        <p class="muted">
+          Calcul indicatif du volume de béton et des composants.
+        </p>
+
+        <div class="row">
+
+          <div class="field">
+
+            <label>
+              Élément
+            </label>
+
+            <select id="element">
+
+              <option>
+                Dalle
+              </option>
+
+              <option>
+                Poutre
+              </option>
+
+              <option>
+                Poteau
+              </option>
+
+              <option>
+                Semelle
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Longueur (m)
+            </label>
+
+            <input
+              id="L"
+              type="number"
+              step=".01"
+              value="5">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Largeur (m)
+            </label>
+
+            <input
+              id="W"
+              type="number"
+              step=".01"
+              value="4">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Épaisseur / hauteur (m)
+            </label>
+
+            <input
+              id="H"
+              type="number"
+              step=".01"
+              value=".15">
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="btn"
+          onclick="calc()">
+          Calculer
+        </button>
+
+
+        <div
+          id="result"
+          class="card result-box hide"
+          style="margin-top:18px">
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         DQE
+    ========================= -->
+
+    <section
+      id="dqe"
+      class="page hide">
+
+      <div class="card">
+
+        <h2>
+          DQE
+        </h2>
+
+        <p class="muted">
+          Ajoutez les différents postes de votre projet.
+        </p>
+
+        <div class="row">
+
+          <div class="field">
+
+            <label>
+              Désignation
+            </label>
+
+            <input
+              id="item"
+              placeholder="Ex. Béton dosé">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Unité
+            </label>
+
+            <select id="unit">
+
+              <option>
+                m³
+              </option>
+
+              <option>
+                m²
+              </option>
+
+              <option>
+                ml
+              </option>
+
+              <option>
+                u
+              </option>
+
+              <option>
+                kg
+              </option>
+
+              <option>
+                forfait
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Quantité
+            </label>
+
+            <input
+              id="qty"
+              type="number"
+              step=".01"
+              value="1">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Prix unitaire
+            </label>
+
+            <input
+              id="pu"
+              type="number"
+              step="1"
+              value="75000">
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="btn"
+          onclick="add()">
+          + Ajouter au DQE
+        </button>
+
+      </div>
+
+
+      <div class="tablewrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                #
+              </th>
+
+              <th>
+                Désignation
+              </th>
+
+              <th>
+                Unité
+              </th>
+
+              <th>
+                Qté
+              </th>
+
+              <th>
+                PU
+              </th>
+
+              <th>
+                Montant
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="body">
+          </tbody>
+
+
+          <tfoot>
+
+            <tr>
+
+              <th
+                colspan="5"
+                class="right">
+
+                TOTAL
+
+              </th>
+
+              <th
+                id="total"
+                class="right">
+
+                0
+
+              </th>
+
+            </tr>
+
+          </tfoot>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         DEVIS
+    ========================= -->
+
+    <section
+      id="quote"
+      class="page hide">
+
+      <div class="card">
+
+        <h2>
+          Générateur de devis
+        </h2>
+
+        <p class="muted">
+          Préparez un devis professionnel à partir de votre DQE.
+        </p>
+
+
+        <div class="row">
+
+          <div class="field">
+
+            <label>
+              Entreprise
+            </label>
+
+            <input
+              id="company"
+              value="BATIFLOW DEMO">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Client
+            </label>
+
+            <input
+              id="client"
+              placeholder="Nom du client">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Projet
+            </label>
+
+            <input
+              id="project"
+              placeholder="Maison RDC">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              TVA (%)
+            </label>
+
+            <input
+              id="tax"
+              type="number"
+              value="0">
+
+          </div>
+
+        </div>
+
+
+        <div class="actions">
+
+          <button
+            class="btn"
+            onclick="quote()">
+            Générer le devis
+          </button>
+
+          <button
+            class="btn alt"
+            onclick="window.print()">
+            Imprimer / PDF
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="preview"
+        class="card quote-preview hide">
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PAYS
+    ========================= -->
+
+    <section
+      id="country"
+      class="page hide">
+
+      <div class="card">
+
+        <h2>
+          Pays & paramètres
+        </h2>
+
+        <p class="muted">
+          Base BATIFLOW : pays africains et devises principales.
+          Les prix et taxes doivent être alimentés par des données
+          locales validées.
+        </p>
+
+
+        <div class="row">
+
+          <div class="field">
+
+            <label>
+              Pays
+            </label>
+
+            <select
+              id="country"
+              onchange="setCountry(this.value)">
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Devise
+            </label>
+
+            <input
+              id="currency"
+              readonly>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
 <script>
-const countries={"Togo":"FCFA","Bénin":"FCFA","Côte d’Ivoire":"FCFA","Sénégal":"FCFA","Burkina Faso":"FCFA","Mali":"FCFA","Niger":"FCFA","Guinée-Bissau":"FCFA","Cameroun":"FCFA","Gabon":"FCFA","Congo":"FCFA","Guinée équatoriale":"FCFA","RCA":"FCFA","Tchad":"FCFA","Ghana":"GHS","Nigeria":"NGN","Guinée":"GNF","Sierra Leone":"SLE","Liberia":"LRD","Gambie":"GMD","Mauritanie":"MRU","Cap-Vert":"CVE","Maroc":"MAD","Algérie":"DZD","Tunisie":"TND","Égypte":"EGP","Libye":"LYD","Soudan":"SDG","Kenya":"KES","Ouganda":"UGX","Tanzanie":"TZS","Rwanda":"RWF","Burundi":"BIF","Éthiopie":"ETB","Somalie":"SOS","Djibouti":"DJF","Seychelles":"SCR","Maurice":"MUR","Afrique du Sud":"ZAR","Namibie":"NAD","Botswana":"BWP","Zambie":"ZMW","Zimbabwe":"ZWG","Mozambique":"MZN","Angola":"AOA","Malawi":"MWK","Lesotho":"LSL","Eswatini":"SZL","Madagascar":"MGA","Comores":"KMF"};
-let countryName="Togo",items=[],sum=0;
-function init(){let o=Object.keys(countries).map(x=>`<option>${x}</option>`).join('');topCountry.innerHTML=o;country.innerHTML=o;topCountry.value=country.value=countryName;sync()}
-function sync(){let c=countries[countryName];currency.value=c;dashCountry.textContent=countryName;dashCur.textContent=c}
-function setCountry(c){countryName=c;topCountry.value=country.value=c;sync()}
-function login(e){e.preventDefault();login.classList.add('hide');app.classList.remove('hide')}
-function show(id,b){document.querySelectorAll('.page').forEach(x=>x.classList.add('hide'));document.getElementById(id).classList.remove('hide');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));if(b)b.classList.add('active');title.textContent={dashboard:'Tableau de bord',calc:'Calculateur BTP',dqe:'DQE',quote:'Générateur de devis',country:'Pays & paramètres'}[id]}
-function goto(id){let b=[...document.querySelectorAll('.nav button')].find(x=>x.textContent.toLowerCase().includes(id==='dqe'?'dqe':id==='calc'?'calculateur':id==='quote'?'devis':'tableau'));show(id,b)}
-function calc(){let v=+L.value*+W.value*+H.value;result.classList.remove('hide');result.innerHTML=`<b>${element.value}</b><p>Volume : <strong>${v.toFixed(2)} m³</strong></p><p>Estimation indicative : ciment ${(v*7.5).toFixed(1)} sacs · sable ${(v*.5).toFixed(2)} m³ · gravier ${(v*.8).toFixed(2)} m³.</p><small class="muted">Valeurs de démonstration, à valider selon le dosage et les normes applicables au projet.</small>`}
-function add(){let q=+qty.value,p=+pu.value,m=q*p;items.push({n:item.value||'Poste BTP',u:unit.value,q,p,m});render();item.value=''}
-function render(){body.innerHTML=items.map((x,i)=>`<tr><td>${i+1}</td><td>${x.n}</td><td>${x.u}</td><td>${x.q}</td><td>${x.p.toLocaleString()}</td><td>${x.m.toLocaleString()} ${countries[countryName]}</td></tr>`).join('');sum=items.reduce((a,x)=>a+x.m,0);total.textContent=sum.toLocaleString()+' '+countries[countryName];dashTotal.textContent=sum.toLocaleString()}
-function quote(){let t=+tax.value||0,vat=sum*t/100,ttc=sum+vat;preview.classList.remove('hide');preview.innerHTML=`<h2>${company.value}</h2><p><b>DEVIS BATIFLOW</b> — ${new Date().toLocaleDateString('fr-FR')}</p><p>Client : ${client.value||'—'}<br>Projet : ${project.value||'—'}<br>Pays : ${countryName}</p><table><tr><th>Désignation</th><th>Qté</th><th>PU</th><th>Montant</th></tr>${items.map(x=>`<tr><td>${x.n}</td><td>${x.q} ${x.u}</td><td>${x.p.toLocaleString()}</td><td>${x.m.toLocaleString()}</td></tr>`).join('')}</table><p class="right"><b>Total HT : ${sum.toLocaleString()} ${countries[countryName]}</b><br>TVA : ${vat.toLocaleString()} ${countries[countryName]}<br><strong>Total TTC : ${ttc.toLocaleString()} ${countries[countryName]}</strong></p>`}
+
+/* =========================
+   PAYS ET DEVISES
+========================= */
+
+const countries = {
+
+  "Togo":"FCFA",
+  "Bénin":"FCFA",
+  "Côte d’Ivoire":"FCFA",
+  "Sénégal":"FCFA",
+  "Burkina Faso":"FCFA",
+  "Mali":"FCFA",
+  "Niger":"FCFA",
+  "Guinée-Bissau":"FCFA",
+  "Cameroun":"FCFA",
+  "Gabon":"FCFA",
+  "Congo":"FCFA",
+  "Guinée équatoriale":"FCFA",
+  "RCA":"FCFA",
+  "Tchad":"FCFA",
+
+  "Ghana":"GHS",
+  "Nigeria":"NGN",
+  "Guinée":"GNF",
+  "Sierra Leone":"SLE",
+  "Liberia":"LRD",
+  "Gambie":"GMD",
+  "Mauritanie":"MRU",
+  "Cap-Vert":"CVE",
+
+  "Maroc":"MAD",
+  "Algérie":"DZD",
+  "Tunisie":"TND",
+  "Égypte":"EGP",
+  "Libye":"LYD",
+  "Soudan":"SDG",
+
+  "Kenya":"KES",
+  "Ouganda":"UGX",
+  "Tanzanie":"TZS",
+  "Rwanda":"RWF",
+  "Burundi":"BIF",
+  "Éthiopie":"ETB",
+  "Somalie":"SOS",
+  "Djibouti":"DJF",
+
+  "Seychelles":"SCR",
+  "Maurice":"MUR",
+
+  "Afrique du Sud":"ZAR",
+  "Namibie":"NAD",
+  "Botswana":"BWP",
+  "Zambie":"ZMW",
+  "Zimbabwe":"ZWG",
+  "Mozambique":"MZN",
+  "Angola":"AOA",
+  "Malawi":"MWK",
+  "Lesotho":"LSL",
+  "Eswatini":"SZL",
+
+  "Madagascar":"MGA",
+  "Comores":"KMF"
+
+};
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let countryName = "Togo";
+
+let items = [];
+
+let sum = 0;
+
+
+/* =========================
+   INITIALISATION
+========================= */
+
+function init(){
+
+  const options = Object.keys(countries)
+    .map(
+      x => `<option value="${x}">${x}</option>`
+    )
+    .join("");
+
+  topCountry.innerHTML = options;
+
+  country.innerHTML = options;
+
+  topCountry.value = country.value = countryName;
+
+  sync();
+
+}
+
+
+/* =========================
+   SYNCHRONISATION PAYS
+========================= */
+
+function sync(){
+
+  const c = countries[countryName];
+
+  currency.value = c;
+
+  dashCountry.textContent = countryName;
+
+  dashCur.textContent = c;
+
+  render();
+
+}
+
+
+/* =========================
+   CHANGER DE PAYS
+========================= */
+
+function setCountry(c){
+
+  countryName = c;
+
+  topCountry.value = c;
+
+  country.value = c;
+
+  sync();
+
+}
+
+
+/* =========================
+   CONNEXION
+========================= */
+
+function login(e){
+
+  e.preventDefault();
+
+  document.getElementById("login")
+    .classList.add("hide");
+
+  document.getElementById("app")
+    .classList.remove("hide");
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function show(id,b){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      x => x.classList.add("hide")
+    );
+
+  document
+    .getElementById(id)
+    .classList.remove("hide");
+
+  document
+    .querySelectorAll(".nav button")
+    .forEach(
+      x => x.classList.remove("active")
+    );
+
+  if(b){
+    b.classList.add("active");
+  }
+
+  const titles = {
+
+    dashboard:"Tableau de bord",
+    calc:"Calculateur BTP",
+    dqe:"DQE",
+    quote:"Générateur de devis",
+    country:"Pays & paramètres"
+
+  };
+
+  title.textContent = titles[id];
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================
+   RACCOURCI NAVIGATION
+========================= */
+
+function goto(id){
+
+  const buttons =
+    [...document.querySelectorAll(".nav button")];
+
+  let search = "";
+
+  if(id === "dqe"){
+    search = "dqe";
+  }
+
+  else if(id === "calc"){
+    search = "calculateur";
+  }
+
+  else if(id === "quote"){
+    search = "devis";
+  }
+
+  else{
+    search = "tableau";
+  }
+
+  const b =
+    buttons.find(
+      x =>
+        x.textContent
+          .toLowerCase()
+          .includes(search)
+    );
+
+  show(id,b);
+
+}
+
+
+/* =========================
+   CALCULATEUR BTP
+========================= */
+
+function calc(){
+
+  const length = Number(L.value) || 0;
+
+  const width = Number(W.value) || 0;
+
+  const height = Number(H.value) || 0;
+
+  const volume =
+    length * width * height;
+
+  result.classList.remove("hide");
+
+  result.innerHTML = `
+
+    <h3 style="margin-top:0">
+      Résultat du calcul
+    </h3>
+
+    <p>
+      Élément :
+      <strong>${element.value}</strong>
+    </p>
+
+    <p>
+      Volume :
+      <strong>${volume.toFixed(2)} m³</strong>
+    </p>
+
+    <hr style="border:0;border-top:1px solid #e3e9f2">
+
+    <p>
+      Estimation indicative :
+    </p>
+
+    <ul>
+
+      <li>
+        Ciment :
+        <strong>${(volume * 7.5).toFixed(1)}</strong>
+        sacs
+      </li>
+
+      <li>
+        Sable :
+        <strong>${(volume * .5).toFixed(2)}</strong>
+        m³
+      </li>
+
+      <li>
+        Gravier :
+        <strong>${(volume * .8).toFixed(2)}</strong>
+        m³
+      </li>
+
+    </ul>
+
+    <small class="muted">
+      Valeurs de démonstration à valider selon le dosage,
+      les caractéristiques des matériaux et les normes applicables
+      au projet.
+    </small>
+
+  `;
+
+}
+
+
+/* =========================
+   AJOUT DQE
+========================= */
+
+function add(){
+
+  const q =
+    Number(qty.value) || 0;
+
+  const p =
+    Number(pu.value) || 0;
+
+  const m = q * p;
+
+  items.push({
+
+    n:item.value || "Poste BTP",
+
+    u:unit.value,
+
+    q:q,
+
+    p:p,
+
+    m:m
+
+  });
+
+  render();
+
+  item.value = "";
+
+}
+
+
+/* =========================
+   AFFICHAGE DQE
+========================= */
+
+function render(){
+
+  body.innerHTML =
+    items
+      .map(
+        (x,i) => `
+
+          <tr>
+
+            <td>
+              ${i+1}
+            </td>
+
+            <td>
+              ${escapeHTML(x.n)}
+            </td>
+
+            <td>
+              ${x.u}
+            </td>
+
+            <td>
+              ${x.q}
+            </td>
+
+            <td>
+              ${x.p.toLocaleString("fr-FR")}
+            </td>
+
+            <td>
+              ${x.m.toLocaleString("fr-FR")}
+              ${countries[countryName]}
+            </td>
+
+          </tr>
+
+        `
+      )
+      .join("");
+
+  sum =
+    items.reduce(
+      (a,x) => a + x.m,
+      0
+    );
+
+  total.textContent =
+    sum.toLocaleString("fr-FR")
+    + " "
+    + countries[countryName];
+
+  dashTotal.textContent =
+    sum.toLocaleString("fr-FR");
+
+}
+
+
+/* =========================
+   GÉNÉRER DEVIS
+========================= */
+
+function quote(){
+
+  const t =
+    Number(tax.value) || 0;
+
+  const vat =
+    sum * t / 100;
+
+  const ttc =
+    sum + vat;
+
+  preview.classList.remove("hide");
+
+  preview.innerHTML = `
+
+    <div class="quote-header">
+
+      <div>
+
+        <h2 style="margin:0 0 6px">
+          ${escapeHTML(company.value)}
+        </h2>
+
+        <div class="muted">
+          Devis professionnel BATIFLOW
+        </div>
+
+      </div>
+
+      <div class="right">
+
+        <strong>
+          DEVIS
+        </strong>
+
+        <div class="muted">
+          ${new Date().toLocaleDateString("fr-FR")}
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="row">
+
+      <div>
+
+        <p>
+          <strong>Client</strong><br>
+          ${escapeHTML(client.value || "—")}
+        </p>
+
+      </div>
+
+      <div>
+
+        <p>
+          <strong>Projet</strong><br>
+          ${escapeHTML(project.value || "—")}
+        </p>
+
+      </div>
+
+      <div>
+
+        <p>
+          <strong>Pays</strong><br>
+          ${countryName}
+        </p>
+
+      </div>
+
+      <div>
+
+        <p>
+          <strong>Devise</strong><br>
+          ${countries[countryName]}
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="tablewrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Désignation
+            </th>
+
+            <th>
+              Qté
+            </th>
+
+            <th>
+              PU
+            </th>
+
+            <th>
+              Montant
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${
+            items.length
+            ?
+            items
+              .map(
+                x => `
+
+                  <tr>
+
+                    <td>
+                      ${escapeHTML(x.n)}
+                    </td>
+
+                    <td>
+                      ${x.q} ${x.u}
+                    </td>
+
+                    <td>
+                      ${x.p.toLocaleString("fr-FR")}
+                    </td>
+
+                    <td>
+                      ${x.m.toLocaleString("fr-FR")}
+                    </td>
+
+                  </tr>
+
+                `
+              )
+              .join("")
+            :
+            `
+              <tr>
+                <td colspan="4">
+                  Aucun poste ajouté au DQE.
+                </td>
+              </tr>
+            `
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="quote-total">
+
+      <p class="right">
+
+        <strong>
+          Total HT :
+          ${sum.toLocaleString("fr-FR")}
+          ${countries[countryName]}
+        </strong>
+
+        <br>
+
+        TVA :
+        ${vat.toLocaleString("fr-FR")}
+        ${countries[countryName]}
+
+        <br>
+
+        <strong style="font-size:18px">
+
+          Total TTC :
+          ${ttc.toLocaleString("fr-FR")}
+          ${countries[countryName]}
+
+        </strong>
+
+      </p>
+
+    </div>
+
+
+    <p class="muted">
+      Document généré avec BATIFLOW.
+    </p>
+
+  `;
+
+}
+
+
+/* =========================
+   SÉCURITÉ HTML
+========================= */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================
+   LANCEMENT
+========================= */
+
 init();
-</script></body></html>
+
+</script>
+
+</body>
+</html>
+```
